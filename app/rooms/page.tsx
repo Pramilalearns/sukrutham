@@ -6,6 +6,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import Image from "next/image";
 import Link from "next/link";
+import RoomGallery from "@/components/RoomGallery";
 import {
     Wifi, Wind, Snowflake, Coffee, Utensils,
     MapPin, User, Home, Dog, Droplets, Car, Plane, Leaf,
@@ -35,6 +36,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 };
 
 export default function RoomsPage() {
+    const [activeAltIndex, setActiveAltIndex] = useState<number | null>(0);
     const rooms = [
         {
             title: "The Paddy Room",
@@ -95,7 +97,8 @@ export default function RoomsPage() {
             category: "Culinary Delights",
             items: [
                 { icon: ChefHat, text: "Delectable Kerala cuisine (Veg/Non-Veg) for Breakfast, Lunch & Dinner" },
-                { icon: Utensils, text: "Fully equipped kitchen available for guest use" }
+                { icon: Utensils, text: "Fully equipped kitchen available for guest use" },
+                { icon: Star, text: "Dine under the stars" }
             ]
         },
         {
@@ -118,9 +121,7 @@ export default function RoomsPage() {
         {
             category: "Warm Hospitality & Ease",
             items: [
-                { icon: User, text: "Friendly host (Murali) with extensive local knowledge" },
-                { icon: Home, text: "Ideal for families, staycations, & WFH" },
-                { icon: Dog, text: "Pet-friendly with open spaces" },
+                { icon: User, text: "Friendly host (K P Murali) with extensive local knowledge" },
                 { icon: Droplets, text: "Fresh, sweet well water" },
                 { icon: Car, text: "Parking for up to 3 cars" },
                 { icon: CheckCircle, text: "Wheelchair friendly premises" },
@@ -220,7 +221,7 @@ export default function RoomsPage() {
                                     </div>
 
                                     <Link
-                                        href="/#book"
+                                        href="/book"
                                         className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-bold text-center transition-all hover:shadow-lg active:scale-95"
                                     >
                                         Book This Room
@@ -232,291 +233,341 @@ export default function RoomsPage() {
                 </div>
             </section>
 
-            {/* Section 2: Inclusions */}
-            <section className="py-16 relative overflow-hidden">
-                {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/kerala-pathway.png"
-                        alt="Kerala Pathway"
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-primary/85" />
-                </div>
 
-                <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-                    <div className="text-center mb-8">
-                        <span className="text-white/80 text-xs font-bold uppercase tracking-widest">The Sukrutham Package</span>
-                        <h2 className="text-2xl md:text-3xl font-display font-bold mt-2 mb-2 text-white">Included with Your Stay</h2>
-                        <p className="text-white/80 max-w-2xl mx-auto text-lg">
-                            We don&apos;t just provide a room; we provide a complete Kerala farm experience. Every booking includes:
-                        </p>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-6">
-                        {inclusions.map((group, idx) => (
-                            <ScrollAnimation key={idx} delay={idx * 100} animation="fade-up">
-                                <div className="bg-white/10 p-6 rounded-xl border border-white/20 hover:border-white/40 transition-colors backdrop-blur-sm h-full">
-                                    <h3 className="text-xl font-display font-bold text-amber-300 mb-6 pb-4 border-b border-white/10">
-                                        {group.category}
-                                    </h3>
-                                    <ul className="space-y-4">
-                                        {group.items.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-4">
-                                                <div className="p-2 bg-amber-300/20 rounded-lg shrink-0 text-amber-300 mt-0.5">
-                                                    <item.icon className="w-5 h-5" />
-                                                </div>
-                                                <span className="text-white/90 text-sm leading-relaxed font-medium">
-                                                    {item.text}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </ScrollAnimation>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Alternate Layout: High-End Editorial Split Layout (Option 2) */}
+            <section className="py-24 bg-white relative border-t border-[#F0EBE1] overflow-hidden">
+                {/* Subtle Background Accent */}
+                <div className="absolute top-40 right-0 w-[500px] h-[700px] bg-[#FAF8F5] rounded-l-[100px] -z-0 pointer-events-none hidden lg:block"></div>
 
-            {/* Section 3: Room Design & Nature Integration - Immersive Hero */}
-            <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/room-view-2.png"
-                        alt="Framing the Landscape"
-                        fill
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-stone-900/40" />
-                </div>
+                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl relative z-10">
+                    <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
 
-                <div className="container mx-auto px-6 relative z-10">
-                    <ScrollAnimation className="max-w-2xl bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20 text-white shadow-xl">
-                        <span className="text-amber-300 text-xs font-bold uppercase tracking-widest mb-1 block">Nature Integration</span>
-                        <h2 className="text-2xl md:text-4xl font-display font-bold mb-4 leading-tight">Rooms Designed to Frame the Landscape</h2>
-                        <p className="text-white/90 text-sm md:text-base leading-relaxed mb-6">
-                            Innovation at Sukrutham is about merging with nature. Stone, wood, and clay come together to create a space that is both modern and timeless.
-                        </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
-                                <h4 className="font-bold text-base mb-1">The View</h4>
-                                <p className="text-xs text-white/80">Panoramic views of lush greenery and cascading waterfalls through wide open windows.</p>
-                            </div>
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
-                                <h4 className="font-bold text-base mb-1">Sustainability</h4>
-                                <p className="text-xs text-white/80">Solar panels, rainwater harvesting, and green roofs for an eco-conscious stay.</p>
-                            </div>
-                        </div>
-                    </ScrollAnimation>
-                </div>
-            </section>
-
-            {/* Section 4: Modern Comforts & WFH - Bento Grid */}
-            <section className="py-16 bg-stone-50">
-                <div className="container mx-auto px-6 md:px-12 lg:px-20">
-                    <div className="text-center mb-10">
-                        <span className="text-primary font-bold uppercase tracking-widest text-xs">Work & Relax</span>
-                        <h2 className="text-2xl md:text-3xl font-display font-bold text-stone-900 mt-1">Modern Comforts & WFH Ready</h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
-                        {/* Large Card: Work from Farm */}
-                        <ScrollAnimation className="md:col-span-2 row-span-2 relative group overflow-hidden rounded-2xl shadow-sm">
-                            <Image
-                                src="/room-view-modern.png"
-                                alt="Work from Farm"
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                                <h3 className="text-xl font-bold text-white mb-1">Work from Farm</h3>
-                                <p className="text-sm text-white/80">Seamlessly transition between city productivity and rural peace. Your perfect remote office awaits.</p>
-                            </div>
-                        </ScrollAnimation>
-
-                        {/* Medium Card: Connectivity */}
-                        <ScrollAnimation delay={100} className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-center hover:shadow-md transition-shadow">
-                            <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-3">
-                                <Wifi className="w-5 h-5" />
-                            </div>
-                            <h3 className="text-lg font-bold text-stone-900 mb-1">High-Speed WiFi</h3>
-                            <p className="text-stone-600 text-xs">Fibre optic connectivity throughout the property covering all rooms and common areas.</p>
-                        </ScrollAnimation>
-
-                        {/* Medium Card: Climate */}
-                        <ScrollAnimation delay={200} className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-center hover:shadow-md transition-shadow">
-                            <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-3">
-                                <Snowflake className="w-5 h-5" />
-                            </div>
-                            <h3 className="text-lg font-bold text-stone-900 mb-1">Climate Control</h3>
-                            <p className="text-stone-600 text-xs">Individually controlled ACs and natural ventilation options for your perfect comfort level.</p>
-                        </ScrollAnimation>
-
-                        {/* Wide Card: Power */}
-                        <ScrollAnimation delay={300} className="md:col-span-1 bg-stone-900 p-6 rounded-2xl shadow-sm flex flex-col justify-center text-white relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-6 opacity-10">
-                                <Sun className="w-24 h-24" />
-                            </div>
-                            <h3 className="text-lg font-bold mb-1 z-10">Uninterrupted Power</h3>
-                            <p className="text-stone-400 text-xs z-10">24/7 Solar Backup ensures your day never stops.</p>
-                        </ScrollAnimation>
-                    </div>
-                </div>
-            </section>
-
-            {/* Section 5: Evening Experience - Atmospheric Dark Mode */}
-            <section className="py-20 bg-stone-950 text-white relative overflow-hidden flex items-center text-center">
-                <div className="absolute inset-0 opacity-60">
-                    <Image
-                        src="/kerala-hills.jpg" // Placeholder for evening shot
-                        alt="Evening Atmosphere"
-                        fill
-                        className="object-cover blur-sm scale-110"
-                    />
-                    <div className="absolute inset-0 bg-stone-950/80" />
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10 max-w-4xl">
-                    <ScrollAnimation>
-                        <div className="inline-block p-2 rounded-full bg-amber-500/10 mb-4 backdrop-blur-md border border-amber-500/20">
-                            <Star className="w-5 h-5 text-amber-400" />
-                        </div>
-                        <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
-                            Twilight & <span className="text-amber-400">Evening Secrets</span>
-                        </h2>
-                        <p className="text-lg text-stone-300 leading-relaxed mb-8">
-                            "Twilight is a magical time when nature paints the sky. As the sun sets, whispers of the earthy fragrance of young greenery invigorate your mind."
-                        </p>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                            <div className="bg-white/5 p-6 rounded-xl  hover:bg-white/10 transition-all border border-white/5 hover:border-amber-500/30 group">
-                                <Music className="w-6 h-6 text-amber-400 mb-3 group-hover:scale-110 transition-transform" />
-                                <h4 className="text-lg font-bold mb-1">Sound Symphony</h4>
-                                <p className="text-stone-400 text-xs">A natural orchestra of chirping birds, rustling leaves, and the distant roar of waterfalls.</p>
-                            </div>
-                            <div className="bg-white/5 p-6 rounded-xl  hover:bg-white/10 transition-all border border-white/5 hover:border-amber-500/30 group">
-                                <Sun className="w-6 h-6 text-amber-400 mb-3 group-hover:scale-110 transition-transform" />
-                                <h4 className="text-lg font-bold mb-1">Mood Lighting</h4>
-                                <p className="text-stone-400 text-xs">Artful illumination along pathways and lantern-lit outdoor lounges for intimate conversations.</p>
-                            </div>
-                        </div>
-                    </ScrollAnimation>
-                </div>
-            </section>
-
-            {/* Section 6: Dining & Hospitality - Split with Cards */}
-            <section className="py-16 bg-white">
-                <div className="container mx-auto px-6 md:px-12 lg:px-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                        <ScrollAnimation className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-xl">
-                            <Image
-                                src="/kerala-food-v2.png"
-                                alt="Kerala Cuisine"
-                                fill
-                                className="object-cover"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                                <span className="bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Authentic</span>
-                                <h3 className="text-white text-2xl font-bold mt-3">From Farm to Table</h3>
-                            </div>
-                        </ScrollAnimation>
-
-                        <div className="space-y-8">
-                            <ScrollAnimation delay={100}>
-                                <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-4">Authentic Kerala Cuisine</h2>
-                                <p className="text-stone-600 text-base leading-relaxed mb-6">
-                                    Savor the flavors of Kerala with meals prepared by skilled chefs using locally sourced ingredients. It's not just food; it's a cultural immersion.
+                        {/* Sticky Left Column */}
+                        <div className="lg:w-5/12">
+                            <div className="sticky top-32">
+                                <span className="text-primary font-semibold tracking-wider uppercase text-sm block mb-4">
+                                    The Sukrutham Package
+                                </span>
+                                <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
+                                    What's Included with <span className="text-stone-500 italic font-serif">Your Stay?</span>
+                                </h2>
+                                <p className="text-[#A48869] font-medium text-xl mb-6 leading-snug">
+                                    Your booking isn't just a room; it’s a beautifully curated experience.
                                 </p>
-
-                                <div className="space-y-3">
-                                    <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                                        <div className="bg-orange-100 p-2 rounded-full text-orange-600 mt-1"><ChefHat className="w-5 h-5" /></div>
-                                        <div>
-                                            <h4 className="font-bold text-stone-800 text-base">Traditional Menu</h4>
-                                            <p className="text-stone-600 text-xs mt-1">Soft appam, steaming puttu, and crispy banana chips tailored to your taste.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-stone-50 transition-colors">
-                                        <div className="bg-primary/10 p-2 rounded-full text-primary mt-1"><HeartHandshake className="w-5 h-5" /></div>
-                                        <div>
-                                            <h4 className="font-bold text-stone-800 text-base">Personalized Service</h4>
-                                            <p className="text-stone-600 text-xs mt-1">Host Murali is available 24/7 to arrange farm tours, fishing trips, and cultural visits.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ScrollAnimation>
+                                <p className="text-stone-600 text-lg font-light leading-relaxed mb-8">
+                                    We thoughtfully design a holistic Kerala farm experience. Every booking envelopes you in these premium inclusions, ensuring a seamless and authentic retreat into nature.
+                                </p>
+                                {/* Decorative line */}
+                                <div className="w-16 h-1 bg-[#EBE5DC]"></div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Section 7: Logistics & FAQ - Clean Modern Cards */}
-            <section className="py-16 bg-stone-50 border-t border-stone-200">
-                <div className="container mx-auto px-6 md:px-12 lg:px-20">
-                    <div className="text-center mb-10">
-                        <h2 className="text-2xl md:text-3xl font-display font-bold text-stone-900">Good to Know</h2>
-                        <p className="text-stone-500 mt-1 text-base">Transparent policies for a worry-free stay.</p>
-                    </div>
+                        {/* Scrolling Right Column (Categories) */}
+                        <div className="lg:w-7/12">
+                            {/* Accordion / Interactive List */}
+                            <div className="flex flex-col gap-4 md:gap-5 cursor-pointer">
+                                {[inclusions[2], inclusions[0], inclusions[1], inclusions[3]].map((inclusion, idx) => (
+                                    <ScrollAnimation key={idx} delay={idx * 100} className="relative group/section bg-white rounded-2xl border border-[#F0EBE1] shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                                        {/* Accordion Header */}
+                                        <div
+                                            className="flex items-center justify-between p-5 md:p-6"
+                                            onClick={() => setActiveAltIndex(activeAltIndex === idx ? null : idx)}
+                                        >
+                                            <div className="flex items-center gap-5">
+                                                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full border flex-shrink-0 flex items-center justify-center transition-colors duration-500 ${activeAltIndex === idx ? 'bg-[#A48869] text-white border-[#A48869]' : 'bg-[#FCFAF7] text-[#A48869] border-[#F0EBE1]'}`}>
+                                                    {inclusion.category === "Adventure & Exploration" && <MapPin className="w-5 h-5 md:w-6 md:h-6" />}
+                                                    {inclusion.category === "Culinary Delights" && <ChefHat className="w-5 h-5 md:w-6 md:h-6" />}
+                                                    {inclusion.category === "Connectivity & Comfort" && <Wifi className="w-5 h-5 md:w-6 md:h-6" />}
+                                                    {inclusion.category === "Warm Hospitality & Ease" && <HeartHandshake className="w-5 h-5 md:w-6 md:h-6" />}
+                                                </div>
+                                                <h3 className="text-xl md:text-2xl font-display font-medium text-stone-900">
+                                                    {inclusion.category}
+                                                </h3>
+                                            </div>
+                                            <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#F0EBE1]/50 flex items-center justify-center text-[#A48869] transition-transform duration-500 ${activeAltIndex === idx ? 'rotate-180' : ''}`}>
+                                                <ChevronDown className="w-4 h-4 md:w-5 md:h-5 opacity-50" />
+                                            </div>
+                                        </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-6xl mx-auto">
-
-                        {/* Logistics Card (4 cols) */}
-                        <ScrollAnimation className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-stone-100 h-full">
-                            <h3 className="font-bold text-lg mb-4 flex items-center gap-3"><Clock className="w-5 h-5 text-primary" /> Logistics</h3>
-                            <div className="space-y-4">
-                                <div className="p-3 bg-stone-50 rounded-xl">
-                                    <h4 className="font-bold text-stone-800 text-xs mb-2 uppercase tracking-wide">Meal Timings</h4>
-                                    <div className="space-y-1 text-xs">
-                                        <div className="flex justify-between"><span className="text-stone-500">Breakfast</span> <span className="font-bold text-stone-900">08:00 – 10:30</span></div>
-                                        <div className="flex justify-between"><span className="text-stone-500">Lunch</span> <span className="font-bold text-stone-900">12:30 – 14:30</span></div>
-                                        <div className="flex justify-between"><span className="text-stone-500">Dinner</span> <span className="font-bold text-stone-900">20:00 – 23:00</span></div>
-                                    </div>
-                                </div>
-                                <div className="space-y-1 text-xs text-stone-600">
-                                    <p>📶 <strong className="text-stone-900">Wi-Fi:</strong> Included (4 devices).</p>
-                                    <p>🍛 <strong className="text-stone-900">Cuisine:</strong> Traditional Kerala only.</p>
-                                    <p>🚕 <strong className="text-stone-900">Tours:</strong> On request.</p>
-                                </div>
-                            </div>
-                        </ScrollAnimation>
-
-                        {/* Cancellation Card (4 cols) */}
-                        <ScrollAnimation delay={100} className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-stone-100 h-full">
-                            <h3 className="font-bold text-lg mb-4 flex items-center gap-3"><Ban className="w-5 h-5 text-red-500" /> Cancellation</h3>
-                            <div className="space-y-3">
-                                <div className="flex items-center justify-between p-3 bg-emerald-50 rounded-xl border border-emerald-100">
-                                    <span className="text-xs font-bold text-emerald-800">15+ Days Prior</span>
-                                    <span className="text-[10px] font-bold bg-white text-emerald-600 px-2 py-1 rounded shadow-sm">100% Refund</span>
-                                </div>
-                                <div className="flex items-center justify-between p-3 bg-amber-50 rounded-xl border border-amber-100">
-                                    <span className="text-xs font-bold text-amber-800">8 – 14 Days</span>
-                                    <span className="text-[10px] font-bold bg-white text-amber-600 px-2 py-1 rounded shadow-sm">1 Night Penalty</span>
-                                </div>
-                                <div className="flex items-center justify-between p-3 bg-orange-50 rounded-xl border border-orange-100">
-                                    <span className="text-xs font-bold text-orange-800">7 Days</span>
-                                    <span className="text-[10px] font-bold bg-white text-orange-600 px-2 py-1 rounded shadow-sm">50% Retention</span>
-                                </div>
-                                <div className="flex items-center justify-between p-3 bg-red-50 rounded-xl border border-red-100">
-                                    <span className="text-xs font-bold text-red-800">0 – 7 Days</span>
-                                    <span className="text-[10px] font-bold bg-white text-red-600 px-2 py-1 rounded shadow-sm">No Refund</span>
-                                </div>
-                            </div>
-                        </ScrollAnimation>
-
-                        {/* FAQ Card (4 cols) */}
-                        <ScrollAnimation delay={200} className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-stone-100 h-full">
-                            <h3 className="font-bold text-lg mb-4 flex items-center gap-3"><HelpCircle className="w-5 h-5 text-indigo-500" /> Common Questions</h3>
-                            <div className="space-y-1">
-                                {faqs.map((faq, i) => (
-                                    <FAQItem key={i} question={faq.question} answer={faq.answer} />
+                                        {/* Accordion Content */}
+                                        <div className={`transition-all duration-500 ease-in-out overflow-hidden ${activeAltIndex === idx ? 'max-h-[500px] opacity-100 pb-5 md:pb-6' : 'max-h-0 opacity-0 pb-0'}`}>
+                                            <div className="px-5 md:px-6 pt-1 md:pl-[5.5rem]">
+                                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
+                                                    {inclusion.items.map((item, i) => (
+                                                        <li key={i} className="flex items-start gap-4 group">
+                                                            <div className="text-[#BC8A5F] shrink-0 mt-1 transition-transform duration-300 group-hover:scale-110">
+                                                                <item.icon className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
+                                                            </div>
+                                                            <span className="text-stone-600 text-sm md:text-base leading-relaxed group-hover:text-stone-900 transition-colors">
+                                                                {item.text}
+                                                            </span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ScrollAnimation>
                                 ))}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <RoomGallery />
+
+            {/* Section 7: Important House Rules (Moved up) */}
+            <section className="py-24 bg-white relative">
+                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-6xl">
+                    <div className="mb-12 text-center">
+                        <span className="text-primary font-bold uppercase tracking-widest text-xs mb-2 block">Policies</span>
+                        <h2 className="text-3xl md:text-5xl font-display font-medium text-stone-900 leading-tight">Important House Rules</h2>
+                        <p className="text-stone-500 mt-4 text-lg">Please take a moment to review our stay policies.</p>
+
+                        {/* Standalone Rate Description */}
+                        <p className="mt-8 text-stone-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
+                            Rate is inclusive of all meals during the stay and basic WiFi on 4 devices.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                        {/* Dining & Cuisine */}
+                        <ScrollAnimation className="md:col-span-12 lg:col-span-7 bg-stone-50 p-8 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col justify-center">
+                            <h3 className="text-2xl font-display font-medium text-stone-900 mb-4 flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#A48869]">
+                                    <Clock className="w-5 h-5" />
+                                </div>
+                                Dining & Cuisine
+                            </h3>
+                            <p className="text-stone-600 mb-6 text-sm md:text-base leading-relaxed">
+                                Sukrutham cuisine will be traditional Kerala cuisine only, and anything otherwise will require prior intimation.
+                            </p>
+                            <div className="bg-white border border-stone-100 rounded-2xl p-5 shadow-sm">
+                                <h4 className="font-bold text-stone-800 text-xs uppercase tracking-widest mb-4">Meal Timings (hrs)</h4>
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div className="bg-stone-50 p-4 rounded-xl text-center">
+                                        <div className="text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">Breakfast</div>
+                                        <div className="text-stone-900 font-medium">08:00 - 10:30</div>
+                                    </div>
+                                    <div className="bg-stone-50 p-4 rounded-xl text-center">
+                                        <div className="text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">Lunch</div>
+                                        <div className="text-stone-900 font-medium">12:30 - 14:30</div>
+                                    </div>
+                                    <div className="bg-stone-50 p-4 rounded-xl text-center">
+                                        <div className="text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">Dinner</div>
+                                        <div className="text-stone-900 font-medium">20:00 - 23:00</div>
+                                    </div>
+                                </div>
+                            </div>
                         </ScrollAnimation>
 
+                        {/* Additional Info (Tall Card) */}
+                        <ScrollAnimation delay={100} className="md:col-span-12 lg:col-span-5 bg-[#FAF8F5] p-8 rounded-[2rem] shadow-sm border border-[#F0EBE1]">
+                            <h3 className="text-2xl font-display font-medium text-stone-900 mb-4 flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#758A6D] shadow-sm">
+                                    <MapPin className="w-5 h-5" />
+                                </div>
+                                Tours & Activities
+                            </h3>
+                            <p className="text-stone-600 text-base leading-relaxed mb-6">
+                                Tours outside the package can be planned with prior intimation and additional transportation charges will apply.
+                            </p>
+                        </ScrollAnimation>
+
+                        {/* Cancellation Policy (Full Row) */}
+                        <ScrollAnimation delay={200} className="md:col-span-12 bg-stone-50 p-8 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col md:flex-row gap-8 lg:items-center">
+                            <div className="md:w-1/3">
+                                <h3 className="text-2xl font-display font-medium text-stone-900 mb-3 flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-red-500 shadow-sm">
+                                        <Ban className="w-5 h-5" />
+                                    </div>
+                                    Cancellation Policy
+                                </h3>
+                                <p className="text-stone-500 text-sm leading-relaxed">
+                                    Cancellation will receive a full refund except when cancelled 1 week prior, in which 50% of the amount paid will be retained.
+                                </p>
+                            </div>
+                            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div className="bg-emerald-50/50 border border-emerald-100 p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition-shadow">
+                                    <div className="text-emerald-800 font-bold mb-1">15+ Days</div>
+                                    <div className="text-emerald-600 text-xs font-medium uppercase tracking-wider">Prior to arrival</div>
+                                    <div className="mt-4 text-emerald-900 text-sm font-semibold">Cancel without penalty</div>
+                                </div>
+                                <div className="bg-amber-50/50 border border-amber-100 p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition-shadow">
+                                    <div className="text-amber-800 font-bold mb-1">8 - 14 Days</div>
+                                    <div className="text-amber-600 text-xs font-medium uppercase tracking-wider">Prior to arrival</div>
+                                    <div className="mt-4 text-amber-900 text-sm font-semibold">1-night penalty</div>
+                                </div>
+                                <div className="bg-red-50/50 border border-red-100 p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition-shadow">
+                                    <div className="text-red-800 font-bold mb-1">0 - 7 Days</div>
+                                    <div className="text-red-600 text-xs font-medium uppercase tracking-wider">Prior to arrival</div>
+                                    <div className="mt-4 text-red-900 text-sm font-semibold">No refund</div>
+                                </div>
+                            </div>
+                        </ScrollAnimation>
                     </div>
+                </div>
+            </section>
+
+            {/* "Why You Will Love Your Stay at Sukrutham" - Comprehensive section */}
+            <section className="py-24 bg-stone-50 relative overflow-hidden">
+                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl relative z-10">
+                    <div className="text-center mb-16 max-w-4xl mx-auto">
+                        <h2 className="text-3xl md:text-5xl font-display font-medium text-stone-900 mb-6">Why You Will Love Your Stay at Sukrutham</h2>
+                        <p className="text-stone-600 text-lg md:text-xl leading-relaxed">
+                            Whether you come seeking quiet reflection, a meaningful connection with nature, or simply a peaceful escape from everyday life, Sukrutham Farmstay offers an experience that feels warm, authentic, and deeply refreshing. Here, the charm of rural Kerala blends beautifully with thoughtful comforts to create a stay that is both relaxing and memorable.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        {/* Rooms & Amenities */}
+                        <ScrollAnimation className="relative bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col justify-center">
+                            {/* Floating Decorative Corner Image */}
+                            <div className="absolute -top-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 rotate-6 hidden sm:block">
+                                <Image src="/room-view-2.png" alt="Rooms" fill className="object-cover" />
+                            </div>
+
+                            <div className="mb-10 pt-4 md:pt-0 pr-0 sm:pr-20">
+                                <h3 className="text-2xl font-display font-medium text-stone-900 mb-4 text-emerald-900">Comfortable Rooms with Rustic Charm</h3>
+                                <p className="text-stone-600 text-base leading-relaxed">
+                                    Our spacious rooms combine traditional farmhouse aesthetics with modern comfort. Natural materials like stone, wood, and clay echo the surrounding landscape, creating spaces that feel calm and grounded. Large windows and private terraces frame breathtaking views of the hills, streams, and cascading waterfalls around the property.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 className="text-2xl font-display font-medium text-stone-900 mb-4 text-emerald-900">Thoughtful Modern Amenities</h3>
+                                <p className="text-stone-600 text-base leading-relaxed">
+                                    While the setting is rooted in nature, your comfort remains our priority. Guests enjoy high-speed Wi-Fi, individually controlled air-conditioning, and well-appointed private bathrooms with modern hot and cold water facilities and complimentary toiletries.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+
+                        {/* Evening Magic & Dining */}
+                        <ScrollAnimation delay={100} className="relative bg-[#F4EDE4] p-8 md:p-12 rounded-[2rem] shadow-sm border border-[#EAE0D3] flex flex-col justify-center overflow-hidden">
+                            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay">
+                                <Image src="/kerala-hills.jpg" alt="Texture" fill className="object-cover grayscale" />
+                            </div>
+                            
+                            {/* Floating Decorative Corner Image */}
+                            <div className="absolute -bottom-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#F4EDE4] shadow-lg overflow-hidden z-20 -rotate-6 hidden sm:block">
+                                <Image src="/kerala-food-v2.png" alt="Dining" fill className="object-cover" />
+                            </div>
+
+                            <div className="relative z-10 mb-10 pr-0 sm:pr-20">
+                                <h3 className="text-2xl font-display font-medium text-amber-900 mb-4">Evenings Filled with Natural Magic</h3>
+                                <p className="text-stone-700 text-base leading-relaxed">
+                                    As the sun sets, Sukrutham transforms into a magical retreat. The golden hour paints the sky with warm colors, while cool breezes carry the fresh scent of greenery. Evenings come alive with the gentle soundscape of birds, rustling leaves, and distant waterfalls, creating a peaceful atmosphere. Thoughtfully placed lighting and lantern-lit outdoor lounges make the space perfect for quiet conversations and reflection.
+                                </p>
+                            </div>
+
+                            <div className="relative z-10 pb-4 md:pb-0 pr-0 sm:pr-20">
+                                <h3 className="text-2xl font-display font-medium text-amber-900 mb-4">Authentic Kerala Dining</h3>
+                                <p className="text-stone-700 text-base leading-relaxed">
+                                    A stay here is incomplete without experiencing the flavors of Kerala. Our kitchen prepares fresh, home-style meals using local ingredients, including favorites like soft appam, steaming puttu, and crispy banana chips. Guests may enjoy their meals in the comfort of their room or dine outdoors surrounded by nature.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Village Experiences */}
+                        <ScrollAnimation delay={200} className="lg:col-span-1 bg-[#FAF8F5] p-8 md:p-10 rounded-[2rem] shadow-sm border border-[#F0EBE1] flex flex-col justify-center">
+                            <div className="w-12 h-12 bg-amber-100/50 rounded-full flex items-center justify-center text-amber-600 mb-6">
+                                <MapPin className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-2xl font-display font-medium text-stone-900 mb-4">Experiences That Connect You with the Village</h3>
+                            <p className="text-stone-600 text-base leading-relaxed">
+                                Sukrutham offers opportunities to slow down and immerse yourself in local life. Guests can take peaceful village walks, try fishing with locals, or visit nearby cultural landmarks such as Kerala Kalamandalam, renowned for classical dance and music traditions.
+                            </p>
+                        </ScrollAnimation>
+
+                        {/* WFH & Recharge */}
+                        <ScrollAnimation delay={300} className="lg:col-span-2 relative bg-[#EAECE4] p-8 md:p-10 rounded-[2rem] shadow-sm border border-[#DCE2D4] overflow-hidden flex flex-col md:flex-row gap-8 items-center">
+                            <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+                                <Sun className="w-64 h-64 text-emerald-900" />
+                            </div>
+
+                             {/* Floating Decorative Corner Image */}
+                             <div className="absolute -top-6 -left-6 lg:-left-6 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-[#EAECE4] shadow-lg overflow-hidden z-20 rotate-3 hidden md:block">
+                                <Image src="/room-view-modern.png" alt="Work" fill className="object-cover" />
+                            </div>
+
+                            <div className="relative z-10 w-full md:pl-24 lg:pl-32">
+                                <h3 className="text-2xl md:text-3xl font-display font-medium text-stone-900 mb-4">A Perfect Place to Work and Recharge</h3>
+                                <p className="text-stone-700 text-base leading-relaxed mb-4">
+                                    If you need to work while travelling, Sukrutham provides the best of both worlds. Reliable high-speed internet ensures productivity, while the natural surroundings offer refreshing breaks.
+                                </p>
+                                <p className="text-stone-700 text-base leading-relaxed">
+                                    Step outside for a walk through gardens and green pathways, listen to the birds, and return to work feeling renewed.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                         {/* Sustainability */}
+                         <ScrollAnimation delay={400} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col sm:flex-row items-start gap-6">
+                            <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
+                                <Sun className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-display font-medium text-stone-900 mb-3 text-emerald-900">Sustainability at the Heart of the Stay</h3>
+                                <p className="text-stone-600 text-base leading-relaxed">
+                                    Sukrutham is designed with care for the environment. Solar panels, rainwater harvesting, and eco-friendly design elements help preserve the beauty of the land while supporting sustainable living.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+
+                        {/* Hospitality */}
+                        <ScrollAnimation delay={500} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col sm:flex-row items-start gap-6">
+                             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 shrink-0">
+                                <HeartHandshake className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-display font-medium text-stone-900 mb-3 text-amber-900">Personalized Hospitality</h3>
+                                <p className="text-stone-600 text-base leading-relaxed">
+                                    From arranging farm tours and local experiences to assisting with transportation, our team ensures every guest feels welcomed and cared for throughout their stay.
+                                </p>
+                            </div>
+                        </ScrollAnimation>
+                    </div>
+
+                </div>
+            </section>
+            {/* Final CTA Section */}
+            <section className="py-24 bg-[#F5F2ED] text-stone-900 text-center relative overflow-hidden">
+                <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-multiply">
+                    <Image src="/kerala-pathway.png" alt="Pattern" fill className="object-cover" />
+                </div>
+                {/* Floating Decorative Image Left */}
+                <div className="absolute top-10 left-0 lg:left-10 w-48 h-48 md:w-64 md:h-64 opacity-30 sm:opacity-80 pointer-events-none -translate-x-12 translate-y-12 rounded-full overflow-hidden border-8 border-[#F5F2ED] shadow-xl rotate-12">
+                    <Image src="/host-home-new.jpg" alt="Decor" fill className="object-cover" />
+                </div>
+                {/* Floating Decorative Image Right */}
+                <div className="absolute bottom-10 right-0 lg:right-10 w-32 h-32 md:w-48 md:h-48 opacity-30 sm:opacity-80 pointer-events-none translate-x-8 translate-y-8 rounded-2xl overflow-hidden border-8 border-[#F5F2ED] shadow-xl -rotate-12">
+                    <Image src="/kerala-food-v2.png" alt="Decor" fill className="object-cover" />
+                </div>
+
+                <div className="container mx-auto px-6 max-w-4xl relative z-10">
+                    <ScrollAnimation>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium mb-6 text-stone-900">Experience Kerala&apos;s Rural Beauty</h2>
+                        <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-10 max-w-3xl mx-auto font-medium">
+                            Call us now to reserve your room or learn more about the package, facilities, and seasonal events. Looking forward to greeting you at Sukrutham Farm Stay, the house that&apos;s a place where each moment becomes a party with heritage richness and beauty that&apos;ll always prevail in Kerala.
+                        </p>
+                        <p className="text-stone-500 italic mb-10 text-lg">
+                            Book Your Stay now and take that refreshing trip to your mind, body, and soul amidst all this peaceful splendor of Kerala&apos;s rural beauty.
+                        </p>
+
+                        <a
+                            href="https://wa.me/919447368623"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-[#5A6B53] text-white font-bold px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl shadow-[#758A6D]/20"
+                        >
+                            Book Your Stay
+                        </a>
+                    </ScrollAnimation>
                 </div>
             </section>
 

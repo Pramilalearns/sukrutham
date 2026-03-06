@@ -1,19 +1,43 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import { useState, useEffect } from "react";
+
+const HERO_IMAGES = [
+    "/hero-carousel/slide1.jpg",
+    "/hero-carousel/slide2.jpg",
+    "/hero-carousel/slide3.jpg",
+    "/hero-carousel/slide4.jpg",
+    "/hero-carousel/slide5.jpg",
+];
 
 export default function Hero() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    // Auto-advance carousel every 5 seconds
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % HERO_IMAGES.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Image with Overlay */}
-            <div
-                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=2070&auto=format&fit=crop')",
-                }}
-            >
-                <div className="absolute inset-0 bg-black/40" />
-            </div>
+        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+            {/* Background Images with Cross-fade Transitions */}
+            {HERO_IMAGES.map((src, index) => (
+                <div
+                    key={src}
+                    className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${index === currentSlide ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                        }`}
+                    style={{ backgroundImage: `url('${src}')` }}
+                />
+            ))}
+
+            {/* Universal Overlay to ensure text legibility */}
+            <div className="absolute inset-0 z-[1] bg-black/60 pointer-events-none" />
 
             <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
                 <ScrollAnimation animation="fade-up">
@@ -24,14 +48,14 @@ export default function Hero() {
                         Experience Authentic <br />
                         <span className="text-accent">Farm Life in the Heart of Kerala</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-stone-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-stone-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
                         Set amidst lush green paddy fields, waterfalls, and hills.
                         Sukrutham Farmstay is a world away from the hustle of typical tourist spots.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
-                            href="#book"
+                            href="/book"
                             className="group bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                         >
                             Book Your Stay
@@ -48,8 +72,7 @@ export default function Hero() {
             </div>
 
             {/* Scroll Indicator */}
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 animate-bounce z-10">
                 <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
                     <div className="w-1 h-2 bg-current rounded-full animate-scroll-down" />
                 </div>

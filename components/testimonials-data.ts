@@ -38,7 +38,7 @@ export const testimonials = [
     {
         name: "Ingo Traub & Dr. Uschi Traub",
         location: "Germany",
-        text: "Quiet Oasis Near Thrissur — We enjoyed this serene place in the midst of luscious greenery - perfect place to recharge your batteries and escape the hustle and bustle of city life. The beautiful, quiet surroundings, the stylish furnishings, the South Indian dishes that were freshly prepared! We liked it very much and if you want to get some peace outside of Trichur (about 20 minutes drive) that is exactly the right place to stay. Guruvajur Temple is not far away and other attractions (waterfalls / View Points etc) are easily accessible by taxi. The friendly homeowner who also lives in the house is accessible 24/7 and helps with all concerns. As dog lovers we also loved meeting friendly Chippy Thank you Murli for your hospitality!",
+        text: "Quiet Oasis Near Thrissur — We enjoyed this serene place in the midst of luscious greenery - perfect place to recharge your batteries and escape the hustle and bustle of city life. The beautiful, quiet surroundings, the stylish furnishings, the South Indian dishes that were freshly prepared! We liked it very much and if you want to get some peace outside of Thrissur (about 20 minutes drive) that is exactly the right place to stay. Guruvajur Temple is not far away and other attractions (waterfalls / View Points etc) are easily accessible by taxi. The friendly homeowner who also lives in the house is accessible 24/7 and helps with all concerns. As dog lovers we also loved meeting friendly Chippy Thank you Murli for your hospitality!",
         rating: 5
     },
     {

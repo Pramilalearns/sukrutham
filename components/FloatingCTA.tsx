@@ -30,7 +30,7 @@ export default function FloatingCTA() {
             )}
         >
             <Link
-                href="#book"
+                href="/book"
                 className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg shadow-primary/30 font-bold tracking-wide hover:bg-primary/90 transition-colors animate-pulse-slow"
             >
                 <CalendarCheck className="w-5 h-5" />

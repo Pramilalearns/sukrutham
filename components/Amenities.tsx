@@ -5,7 +5,8 @@ import {
     Trees, Utensils, ChefHat, Droplet, Accessibility,
     Wifi, Sun, Laptop, Signal,
     PawPrint, Compass, Activity, Bike, Library,
-    UserCheck, MapPin, Car
+    UserCheck, MapPin, Car,
+    Flower2, Sprout, Leaf
 } from "lucide-react";
 
 const amenityGroups = [
@@ -113,6 +114,26 @@ const amenityGroups = [
                 description: "Safe on-site parking for up to 3 cars."
             }
         ]
+    },
+    {
+        title: "Wellness",
+        items: [
+            {
+                icon: <Flower2 className="w-5 h-5 text-primary" />,
+                title: "Ayurvedic Massage",
+                description: "Rejuvenating traditional massage treatments on request."
+            },
+            {
+                icon: <Sprout className="w-5 h-5 text-primary" />,
+                title: "Meditation Spaces",
+                description: "Quiet, dedicated spots for peaceful reflection and yoga."
+            },
+            {
+                icon: <Leaf className="w-5 h-5 text-primary" />,
+                title: "Organic Garden",
+                description: "Serene garden walks surrounded by fresh, home-grown produce."
+            }
+        ]
     }
 ];
 
@@ -120,14 +141,14 @@ export default function Amenities() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <section className="py-12 bg-white relative" id="amenities">
+        <section className="pt-12 pb-6 bg-white relative" id="amenities">
             <div className="absolute inset-0 bg-pattern-dots text-stone-200 mask-gradient-b"></div>
             <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
                 {/* Heading */}
                 <div className="text-center max-w-4xl mx-auto mb-10 px-6 md:px-12 lg:px-20">
                     <span className="text-primary font-semibold tracking-wider uppercase text-sm">Amenities</span>
                     <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-4 text-stone-800">
-                        15+ Thoughtful Onsite Amenities
+                        18+ Thoughtful Onsite Amenities
                     </h2>
                     <p className="text-stone-600 text-lg leading-relaxed">
                         From modern comforts to authentic farm experiences, we’ve thought of everything.

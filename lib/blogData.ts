@@ -64,11 +64,11 @@ export const blogPosts: BlogPost[] = [
     {
         slug: 'why-i-left-the-city-for-sukrutham',
         title: "Why I Left the City for Sukrutham",
-        excerpt: "Reflections from Murali on leaving the fast-paced corporate world of MNC banking behind to build an earthy sanctuary in Trichur.",
+        excerpt: "Reflections from Murali on leaving the fast-paced corporate world of MNC banking behind to build an earthy sanctuary in Thrissur.",
         content: `
             <p>For decades, my life was dictated by quarterly reviews, early morning flights, and the artificial, relentless hum of air-conditioned bank offices. Success and validation were measured strictly in numbers, percentages, and year-over-year growth. But slowly, inevitably, a profound sense of physical and emotional disconnect began to creep in. I had the title, the salary, and the corner office, yet I felt entirely untethered from the fundamental realities of life.</p>
             <h3>The Turning Point</h3>
-            <p>I realized I was spending 90% of my waking hours inside sterile concrete boxes, breathing recycled air, and staring at screens that emitted a cold, blue light. The turning point didn't come in the form of a dramatic collapse, but rather a quiet, undeniable realization during a brief, obligatory visit to my ancestral land in Trichur. Leaving the airport, the thick, humid air of Kerala immediately enveloped me. Driving down the narrow, winding roads lined with towering palms, the urban noise in my head began to quieten.</p>
+            <p>I realized I was spending 90% of my waking hours inside sterile concrete boxes, breathing recycled air, and staring at screens that emitted a cold, blue light. The turning point didn't come in the form of a dramatic collapse, but rather a quiet, undeniable realization during a brief, obligatory visit to my ancestral land in Thrissur. Leaving the airport, the thick, humid air of Kerala immediately enveloped me. Driving down the narrow, winding roads lined with towering palms, the urban noise in my head began to quieten.</p>
             <p>Standing there on an overgrown patch of land, feeling the warm, red laterite soil under my bare feet and hearing nothing but the wind rustling through the leaves, I felt a deep, immediate groundedness that I hadn't experienced in years. It was as if my body had finally recognized home. At that exact moment, the thought of returning to the fluorescent lights and the endless cycle of corporate meetings felt not just unappealing, but impossible.</p>
             <img src="/gallery-1.jpg" alt="Farm views" />
             <h3>Building a Philosophy, Not Just a Farm</h3>

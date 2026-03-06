@@ -93,7 +93,7 @@ export default function ItinerariesPage() {
                         Whether you wish to dive into farm life or explore the heritage of Thrissur, we’ve mapped out the perfect stay.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/#booking" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:-translate-y-1 shadow-xl shadow-primary/20">
+                        <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:-translate-y-1 shadow-xl shadow-primary/20">
                             Request a Custom Itinerary
                         </Link>
                     </div>
@@ -141,7 +141,7 @@ export default function ItinerariesPage() {
                                     <Link href="tel:+919940668754" className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-bold text-sm backdrop-blur-sm">
                                         <Phone className="w-4 h-4" /> Call Host
                                     </Link>
-                                    <Link href="/#booking" className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-black/10 hover:bg-black/20 transition-colors font-bold text-sm backdrop-blur-sm">
+                                    <Link href="/book" className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-black/10 hover:bg-black/20 transition-colors font-bold text-sm backdrop-blur-sm">
                                         <Mail className="w-4 h-4" /> Request Call
                                     </Link>
                                 </div>
@@ -170,7 +170,7 @@ export default function ItinerariesPage() {
                             <p className="text-stone-600 text-lg font-medium italic mb-6">
                                 Because one size never fits all.
                             </p>
-                            <Link href="/#booking" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/20">
+                            <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/20">
                                 Talk to the Host about your Vibe
                             </Link>
                         </div>
@@ -233,7 +233,7 @@ export default function ItinerariesPage() {
                                     <Link href="tel:+919940668754" className="inline-flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-stone-200 text-stone-700 hover:bg-stone-100 hover:text-stone-900 transition-colors font-bold text-sm">
                                         <Phone className="w-4 h-4" /> Call Host
                                     </Link>
-                                    <Link href="/#booking" className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors font-bold text-sm">
+                                    <Link href="/book" className="inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors font-bold text-sm">
                                         <Mail className="w-4 h-4" /> Request Call
                                     </Link>
                                 </div>

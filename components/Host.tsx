@@ -41,14 +41,26 @@ export default function Host() {
                                 <p className="mb-6 relative">
                                     <span className="text-6xl text-[#8F9E8B]/40 float-left mr-2 -mt-4 font-serif leading-none">“</span>
                                     <span>
-                                        Hi, I’m Murali. For over 25 years, I navigated the fast-paced corporate world of MNC banking, focusing on how to create the best possible experience for customers. But through all those years, I felt a persistent pull back to my roots here in Trichur.
+                                        Hi, I’m K P Murali —
                                     </span>
                                 </p>
                                 <p className="mb-6">
-                                    I eventually decided to leave the city lights behind to build something more peaceful and real. That’s how Sukrutham was born. I wanted to create a sanctuary where people could truly unplug and enjoy the simple, honest rhythms of farm life.
+                                    I am popularly known by my initials, ‘KP’, and you’re welcome to call me KP.
+                                </p>
+                                <p className="mb-6">
+                                    For over 25 years, I navigated the fast-paced corporate world of MNC banking, focusing on creating the best possible experience for customers. Yet through all those years, I felt a persistent pull back to my roots here in Thrissur.
+                                </p>
+                                <p className="mb-6">
+                                    Eventually, I chose to leave the city lights behind to build something more peaceful and meaningful.
+                                </p>
+                                <p className="mb-6">
+                                    That’s how Sukrutham was born.
+                                </p>
+                                <p className="mb-6">
+                                    I wanted to create a sanctuary where people could truly unplug and reconnect with the simple, honest rhythms of farm life.
                                 </p>
                                 <p className="mb-8">
-                                    Since we opened in January 2023, I’ve been here every day to ensure your stay is perfect. Whether I'm helping you discover a hidden local waterfall or we’re just sharing stories over a fresh coffee on the verandah, I’m here to welcome you home to the Kerala I love.
+                                    Since opening in January 2023, I’ve been here every day, personally ensuring your stay is warm, perfect, and memorable. Whether I'm helping you discover a hidden local waterfall or we’re just sharing stories over a fresh coffee on the verandah, I’m here to welcome you home to the Kerala I love.
                                 </p>
 
                                 <div className="flex items-center gap-2 mt-8 pt-6 border-t border-stone-200/60">

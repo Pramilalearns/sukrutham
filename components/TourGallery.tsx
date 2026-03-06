@@ -217,7 +217,7 @@ export default function TourGallery() {
                         Every picture tells a story, but the real experience is something else entirely.
                     </p>
                     <a
-                        href="#book"
+                        href="/book"
                         className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2 transform hover:-translate-y-1"
                     >
                         Book Your Experience <ArrowDown className="w-4 h-4" />

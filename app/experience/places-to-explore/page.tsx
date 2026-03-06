@@ -324,7 +324,7 @@ export default function PlacesToExplorePage() {
                                 While staying at Sukrutham is a wholesome experience in itself, here are some spectacular options to explore near the farmstay.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <Link href="/#booking" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+                                <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20">
                                     Plan Your Local Exploration
                                 </Link>
                             </div>
@@ -635,7 +635,7 @@ export default function PlacesToExplorePage() {
                         Let us know your interests! We can arrange reliable taxis and help you plan the perfect route to explore these beautiful destinations without feeling rushed.
                     </p>
                     <Link
-                        href="/#booking"
+                        href="/book"
                         className="inline-flex items-center justify-center px-8 py-4 bg-white text-stone-900 rounded-full font-bold tracking-wide hover:bg-white/90 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
                     >
                         Contact Host for Arrangements

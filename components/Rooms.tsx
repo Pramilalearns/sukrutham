@@ -25,7 +25,7 @@ export default function Rooms() {
     ];
 
     return (
-        <section className="py-8 bg-white" id="rooms">
+        <section className="pt-6 pb-12 bg-white" id="rooms">
             <div className="container mx-auto px-8 md:px-20 lg:px-32 flex flex-col justify-center">
                 {/* Header - Compact */}
                 <div className="text-center max-w-4xl mx-auto mb-10">
@@ -67,7 +67,7 @@ export default function Rooms() {
                 {/* Bottom CTAs */}
                 <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link
-                        href="#book"
+                        href="/book"
                         className="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                     >
                         <CalendarCheck className="w-4 h-4" />

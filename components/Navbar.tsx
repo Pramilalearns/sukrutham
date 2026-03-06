@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +12,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ variant = "transparent" }: NavbarProps) => {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -75,7 +77,8 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/our-story"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
+                            pathname === "/our-story" && "text-primary font-bold"
                         )}
                     >
                         About Us
@@ -84,7 +87,8 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/rooms"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
+                            pathname === "/rooms" && "text-primary font-bold"
                         )}
                     >
                         The Rooms
@@ -93,10 +97,21 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/take-a-tour"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
+                            pathname === "/take-a-tour" && "text-primary font-bold"
                         )}
                     >
                         Take a Tour
+                    </Link>
+                    <Link
+                        href="/blog"
+                        className={cn(
+                            "text-sm font-medium transition-colors hover:text-accent",
+                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
+                            (pathname === "/blog" || pathname?.startsWith("/blog/")) && "text-primary font-bold"
+                        )}
+                    >
+                        Sukrutham Chronicles
                     </Link>
 
                     {/* Dropdown */}
@@ -155,7 +170,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     </a>
 
                     <Link
-                        href="/#book"
+                        href="/book"
                         className={cn(
                             "px-6 py-3 rounded-full text-sm font-bold tracking-wide transition-all hover:shadow-lg active:scale-95 uppercase",
                             scrolled || variant === "light"
@@ -186,24 +201,43 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                 <div className="md:hidden absolute top-full left-0 right-0 bg-stone-50 border-t border-stone-100 shadow-xl p-6 flex flex-col space-y-4 animate-in slide-in-from-top-5 h-screen overflow-y-auto pb-20">
                     <Link
                         href="/our-story"
-                        className="text-stone-600 hover:text-primary font-medium text-lg border-b border-stone-100 pb-2"
+                        className={cn(
+                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
+                            pathname === "/our-story" ? "text-primary font-bold" : "text-stone-600"
+                        )}
                         onClick={() => setIsOpen(false)}
                     >
                         About Us
                     </Link>
                     <Link
                         href="/rooms"
-                        className="text-stone-600 hover:text-primary font-medium text-lg border-b border-stone-100 pb-2"
+                        className={cn(
+                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
+                            pathname === "/rooms" ? "text-primary font-bold" : "text-stone-600"
+                        )}
                         onClick={() => setIsOpen(false)}
                     >
                         The Rooms
                     </Link>
                     <Link
                         href="/take-a-tour"
-                        className="text-stone-600 hover:text-primary font-medium text-lg border-b border-stone-100 pb-2"
+                        className={cn(
+                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
+                            pathname === "/take-a-tour" ? "text-primary font-bold" : "text-stone-600"
+                        )}
                         onClick={() => setIsOpen(false)}
                     >
                         Take a Tour
+                    </Link>
+                    <Link
+                        href="/blog"
+                        className={cn(
+                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
+                            pathname === "/blog" || pathname?.startsWith("/blog/") ? "text-primary font-bold" : "text-stone-600"
+                        )}
+                        onClick={() => setIsOpen(false)}
+                    >
+                        Sukrutham Chronicles
                     </Link>
 
                     <div className="space-y-2">
@@ -238,7 +272,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     </a>
 
                     <Link
-                        href="/#book"
+                        href="/book"
                         className="w-full text-center bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-md mt-4"
                         onClick={() => setIsOpen(false)}
                     >
