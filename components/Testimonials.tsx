@@ -55,7 +55,7 @@ const ScrollerRow = ({
         if (!scroller) return;
 
         let animationFrameId: number;
-        let position = direction === "right" ? -scroller.scrollWidth / 3 : 0; // Start offset if needed
+        const position = direction === "right" ? -scroller.scrollWidth / 3 : 0; // Start offset if needed
         const speed = 1.0; // Faster speed
 
         const animate = () => {

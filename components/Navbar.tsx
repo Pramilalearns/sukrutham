@@ -43,10 +43,10 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
     }, []);
 
     const experienceLinks = [
-        { name: "Activities", href: "/#activities" },
+        { name: "Activities", href: "/experience/activities" },
         { name: "Places to Explore", href: "/experience/places-to-explore" },
-        { name: "Local Savor", href: "/#activities" }, // Placeholder
-        { name: "Seasons & Festivals", href: "/#activities" }, // Placeholder
+        { name: "Local Savor", href: "/experience/local-savor" },
+        { name: "Seasons & Festivals", href: "/experience/seasons-festivals" },
         { name: "Itineraries", href: "/experience/itineraries" },
     ];
 
@@ -66,6 +66,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         src="/logo/logo.png"
                         alt="Sukrutham Farmstay"
                         fill
+                        sizes="(max-width: 768px) 192px, 256px"
                         className="object-contain object-left md:object-center scale-[1.35] origin-left md:origin-center"
                         priority
                     />

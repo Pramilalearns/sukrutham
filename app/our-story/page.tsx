@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { Quote, Leaf, Sun, Award, Play } from "lucide-react";
+import { Quote, Leaf, Sun, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function OurStory() {
@@ -43,6 +43,7 @@ export default function OurStory() {
                                 alt="Diamond Grade Certificate"
                                 width={300}
                                 height={400}
+                                sizes="(max-width: 768px) 100vw, 33vw"
                                 className="w-full h-auto rounded-lg border border-stone-100 shadow-sm relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500"
                             />
                             <div className="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-stone-500 shadow-sm z-20">
@@ -82,6 +83,7 @@ export default function OurStory() {
                                             src="/host-visionary-new.jpg"
                                             alt="Mr. Murali"
                                             fill
+                                            sizes="(max-width: 768px) 100vw, 33vw"
                                             className="object-cover"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">

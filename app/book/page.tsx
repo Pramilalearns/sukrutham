@@ -204,7 +204,7 @@ export default function BookPage() {
                                             {/* Contact Number */}
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-stone-700">Contact Number*</label>
-                                                <input type="tel" name="Phone" required placeholder="+91 98765 43210" className="w-full bg-stone-50 border border-stone-200 text-stone-700 px-4 py-3 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-stone-400" />
+                                                <input type="tel" name="Phone" required placeholder="+91 9940668754" className="w-full bg-stone-50 border border-stone-200 text-stone-700 px-4 py-3 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-stone-400" />
                                             </div>
                                         </div>
 
@@ -373,14 +373,14 @@ export default function BookPage() {
                                         <div className="p-2 bg-white/5 rounded-lg text-amber-400"><Phone className="w-5 h-5" /></div>
                                         <div>
                                             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Call / WhatsApp</p>
-                                            <a href="tel:+919940668754" className="text-lg font-bold hover:text-amber-400 transition-colors">+91 99406 68754</a>
+                                            <a href="tel:+919940668754" className="text-lg font-bold hover:text-accent transition-colors">+91 99406 68754</a>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <div className="p-2 bg-white/5 rounded-lg text-amber-400"><Mail className="w-5 h-5" /></div>
                                         <div>
                                             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Email</p>
-                                            <a href="mailto:sukruthamfarmstay@gmail.com" className="text-lg font-bold hover:text-amber-400 transition-colors">sukruthamfarmstay@gmail.com</a>
+                                            <a href="mailto:sukruthamfarmstay@gmail.com" className="text-lg font-bold hover:text-accent transition-colors">sukruthamfarmstay@gmail.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -397,8 +397,7 @@ export default function BookPage() {
                                 <div className="text-stone-600 leading-relaxed bg-stone-50 p-5 rounded-xl border border-stone-100 mb-6 font-medium">
                                     <p>9/397 B, Sukrutham Farmstay,</p>
                                     <p>Kuttetan Road, Ambalapad,</p>
-                                    <p>Kerala 680028</p>
-                                    <p>India</p>
+                                    <p>Kerala 680028, India</p>
                                 </div>
 
                                 {/* Map Embed */}

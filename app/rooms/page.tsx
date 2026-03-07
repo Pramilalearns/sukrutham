@@ -8,8 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import RoomGallery from "@/components/RoomGallery";
 import {
-    Wifi, Wind, Snowflake, Coffee, Utensils,
-    MapPin, User, Home, Dog, Droplets, Car, Plane, Leaf,
+    Wifi, Utensils,
+    MapPin, User, Droplets, Car, Plane, Leaf,
     Bike, Book, Clock, Ban, CheckCircle, BedDouble,
     MonitorCheck, Bath, Shirt, Table2, ChefHat, Sun, CloudRain,
     Music, Star, HeartHandshake, HelpCircle, ChevronDown, ChevronUp
@@ -164,6 +164,7 @@ export default function RoomsPage() {
                                         src={room.image}
                                         alt={room.title}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -425,7 +426,7 @@ export default function RoomsPage() {
                         <ScrollAnimation className="relative bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col justify-center">
                             {/* Floating Decorative Corner Image */}
                             <div className="absolute -top-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 rotate-6 hidden sm:block">
-                                <Image src="/room-view-2.png" alt="Rooms" fill className="object-cover" />
+                                <Image src="/room-view-2.png" alt="Rooms" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
                             <div className="mb-10 pt-4 md:pt-0 pr-0 sm:pr-20">
@@ -446,12 +447,12 @@ export default function RoomsPage() {
                         {/* Evening Magic & Dining */}
                         <ScrollAnimation delay={100} className="relative bg-[#F4EDE4] p-8 md:p-12 rounded-[2rem] shadow-sm border border-[#EAE0D3] flex flex-col justify-center overflow-hidden">
                             <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay">
-                                <Image src="/kerala-hills.jpg" alt="Texture" fill className="object-cover grayscale" />
+                                <Image src="/kerala-hills.jpg" alt="Texture" fill sizes="100vw" className="object-cover grayscale" />
                             </div>
-                            
+
                             {/* Floating Decorative Corner Image */}
                             <div className="absolute -bottom-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#F4EDE4] shadow-lg overflow-hidden z-20 -rotate-6 hidden sm:block">
-                                <Image src="/kerala-food-v2.png" alt="Dining" fill className="object-cover" />
+                                <Image src="/kerala-food-v2.png" alt="Dining" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
                             <div className="relative z-10 mb-10 pr-0 sm:pr-20">
@@ -488,9 +489,9 @@ export default function RoomsPage() {
                                 <Sun className="w-64 h-64 text-emerald-900" />
                             </div>
 
-                             {/* Floating Decorative Corner Image */}
-                             <div className="absolute -top-6 -left-6 lg:-left-6 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-[#EAECE4] shadow-lg overflow-hidden z-20 rotate-3 hidden md:block">
-                                <Image src="/room-view-modern.png" alt="Work" fill className="object-cover" />
+                            {/* Floating Decorative Corner Image */}
+                            <div className="absolute -top-6 -left-6 lg:-left-6 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-[#EAECE4] shadow-lg overflow-hidden z-20 rotate-3 hidden md:block">
+                                <Image src="/room-view-modern.png" alt="Work" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
                             <div className="relative z-10 w-full md:pl-24 lg:pl-32">
@@ -506,8 +507,8 @@ export default function RoomsPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                         {/* Sustainability */}
-                         <ScrollAnimation delay={400} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col sm:flex-row items-start gap-6">
+                        {/* Sustainability */}
+                        <ScrollAnimation delay={400} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col sm:flex-row items-start gap-6">
                             <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 shrink-0">
                                 <Sun className="w-6 h-6" />
                             </div>
@@ -521,7 +522,7 @@ export default function RoomsPage() {
 
                         {/* Hospitality */}
                         <ScrollAnimation delay={500} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col sm:flex-row items-start gap-6">
-                             <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 shrink-0">
+                            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 shrink-0">
                                 <HeartHandshake className="w-6 h-6" />
                             </div>
                             <div>
@@ -538,15 +539,15 @@ export default function RoomsPage() {
             {/* Final CTA Section */}
             <section className="py-24 bg-[#F5F2ED] text-stone-900 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-multiply">
-                    <Image src="/kerala-pathway.png" alt="Pattern" fill className="object-cover" />
+                    <Image src="/kerala-pathway.png" alt="Pattern" fill sizes="100vw" className="object-cover" />
                 </div>
                 {/* Floating Decorative Image Left */}
                 <div className="absolute top-10 left-0 lg:left-10 w-48 h-48 md:w-64 md:h-64 opacity-30 sm:opacity-80 pointer-events-none -translate-x-12 translate-y-12 rounded-full overflow-hidden border-8 border-[#F5F2ED] shadow-xl rotate-12">
-                    <Image src="/host-home-new.jpg" alt="Decor" fill className="object-cover" />
+                    <Image src="/host-home-new.jpg" alt="Decor" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                 </div>
                 {/* Floating Decorative Image Right */}
                 <div className="absolute bottom-10 right-0 lg:right-10 w-32 h-32 md:w-48 md:h-48 opacity-30 sm:opacity-80 pointer-events-none translate-x-8 translate-y-8 rounded-2xl overflow-hidden border-8 border-[#F5F2ED] shadow-xl -rotate-12">
-                    <Image src="/kerala-food-v2.png" alt="Decor" fill className="object-cover" />
+                    <Image src="/kerala-food-v2.png" alt="Decor" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                 </div>
 
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
@@ -560,7 +561,7 @@ export default function RoomsPage() {
                         </p>
 
                         <a
-                            href="https://wa.me/919447368623"
+                            href="https://wa.me/919940668754"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-[#5A6B53] text-white font-bold px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl shadow-[#758A6D]/20"

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Clock, Navigation, Map, Info, Car, Sun, CheckCircle2, Route } from "lucide-react";
+import { MapPin, Clock, Navigation, Info, Car, Sun, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -292,10 +292,10 @@ export default function PlacesToExplorePage() {
         <main className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-primary/20">
             <Navbar variant="light" />
 
-            {/* Hero Section */}
+            {/* ELEGANT SPLIT HERO SECTION */}
             <section
                 ref={heroRef}
-                className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden group"
+                className="relative min-h-[90vh] flex items-center pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden group bg-[#FDFCF8]"
             >
                 {/* Interactive Mouse Hover Glow */}
                 <div
@@ -306,38 +306,43 @@ export default function PlacesToExplorePage() {
                 />
 
                 {/* Animated Ambient Orbs */}
-                <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] bg-emerald-100/50 rounded-full blur-[80px] animate-pulse pointer-events-none mix-blend-multiply flex-shrink-0" />
-                <div className="absolute -bottom-[20%] left-[5%] w-[400px] h-[400px] bg-amber-50/60 rounded-full blur-[100px] animate-pulse pointer-events-none mix-blend-multiply flex-shrink-0" style={{ animationDelay: '1.5s', animationDuration: '4s' }} />
-                <div className="absolute top-[40%] left-[30%] w-[250px] h-[250px] bg-blue-50/40 rounded-full blur-[90px] animate-pulse pointer-events-none mix-blend-multiply flex-shrink-0" style={{ animationDelay: '3s', animationDuration: '6s' }} />
+                <div className="absolute top-[10%] left-[60%] w-[40%] h-[40%] bg-[#EBE5DC]/40 rounded-full blur-3xl animate-pulse pointer-events-none mix-blend-multiply flex-shrink-0" />
+                <div className="absolute -bottom-[10%] right-[40%] w-[50%] h-[50%] bg-[#FAF8F5] rounded-full blur-3xl animate-pulse pointer-events-none mix-blend-multiply flex-shrink-0" style={{ animationDelay: '1.5s', animationDuration: '4s' }} />
 
-                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl relative z-10">
-                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                        {/* Text Content */}
-                        <div className="lg:w-[40%] text-center lg:text-left shrink-0">
-                            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 drop-shadow-sm flex items-center justify-center lg:justify-start gap-2">
-                                <Navigation className="w-5 h-5" /> Discover Thrissur
-                            </span>
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-stone-900 mb-6 leading-[1.1] tracking-tight">
-                                Places to <span className="italic text-accent">Explore</span>
+                <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                        {/* Left Content Area */}
+                        <div className="w-full lg:w-[45%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0 shrink-0">
+                            <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+                                <div className="h-[1px] w-12 bg-[#758A6D]"></div>
+                                <span className="text-[#758A6D] font-bold tracking-[0.15em] uppercase text-sm flex items-center gap-2">
+                                    <Navigation className="w-4 h-4" /> Discover Thrissur
+                                </span>
+                            </div>
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
+                                Places to <br />
+                                <span className="italic text-[#A48869] font-serif">Explore</span>
                             </h1>
-                            <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-light mb-0 max-w-xl mx-auto lg:mx-0">
+                            <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
                                 While staying at Sukrutham is a wholesome experience in itself, here are some spectacular options to explore near the farmstay.
                             </p>
-                            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20">
-                                    Plan Your Local Exploration
+                            <div className="flex justify-center lg:justify-start">
+                                <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
+                                    Plan Local Exploration
                                 </Link>
                             </div>
                         </div>
-                        {/* Hero Map Image */}
-                        <div className="lg:w-[60%] w-full animate-in slide-in-from-right-8 duration-700 fade-in zoom-in-95 flex justify-center lg:justify-end lg:-mr-8 xl:-mr-16">
+
+                        {/* Right Image Area */}
+                        <div className="w-full lg:w-[55%] animate-in slide-in-from-right-8 duration-700 fade-in zoom-in-95 flex justify-center mt-12 lg:mt-0 relative">
                             <Image
                                 src="/location-hub-map.png"
                                 alt="Sukrutham Farmstay Location Map"
                                 width={1400}
                                 height={1050}
+                                sizes="(max-width: 768px) 100vw, 55vw"
                                 priority
-                                className="w-full max-w-4xl h-auto rounded-3xl border-[8px] border-white shadow-2xl shadow-stone-900/10 object-cover -rotate-2 hover:rotate-0 transition-all duration-700"
+                                className="w-full h-auto rounded-[2.5rem] lg:rounded-[3rem] border-[8px] border-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] object-cover -rotate-2 hover:rotate-0 transition-all duration-700"
                             />
                         </div>
                     </div>
@@ -466,6 +471,7 @@ export default function PlacesToExplorePage() {
                                         src={place.image}
                                         alt={place.title}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         className="object-cover transition-transform duration-700 hover:scale-105"
                                     />
                                     {/* Overlay Badge */}

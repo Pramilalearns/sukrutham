@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -9,11 +9,12 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand */}
                     <div className="space-y-4">
-                        <Link href="/" className="relative block h-16 w-48 md:h-24 md:w-64 mb-2 mt-4">
+                        <Link href="/" className="relative block h-16 w-48 md:h-24 md:w-64 mb-2">
                             <Image
                                 src="/logo/logo.png"
                                 alt="Sukrutham Farmstay"
                                 fill
+                                sizes="(max-width: 768px) 192px, 256px"
                                 className="object-contain object-left scale-[1.35] origin-left"
                             />
                         </Link>
@@ -21,9 +22,9 @@ export default function Footer() {
                             An authentic experience of Kerala hospitality while absorbing the delightful beauty of God&apos;s Own Country.
                         </p>
                         <div className="flex space-x-4">
-                            <Link href="#" className="hover:text-accent transition-colors"><Facebook className="w-5 h-5" /></Link>
-                            <Link href="#" className="hover:text-accent transition-colors"><Instagram className="w-5 h-5" /></Link>
-                            <Link href="#" className="hover:text-accent transition-colors"><Twitter className="w-5 h-5" /></Link>
+                            <Link href="https://facebook.com/sukruthamfarmstay" target="_blank" className="hover:text-accent transition-colors"><Facebook className="w-5 h-5" /></Link>
+                            <Link href="https://instagram.com/sukruthamfarmstay" target="_blank" className="hover:text-accent transition-colors"><Instagram className="w-5 h-5" /></Link>
+                            <Link href="https://www.linkedin.com/company/sukruthamfarmstay/" target="_blank" className="hover:text-accent transition-colors"><Linkedin className="w-5 h-5" /></Link>
                         </div>
                     </div>
 
@@ -32,11 +33,11 @@ export default function Footer() {
                         <h4 className="text-lg font-bold text-white">Quick Links</h4>
                         <ul className="space-y-2 text-sm">
                             <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
-                            <li><Link href="#rooms" className="hover:text-accent transition-colors">Rooms</Link></li>
-                            <li><Link href="#activities" className="hover:text-accent transition-colors">Activities</Link></li>
+                            <li><Link href="/rooms" className="hover:text-accent transition-colors">Rooms</Link></li>
+                            <li><Link href="/experience/activities" className="hover:text-accent transition-colors">Activities</Link></li>
                             <li><Link href="/our-story" className="hover:text-accent transition-colors">About Us</Link></li>
                             <li><Link href="/blog" className="hover:text-accent transition-colors">Blog</Link></li>
-                            <li><Link href="#testimonials" className="hover:text-accent transition-colors">Testimonials</Link></li>
+                            <li><Link href="/#testimonials" className="hover:text-accent transition-colors">Testimonials</Link></li>
                         </ul>
                     </div>
 
@@ -46,15 +47,19 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-accent shrink-0" />
-                                <span>Sukrutham Farmstay, Thrissur, Kerala, India</span>
+                                <div className="flex flex-col">
+                                    <span>9/397 B, Sukrutham Farmstay,</span>
+                                    <span>Kuttetan Road, Ambalapad,</span>
+                                    <span>Kerala 680028, India</span>
+                                </div>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-accent shrink-0" />
-                                <span>+91 98765 43210</span>
+                                <span>+91 9940668754</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-accent shrink-0" />
-                                <span>info@sukruthamfarmstay.com</span>
+                                <span>sukruthamfarmstay@gmail.com</span>
                             </li>
                         </ul>
                     </div>

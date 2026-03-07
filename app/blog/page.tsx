@@ -94,6 +94,7 @@ export default function BlogPage() {
                                     src={featuredPost.image}
                                     alt={featuredPost.title}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 60vw"
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/60 via-black/20 to-transparent lg:w-1/2 group-hover:opacity-80 transition-opacity"></div>
@@ -183,6 +184,7 @@ export default function BlogPage() {
                                             src={post.image}
                                             alt={post.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         {/* Gradient overlay depending on block size */}
@@ -226,6 +228,7 @@ export default function BlogPage() {
                                             src={post.image}
                                             alt={post.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute top-4 left-4">

@@ -72,6 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         src={post.image}
                         alt={post.title}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         priority
                     />
@@ -201,7 +202,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                         {/* 3. Promotional Banner */}
                         <div className="relative h-[300px] rounded-[2rem] overflow-hidden group">
-                            <Image src="/gallery-1.jpg" alt="Book your stay" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                            <Image src="/gallery-1.jpg" alt="Book your stay" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>
                             <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center text-white">
                                 <h4 className="font-display text-2xl mb-4">Experience the <br /> authentic Kerala.</h4>
@@ -219,7 +220,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     <Link href={item.postSlug} key={idx} className="flex gap-4 group">
                                         <div className="w-20 h-20 relative rounded-xl overflow-hidden flex-shrink-0">
                                             {item.image &&
-                                                <Image src={item.image} alt={item.latestTitle!} fill className="object-cover transition-transform group-hover:scale-110" />
+                                                <Image src={item.image} alt={item.latestTitle!} fill sizes="80px" className="object-cover transition-transform group-hover:scale-110" />
                                             }
                                         </div>
                                         <div className="flex flex-col justify-center">
@@ -245,7 +246,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                         <Link href={`/blog#${encodeURIComponent(cat)}`} key={idx} className="relative block h-24 rounded-2xl overflow-hidden group border border-stone-200 shadow-sm hover:shadow-md transition-all">
                                             <div className="relative h-full w-full">
                                                 {catPost.image &&
-                                                    <Image src={catPost.image} alt={cat} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                                                    <Image src={catPost.image} alt={cat} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                                                 }
                                                 <div className="absolute inset-0 bg-stone-900/40 group-hover:bg-stone-900/50 transition-colors"></div>
                                             </div>

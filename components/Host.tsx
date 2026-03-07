@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Quote, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 export default function Host() {
     return (
@@ -17,6 +17,7 @@ export default function Host() {
                                 src="/host-home-new.jpg"
                                 alt="Murali - Host of Sukrutham Farmstay"
                                 fill
+                                sizes="(max-width: 1024px) 100vw, 33vw"
                                 className="object-cover"
                             />
                         </div>

@@ -148,6 +148,7 @@ export default function WhyChooseUs() {
                                                         src={reason.image}
                                                         alt={reason.title}
                                                         fill
+                                                        sizes="(max-width: 1024px) 100vw, 0vw"
                                                         unoptimized
                                                         className="object-cover"
                                                     />

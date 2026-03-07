@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Leaf, Tent, Map as MapIcon, Compass, Coffee, Utensils, Bird, Bike, Route, BookOpen, Sunrise, Sunset, Heart, Phone, Mail } from "lucide-react";
+import { Leaf, Tent, Map as MapIcon, Compass, Coffee, Utensils, Bike, Route, BookOpen, Sunrise, Sunset, Heart, Phone, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 // Data structures
 const farmItineraries = [
@@ -65,37 +66,72 @@ export default function ItinerariesPage() {
     const [activeFarmTab, setActiveFarmTab] = useState("2-day");
 
     return (
-        <main className="min-h-screen bg-[#F8F7F4] font-sans selection:bg-primary/20 selection:text-primary">
-            <Navbar variant="transparent" />
+        <main className="min-h-screen bg-[#F8F7F4] font-sans selection:bg-[#758A6D]/20 selection:text-[#3A4536]">
+            {/* Standard Light Navbar for the split layout */}
+            <Navbar variant="light" />
 
-            {/* HERO SECTION */}
-            <section className="relative min-h-[85vh] flex items-center justify-center pt-24 overflow-hidden">
-                <div className="absolute inset-0 z-0 bg-stone-900">
-                    {/* Background Texture/Image overlay */}
-                    <Image
-                        src="/images/itineraries/hero-bg.jpg"
-                        alt="Lush green tea estate mountains in Kerala"
-                        fill
-                        className="object-cover opacity-60 mix-blend-overlay"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/20 to-[#F8F7F4]"></div>
+            {/* --- ELEGANT SPLIT HERO SECTION --- */}
+            <section className="relative min-h-[90vh] flex items-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#FDFCF8]">
+                {/* Decorative Background Elements */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                    <div className="absolute top-[10%] left-[60%] w-[40%] h-[40%] rounded-full bg-[#EBE5DC]/40 blur-3xl"></div>
+                    <div className="absolute bottom-[-10%] right-[40%] w-[50%] h-[50%] rounded-full bg-[#FAF8F5] blur-3xl"></div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl mt-12 md:mt-24 pb-24">
-                    <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold tracking-widest uppercase mb-6 drop-shadow-sm">
-                        Curated Experiences
-                    </span>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                        Your Journey, <span className="italic text-accent">Your Pace.</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-stone-200 font-light leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-md">
-                        Whether you wish to dive into farm life or explore the heritage of Thrissur, we’ve mapped out the perfect stay.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:-translate-y-1 shadow-xl shadow-primary/20">
-                            Request a Custom Itinerary
-                        </Link>
+                <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                        {/* Left Content Area */}
+                        <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
+                            <ScrollAnimation>
+                                <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+                                    <div className="h-[1px] w-12 bg-[#758A6D]"></div>
+                                    <span className="text-[#758A6D] font-bold tracking-[0.15em] uppercase text-sm">
+                                        Curated Experiences
+                                    </span>
+                                </div>
+                                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
+                                    Your Journey, <br />
+                                    <span className="italic text-[#A48869] font-serif">Your Pace.</span>
+                                </h1>
+                                <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
+                                    Whether you wish to dive into farm life or explore the heritage of Thrissur, we’ve mapped out the perfect stay.
+                                </p>
+                                <div className="flex justify-center lg:justify-start">
+                                    <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
+                                        Request Custom Itinerary
+                                    </Link>
+                                </div>
+                            </ScrollAnimation>
+                        </div>
+
+                        {/* Right Image Area */}
+                        <div className="w-full lg:w-1/2 relative">
+                            <ScrollAnimation delay={200}>
+                                <div className="relative w-full aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border-8 border-white">
+                                    <Image
+                                        src="/itinerary.jpg"
+                                        alt="Sukrutham Curated Itineraries"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        className="object-cover transition-transform duration-1000 hover:scale-105"
+                                        priority
+                                    />
+                                    {/* Image Overlay Gradient for depth */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent"></div>
+
+                                    {/* Small floating badge */}
+                                    <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/20">
+                                        <div className="w-12 h-12 rounded-full bg-[#FAF8F5] flex items-center justify-center text-[#758A6D]">
+                                            <MapIcon className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Handcrafted</p>
+                                            <p className="font-display font-bold text-stone-800 text-sm">Perfect Escapes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ScrollAnimation>
+                        </div>
                     </div>
                 </div>
             </section>
