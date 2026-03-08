@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Metrics from "@/components/Metrics";
 import Amenities from "@/components/Amenities";
 import Rooms from "@/components/Rooms";
 import ThingstoDo from "@/components/ThingstoDo";

@@ -43,6 +43,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
     }, []);
 
     const experienceLinks = [
+        { name: "All Experiences (Hub)", href: "/experience" },
         { name: "Activities", href: "/experience/activities" },
         { name: "Places to Explore", href: "/experience/places-to-explore" },
         { name: "Local Savor", href: "/experience/local-savor" },
@@ -78,8 +79,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/our-story"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
-                            pathname === "/our-story" && "text-primary font-bold"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            pathname === "/our-story" && cn(
+                                "text-primary font-bold",
+                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            )
                         )}
                     >
                         About Us
@@ -88,8 +92,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/rooms"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
-                            pathname === "/rooms" && "text-primary font-bold"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            pathname === "/rooms" && cn(
+                                "text-primary font-bold",
+                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            )
                         )}
                     >
                         The Rooms
@@ -98,8 +105,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/take-a-tour"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
-                            pathname === "/take-a-tour" && "text-primary font-bold"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            pathname === "/take-a-tour" && cn(
+                                "text-primary font-bold",
+                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            )
                         )}
                     >
                         Take a Tour
@@ -108,8 +118,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/blog"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200",
-                            (pathname === "/blog" || pathname?.startsWith("/blog/")) && "text-primary font-bold"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            (pathname === "/blog" || pathname?.startsWith("/blog/")) && cn(
+                                "text-primary font-bold",
+                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            )
                         )}
                     >
                         Sukrutham Chronicles
@@ -121,7 +134,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className={cn(
                                 "flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent focus:outline-none",
-                                scrolled || variant === "light" ? "text-stone-700" : "text-stone-200"
+                                scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                             )}
                         >
                             Experience <ChevronDown className="w-4 h-4" />
@@ -149,7 +162,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/#testimonials"
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                         )}
                     >
                         Our Customers
@@ -163,7 +176,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="tel:+919940668754"
                         className={cn(
                             "flex items-center gap-2 text-sm font-bold transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-stone-200"
+                            scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                         )}
                     >
                         <Phone className="w-4 h-4" />

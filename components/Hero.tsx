@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import Metrics from "@/components/Metrics";
 import { useState, useEffect } from "react";
 
 const HERO_IMAGES = [
@@ -71,11 +72,9 @@ export default function Hero() {
                 </ScrollAnimation>
             </div>
 
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 animate-bounce z-10">
-                <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-current rounded-full animate-scroll-down" />
-                </div>
+            {/* Structured Metrics Bar at the very bottom of Hero */}
+            <div className="absolute bottom-0 left-0 w-full z-20">
+                <Metrics />
             </div>
         </section>
     );

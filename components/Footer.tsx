@@ -1,8 +1,27 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
+    const [email, setEmail] = useState("");
+
+    const handleSubscribe = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        const subject = encodeURIComponent("Newsletter Subscription Request");
+        const body = encodeURIComponent(`Hello,\n\nPlease add my email address (${email}) to your newsletter subscription list.\n\nThank you!`);
+        window.location.href = `mailto:sukruthamfarmstay@gmail.com?subject=${subject}&body=${body}`;
+
+        setEmail("");
+    };
+
     return (
         <footer className="bg-stone-900 text-stone-300 py-16" id="footer">
             <div className="container mx-auto px-6 md:px-12">
@@ -55,11 +74,11 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-accent shrink-0" />
-                                <span>+91 9940668754</span>
+                                <a href="tel:+919940668754" className="hover:text-accent transition-colors">+91 9940668754</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-accent shrink-0" />
-                                <span>sukruthamfarmstay@gmail.com</span>
+                                <a href="mailto:sukruthamfarmstay@gmail.com" className="hover:text-accent transition-colors">sukruthamfarmstay@gmail.com</a>
                             </li>
                         </ul>
                     </div>
@@ -68,13 +87,16 @@ export default function Footer() {
                     <div className="space-y-4">
                         <h4 className="text-lg font-bold text-white">Newsletter</h4>
                         <p className="text-sm">Subscribe to get special offers and updates.</p>
-                        <form className="flex flex-col gap-2">
+                        <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
                             <input
                                 type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Your email address"
+                                required
                                 className="bg-stone-800 border border-stone-700 rounded px-4 py-2 text-sm focus:outline-none focus:border-primary text-white"
                             />
-                            <button className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
+                            <button type="submit" className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
                                 Subscribe
                             </button>
                         </form>

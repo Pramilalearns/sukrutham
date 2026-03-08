@@ -3,69 +3,151 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { Quote, Leaf, Sun, Award } from "lucide-react";
+import Link from "next/link";
+import { Quote, Leaf, Sun, Award, Star, Heart, Linkedin, Youtube, Calendar, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { blogPosts } from "@/lib/blogData";
 
 export default function OurStory() {
     return (
         <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans">
-            <Navbar variant="light" />
+            <Navbar />
 
-            {/* --- Hero Section: Minimalist & Impactful --- */}
-            <section className="relative pt-40 pb-20 px-6 md:px-12 lg:px-20 border-b border-stone-100 overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-stone-100/50 via-transparent to-transparent -z-10"></div>
+            {/* --- Immersive Full-Screen Hero Section --- */}
+            <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/hero-carousel/slide1.jpg"
+                        alt="Sukrutham Farmstay"
+                        fill
+                        className="object-cover opacity-60 mix-blend-overlay"
+                        priority
+                    />
+                    {/* Dark gradient at the top specifically to ensure Navbar text is visible */}
+                    {/* Refined Darker Overlay for Text Visibility */}
+                    <div className="absolute inset-0 bg-stone-950/40 z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-transparent z-10"></div>
+                </div>
 
-                <div className="container mx-auto max-w-5xl text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold tracking-widest uppercase mb-8 animate-in fade-in zoom-in duration-700">
-                        <Leaf className="w-3 h-3" /> Where Goodness Lives
-                    </div>
+                {/* Hero Content */}
+                <div className="container mx-auto px-6 md:px-12 relative z-20 text-center flex flex-col items-center justify-center pt-24 pb-8 flex-grow">
+                    <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                        Our Story
+                    </span>
 
-                    <h1 className="text-6xl md:text-8xl font-display font-bold text-stone-900 mb-8 leading-[0.95] tracking-tight animate-in slide-in-from-bottom-8 duration-700 delay-100">
-                        The Heart of <br />
-                        <span className="italic text-stone-400 font-light">Sukrutham</span>
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-8 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                        Experience the <br className="hidden md:block" />
+                        <span className="italic text-accent font-light">Sukrutham</span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-stone-600 font-light leading-relaxed max-w-3xl mx-auto animate-in slide-in-from-bottom-4 duration-700 delay-200">
+                    <p className="text-xl md:text-2xl text-stone-100 font-medium leading-relaxed max-w-3xl mx-auto drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] animate-in slide-in-from-bottom-4 duration-700 delay-200 mb-16">
                         "Sukrutham" translates to the 'Goodness of Life'—a philosophy that guides every sunrise and sunset at our farm. A sanctuary where rural charm meets the warmth of home.
                     </p>
+
+                    {/* Floating Hero Metric Badges */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 animate-in slide-in-from-bottom-8 duration-1000 delay-300">
+
+                        {/* Govt Certified */}
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                            <Award className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
+                            <h3 className="text-white font-bold text-lg mb-1">Govt. Certified</h3>
+                            <p className="text-stone-300 text-xs tracking-widest uppercase">Diamond Class</p>
+                        </div>
+
+                        {/* Booking.com */}
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                            <div className="flex items-center justify-center gap-1 mb-3 text-white">
+                                <span className="font-bold text-3xl leading-none">9.8</span>
+                                <span className="text-stone-400 font-medium text-lg leading-none">/10</span>
+                            </div>
+                            <h3 className="text-[#00B2FF] font-bold text-lg mb-1">Review Awards</h3>
+                            <p className="text-stone-300 text-xs tracking-widest uppercase">Booking.com 2026</p>
+                        </div>
+
+                        {/* Sustainable */}
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                            <Leaf className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
+                            <h3 className="text-white font-bold text-lg mb-1">Sustainable</h3>
+                            <p className="text-stone-300 text-xs tracking-widest uppercase">Architecture</p>
+                        </div>
+
+                        {/* Authentic */}
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                            <Heart className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
+                            <h3 className="text-white font-bold text-lg mb-1">Authentic Kerala</h3>
+                            <p className="text-stone-300 text-xs tracking-widest uppercase">Hospitality</p>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
-            {/* --- Trust Signal: Diamond Certificate --- */}
-            <section className="relative -mt-10 z-20 px-6">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+            {/* --- Trust Signals & Awards --- */}
+            <section className="relative z-20 px-6 py-24 bg-stone-50">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
-                        <div className="relative w-full md:w-1/3 shrink-0 group cursor-zoom-in">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-amber-100 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <Image
-                                src="/certificate.jpg"
-                                alt="Diamond Grade Certificate"
-                                width={300}
-                                height={400}
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                                className="w-full h-auto rounded-lg border border-stone-100 shadow-sm relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500"
-                            />
-                            <div className="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-stone-500 shadow-sm z-20">
-                                Verified
+                        {/* Diamond Certificate */}
+                        <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 flex flex-col sm:flex-row items-center gap-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+                            <div className="relative w-full sm:w-2/5 shrink-0 group cursor-zoom-in">
+                                <Image
+                                    src="/certificate.jpg"
+                                    alt="Diamond Grade Certificate"
+                                    width={300}
+                                    height={400}
+                                    style={{ width: '100%', height: 'auto' }}
+                                    className="rounded-lg border border-stone-100 shadow-sm relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500"
+                                />
+                                <div className="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-stone-500 shadow-sm z-20">
+                                    Verified
+                                </div>
+                            </div>
+                            <div className="text-center sm:text-left">
+                                <div className="flex items-center justify-center sm:justify-start gap-2 mb-3 text-amber-500">
+                                    <Award className="w-5 h-5 fill-current" />
+                                    <span className="font-bold tracking-wide text-xs uppercase">Govt. Certified</span>
+                                </div>
+                                <h2 className="text-2xl font-display font-bold text-stone-900 mb-3">
+                                    Diamond Class Homestay
+                                </h2>
+                                <p className="text-stone-600 leading-relaxed font-light text-sm mb-4">
+                                    Honored with the highest accolade from Kerala Tourism for meeting stringent standards of safety, hygiene, and authentic cultural hospitality.
+                                </p>
+                                <div className="inline-block px-3 py-1.5 bg-stone-50 rounded-lg text-[10px] font-medium text-stone-500 border border-stone-100">
+                                    Order No. DOT/15093/2023-ATIO1
+                                </div>
                             </div>
                         </div>
 
-                        <div className="text-center md:text-left">
-                            <div className="flex items-center justify-center md:justify-start gap-2 mb-4 text-amber-500">
-                                <Award className="w-6 h-6 fill-current" />
-                                <span className="font-bold tracking-wide text-sm uppercase">Government Certified</span>
+                        {/* Booking.com Award */}
+                        <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 flex flex-col sm:flex-row items-center gap-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-400">
+                            <div className="relative w-2/3 sm:w-2/5 shrink-0 group mx-auto sm:mx-0">
+                                <Image
+                                    src="/Booking.com awards/Digital-Award_RA-2026.png"
+                                    alt="Booking.com Traveller Review Awards 2026"
+                                    width={300}
+                                    height={300}
+                                    style={{ width: '100%', height: 'auto' }}
+                                    className="object-contain drop-shadow-md transform group-hover:scale-[1.05] transition-transform duration-500"
+                                />
                             </div>
-                            <h2 className="text-3xl font-display font-bold text-stone-900 mb-4">
-                                Diamond Class Homestay
-                            </h2>
-                            <p className="text-stone-600 leading-relaxed font-light mb-6">
-                                We are honored to hold the prestigious <strong>Diamond Certification</strong> from Kerala Tourism. This is the highest accolade awarded only to homestays meeting the most stringent standards of safety, hygiene, and authentic cultural hospitality.
-                            </p>
-                            <div className="inline-block px-4 py-2 bg-stone-50 rounded-lg text-xs font-medium text-stone-500 border border-stone-100">
-                                Order No. DOT/15093/2023-ATIO1 (M)
+                            <div className="text-center sm:text-left">
+                                <div className="flex items-center justify-center sm:justify-start gap-2 mb-3 text-[#003B95]">
+                                    <span className="font-black text-3xl tracking-tight">9.8</span>
+                                    <span className="text-xs font-bold text-stone-400 uppercase tracking-widest mt-1">/ 10</span>
+                                </div>
+                                <h2 className="text-2xl font-display font-bold text-stone-900 mb-3">
+                                    Traveller Review Awards 2026
+                                </h2>
+                                <p className="text-stone-600 leading-relaxed font-light text-sm mb-4">
+                                    Recognized by Booking.com travelers for delivering exceptional hospitality and creating unforgettable, perfect experiences for our guests worldwide.
+                                </p>
+                                <div className="inline-block px-3 py-1.5 bg-[#003B95]/10 rounded-lg text-xs font-bold text-[#003B95]">
+                                    Booking.com
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -123,6 +205,17 @@ export default function OurStory() {
                                 <p>
                                     A storyteller, a guide, and a host who treats every guest like family, Murali’s presence is the soul of the farmstay. The place where Sukrutham was born, is a place that attracted the owner, who set about constructing the house from foundation to finish.
                                 </p>
+                                <div className="pt-4">
+                                    <a
+                                        href="https://www.linkedin.com/in/kp-murali-6018318/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-3 px-6 py-3 bg-[#0a66c2]/10 text-[#0a66c2] hover:bg-[#0a66c2] hover:text-white font-medium rounded-full transition-all duration-300 w-fit group"
+                                    >
+                                        <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                        <span>Connect with K.P. Murali on LinkedIn</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -185,9 +278,23 @@ export default function OurStory() {
                             allowFullScreen
                         ></iframe>
                     </div>
-                    <p className="text-center text-xl font-display italic text-stone-600 max-w-3xl mx-auto">
+                    <p className="text-center text-xl font-display italic text-stone-600 max-w-3xl mx-auto mb-8">
                         "This video provides a glimpse into the cultural and traditional essence that Sukrutham Farmstay aims to preserve and share with its guests."
                     </p>
+                    <div className="flex flex-col items-center justify-center gap-4">
+                        <span className="text-xl font-display font-bold text-stone-900">
+                            Experience the Magic Before You Arrive
+                        </span>
+                        <a
+                            href="https://www.youtube.com/@SukruthamFarmStay"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#FF0000] hover:bg-red-700 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-red-600/30 group"
+                        >
+                            <Youtube className="w-6 h-6 group-hover:animate-pulse" />
+                            <span>Subscribe to our YouTube Channel</span>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -202,7 +309,7 @@ export default function OurStory() {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-3 gap-8 items-start">
                         {/* Orchard Card */}
                         <div className="group bg-white rounded-[2rem] p-8 border border-stone-100 hover:shadow-xl hover:shadow-stone-200/50 transition-all duration-500 hover:-translate-y-2">
                             <div className="w-16 h-16 bg-orange-100/50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
@@ -278,6 +385,94 @@ export default function OurStory() {
                     "Sukrutham will weave its magic around you. She will make you fall in love with yourself and the place."
                 </p>
             </div>
+
+            {/* --- Recent Blogs Section --- */}
+            <section className="py-24 bg-white border-t border-stone-100">
+                <div className="container mx-auto px-6 md:px-12 max-w-7xl">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                        <div>
+                            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">From the Journal</span>
+                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900">
+                                Sukrutham Chronicles
+                            </h2>
+                        </div>
+                        <Link
+                            href="/blog"
+                            className="group inline-flex items-center gap-2 text-primary font-bold hover:text-primary-dark transition-colors"
+                        >
+                            Read All Stories
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {blogPosts.slice(0, 3).map((post, index) => (
+                            <Link
+                                key={index}
+                                href={`/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                className="group bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
+                            >
+                                <div className="relative h-60 w-full overflow-hidden">
+                                    <Image
+                                        src={post.image}
+                                        alt={post.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-stone-800 uppercase tracking-wider">
+                                        {post.category}
+                                    </div>
+                                </div>
+                                <div className="p-8 flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div className="flex items-center gap-2 text-stone-400 text-sm mb-4">
+                                            <Calendar className="w-4 h-4" />
+                                            <span>{post.date}</span>
+                                        </div>
+                                        <h3 className="text-2xl font-display font-bold text-stone-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                                            {post.title}
+                                        </h3>
+                                        <p className="text-stone-600 font-light leading-relaxed mb-6 line-clamp-3">
+                                            {post.excerpt}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-3 transition-all mt-auto">
+                                        Read Article <ArrowRight className="w-4 h-4" />
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- Final CTA Section --- */}
+            <section className="relative py-32 bg-stone-900 text-center overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/hero-carousel/slide3.jpg"
+                        alt="Sukrutham Farm"
+                        fill
+                        className="object-cover opacity-20"
+                    />
+                    <div className="absolute inset-0 bg-stone-900/80"></div>
+                </div>
+                <div className="container mx-auto px-6 relative z-10 max-w-3xl">
+                    <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        EXPLORE SUKRUTHAM FARMSTAY - HARVEST HAPPY MEMORIES!
+                    </h2>
+                    <p className="text-xl text-stone-300 font-light mb-10">
+                        Come and experience the goodness of life. Let the farm weave its magic around you, and take home memories that last a lifetime.
+                    </p>
+                    <Link
+                        href="/book"
+                        className="inline-block px-10 py-5 bg-primary text-white hover:bg-white hover:text-stone-900 rounded-full font-bold tracking-widest uppercase transition-all duration-300 shadow-xl hover:-translate-y-1 hover:shadow-2xl"
+                    >
+                        Plan Your Escape
+                    </Link>
+                </div>
+            </section>
 
             <Footer />
         </main>

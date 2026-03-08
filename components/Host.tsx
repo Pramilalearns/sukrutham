@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Linkedin } from "lucide-react";
+import Link from "next/link";
+import { Linkedin, ArrowRight } from "lucide-react";
 
 export default function Host() {
     return (
@@ -64,9 +65,17 @@ export default function Host() {
                                     Since opening in January 2023, I’ve been here every day, personally ensuring your stay is warm, perfect, and memorable. Whether I'm helping you discover a hidden local waterfall or we’re just sharing stories over a fresh coffee on the verandah, I’m here to welcome you home to the Kerala I love.
                                 </p>
 
-                                <div className="flex items-center gap-2 mt-8 pt-6 border-t border-stone-200/60">
-                                    <p className="font-medium text-stone-800">
-                                        To hear from me more — <a href="https://www.linkedin.com/in/kpmurali/" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:text-primary-dark transition-colors inline-flex items-center gap-1 underline decoration-primary/30 underline-offset-4 hover:decoration-primary">
+                                <div className="flex flex-col sm:flex-row items-center gap-6 mt-8 pt-6 border-t border-stone-200/60 justify-start">
+                                    <Link
+                                        href="/our-story"
+                                        className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                                    >
+                                        Learn More About Us
+                                        <ArrowRight className="w-4 h-4" />
+                                    </Link>
+
+                                    <p className="font-medium text-stone-600 text-sm">
+                                        or <a href="https://www.linkedin.com/in/kpmurali/" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:text-primary-dark transition-colors inline-flex items-center gap-1 underline decoration-primary/30 underline-offset-4 hover:decoration-primary ml-1">
                                             connect with me
                                             <Linkedin className="w-4 h-4" />
                                         </a>
