@@ -1,8 +1,9 @@
 "use client";
 
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { testimonials } from "./testimonials-data";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // Rating Summary Component
@@ -187,6 +188,17 @@ export default function Testimonials() {
 
                 {/* Row 2: Right to Left */}
                 <ScrollerRow items={secondRow} direction="left" />
+            </div>
+
+            {/* Read All CTA */}
+            <div className="container mx-auto px-6 mt-16 text-center relative z-20">
+                <Link
+                    href="/our-guests"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-primary/30 group hover:-translate-y-1"
+                >
+                    <span>Read All Guest Stories</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
             </div>
         </section>
     );

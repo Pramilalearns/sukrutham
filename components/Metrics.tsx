@@ -28,7 +28,7 @@ export default function Metrics() {
                         <span className="text-[10px] md:text-xs font-semibold tracking-widest text-stone-300 uppercase">In-Farm Activities</span>
                     </div>
 
-                    <div className="flex flex-col items-center justify-center text-center w-full sm:w-1/3 lg:flex-1 px-4 border-l-0 sm:border-l sm:border-white/10 lg:border-l border-t sm:border-t-0 mt-4 sm:mt-0 pt-4 sm:pt-0">
+                    <div className="flex flex-col items-center justify-center text-center w-full sm:w-1/3 lg:flex-1 px-4 border-t sm:border-t-0 mt-4 sm:mt-0 pt-4 sm:pt-0">
                         <span className="text-3xl md:text-4xl font-display font-bold text-white mb-1 drop-shadow-sm">10+</span>
                         <span className="text-[10px] md:text-xs font-semibold tracking-widest text-stone-300 uppercase">Nearby Local Sights</span>
                     </div>

@@ -74,15 +74,15 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                 </Link>
 
                 {/* Desktop Nav - Centered */}
-                <div className="hidden md:flex flex-1 items-center justify-center space-x-8">
+                <div className="hidden md:flex flex-1 items-center justify-center space-x-2 lg:space-x-4">
                     <Link
                         href="/our-story"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/our-story" && cn(
                                 "text-primary font-bold",
-                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                                !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
                             )
                         )}
                     >
@@ -91,11 +91,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/rooms"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/rooms" && cn(
                                 "text-primary font-bold",
-                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                                !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
                             )
                         )}
                     >
@@ -104,11 +104,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/take-a-tour"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/take-a-tour" && cn(
                                 "text-primary font-bold",
-                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                                !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
                             )
                         )}
                     >
@@ -117,11 +117,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/blog"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-white/90 drop-shadow-md",
+                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             (pathname === "/blog" || pathname?.startsWith("/blog/")) && cn(
                                 "text-primary font-bold",
-                                !(scrolled || variant === "light") && "drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                                !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
                             )
                         )}
                     >
@@ -133,8 +133,12 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className={cn(
-                                "flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent focus:outline-none",
-                                scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                                "flex items-center gap-1 text-sm transition-all hover:text-accent focus:outline-none px-3 py-1.5 rounded-full",
+                                scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                                pathname?.startsWith("/experience") && cn(
+                                    "text-primary font-bold",
+                                    !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
+                                )
                             )}
                         >
                             Experience <ChevronDown className="w-4 h-4" />
@@ -159,13 +163,17 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     </div>
 
                     <Link
-                        href="/#testimonials"
+                        href="/our-guests"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-accent",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                            pathname === "/our-guests" && cn(
+                                "text-primary font-bold",
+                                !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
+                            )
                         )}
                     >
-                        Our Customers
+                        Our Guests
                     </Link>
                 </div>
 
