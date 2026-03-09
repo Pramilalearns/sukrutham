@@ -111,7 +111,7 @@ export default function Experience() {
                 {/* CTA */}
                 <div className="mt-10 text-center">
                     <Link
-                        href="#contact"
+                        href="/experience"
                         className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                     >
                         Explore All Experiences

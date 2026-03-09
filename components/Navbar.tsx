@@ -43,7 +43,6 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
     }, []);
 
     const experienceLinks = [
-        { name: "All Experiences (Hub)", href: "/experience" },
         { name: "Activities", href: "/experience/activities" },
         { name: "Places to Explore", href: "/experience/places-to-explore" },
         { name: "Local Savor", href: "/experience/local-savor" },
@@ -128,35 +127,52 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         Sukrutham Chronicles
                     </Link>
 
-                    {/* Dropdown */}
-                    <div className="relative" ref={dropdownRef}>
+                    {/* Dropdown for Experience */}
+                    <div
+                        className={cn(
+                            "relative flex items-center rounded-full transition-all",
+                            pathname?.startsWith("/experience") && !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
+                        )}
+                        ref={dropdownRef}
+                        onMouseEnter={() => setDropdownOpen(true)}
+                        onMouseLeave={() => setDropdownOpen(false)}
+                    >
+                        <Link
+                            href="/experience"
+                            className={cn(
+                                "flex items-center gap-1 text-sm transition-all hover:text-accent pl-3 pr-1 py-1.5 rounded-l-full",
+                                scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                                pathname?.startsWith("/experience") && "text-primary font-bold drop-shadow-none"
+                            )}
+                        >
+                            Experience
+                        </Link>
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className={cn(
-                                "flex items-center gap-1 text-sm transition-all hover:text-accent focus:outline-none px-3 py-1.5 rounded-full",
-                                scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
-                                pathname?.startsWith("/experience") && cn(
-                                    "text-primary font-bold",
-                                    !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
-                                )
+                                "flex items-center justify-center pr-3 pl-1 py-1.5 rounded-r-full transition-colors focus:outline-none",
+                                scrolled || variant === "light" ? "text-stone-700 hover:text-accent" : "text-white hover:text-accent drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                                pathname?.startsWith("/experience") && "text-primary font-bold drop-shadow-none"
                             )}
                         >
-                            Experience <ChevronDown className="w-4 h-4" />
+                            <ChevronDown className="w-4 h-4 mt-[1px]" />
                         </button>
 
                         {dropdownOpen && (
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-lg shadow-xl border border-stone-100 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-                                <div className="py-2">
-                                    {experienceLinks.map((link) => (
-                                        <Link
-                                            key={link.name}
-                                            href={link.href}
-                                            className="block px-4 py-2.5 text-sm text-stone-600 hover:bg-stone-50 hover:text-primary transition-colors"
-                                            onClick={() => setDropdownOpen(false)}
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    ))}
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
+                                <div className="w-56 bg-white rounded-lg shadow-xl border border-stone-100 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                                    <div className="py-2">
+                                        {experienceLinks.map((link) => (
+                                            <Link
+                                                key={link.name}
+                                                href={link.href}
+                                                className="block px-4 py-2.5 text-sm text-stone-600 hover:bg-stone-50 hover:text-primary transition-colors"
+                                                onClick={() => setDropdownOpen(false)}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         )}

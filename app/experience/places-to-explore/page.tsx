@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Clock, Navigation, Info, Car, Sun, CheckCircle2 } from "lucide-react";
+import { MapPin, Clock, Navigation, Info, Car, Sun, CheckCircle2, ChevronRight, Map as MapIcon } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils";
 
 // We use an extended data structure to handle the overview vs detailed view
 const allPlaces = [
@@ -279,13 +280,12 @@ export default function PlacesToExplorePage() {
 
     // Filter places based on radius
     const getPlacesForRadius = (limit: number) => {
-        const currentIndex = timelineData.findIndex(t => t.limit === limit);
-        const prevLimit = currentIndex > 0 ? timelineData[currentIndex - 1].limit : 0;
-        return allPlaces.filter(p => p.distValue > prevLimit && p.distValue <= limit);
+        return allPlaces.filter(p => p.distValue <= limit);
     };
 
-    const activePlacesCount = hoveredRadius !== null ? getPlacesForRadius(hoveredRadius).length : 0;
-    const spacerHeight = hoveredRadius === null ? 0 : (activePlacesCount === 0 ? 120 : 100 + activePlacesCount * 65);
+    // State for the active distance filter, default to 30 KM which has good content
+    const [activeDistance, setActiveDistance] = useState<number>(30);
+    const displayedPlaces = getPlacesForRadius(activeDistance);
 
 
     return (
@@ -349,103 +349,93 @@ export default function PlacesToExplorePage() {
                 </div>
             </section>
 
-            {/* Interactive Timeline Map */}
-            <section className="py-12 bg-transparent relative z-20">
-                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-6xl">
-                    <h2 className="text-center font-display text-2xl mb-12 text-stone-800">Explore by Distance from <span className="font-semibold text-primary">Sukrutham Farmstay</span></h2>
+            {/* Modern Distance Filter Section */}
+            <section className="py-16 md:py-24 bg-transparent relative z-20">
+                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
+                    <div className="text-center mb-12">
+                        <span className="text-primary font-bold tracking-[0.15em] uppercase text-sm mb-3 block">Journey Radii</span>
+                        <h2 className="font-display text-4xl md:text-5xl mb-4 text-stone-800 font-bold">Explore by Distance</h2>
+                        <p className="text-stone-500 max-w-2xl mx-auto">Discover the hidden gems and iconic landmarks dotted around Sukrutham Farmstay, perfectly categorized by how far you want to travel today.</p>
+                    </div>
 
-                    {/* The Timeline Line */}
-                    <div
-                        className="relative max-w-4xl mx-auto w-full flex items-center justify-between pb-12 pt-8"
-                        onMouseLeave={() => setHoveredRadius(null)}
-                    >
-                        {/* Connecting Line */}
-                        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-stone-200 rounded-full z-0"></div>
-                        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-primary rounded-full z-0 transition-all duration-500"
-                            style={{
-                                width: hoveredRadius === null ? '0%' :
-                                    `${(timelineData.findIndex(t => t.limit === hoveredRadius) / (timelineData.length - 1)) * 100}%`
-                            }}>
-                        </div>
-
-                        {/* Timeline Nodes */}
+                    {/* Filter Tabs */}
+                    <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16">
                         {timelineData.map((node) => {
-                            const active = hoveredRadius !== null && node.limit <= hoveredRadius;
-                            const isHovered = hoveredRadius === node.limit;
-                            const placesInNode = getPlacesForRadius(node.limit);
+                            const isActive = activeDistance === node.limit;
+                            const count = getPlacesForRadius(node.limit).length;
 
                             return (
-                                <div
+                                <button
                                     key={node.limit}
-                                    className="relative z-10 flex flex-col items-center group cursor-pointer"
-                                    onMouseEnter={(e) => {
-                                        setHoveredRadius(node.limit);
-                                        const rect = e.currentTarget.getBoundingClientRect();
-                                        setPopoverDirection(rect.top > window.innerHeight / 2 ? 'top' : 'bottom');
-                                    }}
-                                    onClick={(e) => {
-                                        setHoveredRadius(node.limit);
-                                        const rect = e.currentTarget.getBoundingClientRect();
-                                        setPopoverDirection(rect.top > window.innerHeight / 2 ? 'top' : 'bottom');
-                                    }}
+                                    onClick={() => setActiveDistance(node.limit)}
+                                    className={cn(
+                                        "px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 border shadow-sm",
+                                        isActive
+                                            ? "bg-primary text-white border-primary shadow-primary/20 scale-105"
+                                            : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50"
+                                    )}
                                 >
-                                    {/* The Node Dot */}
-                                    <div className={`w-6 h-6 md:w-8 md:h-8 rounded-full border-4 shadow-md transition-all duration-300 ${active ? 'bg-primary border-white scale-125' : 'bg-white border-stone-300 group-hover:border-primary'}`}></div>
-
-                                    {/* The Label */}
-                                    <span className={`absolute top-10 whitespace-nowrap text-sm md:text-base font-semibold transition-colors ${active ? 'text-primary' : 'text-stone-500'}`}>
-                                        {node.label}
-                                    </span>
-
-                                    {/* Hover Popover List of Places */}
-                                    {isHovered && placesInNode.length > 0 && (
-                                        <div className={`absolute ${popoverDirection === 'bottom' ? 'top-14' : 'bottom-14'} bg-white rounded-2xl shadow-2xl p-4 w-64 md:w-80 border border-stone-100 animate-in fade-in zoom-in-95 duration-200 pointer-events-none z-50`}>
-                                            <div className="text-xs font-bold uppercase tracking-wider text-primary mb-3 pb-2 border-b border-stone-100">
-                                                In this radius
-                                            </div>
-                                            <div className="space-y-3">
-                                                {placesInNode.map(p => (
-                                                    <div key={p.id} className="flex flex-col">
-                                                        <span className="font-semibold text-stone-800 text-sm leading-tight">{p.title}</span>
-                                                        <div className="flex items-center gap-2 mt-1">
-                                                            <span className="text-xs text-stone-500 flex items-center gap-1"><MapPin className="w-3 h-3 text-accent" /> {p.distance}</span>
-                                                            <span className="text-xs text-stone-500 flex items-center gap-1"><Clock className="w-3 h-3" /> {p.time}</span>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            {/* Decorative triangle arrow pointing towards the line */}
-                                            {popoverDirection === 'bottom' ? (
-                                                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-l border-t border-stone-100"></div>
-                                            ) : (
-                                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-r border-b border-stone-100"></div>
-                                            )}
-                                        </div>
+                                    <span>{node.label}</span>
+                                    {count > 0 && (
+                                        <span className={cn(
+                                            "min-w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                                            isActive ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
+                                        )}>
+                                            {count}
+                                        </span>
                                     )}
-
-                                    {/* Hover Popover if Empty */}
-                                    {isHovered && placesInNode.length === 0 && (
-                                        <div className={`absolute ${popoverDirection === 'bottom' ? 'top-14' : 'bottom-14'} bg-white rounded-xl shadow-2xl p-4 w-48 border border-stone-100 animate-in fade-in zoom-in-95 duration-200 pointer-events-none z-50`}>
-                                            <div className="text-xs text-center text-stone-500 italic">No major spots in this exact interval.</div>
-                                            {/* Decorative triangle arrow pointing towards the line */}
-                                            {popoverDirection === 'bottom' ? (
-                                                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-l border-t border-stone-100"></div>
-                                            ) : (
-                                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-r border-b border-stone-100"></div>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
+                                </button>
                             );
                         })}
                     </div>
 
-                    {/* Dynamic Spacer to push the next section down when a tooltip opens */}
-                    <div
-                        className="w-full transition-all duration-500 ease-in-out"
-                        style={{ height: `${spacerHeight}px` }}
-                        aria-hidden="true"
-                    />
+                    {/* Filtered Results Grid */}
+                    <div className="min-h-[400px]">
+                        {displayedPlaces.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {displayedPlaces.map((place) => (
+                                    <div key={place.id} className="bg-white rounded-[2rem] p-6 shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-500 group">
+                                        <div className="relative h-48 rounded-2xl overflow-hidden mb-6">
+                                            <Image
+                                                src={place.image}
+                                                alt={place.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                            />
+                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-stone-800 flex items-center gap-1.5 shadow-sm">
+                                                <MapPin className="w-3.5 h-3.5 text-primary" /> {place.distance}
+                                            </div>
+                                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-stone-800 flex items-center gap-1.5 shadow-sm">
+                                                <Clock className="w-3.5 h-3.5 text-primary" /> {place.time}
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <span className="text-[10px] font-bold uppercase tracking-wider text-primary/80 bg-primary/10 px-2 py-1 rounded-sm">
+                                                {place.area}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-stone-800 mb-3 leading-tight">{place.title}</h3>
+                                        <p className="text-stone-500 text-sm leading-relaxed mb-6 line-clamp-2">
+                                            {place.shortDesc}
+                                        </p>
+                                        <Link
+                                            href={`#${place.id}`}
+                                            className="inline-flex items-center text-sm font-bold text-primary hover:text-primary-dark transition-colors gap-1 group/link"
+                                        >
+                                            View Details
+                                            <ChevronRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="flex flex-col items-center justify-center p-16 text-center bg-white rounded-[2rem] border border-stone-100 shadow-sm">
+                                <MapIcon className="w-12 h-12 text-stone-300 mb-4" />
+                                <h3 className="text-xl font-bold text-stone-700 mb-2">No major destinations found</h3>
+                                <p className="text-stone-500">There are no highlighted spots within this exact distance range. Try selecting another distance!</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </section>
 

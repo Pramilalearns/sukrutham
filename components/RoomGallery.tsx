@@ -73,15 +73,20 @@ export default function RoomGallery() {
 
         const activeThumb = filmstripRef.current.querySelector('[data-active="true"]') as HTMLElement;
         if (activeThumb) {
-            // Use native scrollIntoView for perfectly smooth, native alignment
-            // block: 'nearest' ensures the main window doesn't jump, only the scrollable container
-            activeThumb.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
-            });
+            const container = filmstripRef.current;
+
+            // Calculate center position for both horizontal and vertical scrolling
+            const scrollLeft = activeThumb.offsetLeft - (container.clientWidth / 2) + (activeThumb.clientWidth / 2);
+            const scrollTop = activeThumb.offsetTop - (container.clientHeight / 2) + (activeThumb.clientHeight / 2);
+
+            // Check if it's horizontal layout (mobile) or vertical (desktop)
+            if (window.innerWidth < 1024) {
+                container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+            } else {
+                container.scrollTo({ top: scrollTop, behavior: "smooth" });
+            }
         }
-    }, [activeImageId, filteredImages]);
+    }, [activeImageId]);
 
     const activeImage = galleryImages.find(img => img.src === activeImageId) || galleryImages[0];
     const currentIndex = filteredImages.findIndex(img => img.src === activeImageId);
@@ -123,7 +128,7 @@ export default function RoomGallery() {
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={cn(
-                                    "px-4 md:px-6 py-2 md:py-2.5 rounded-2xl text-[13px] md:text-sm font-medium transition-all duration-500 ease-out",
+                                    "px-4 md:px-6 py-2 md:py-2.5 rounded-2xl text-[13px] md:text-sm font-medium transition-all duration-500 ease-out cursor-pointer",
                                     activeCategory === cat
                                         ? "bg-white text-stone-900 shadow-[0_4px_15px_-5px_rgba(0,0,0,0.1)] scale-100 border border-stone-100"
                                         : "bg-transparent text-stone-500 hover:text-stone-900 hover:bg-white/50 scale-[0.98] hover:scale-100 border border-transparent"
@@ -167,7 +172,7 @@ export default function RoomGallery() {
                             <div className="absolute inset-y-0 left-0 w-24 flex items-center justify-start px-2 md:px-4 z-30 transition-opacity duration-300">
                                 <button
                                     onClick={handlePrev}
-                                    className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30"
+                                    className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30 cursor-pointer"
                                 >
                                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                                 </button>
@@ -175,7 +180,7 @@ export default function RoomGallery() {
                             <div className="absolute inset-y-0 right-0 w-24 flex items-center justify-end px-2 md:px-4 z-30 transition-opacity duration-300">
                                 <button
                                     onClick={handleNext}
-                                    className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30"
+                                    className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30 cursor-pointer"
                                 >
                                     <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                                 </button>

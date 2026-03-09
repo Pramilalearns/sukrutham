@@ -63,7 +63,7 @@ export default function Hero() {
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                         <Link
-                            href="#activities"
+                            href="/experience"
                             className="px-8 py-3.5 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 transition-all backdrop-blur-sm"
                         >
                             Explore Experiences

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { HeartHandshake, Mountain, Coffee, Leaf, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -46,6 +46,7 @@ const reasons = [
 export default function WhyChooseUs() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+    const observerRef = useRef<IntersectionObserver | null>(null);
 
     // Basic mobile detection to switch interaction modes if needed
     useEffect(() => {
@@ -54,6 +55,37 @@ export default function WhyChooseUs() {
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
+
+    // Intersection Observer for scroll-based activation
+    useEffect(() => {
+        if (isMobile) return;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "-40% 0px -40% 0px", // Trigger when item is near the middle of the viewport
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = parseInt(entry.target.getAttribute('data-index') || '0', 10);
+                    setActiveIndex(index);
+                }
+            });
+        }, observerOptions);
+
+        observerRef.current = observer;
+
+        const elements = document.querySelectorAll('.choose-us-reason');
+        elements.forEach(el => observer.observe(el));
+
+        return () => {
+            if (observerRef.current) {
+                observerRef.current.disconnect();
+            }
+        };
+    }, [isMobile]);
 
     return (
         <section className="py-20 md:py-24 bg-white relative" id="why-us">
@@ -71,10 +103,46 @@ export default function WhyChooseUs() {
                     </p>
                 </div>
 
-                {/* Modern Interactive Layout - Desktop vs Mobile handled via flex/grid */}
+                {/* Modern Interactive Layout - Swapped Sides */}
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative">
 
-                    {/* Left Column: Interactive List */}
+                    {/* Left Column: Sticky Image Canvas (Desktop Only) */}
+                    <div className="hidden lg:block w-full lg:w-7/12 relative min-h-[600px]">
+                        {/* Modern Frame Design: Asymmetrical rounded corners, slight rotation, off-center drop drop-shadow */}
+                        <div className="sticky top-32 w-full aspect-[4/3] max-h-[650px] relative">
+                            {/* Decorative backing frame */}
+                            <div className="absolute inset-0 border border-stone-200 rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-xl rounded-br-xl translate-x-4 translate-y-4"></div>
+
+                            {/* Main image container */}
+                            <div className="absolute inset-0 rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-xl rounded-br-xl overflow-hidden shadow-2xl bg-stone-100 border border-white z-10">
+                                {reasons.map((reason, index) => (
+                                    <div
+                                        key={`img-${reason.id}`}
+                                        className={cn(
+                                            "absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out",
+                                            activeIndex === index
+                                                ? "opacity-100 scale-100 z-10"
+                                                : "opacity-0 scale-[1.03] z-0 pointer-events-none"
+                                        )}
+                                    >
+                                        <Image
+                                            src={reason.image}
+                                            alt={reason.title}
+                                            fill
+                                            unoptimized
+                                            priority={index === 0}
+                                            className="object-cover"
+                                            sizes="(max-width: 1280px) 60vw, 50vw"
+                                        />
+                                        {/* Subtle overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 to-transparent mix-blend-multiply transition-opacity duration-1000"></div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Interactive List */}
                     <div className="w-full lg:w-5/12 flex flex-col justify-center relative z-20">
                         <div className="space-y-2 md:space-y-4">
                             {reasons.map((reason, index) => {
@@ -84,7 +152,8 @@ export default function WhyChooseUs() {
                                 return (
                                     <div
                                         key={reason.id}
-                                        className="group cursor-pointer outline-none"
+                                        data-index={index}
+                                        className="choose-us-reason group cursor-pointer outline-none"
                                         onMouseEnter={() => !isMobile && setActiveIndex(index)}
                                         onClick={() => setActiveIndex(index)}
                                         // For accessibility
@@ -168,42 +237,6 @@ export default function WhyChooseUs() {
                             >
                                 Book Your Stay
                             </a>
-                        </div>
-                    </div>
-
-                    {/* Right Column: Sticky Image Canvas (Desktop Only) */}
-                    <div className="hidden lg:block w-full lg:w-7/12 relative min-h-[600px]">
-                        {/* Modern Frame Design: Asymmetrical rounded corners, slight rotation, off-center drop drop-shadow */}
-                        <div className="sticky top-32 w-full aspect-[4/3] max-h-[650px] relative">
-                            {/* Decorative backing frame */}
-                            <div className="absolute inset-0 border border-stone-200 rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-xl rounded-br-xl translate-x-4 translate-y-4"></div>
-
-                            {/* Main image container */}
-                            <div className="absolute inset-0 rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-xl rounded-br-xl overflow-hidden shadow-2xl bg-stone-100 border border-white z-10">
-                                {reasons.map((reason, index) => (
-                                    <div
-                                        key={`img-${reason.id}`}
-                                        className={cn(
-                                            "absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out",
-                                            activeIndex === index
-                                                ? "opacity-100 scale-100 z-10"
-                                                : "opacity-0 scale-[1.03] z-0 pointer-events-none"
-                                        )}
-                                    >
-                                        <Image
-                                            src={reason.image}
-                                            alt={reason.title}
-                                            fill
-                                            unoptimized
-                                            priority={index === 0}
-                                            className="object-cover"
-                                            sizes="(max-width: 1280px) 60vw, 50vw"
-                                        />
-                                        {/* Subtle overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 to-transparent mix-blend-multiply transition-opacity duration-1000"></div>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </div>
 

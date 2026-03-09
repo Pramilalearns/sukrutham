@@ -42,7 +42,7 @@ const EXPERIENCES = [
         ctaText: "Explore the Cuisine",
         image: "/savor/Kitchen Community.webp",
         icon: Utensils,
-        highlights: ["Farm-to-Table Dining", "Traditional Kerala Sadhya", "Locally Sourced Spices", "Cooking Demos"]
+        highlights: ["Farm-to-Table Dining", "Traditional Kerala Sadhya", "Dine under Stars", "Locally Sourced Spices", "Cooking Demos"]
     },
     {
         id: "seasons-festivals",
@@ -75,31 +75,51 @@ export default function ExperiencesPage() {
             <Navbar />
 
             {/* Immersive Hero */}
-            <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
+            <section className="relative h-[60vh] md:h-[70vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/experience/hero-activities.png"
                         alt="Experiences at Sukrutham"
                         fill
-                        className="object-cover opacity-60 mix-blend-overlay"
+                        className="object-cover opacity-50 mix-blend-overlay"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-stone-900/50"></div>
+                    {/* Gradient to smooth out the bottom edge and ensure text legibility */}
+                    <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 </div>
-                <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl pt-20">
+
+                <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl mt-12 md:mt-20">
                     <ScrollAnimation animation="fade-up">
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 drop-shadow-lg leading-tight">
                             The Sukrutham <span className="text-accent italic">Journey</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                        <p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-12">
                             It’s not just a stay; it’s an immersive passage into the heart, culture, and nature of authentic Kerala.
                         </p>
+
+                        {/* Metrics Block - Elegant and subtle */}
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 pt-4">
+                            <div className="text-center">
+                                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">15+</div>
+                                <div className="text-stone-300 font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">In-Farm Activities</div>
+                            </div>
+                            <div className="w-px h-12 bg-white/20 hidden md:block"></div>
+                            <div className="text-center">
+                                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">10+</div>
+                                <div className="text-stone-300 font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">Local Sights</div>
+                            </div>
+                            <div className="w-px h-12 bg-white/20 hidden md:block"></div>
+                            <div className="text-center">
+                                <div className="text-4xl md:text-5xl font-display font-bold text-accent mb-2 drop-shadow-lg">100%</div>
+                                <div className="text-stone-300 font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">Authentic Kerala</div>
+                            </div>
+                        </div>
                     </ScrollAnimation>
                 </div>
             </section>
 
             {/* Introductory Text */}
-            <section className="py-20 bg-white">
+            <section className="pt-20 pb-20 bg-white relative">
                 <div className="container mx-auto px-6 max-w-4xl text-center">
                     <ScrollAnimation animation="fade-up">
                         <Leaf className="w-8 h-8 mx-auto text-primary mb-6 opacity-80" />
@@ -107,10 +127,13 @@ export default function ExperiencesPage() {
                             More than just a room. <br className="hidden md:block" />
                             An invitation to <span className="text-primary italic">Live</span>.
                         </h2>
-                        <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-medium">
+                        <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-medium mb-6">
                             Whether you seek the thrill of exploring ancient temples, the peace of walking barefoot
                             through organic farms, or the joy of savoring food cooked over a wood fire, we have
                             curated distinct paths to help you discover your own perfect rhythm.
+                        </p>
+                        <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-light max-w-3xl mx-auto">
+                            Sukrutham farmstay caters to all kinds of travel and stay needs. You can choose to just stay in the farm and be part of the slow living experience, engage with our hands-on in-farm activities, or head out for extended sightseeing across Thrissur. Establish your own pace.
                         </p>
                     </ScrollAnimation>
                 </div>
@@ -191,7 +214,7 @@ export default function ExperiencesPage() {
                                                 href="/book"
                                                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-primary bg-primary/10 hover:bg-primary/20 transition-all text-center"
                                             >
-                                                Book This Package
+                                                Book Your Stay
                                             </Link>
                                         </div>
 
