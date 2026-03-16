@@ -279,12 +279,13 @@ export default function PlacesToExplorePage() {
     }, []);
 
     // Filter places based on radius
-    const getPlacesForRadius = (limit: number) => {
+    const getPlacesForRadius = (limit: number | 'All') => {
+        if (limit === 'All') return allPlaces;
         return allPlaces.filter(p => p.distValue <= limit);
     };
 
-    // State for the active distance filter, default to 30 KM which has good content
-    const [activeDistance, setActiveDistance] = useState<number>(30);
+    // State for the active distance filter, default to 'All'
+    const [activeDistance, setActiveDistance] = useState<number | 'All'>('All');
     const displayedPlaces = getPlacesForRadius(activeDistance);
 
 
@@ -349,17 +350,35 @@ export default function PlacesToExplorePage() {
                 </div>
             </section>
 
-            {/* Modern Distance Filter Section */}
-            <section className="py-16 md:py-24 bg-transparent relative z-20">
+            {/* Main Content Area (Detailed Directory with Filters) */}
+            <section id="directory" className="py-16 md:py-24" onMouseLeave={() => setHoveredRadius(null)}>
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
-                    <div className="text-center mb-12">
-                        <span className="text-primary font-bold tracking-[0.15em] uppercase text-sm mb-3 block">Journey Radii</span>
-                        <h2 className="font-display text-4xl md:text-5xl mb-4 text-stone-800 font-bold">Explore by Distance</h2>
-                        <p className="text-stone-500 max-w-2xl mx-auto">Discover the hidden gems and iconic landmarks dotted around Sukrutham Farmstay, perfectly categorized by how far you want to travel today.</p>
+                    <div className="mb-12 text-center">
+                        <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6 drop-shadow-sm">Detailed Directory</h2>
+                        <p className="text-stone-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+                            Discover the hidden gems and iconic landmarks dotted around Sukrutham Farmstay, perfectly categorized by how far you want to travel today.
+                        </p>
                     </div>
 
-                    {/* Filter Tabs */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16">
+                    {/* Filter Tabs - Single Line Scroller */}
+                    <div className="flex flex-nowrap items-center md:justify-center gap-3 md:gap-4 mb-16 overflow-x-auto hide-scrollbar pb-4 w-full px-6 md:px-0">
+                        <button
+                            onClick={() => setActiveDistance('All')}
+                            className={cn(
+                                "shrink-0 px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 border shadow-sm",
+                                activeDistance === 'All'
+                                    ? "bg-primary text-white border-primary shadow-primary/20 scale-105"
+                                    : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50"
+                            )}
+                        >
+                            <span className="whitespace-nowrap">All Places</span>
+                            <span className={cn(
+                                "min-w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                                activeDistance === 'All' ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
+                            )}>
+                                {allPlaces.length}
+                            </span>
+                        </button>
                         {timelineData.map((node) => {
                             const isActive = activeDistance === node.limit;
                             const count = getPlacesForRadius(node.limit).length;
@@ -369,13 +388,13 @@ export default function PlacesToExplorePage() {
                                     key={node.limit}
                                     onClick={() => setActiveDistance(node.limit)}
                                     className={cn(
-                                        "px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 border shadow-sm",
+                                        "shrink-0 px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 border shadow-sm",
                                         isActive
                                             ? "bg-primary text-white border-primary shadow-primary/20 scale-105"
                                             : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50"
                                     )}
                                 >
-                                    <span>{node.label}</span>
+                                    <span className="whitespace-nowrap">{node.label}</span>
                                     {count > 0 && (
                                         <span className={cn(
                                             "min-w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
@@ -389,128 +408,78 @@ export default function PlacesToExplorePage() {
                         })}
                     </div>
 
-                    {/* Filtered Results Grid */}
-                    <div className="min-h-[400px]">
+                    {/* Bento Grid Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                         {displayedPlaces.length > 0 ? (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {displayedPlaces.map((place) => (
-                                    <div key={place.id} className="bg-white rounded-[2rem] p-6 shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-500 group">
-                                        <div className="relative h-48 rounded-2xl overflow-hidden mb-6">
-                                            <Image
-                                                src={place.image}
-                                                alt={place.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                            />
-                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-stone-800 flex items-center gap-1.5 shadow-sm">
-                                                <MapPin className="w-3.5 h-3.5 text-primary" /> {place.distance}
-                                            </div>
-                                            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-stone-800 flex items-center gap-1.5 shadow-sm">
-                                                <Clock className="w-3.5 h-3.5 text-primary" /> {place.time}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-2 mb-3">
-                                            <span className="text-[10px] font-bold uppercase tracking-wider text-primary/80 bg-primary/10 px-2 py-1 rounded-sm">
+                            displayedPlaces.map((place) => (
+                                <div
+                                    id={place.id}
+                                    key={place.id}
+                                    className={`scroll-mt-32 flex flex-col bg-white rounded-3xl overflow-hidden border border-stone-200/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-stone-300 ${hoveredRadius && place.distValue > hoveredRadius ? 'opacity-30 grayscale' : 'opacity-100'}`}
+                                >
+                                    {/* Top Thumbnail */}
+                                    <div className="w-full aspect-[4/3] relative overflow-hidden bg-stone-100">
+                                        <Image
+                                            src={place.image}
+                                            alt={place.title}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            className="object-cover transition-transform duration-700 hover:scale-105"
+                                        />
+                                        {/* Overlay Badge */}
+                                        <div className="absolute top-4 left-4 flex gap-2">
+                                            <span className="bg-white/90 backdrop-blur-sm text-stone-800 text-[10px] font-bold px-2.5 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
                                                 {place.area}
                                             </span>
                                         </div>
-                                        <h3 className="text-xl font-bold text-stone-800 mb-3 leading-tight">{place.title}</h3>
-                                        <p className="text-stone-500 text-sm leading-relaxed mb-6 line-clamp-2">
-                                            {place.shortDesc}
-                                        </p>
-                                        <Link
-                                            href={`#${place.id}`}
-                                            className="inline-flex items-center text-sm font-bold text-primary hover:text-primary-dark transition-colors gap-1 group/link"
-                                        >
-                                            View Details
-                                            <ChevronRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
-                                        </Link>
                                     </div>
-                                ))}
-                            </div>
+
+                                    {/* Bottom Info Packing */}
+                                    <div className="p-6 md:p-8 flex flex-col flex-grow">
+                                        <div className="flex items-center gap-3 mb-4 text-xs font-semibold text-stone-600">
+                                            <span className="flex items-center gap-1.5 bg-stone-100 px-2.5 py-1 rounded-md">
+                                                <MapPin className="w-3.5 h-3.5 text-accent" /> {place.distance}
+                                            </span>
+                                            <span className="flex items-center gap-1.5 bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md">
+                                                <Clock className="w-3.5 h-3.5" /> {place.time}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="text-xl font-display font-bold text-stone-900 mb-3 leading-tight line-clamp-2">
+                                            {place.title}
+                                        </h3>
+
+                                        <p className="text-stone-600 text-sm leading-relaxed font-light mb-6 flex-grow line-clamp-3">
+                                            {place.description}
+                                        </p>
+
+                                        {/* Details Accordion using Details/Summary for native expanding without state */}
+                                        <details className="mt-auto group border-t border-stone-100 pt-4 cursor-pointer">
+                                            <summary className="list-none flex items-center justify-between text-sm font-semibold text-primary select-none w-full">
+                                                <span>View Highlights</span>
+                                                <div className="w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center transition-transform duration-300 group-open:rotate-180">
+                                                    <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                                </div>
+                                            </summary>
+                                            <ul className="space-y-2 mt-4 animate-in slide-in-from-top-2 fade-in duration-300">
+                                                {place.highlights.map((highlight, idx) => (
+                                                    <li key={idx} className="flex gap-2 items-start text-xs text-stone-600">
+                                                        <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
+                                                        <span className="leading-relaxed">{highlight}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </details>
+                                    </div>
+                                </div>
+                            ))
                         ) : (
-                            <div className="flex flex-col items-center justify-center p-16 text-center bg-white rounded-[2rem] border border-stone-100 shadow-sm">
-                                <MapIcon className="w-12 h-12 text-stone-300 mb-4" />
-                                <h3 className="text-xl font-bold text-stone-700 mb-2">No major destinations found</h3>
-                                <p className="text-stone-500">There are no highlighted spots within this exact distance range. Try selecting another distance!</p>
+                            <div className="col-span-full flex flex-col items-center justify-center py-20 px-6 text-center bg-white rounded-3xl border border-stone-100 shadow-sm">
+                                <MapIcon className="w-16 h-16 text-stone-200 mb-6" />
+                                <h3 className="text-2xl font-display font-bold text-stone-800 mb-3">No destinations found</h3>
+                                <p className="text-stone-500 max-w-md">There are no spots within this exact distance range. Try selecting another distance on the timeline above!</p>
                             </div>
                         )}
-                    </div>
-                </div>
-            </section>
-
-            {/* Main Content Area (Bento Grid) */}
-            <section id="directory" className="py-16 md:py-24" onMouseLeave={() => setHoveredRadius(null)}>
-                <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
-                    <div className="mb-12 text-center">
-                        <h2 className="text-3xl font-display font-bold text-stone-900 mb-3">Detailed Directory</h2>
-                        <p className="text-stone-500 max-w-2xl mx-auto">Click on the timeline above to filter, or browse all our spectacular day-trip destinations below.</p>
-                    </div>
-
-                    {/* Bento Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                        {allPlaces.map((place) => (
-                            <div
-                                id={place.id}
-                                key={place.id}
-                                className={`scroll-mt-32 flex flex-col bg-white rounded-3xl overflow-hidden border border-stone-200/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-stone-300 ${hoveredRadius && place.distValue > hoveredRadius ? 'opacity-30 grayscale' : 'opacity-100'}`}
-                            >
-                                {/* Top Thumbnail */}
-                                <div className="w-full aspect-[4/3] relative overflow-hidden bg-stone-100">
-                                    <Image
-                                        src={place.image}
-                                        alt={place.title}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        className="object-cover transition-transform duration-700 hover:scale-105"
-                                    />
-                                    {/* Overlay Badge */}
-                                    <div className="absolute top-4 left-4 flex gap-2">
-                                        <span className="bg-white/90 backdrop-blur-sm text-stone-800 text-[10px] font-bold px-2.5 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
-                                            {place.area}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Bottom Info Packing */}
-                                <div className="p-6 md:p-8 flex flex-col flex-grow">
-                                    <div className="flex items-center gap-3 mb-4 text-xs font-semibold text-stone-600">
-                                        <span className="flex items-center gap-1.5 bg-stone-100 px-2.5 py-1 rounded-md">
-                                            <MapPin className="w-3.5 h-3.5 text-accent" /> {place.distance}
-                                        </span>
-                                        <span className="flex items-center gap-1.5 bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md">
-                                            <Clock className="w-3.5 h-3.5" /> {place.time}
-                                        </span>
-                                    </div>
-
-                                    <h3 className="text-xl font-display font-bold text-stone-900 mb-3 leading-tight line-clamp-2">
-                                        {place.title}
-                                    </h3>
-
-                                    <p className="text-stone-600 text-sm leading-relaxed font-light mb-6 flex-grow line-clamp-3">
-                                        {place.description}
-                                    </p>
-
-                                    {/* Details Accordion using Details/Summary for native expanding without state */}
-                                    <details className="mt-auto group border-t border-stone-100 pt-4 cursor-pointer">
-                                        <summary className="list-none flex items-center justify-between text-sm font-semibold text-primary select-none w-full">
-                                            <span>View Highlights</span>
-                                            <div className="w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center transition-transform duration-300 group-open:rotate-180">
-                                                <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                                            </div>
-                                        </summary>
-                                        <ul className="space-y-2 mt-4 animate-in slide-in-from-top-2 fade-in duration-300">
-                                            {place.highlights.map((highlight, idx) => (
-                                                <li key={idx} className="flex gap-2 items-start text-xs text-stone-600">
-                                                    <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                                                    <span className="leading-relaxed">{highlight}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </details>
-                                </div>
-                            </div>
-                        ))}
 
                         {/* Local Sightseeing Blog Link Card to fill the empty grid space (15th item) */}
                         <div className="flex flex-col bg-stone-900 rounded-3xl overflow-hidden border border-stone-800 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl group relative items-center justify-center p-8 text-center min-h-[400px]">

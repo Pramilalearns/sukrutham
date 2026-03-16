@@ -131,7 +131,7 @@ const ScrollerRow = ({
                 {displayItems.map((item, idx) => (
                     <div
                         key={idx}
-                        className="w-[350px] md:w-[450px] relative rounded-2xl border border-stone-200 bg-white p-8 flex-shrink-0 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between group h-auto"
+                        className="w-[280px] md:w-[450px] relative rounded-2xl border border-stone-200 bg-white p-6 md:p-8 flex-shrink-0 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between group h-auto"
                     >
                         <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
 

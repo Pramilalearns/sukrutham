@@ -5,49 +5,49 @@ import { cn } from "@/lib/utils";
 
 const galleryImages = [
     {
-        src: "/gallery-1.jpg",
+        src: "/Home-Essence/Life on the Farm-Experience the rhythm of daily life amidst natures abundance.jpeg",
         alt: "Sukrutham Farm Life",
         title: "Life on the Farm",
         description: "Experience the rhythm of daily life amidst nature's abundance.",
         className: "bg-stone-100"
     },
     {
-        src: "/gallery-2.jpg",
+        src: "/Home-Essence/Natures Canvas-Wake up to breathtaking views of lush greenery.jpeg",
         alt: "Verdant Landscapes",
         title: "Nature's Canvas",
-        description: "Wake up to breathtaking views of lush greenery and misty hills.",
+        description: "Wake up to breathtaking views of lush greenery.",
         className: "bg-stone-200"
     },
     {
-        src: "/gallery-3.jpg",
+        src: "/Home-Essence/The Harvest-Participate in the joy of reaping what we sow in our organic fields.jpeg",
         alt: "Harvest Season",
         title: "The Harvest",
         description: "Participate in the joy of reaping what we sow in our organic fields.",
         className: "bg-emerald-100"
     },
     {
-        src: "/gallery-4.jpg",
+        src: "/Home-Essence/Community Spirit-Connect with the warm and welcoming local community.jpeg",
         alt: "Local Interactions",
         title: "Community Spirit",
         description: "Connect with the warm and welcoming local community.",
         className: "bg-orange-100"
     },
     {
-        src: "/gallery-5.jpg",
+        src: "/Home-Essence/Rooted in Tradition-Witness age-old farming techniques preserved with care.jpeg",
         alt: "Traditional Farming",
         title: "Rooted in Tradition",
         description: "Witness age-old farming techniques preserved with care.",
         className: "bg-yellow-100"
     },
     {
-        src: "/gallery-6.jpg",
-        alt: "Peaceful Momements",
+        src: "/Home-Essence/Serenity Now-Find your inner peace in the breathtaking views of the farmstay.jpeg",
+        alt: "Peaceful Moments",
         title: "Serenity Now",
-        description: "Find your inner peace in the quiet corners of the farmstay.",
+        description: "Find your inner peace in the breathtaking views around the farmstay.",
         className: "bg-blue-100"
     },
     {
-        src: "/gallery-7.jpg",
+        src: "/Home-Essence/Golden Hours-Stroll through the fields as the sun sets, painting the sky in gold.jpeg",
         alt: "Evening Walks",
         title: "Golden Hours",
         description: "Stroll through the fields as the sun sets, painting the sky in gold.",
@@ -92,7 +92,7 @@ export default function ExperienceGallery() {
                                     transform: `rotate(${idx % 2 === 0 ? 1 : -1}deg)`
                                 }}
                             >
-                                <div className={cn("relative h-[450px] md:h-[550px] w-full", img.className)}>
+                                <div className={cn("relative h-[350px] md:h-[550px] w-full", img.className)}>
                                     <Image
                                         src={img.src}
                                         alt={img.alt}

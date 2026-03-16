@@ -39,7 +39,7 @@ const reasons = [
         icon: Sparkles,
         title: "Memorable Experiences",
         description: "Discover a treasure trove of culture, tradition, and vivid natural beauty that will leave a powerful, lasting impression on your soul.",
-        image: "/why-us/image-5.jpg"
+        image: "/Home-Why Choose Us/Cheppara-hills.jpeg"
     }
 ];
 

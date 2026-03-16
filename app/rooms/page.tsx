@@ -139,7 +139,7 @@ export default function RoomsPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-stone-50">
+        <main className="min-h-screen bg-stone-50 overflow-x-hidden max-w-[100vw]">
             <Navbar variant="light" />
 
             {/* Page Header */}

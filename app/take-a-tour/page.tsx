@@ -8,7 +8,41 @@ export const metadata = {
     description: "Watch our tour video and explore the photo gallery of Sukrutham Farmstay. Experience the authentic Kerala heritage and organic farming life.",
 };
 
+import fs from "fs";
+import path from "path";
+
 export default function TakeATour() {
+    // Dynamically read images from the specified folder
+    const interiorDirPath = path.join(process.cwd(), "public", "Tak a tour page", "Interior and Exterior");
+    const farmDirPath = path.join(process.cwd(), "public", "Tak a tour page", "Around the farm");
+    const natureDirPath = path.join(process.cwd(), "public", "Tak a tour page", "Near the farm");
+    
+    let dynamicStayImages: { src: string; alt: string }[] = [];
+    let dynamicFarmImages: { src: string; alt: string }[] = [];
+    let dynamicNatureImages: { src: string; alt: string }[] = [];
+
+    const getImagesFromDir = (dirPath: string, publicPath: string) => {
+        try {
+            if (fs.existsSync(dirPath)) {
+                const files = fs.readdirSync(dirPath);
+                return files
+                    .filter(file => /\.(jpg|jpeg|png|webp|gif|avif)$/i.test(file))
+                    .map(file => ({
+                        src: `${publicPath}/${file}`,
+                        alt: file.split(".")[0].replace(/-/g, " ").replace(/_/g, " ")
+                            .split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                    }));
+            }
+        } catch (error) {
+            console.error(`Error reading images directory at ${dirPath}:`, error);
+        }
+        return [];
+    };
+
+    dynamicStayImages = getImagesFromDir(interiorDirPath, "/Tak a tour page/Interior and Exterior");
+    dynamicFarmImages = getImagesFromDir(farmDirPath, "/Tak a tour page/Around the farm");
+    dynamicNatureImages = getImagesFromDir(natureDirPath, "/Tak a tour page/Near the farm");
+
     return (
         <main className="min-h-screen bg-stone-50 selection:bg-primary/20 selection:text-primary-dark">
             <Navbar variant="light" />
@@ -52,7 +86,11 @@ export default function TakeATour() {
             </section>
 
             {/* Gallery Section */}
-            <TourGallery />
+            <TourGallery 
+                initialStayImages={dynamicStayImages} 
+                initialFarmImages={dynamicFarmImages} 
+                initialNatureImages={dynamicNatureImages}
+            />
 
             <Footer />
         </main>

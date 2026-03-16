@@ -180,7 +180,7 @@ export default function OurGuestsPage() {
     const filteredTestimonials = testimonials.filter(t => t.region === activeTab);
 
     return (
-        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans relative">
+        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans relative overflow-x-hidden max-w-[100vw]">
             <Navbar />
 
             {/* --- Hero Section --- */}
@@ -249,7 +249,7 @@ export default function OurGuestsPage() {
                         <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-8">Memories from Around the World</h2>
 
                         {/* Tabs */}
-                        <div className="inline-flex bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20">
+                        <div className="flex flex-nowrap overflow-x-auto whitespace-nowrap max-w-full bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20 snap-x">
                             <button
                                 onClick={() => setActiveTab('India')}
                                 className={cn(
@@ -281,7 +281,7 @@ export default function OurGuestsPage() {
                         {filteredTestimonials.map((testimonial, idx) => (
                             <div
                                 key={`${activeTab}-${idx}`}
-                                className="break-inside-avoid bg-white rounded-[2rem] p-8 shadow-sm border border-stone-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                                className="break-inside-avoid bg-white rounded-[2rem] p-6 md:p-8 mx-2 md:mx-0 shadow-sm border border-stone-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                             >
                                 <div className="flex gap-1 mb-6">
                                     {[...Array(testimonial.rating || 5)].map((_, i) => (

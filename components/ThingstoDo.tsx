@@ -81,7 +81,7 @@ export default function Experience() {
                             {/* Gradient Overlay - Darker at bottom for text readability */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
-                            <div className="absolute bottom-0 left-0 p-8 w-full flex flex-col justify-end h-full">
+                            <div className="absolute bottom-0 left-0 p-5 md:p-8 w-full flex flex-col justify-end h-full">
                                 <div className="mt-auto">
                                     <h3 className="text-2xl font-display font-bold text-white mb-2 leading-tight">{item.title}</h3>
                                     <p className="text-white/90 text-sm leading-relaxed mb-6 line-clamp-3">

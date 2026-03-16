@@ -5,28 +5,55 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { Quote, Leaf, Sun, Award, Star, Heart, Linkedin, Youtube, Calendar, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { blogPosts } from "@/lib/blogData";
 
+const HERO_IMAGES = [
+    { src: "/hero-carousel/slide1.jpg", extraOverlay: "bg-stone-950/40" },
+    { src: "/Ariel View/home exterior.png", extraOverlay: "" },
+    { src: "/Ariel View/ariel view nearby place.png", extraOverlay: "" },
+];
+
 export default function OurStory() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % HERO_IMAGES.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
     return (
-        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans">
+        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans overflow-x-hidden max-w-[100vw]">
             <Navbar />
 
             {/* --- Immersive Full-Screen Hero Section --- */}
             <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
                 <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/hero-carousel/slide1.jpg"
-                        alt="Sukrutham Farmstay"
-                        fill
-                        className="object-cover opacity-60 mix-blend-overlay"
-                        priority
-                    />
-                    {/* Dark gradient at the top specifically to ensure Navbar text is visible */}
-                    {/* Refined Darker Overlay for Text Visibility */}
-                    <div className="absolute inset-0 bg-stone-950/40 z-10"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-transparent z-10"></div>
+                    {HERO_IMAGES.map((slide, index) => (
+                        <div
+                            key={slide.src}
+                            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
+                                index === currentSlide ? "opacity-100" : "opacity-0"
+                            }`}
+                        >
+                            <Image
+                                src={slide.src}
+                                alt="Sukrutham Farmstay"
+                                fill
+                                className="object-cover"
+                                priority={index === 0}
+                            />
+                            {/* Per-slide extra overlay for images that need it */}
+                            {slide.extraOverlay && (
+                                <div className={`absolute inset-0 ${slide.extraOverlay}`} />
+                            )}
+                        </div>
+                    ))}
+                    {/* Global gradient — only at bottom for text legibility */}
+                    <div className="absolute inset-0 bg-stone-950/20 z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent z-10"></div>
                 </div>
 
                 {/* Hero Content */}
@@ -51,7 +78,7 @@ export default function OurStory() {
                         <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
                             <Award className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
                             <h3 className="text-white font-bold text-lg mb-1">Govt. Certified</h3>
-                            <p className="text-stone-300 text-xs tracking-widest uppercase">Diamond Class</p>
+                            <p className="text-xs tracking-widest uppercase drop-shadow-sm" style={{ color: '#FBFF00' }}>Diamond Class</p>
                         </div>
 
                         {/* Booking.com */}

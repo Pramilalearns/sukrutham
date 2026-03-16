@@ -8,23 +8,19 @@ import { ArrowDown } from "lucide-react";
 
 // Chapter 1: The Heritage Home (Indoors, Architecture, Verandahs)
 const stayImages = [
-    { src: "/s1.jpg", alt: "Heritage Interiors", className: "h-64" },
-    { src: "/s2.jpg", alt: "Cozy Corners", className: "h-80" },
-    { src: "/s9.jpg", alt: "Heritage Room", className: "h-64" },
-    { src: "/s4.jpg", alt: "Verandah Views", className: "h-72" },
-    { src: "/s5.jpg", alt: "Rustic Bedroom", className: "h-64" },
-    { src: "/tour-2.jpg", alt: "Traditional Verandah", className: "h-80" },
-    { src: "/tour-7.jpg", alt: "Living Space", className: "h-64" },
-    { src: "/s6.jpg", alt: "Wooden Ceilings", className: "h-64" },
-    { src: "/s3.jpg", alt: "Traditional Architecture", className: "h-56" },
-    { src: "/s12.jpg", alt: "Heritage Architecture", className: "h-64" },
-    { src: "/s11.jpg", alt: "Intricate Details", className: "h-56" },
-    { src: "/tour-9.jpg", alt: "Dining Hall", className: "h-64" },
-    { src: "/tour-8.jpg", alt: "Peaceful Sit-out", className: "h-72" },
-    { src: "/s7.jpg", alt: "Verandah Seating", className: "h-64" },
-    { src: "/s8.jpg", alt: "Traditional Decor", className: "h-56" },
-    { src: "/20.jpg", alt: "Guest Accommodation", className: "h-80" },
-    { src: "/21.jpg", alt: "Interior Ambience", className: "h-64" },
+    { src: "/Interior and Exterior/2.jpg", alt: "Heritage Verandah", className: "h-80" },
+    { src: "/Interior and Exterior/3.jpg", alt: "Living Space", className: "h-64" },
+    { src: "/Interior and Exterior/6.jpg", alt: "Traditional Architecture", className: "h-72" },
+    { src: "/Interior and Exterior/7.jpg", alt: "Heritage Details", className: "h-64" },
+    { src: "/Interior and Exterior/9.jpg", alt: "Cozy Interiors", className: "h-80" },
+    { src: "/Interior and Exterior/room-bedroom.png", alt: "Heritage Bedroom", className: "h-64" },
+    { src: "/Interior and Exterior/room-view-modern.png", alt: "Modern Comfort", className: "h-72" },
+    { src: "/Interior and Exterior/s12.jpg", alt: "Classic Architecture", className: "h-64" },
+    { src: "/Interior and Exterior/4.jpg", alt: "Farmstay Ambience", className: "h-56" },
+    { src: "/Interior and Exterior/8.jpg", alt: "Rustic Charm", className: "h-64" },
+    { src: "/Interior and Exterior/11.jpg", alt: "Heritage Balcony", className: "h-72" },
+    { src: "/Interior and Exterior/12.jpg", alt: "Wooden Details", className: "h-64" },
+    { src: "/Interior and Exterior/475262115.jpg", alt: "Authentic Stay", className: "h-80" },
 ];
 
 // Chapter 2: Life on the Farm (Farming, Harvest, Animals, Culture)
@@ -67,54 +63,92 @@ const natureImages = [
     { src: "/new11.jpeg", alt: "Cloudy Skies", className: "h-56" },
 ];
 
-export default function TourGallery() {
+interface ImageItem {
+    src: string;
+    alt: string;
+    className?: string;
+}
+
+export default function TourGallery({ initialStayImages, initialFarmImages, initialNatureImages }: { 
+    initialStayImages?: ImageItem[], 
+    initialFarmImages?: ImageItem[],
+    initialNatureImages?: ImageItem[]
+}) {
+    // Height classes to rotate through for dynamic images to maintain masonry look
+    const heightClasses = ["h-64", "h-80", "h-72", "h-56"];
+    
+    // Use dynamic images if provided, otherwise fallback to static stayImages
+    const displayStayImages = initialStayImages 
+        ? initialStayImages.map((img, idx) => ({
+            ...img,
+            className: img.className || heightClasses[idx % heightClasses.length]
+        }))
+        : stayImages;
+
+    const displayFarmImages = initialFarmImages
+        ? initialFarmImages.map((img, idx) => ({
+            ...img,
+            className: img.className || heightClasses[idx % heightClasses.length]
+        }))
+        : farmImages;
+
+    const displayNatureImages = initialNatureImages
+        ? initialNatureImages.map((img, idx) => ({
+            ...img,
+            className: img.className || heightClasses[idx % heightClasses.length]
+        }))
+        : natureImages;
+
     return (
         <div className="bg-stone-50">
-
-            {/* Chapter 1: The Heritage Home (Sticky Layout - Left) */}
-            <section className="relative py-24 px-6 md:px-12 lg:px-20 border-b border-stone-200">
-                <div className="container mx-auto flex flex-col lg:flex-row gap-16">
-                    {/* Sticky Content - Left Side */}
-                    <div className="lg:w-1/3 pt-12">
-                        <div className="sticky top-32">
-                            <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
-                                Chapter I
-                            </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
-                                The Heritage Home
-                            </h2>
-                            <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                                Step into a home that breathes history. Built with traditional Kerala architecture, every wooden pillar and terracotta tile tells a story of the past, while offering the comfort of the present.
-                            </p>
-                            <div className="hidden lg:block w-12 h-1 bg-primary mb-8" />
-                        </div>
-                    </div>
-
-                    {/* Scrollable Gallery - Right Side */}
-                    <div className="lg:w-2/3">
-                        <div className="columns-1 md:columns-2 gap-6 space-y-6">
-                            {stayImages.map((img, idx) => (
-                                <div key={idx} className={cn("relative rounded-2xl overflow-hidden group break-inside-avoid shadow-sm", img.className)}>
-                                    <Image
-                                        src={img.src}
-                                        alt={img.alt}
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 90vw, 33vw"
-                                        loading="lazy"
-                                        quality={75}
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                        <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                                            {img.alt}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
+ 
+             {/* Chapter 1: The Heritage Home (Sticky Layout - Left) */}
+             <section className="relative py-24 px-6 md:px-12 lg:px-20 border-b border-stone-200">
+                 <div className="container mx-auto flex flex-col lg:flex-row gap-16">
+                     {/* Sticky Content - Left Side */}
+                     <div className="lg:w-1/3 pt-12">
+                         <div className="sticky top-32">
+                             <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
+                                 The Interior & Exterior
+                             </span>
+                             <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-2">
+                                 The Soul of Sukrutham
+                             </h2>
+                             <p className="text-primary font-medium italic mb-6">
+                                 Where the air feels lighter, and the wood looks lived-in.
+                             </p>
+                             <p className="text-lg text-stone-600 leading-relaxed mb-8">
+                                 We didn&apos;t just build a stay; we curated a home. Take a peek at the rooms where you&apos;ll wake up to birdsong and the cozy nooks that make &quot;doing nothing&quot; feel like an art form. It&apos;s traditional, it&apos;s premium, and it&apos;s waiting for you.
+                             </p>
+                             <div className="hidden lg:block w-12 h-1 bg-primary mb-8" />
+                         </div>
+                     </div>
+ 
+                     {/* Scrollable Gallery - Right Side */}
+                     <div className="lg:w-2/3">
+                         <div className="columns-1 md:columns-2 gap-6 space-y-6">
+                             {displayStayImages.map((img, idx) => (
+                                 <div key={idx} className={cn("relative rounded-2xl overflow-hidden group break-inside-avoid shadow-sm", img.className)}>
+                                     <Image
+                                         src={img.src}
+                                         alt={img.alt}
+                                         fill
+                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                         sizes="(max-width: 768px) 90vw, 33vw"
+                                         loading="lazy"
+                                         quality={75}
+                                     />
+                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                         <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                                             {img.alt}
+                                         </p>
+                                     </div>
+                                 </div>
+                             ))}
+                         </div>
+                     </div>
+                 </div>
+             </section>
 
             {/* Chapter 2: Farm Life (Sticky Layout - Right) */}
             <section className="relative py-24 px-6 md:px-12 lg:px-20 border-b border-stone-200 bg-white">
@@ -123,13 +157,16 @@ export default function TourGallery() {
                     <div className="lg:w-1/3 pt-12">
                         <div className="sticky top-32">
                             <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
-                                Chapter II
+                                Around the farm
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
+                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-2">
                                 Life on the Farm
                             </h2>
+                            <p className="text-accent font-medium italic mb-6">
+                                Follow the birds to where the harvest begins.
+                            </p>
                             <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                                Walk through our organic fields, meet our farm animals, and witness the journey of food from soil to table. It's a connection to the earth that you can feel.
+                                Our backyard isn&rsquo;t a lawn&mdash;it&rsquo;s a living, breathing ecosystem. Follow the trail from the lush green paddy fields to our garden, where butterflies lead the way and peacocks occasionally drop by for a visit. These photos capture the raw, unscripted beauty of farm life. Can you smell the fresh earth yet?
                             </p>
                             <div className="hidden lg:block w-12 h-1 bg-accent mb-8" />
                         </div>
@@ -138,7 +175,7 @@ export default function TourGallery() {
                     {/* Scrollable Gallery - Left Side */}
                     <div className="lg:w-2/3">
                         <div className="columns-1 md:columns-2 gap-6 space-y-6">
-                            {farmImages.map((img, idx) => (
+                            {displayFarmImages.map((img, idx) => (
                                 <div key={idx} className={cn("relative rounded-2xl overflow-hidden group break-inside-avoid shadow-sm", img.className)}>
                                     <Image
                                         src={img.src}
@@ -168,13 +205,16 @@ export default function TourGallery() {
                     <div className="lg:w-1/3 pt-12">
                         <div className="sticky top-32">
                             <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
-                                Chapter III
+                                The Neighborhood
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
-                                Untouched Nature
+                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-2">
+                                Just Beyond the Gate
                             </h2>
+                            <p className="text-primary font-medium italic mb-6">
+                                The best views are just a short stroll away.
+                            </p>
                             <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                                The sound of the wind, the rustle of leaves, and the song of birds. Nature here isn't just a view; it's a feeling that stays with you.
+                                The magic of Sukrutham doesn&rsquo;t stop at our gate. We&rsquo;re lucky to be surrounded by the quiet rhythm of the nearby lake and the vast, open energy of the dam. Whether you&rsquo;re looking for a peaceful sunset spot or a place to watch the water flow, these landscapes are the perfect backdrop for your offbeat Kerala adventure.
                             </p>
                             <div className="hidden lg:block w-12 h-1 bg-primary mb-8" />
                         </div>
@@ -183,7 +223,7 @@ export default function TourGallery() {
                     {/* Scrollable Gallery - Right Side */}
                     <div className="lg:w-2/3">
                         <div className="columns-1 md:columns-2 gap-6 space-y-6">
-                            {natureImages.map((img, idx) => (
+                            {displayNatureImages.map((img, idx) => (
                                 <div key={idx} className={cn("relative rounded-2xl overflow-hidden group break-inside-avoid shadow-sm", img.className)}>
                                     <Image
                                         src={img.src}

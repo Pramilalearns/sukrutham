@@ -141,7 +141,7 @@ export default function Amenities() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <section className="pt-12 pb-6 bg-white relative" id="amenities">
+        <section className="pt-20 md:pt-24 pb-6 bg-white relative" id="amenities">
             <div className="absolute inset-0 bg-pattern-dots text-stone-200 mask-gradient-b"></div>
             <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
                 {/* Heading */}

@@ -155,11 +155,12 @@ export default function ActivitiesPage() {
             <section className="relative min-h-[100vh] flex items-center pt-28 pb-16 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/activities-page/hd_activities_hero.png"
+                        src="/Ariel View/ariel view.png"
                         alt="Activities Hero"
                         fill
                         sizes="100vw"
                         className="object-cover"
+                        style={{ filter: "brightness(1.2) contrast(1.1) saturate(1.3)" }}
                         priority
                     />
                     <div className="absolute inset-0 bg-stone-900/60"></div>
