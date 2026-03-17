@@ -5,7 +5,7 @@ export default function Metrics() {
     return (
         <section className="w-full relative z-20">
             {/* Sleek, full-width glassmorphism bar integrated into the hero */}
-            <div className="bg-black/40 backdrop-blur-xl border-t border-white/10 text-white py-6 md:py-8 px-4">
+            <div className="bg-black/40 backdrop-blur-xl border-t border-white/10 text-white py-4 md:py-[22px] px-4">
                 <div className="container mx-auto flex justify-between items-center max-w-7xl divide-x divide-white/10">
 
                     <div className="flex flex-col items-center justify-center text-center flex-1 px-4">

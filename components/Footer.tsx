@@ -28,13 +28,13 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand */}
                     <div className="space-y-4">
-                        <Link href="/" className="relative block h-16 w-48 md:h-24 md:w-64 mb-2">
+                        <Link href="/" className="relative block h-16 w-48 md:h-24 md:w-64 mb-10 ml-[-28.5px]">
                             <Image
                                 src="/logo/logo.png"
                                 alt="Sukrutham Farmstay"
                                 fill
                                 sizes="(max-width: 768px) 192px, 256px"
-                                className="object-contain object-left scale-[1.35] origin-left"
+                                className="object-contain object-left scale-[2.7] origin-left"
                             />
                         </Link>
                         <p className="text-sm leading-relaxed">
@@ -43,7 +43,7 @@ export default function Footer() {
                         <div className="flex space-x-4">
                             <Link href="https://facebook.com/sukruthamfarmstay" target="_blank" className="hover:text-accent transition-colors"><Facebook className="w-5 h-5" /></Link>
                             <Link href="https://instagram.com/sukruthamfarmstay" target="_blank" className="hover:text-accent transition-colors"><Instagram className="w-5 h-5" /></Link>
-                            <Link href="https://www.linkedin.com/company/sukruthamfarmstay/" target="_blank" className="hover:text-accent transition-colors"><Linkedin className="w-5 h-5" /></Link>
+                            <Link href="https://linkedin.com/company/sukruthamfarmstay/" target="_blank" className="hover:text-accent transition-colors"><Linkedin className="w-5 h-5" /></Link>
                         </div>
                     </div>
 
