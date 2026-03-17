@@ -8,13 +8,15 @@ interface ScrollAnimationProps {
     className?: string;
     animation?: "fade-up" | "fade-in" | "scale-up" | "fade-left" | "fade-right";
     delay?: number; // in ms
+    id?: string;
 }
 
 export default function ScrollAnimation({
     children,
     className,
     animation = "fade-up",
-    delay = 0
+    delay = 0,
+    id
 }: ScrollAnimationProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
@@ -64,6 +66,7 @@ export default function ScrollAnimation({
     return (
         <div
             ref={ref}
+            id={id}
             className={cn(
                 "transition-all duration-700 ease-out will-change-transform",
                 getAnimationClass(),

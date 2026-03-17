@@ -6,66 +6,80 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+const CATEGORY_MAPPING: Record<string, string> = {
+    "4.modern bathrooms": "Modern Bathrooms",
+    "modern bathrooms": "Modern Bathrooms",
+    "5.guest kitchen": "Guest Kitchen",
+    "guest kitchen": "Guest Kitchen",
+    "6.dining area": "Dining Area",
+    "dining area": "Dining Area",
+    "nadumuttam": "Nadumuttam",
+    "traditional hall": "Traditional Halls",
+    "traditional halls": "Traditional Halls",
+    "parking areas": "Parking Areas",
+    "parking": "Parking Areas"
+};
+
 const categories = [
-    "Room Interiors",
     "Modern Bathrooms",
     "Guest Kitchen",
-    "The Sit-out (Verandah)",
-    "Traditional Hall",
+    "Dining Area",
     "Nadumuttam",
-    "Parking"
+    "Traditional Halls",
+    "Parking Areas"
 ];
 
-const galleryImages = [
-    // Room Interiors
-    { src: "/room-gallery/room-1.jpg", category: "Room Interiors", alt: "Elegant Room Interior" },
-    { src: "/room-gallery/room-1a.jpg", category: "Room Interiors", alt: "Cozy Room Details" },
-    { src: "/room-gallery/room-1b.jpg", category: "Room Interiors", alt: "Room Seating Area" },
-    { src: "/room-gallery/room-2.jpg", category: "Room Interiors", alt: "Spacious Bedroom" },
-    { src: "/room-gallery/room-2a.jpg", category: "Room Interiors", alt: "Bedroom Decor" },
-    { src: "/room-gallery/room-2b.jpg", category: "Room Interiors", alt: "Relaxing Room Ambience" },
-    { src: "/room-gallery/room-2c.jpg", category: "Room Interiors", alt: "Room View" },
+const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+    "Modern Bathrooms": "Clean, Refreshing, and Thoughtfully Maintained",
+    "Guest Kitchen": "A Simple Space for Warm, Homemade Moments",
+    "Dining Area": "Where Meals Turn into Shared Memories",
+    "Nadumuttam": "The Heart of the Home, Open to Sky and Light",
+    "Traditional Halls": "Relax, Unwind, and Feel at Home",
+    "Parking Areas": "Secure, spacious, and conveniently located parking for your vehicles."
+};
 
-    // Modern Bathrooms
-    { src: "/room-gallery/bathroom-1.jpg", category: "Modern Bathrooms", alt: "Clean Modern Bathroom" },
-    { src: "/room-gallery/bathroom-2.jpg", category: "Modern Bathrooms", alt: "Premium Bathroom Fixtures" },
+interface GalleryImage {
+    src: string;
+    category: string;
+    heading: string;
+    alt: string;
+}
 
-    // Guest Kitchen
-    { src: "/room-gallery/kitchen.jpg", category: "Guest Kitchen", alt: "Fully Equipped Guest Kitchen" },
-    { src: "/room-gallery/kitchen-b.jpg", category: "Guest Kitchen", alt: "Kitchen Space" },
-    { src: "/room-gallery/dining-area.jpg", category: "Guest Kitchen", alt: "Communal Dining Area" },
-
-    // The Sit-out (Verandah)
-    { src: "/room-gallery/sitout-1.jpg", category: "The Sit-out (Verandah)", alt: "Peaceful Verandah" },
-    { src: "/room-gallery/sitout-2.jpg", category: "The Sit-out (Verandah)", alt: "Verandah Seating" },
-    { src: "/room-gallery/room-sitout-b.jpg", category: "The Sit-out (Verandah)", alt: "Private Room Sit-out" },
-
-    // Traditional Hall
-    { src: "/room-gallery/drawing-room.jpg", category: "Traditional Hall", alt: "Traditional Drawing Room" },
-    { src: "/room-gallery/drawing-room-b.jpg", category: "Traditional Hall", alt: "Heritage Drawing Room Details" },
-
-    // Nadumuttam
-    { src: "/room-gallery/nadumuttam-1b.jpg", category: "Nadumuttam", alt: "Classic Nadumuttam Architecture" },
-
-    // Parking
-    { src: "/room-gallery/car-park.jpg", category: "Parking", alt: "Secure Car Parking" },
-    { src: "/room-gallery/car-park (1).jpg", category: "Parking", alt: "Ample Parking Space" },
+const fallbackImages: GalleryImage[] = [
+    { src: "/room-gallery/4.Modern Bathrooms/bathroom-1.jpg", category: "Modern Bathrooms", heading: "Modern Bathrooms", alt: "Modern Bathrooms" },
+    { src: "/room-gallery/5.Guest Kitchen/kitchen.jpg", category: "Guest Kitchen", heading: "Guest Kitchen", alt: "Guest Kitchen" },
 ];
 
-export default function RoomGallery() {
-    const [activeCategory, setActiveCategory] = useState("Room Interiors");
-    const [activeImageId, setActiveImageId] = useState(galleryImages[0].src);
+export default function RoomGallery({ initialImages }: { initialImages?: Record<string, string[]> }) {
+    const [activeCategory, setActiveCategory] = useState("Modern Bathrooms");
+    
+    // Process initialImages into the flat galleryImages format
+    const galleryImages: GalleryImage[] = initialImages ? Object.entries(initialImages).flatMap(([folder, images]) => {
+        const category = CATEGORY_MAPPING[folder.toLowerCase()] || folder;
+        if (!categories.includes(category)) return []; // Filter out rooms (paddy, etc.)
+        
+        return images.map(src => {
+            return {
+                src,
+                category,
+                // Per user request: Use tab name as heading for the images, not filename
+                heading: category,
+                alt: category
+            };
+        });
+    }) : fallbackImages;
+
+    const [activeImageId, setActiveImageId] = useState(galleryImages[0]?.src || "");
     const filmstripRef = useRef<HTMLDivElement>(null);
 
     const filteredImages = galleryImages.filter(img => img.category === activeCategory);
 
-    // Update active image dynamically when category changes, smoothly resetting to the first of the new category
+    // Update active image dynamically when category changes
     useEffect(() => {
         if (filteredImages.length > 0) {
             setActiveImageId(filteredImages[0].src);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeCategory]);
+    }, [activeCategory, filteredImages.length]);
 
     // Auto-scroll the filmstrip so the active thumbnail is always strictly in view
     useEffect(() => {
@@ -93,12 +107,12 @@ export default function RoomGallery() {
 
     const handlePrev = () => {
         if (currentIndex > 0) setActiveImageId(filteredImages[currentIndex - 1].src);
-        else setActiveImageId(filteredImages[filteredImages.length - 1].src);
+        else if (filteredImages.length > 0) setActiveImageId(filteredImages[filteredImages.length - 1].src);
     };
 
     const handleNext = () => {
         if (currentIndex < filteredImages.length - 1) setActiveImageId(filteredImages[currentIndex + 1].src);
-        else setActiveImageId(filteredImages[0].src);
+        else if (filteredImages.length > 0) setActiveImageId(filteredImages[0].src);
     };
 
     return (
@@ -109,11 +123,11 @@ export default function RoomGallery() {
                 <ScrollAnimation className="text-center max-w-3xl mx-auto mb-12 relative">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#FAF8F5] rounded-full blur-[100px] -z-10 opacity-80"></div>
                     <span className="text-[#A48869] font-bold uppercase tracking-widest text-xs block mb-3">
-                        A VISUAL TOUR
+                        MORE SPACES
                     </span>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-stone-900 mb-6 tracking-tight">
-                        Every Corner <br className="md:hidden" />
-                        <span className="text-stone-500 italic font-serif">Tells a Story</span>
+                        Comfort Extends <br className="md:hidden" />
+                        <span className="text-stone-500 italic font-serif">Beyond Your Room</span>
                     </h2>
                     <p className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto">
                         A deeply immersive look at our crafted spaces and natural luxury.
@@ -153,7 +167,7 @@ export default function RoomGallery() {
                                     src={img.src}
                                     alt={img.alt}
                                     fill
-                                    priority={activeImage.src === img.src}
+                                    priority={activeImage?.src === img.src}
                                     className={cn(
                                         "object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)]",
                                         activeImage?.src === img.src
@@ -186,7 +200,7 @@ export default function RoomGallery() {
                                 </button>
                             </div>
 
-                            {/* Text Metadata Panel - Removed custom animate to rely purely on standard tailwind transition */}
+                            {/* Text Metadata Panel */}
                             <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 z-40 max-w-2xl transform transition-all duration-1000 ease-out translate-y-0 opacity-100">
                                 <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full border border-white/10">
                                     <div className="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
@@ -195,10 +209,10 @@ export default function RoomGallery() {
                                     </span>
                                 </div>
                                 <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-display font-medium leading-tight drop-shadow-xl tracking-tight mb-2">
-                                    {activeImage?.alt}
+                                    {activeImage?.heading}
                                 </h3>
                                 <p className="text-white/90 text-sm md:text-base max-w-xl font-light leading-relaxed drop-shadow-md hidden sm:block">
-                                    Experience the subtle elegance and careful design of our {activeImage?.category.toLowerCase()}. Every space is crafted to harmonize heritage aesthetics with serene comfort.
+                                    {CATEGORY_DESCRIPTIONS[activeImage?.category] || "Experience the subtle elegance and careful design of our crafted spaces."}
                                 </p>
                             </div>
 
@@ -208,7 +222,7 @@ export default function RoomGallery() {
                             </div>
                         </div>
 
-                        {/* Scrollable Filmstrip Ribbon (Vertical on Desktop, Horizontal on Mobile) */}
+                        {/* Scrollable Filmstrip Ribbon */}
                         <style dangerouslySetInnerHTML={{
                             __html: `
                             .hide-scroll::-webkit-scrollbar { display: none; }

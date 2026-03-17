@@ -12,9 +12,11 @@ import {
     MapPin, User, Droplets, Car, Plane, Leaf,
     Bike, Book, Clock, Ban, CheckCircle, BedDouble,
     MonitorCheck, Bath, Shirt, Table2, ChefHat, Sun, CloudRain,
-    Music, Star, HeartHandshake, HelpCircle, ChevronDown, ChevronUp
+    Music, Star, HeartHandshake, HelpCircle, ChevronDown, ChevronUp,
+    ChevronLeft, ChevronRight
 } from "lucide-react";
-import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
 
 // FAQ Item Component
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
@@ -35,13 +37,251 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
     );
 };
 
+const roomVisuals = [
+    {
+        id: "paddy",
+        name: "The Paddy Room",
+        subtitle: "Spacious & Serene",
+        description: "Experience the ultimate comfort in our most spacious room, featuring traditional aesthetics and a private verandah with stunning paddy views.",
+        images: [
+            "/room-gallery/1.Paddy Room/Copy of 5.jpg",
+            "/room-gallery/1.Paddy Room/room-2a.jpg",
+            "/room-gallery/1.Paddy Room/room-2b.jpg",
+            "/room-gallery/1.Paddy Room/room-2c.jpg",
+        ]
+    },
+    {
+        id: "tapioca",
+        name: "The Tapioca Room",
+        subtitle: "Tasteful & Verdant",
+        description: "A beautifully appointed room offering uninterrupted views of the lush greenery, perfect for those seeking connection with nature.",
+        images: [
+            "/room-gallery/2.Tapioca Room/room-1.jpg",
+            "/room-gallery/2.Tapioca Room/room-1a.jpg",
+            "/room-gallery/2.Tapioca Room/room-1b.jpg",
+            "/room-gallery/2.Tapioca Room/room-sitout-b.jpg",
+        ]
+    },
+    {
+        id: "pepper",
+        name: "The Pepper Room",
+        subtitle: "Natural & Authentic",
+        description: "Designed for the nature lover, this non-AC room offers authentic farm-life charm with natural ventilation and breezy rhythms.",
+        images: [
+            "/room-gallery/3.Pepper Room/pepper-room-stay-1.jpg",
+            "/room-gallery/3.Pepper Room/pepper-room-stay2.jpg",
+            "/room-gallery/3.Pepper Room/pepper3.jpeg",
+            "/room-gallery/3.Pepper Room/pepper6.jpeg",
+        ]
+    }
+];
+
+function RoomVisualTour({ activeTab, setActiveTab, roomImageData }: { activeTab: string, setActiveTab: (id: string) => void, roomImageData: Record<string, string[]> }) {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+    
+    const activeRoom = roomVisuals.find(r => r.id === activeTab) || roomVisuals[0];
+    const images = roomImageData[activeTab] || activeRoom.images;
+
+    // Reset image index when tab changes
+    useEffect(() => {
+        setCurrentImageIndex(0);
+    }, [activeTab]);
+
+    // Slideshow logic
+    useEffect(() => {
+        if (isHovered || images.length <= 1) return;
+        
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, [isHovered, images.length]);
+
+    const handlePrevImage = () => {
+        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    };
+
+    const handleNextImage = () => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    };
+
+    const scrollToIndex = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const yOffset = -100; // Offset for sticky navbar
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
+    return (
+        <section id="perspective" className="py-24 bg-stone-50 overflow-hidden border-t border-stone-100 scroll-mt-20">
+            <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
+                <ScrollAnimation className="text-center mb-16">
+                    <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Perspective</span>
+                    <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">A Visual Tour to Your Rooms</h2>
+                    <p className="text-lg text-stone-600 max-w-2xl mx-auto font-light">
+                        Take a closer look at the unique character and crafted details of each of our guest rooms.
+                    </p>
+                </ScrollAnimation>
+
+                {/* Tabs */}
+                <ScrollAnimation id="visual-tour-tabs" delay={100} className="flex justify-center mb-12 scroll-mt-32">
+                    <div className="flex p-1 bg-white border border-stone-200 rounded-2xl shadow-sm overflow-x-auto no-scrollbar max-w-full">
+                        <div className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center min-w-max sm:min-w-0">
+                            {roomVisuals.map((room) => (
+                                <button
+                                    key={room.id}
+                                    onClick={() => setActiveTab(room.id)}
+                                    className={cn(
+                                        "px-4 md:px-6 py-3 rounded-xl text-xs md:text-sm font-bold transition-all duration-500 whitespace-nowrap cursor-pointer",
+                                        activeTab === room.id
+                                            ? "bg-primary text-white shadow-md shadow-primary/20"
+                                            : "text-stone-500 hover:text-primary hover:bg-stone-50"
+                                    )}
+                                >
+                                    {room.name}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </ScrollAnimation>
+
+                {/* Content Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    {/* Left Side: Slideshow Block (8 cols) */}
+                    <div className="lg:col-span-8 relative group">
+                        <div 
+                            className="relative aspect-video rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl bg-stone-200"
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                        >
+                            {images.map((img, idx) => (
+                                <div
+                                    key={idx}
+                                    className={cn(
+                                        "absolute inset-0 transition-opacity duration-1000",
+                                        idx === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                                    )}
+                                >
+                                    <div className={cn(
+                                        "relative w-full h-full transition-transform duration-700",
+                                        isHovered && idx === currentImageIndex ? "scale-110" : "scale-100"
+                                    )}>
+                                        <Image
+                                            src={img}
+                                            alt={`${activeRoom.name} visual ${idx + 1}`}
+                                            fill
+                                            className="object-cover"
+                                            priority={idx === 0}
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Nav Arrows */}
+                            <button 
+                                onClick={handlePrevImage}
+                                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
+                            >
+                                <ChevronLeft className="w-6 h-6" />
+                            </button>
+                            <button 
+                                onClick={handleNextImage}
+                                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
+                            >
+                                <ChevronRight className="w-6 h-6" />
+                            </button>
+
+                            {/* Overlay info */}
+                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                                {images.map((_, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setCurrentImageIndex(idx)}
+                                        className={cn(
+                                            "w-2.5 h-2.5 rounded-full transition-all duration-300 shadow-sm cursor-pointer",
+                                            idx === currentImageIndex ? "bg-white w-8" : "bg-white/40 hover:bg-white/60"
+                                        )}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side: Info & Actions (4 cols) */}
+                    <div className="lg:col-span-4 space-y-8">
+                        <div className="bg-white p-8 md:p-10 rounded-[1.5rem] md:rounded-[2rem] border border-stone-100 shadow-sm">
+                            <span className="text-accent font-bold tracking-widest uppercase text-xs mb-3 block">{activeRoom.subtitle}</span>
+                            <h3 className="text-3xl md:text-4xl font-display font-medium text-stone-900 mb-6">
+                                Inside {activeRoom.name}
+                            </h3>
+                            <p className="text-stone-600 font-light text-base md:text-lg leading-relaxed">
+                                {activeRoom.description}
+                            </p>
+                        </div>
+
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col gap-4 pt-4">
+                            <Link
+                                href="/book"
+                                className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-2xl transition-all hover:shadow-xl active:scale-95 text-center"
+                            >
+                                Book Your Stay
+                            </Link>
+                            <button
+                                onClick={() => scrollToIndex('rooms-header')}
+                                className="inline-flex items-center justify-center gap-2 bg-white border-2 border-primary/20 hover:border-primary text-primary font-bold py-4 px-8 rounded-2xl transition-all hover:bg-stone-50 active:scale-95 text-center cursor-pointer"
+                            >
+                                Compare Rooms
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 export default function RoomsPage() {
     const [activeAltIndex, setActiveAltIndex] = useState<number | null>(0);
+    const [activeRoomTab, setActiveRoomTab] = useState(roomVisuals[0].id);
+    const [roomImageData, setRoomImageData] = useState<Record<string, string[]>>({});
+
+    // Fetch dynamic images once at the page level
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const res = await fetch('/api/room-images');
+                const data = await res.json();
+                if (!data.error) {
+                    setRoomImageData(data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch room images:", err);
+            }
+        };
+        fetchImages();
+    }, []);
+
+    const handleViewRoom = (roomId: string) => {
+        setActiveRoomTab(roomId);
+        const element = document.getElementById('visual-tour-tabs');
+        if (element) {
+            const yOffset = -120; // Offset to show tabs and content
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     const rooms = [
         {
+            id: "paddy",
             title: "The Paddy Room",
             size: "180 sq.ft.",
-            image: "/room-view-2.png", // Using view image for Paddy room
+            image: "/room-gallery/1.Paddy Room/room-2a.jpg",
             features: ["AC Room", "Private Verandah"],
             description: "Our most spacious room (180 sq.ft.), designed with a blend of traditional Kerala aesthetics and modern luxury. Features a private sit-out verandah with panoramic views of the lush paddy fields.",
             priceTwin: "₹6,500",
@@ -57,9 +297,10 @@ export default function RoomsPage() {
             ]
         },
         {
+            id: "tapioca",
             title: "The Tapioca Room",
             size: "120 sq.ft.",
-            image: "/room-view-modern.png",
+            image: "/room-gallery/2.Tapioca Room/room-1.jpg",
             features: ["AC Room", "Paddy View"],
             description: "A tastefully appointed 120 sq.ft. room, offering uninterrupted views of the greenery surrounding the property. Perfect for comfort and connection.",
             priceTwin: "₹5,500",
@@ -74,9 +315,10 @@ export default function RoomsPage() {
             ]
         },
         {
+            id: "pepper",
             title: "The Pepper Room",
             size: "120 sq.ft.",
-            image: "/room-bedroom.png", // Using bedroom image for Pepper room
+            image: "/room-gallery/3.Pepper Room/pepper3.jpeg",
             features: ["Non-AC Room", "Natural Ventilation"],
             description: "A 120 sq.ft. room designed for the nature lover. Experience natural ventilation and the authentic, breezy rhythm of farm life.",
             priceTwin: "₹4,500",
@@ -143,7 +385,7 @@ export default function RoomsPage() {
             <Navbar variant="light" />
 
             {/* Page Header */}
-            <div className="pt-32 pb-12 bg-primary/5 text-center px-4">
+            <div id="rooms-header" className="pt-32 pb-12 bg-primary/5 text-center px-4 scroll-mt-20">
                 <h1 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-4">
                     Our Guest Rooms
                 </h1>
@@ -154,7 +396,7 @@ export default function RoomsPage() {
 
             {/* Section 1: Guest Rooms */}
             <section className="py-16 container mx-auto px-6 md:px-12 lg:px-20">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div id="rooms-list" className="grid grid-cols-1 lg:grid-cols-3 gap-8 scroll-mt-32">
                     {rooms.map((room, index) => (
                         <ScrollAnimation key={index} delay={index * 100} className="h-full">
                             <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 flex flex-col h-full group">
@@ -178,6 +420,14 @@ export default function RoomsPage() {
                                             </span>
                                         )}
                                     </div>
+
+                                    {/* View Room CTA Overlay */}
+                                    <button 
+                                        onClick={() => handleViewRoom(room.id)}
+                                        className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm text-primary text-[10px] md:text-xs font-bold px-4 py-2 rounded-full shadow-lg z-20 cursor-pointer border border-primary/10 hover:bg-primary hover:text-white transition-all duration-300 active:scale-95"
+                                    >
+                                        View Room
+                                    </button>
                                 </div>
 
                                 {/* Content */}
@@ -316,7 +566,14 @@ export default function RoomsPage() {
                 </div>
             </section>
 
-            <RoomGallery />
+            {/* --- A Visual Tour to Your Rooms --- */}
+            <RoomVisualTour 
+                activeTab={activeRoomTab} 
+                setActiveTab={setActiveRoomTab} 
+                roomImageData={roomImageData}
+            />
+
+            <RoomGallery initialImages={roomImageData} />
 
             {/* Section 7: Important House Rules (Moved up) */}
             <section className="py-24 bg-white relative">

@@ -25,7 +25,7 @@ export default function OurStory() {
         return () => clearInterval(timer);
     }, []);
     return (
-        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans overflow-x-hidden max-w-[100vw]">
+        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans">
             <Navbar />
 
             {/* --- Immersive Full-Screen Hero Section --- */}
@@ -175,6 +175,75 @@ export default function OurStory() {
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </section>
+
+            {/* --- The Meaning Behind Our Logo --- */}
+            <section className="py-24 px-6 md:px-12 bg-[#F9F8F6] border-y border-stone-100 relative">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-0"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-0"></div>
+
+                <div className="container mx-auto max-w-5xl relative z-10">
+                    <div className="flex flex-col lg:flex-row gap-16">
+                        {/* Logo Visual Side - Column stretches by default */}
+                        <div className="w-full lg:w-1/2">
+                            <div className="lg:sticky lg:top-32 z-20">
+                                <div className="relative group p-12 bg-white rounded-[3rem] shadow-xl shadow-stone-200/50 border border-stone-100 transition-transform duration-700 hover:scale-[1.02]">
+                                    <div className="relative w-64 h-48 md:w-80 md:h-60">
+                                        <Image
+                                            src="/logo/logo.png"
+                                            alt="Sukrutham Farmstay Logo"
+                                            fill
+                                            className="object-contain scale-[1.5]"
+                                        />
+                                    </div>
+                                    {/* Decorative elements around the logo box */}
+                                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center animate-pulse">
+                                        <Leaf className="w-6 h-6 text-accent" />
+                                    </div>
+                                    <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center animate-pulse delay-700">
+                                        <Sun className="w-6 h-6 text-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Text Explanation Side */}
+                        <div className="w-full lg:w-1/2 space-y-8 pt-8 lg:pt-0">
+                            <div>
+                                <span className="text-stone-400 font-bold tracking-widest uppercase text-xs mb-3 block">
+                                    Our Identity, Rooted in Nature
+                                </span>
+                                <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6 leading-tight">
+                                    The Meaning Behind <br />
+                                    <span className="text-primary italic">Our Logo</span>
+                                </h2>
+                                <p className="text-lg text-stone-600 leading-relaxed font-light">
+                                    The Sukrutham Farmstay logo reflects the spirit of the land, tradition, and heritage that define our space.
+                                </p>
+                            </div>
+
+                            <div className="space-y-6 text-stone-600 font-light leading-relaxed">
+                                <p>
+                                    At the beginning of the logo, the <span className="text-primary font-bold">paddy motif</span> gently introduces the name “Sukrutham,” symbolizing the farmstay’s roots in agriculture, abundance, and a deep connection to nature. In Kerala’s culture, paddy fields represent life, nourishment, and the rhythm of rural living — values that are at the core of Sukrutham.
+                                </p>
+                                <p>
+                                    The <span className="font-display font-bold italic text-stone-800">classic serif typography</span> of the name evokes a sense of timelessness and heritage. It reflects traditional craftsmanship, ancient construction techniques, and the cultural depth that inspires both the design and philosophy of the farmstay.
+                                </p>
+                                <p>
+                                    The <span className="text-accent font-bold">golden tone</span> used in the logo represents prosperity, warmth, and the richness of the land. Complementing this, <span className="text-primary font-bold">green</span> is a key brand color, reflecting Kerala’s lush landscapes — fertile fields, coconut groves, and the serenity of nature.
+                                </p>
+                                <div className="pt-4 border-t border-stone-200">
+                                    <p className="text-xl font-display italic text-stone-800">
+                                        Together, these elements represent what Sukrutham stands for:
+                                    </p>
+                                    <p className="mt-4 text-primary font-bold text-lg leading-relaxed">
+                                        a place where nature, tradition, and peaceful living come together to create meaningful memories.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
