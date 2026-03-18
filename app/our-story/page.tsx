@@ -11,8 +11,8 @@ import { blogPosts } from "@/lib/blogData";
 
 const HERO_IMAGES = [
     { src: "/hero-carousel/slide1.jpg", extraOverlay: "bg-stone-950/40" },
-    { src: "/Ariel View/home exterior.png", extraOverlay: "" },
-    { src: "/Ariel View/ariel view nearby place.png", extraOverlay: "" },
+    { src: "/ariel-view/home-exterior.png", extraOverlay: "" },
+    { src: "/ariel-view/ariel-view-nearby-place.png", extraOverlay: "" },
 ];
 
 export default function OurStory() {
@@ -58,7 +58,7 @@ export default function OurStory() {
 
                 {/* Hero Content */}
                 <div className="container mx-auto px-6 md:px-12 relative z-20 text-center flex flex-col items-center justify-center pt-24 pb-8 flex-grow">
-                    <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ WebkitBackdropFilter: 'blur(12px)' }}>
                         Our Story
                     </span>
 
@@ -75,14 +75,14 @@ export default function OurStory() {
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 animate-in slide-in-from-bottom-8 duration-1000 delay-300">
 
                         {/* Govt Certified */}
-                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default" style={{ WebkitBackdropFilter: 'blur(12px)' }}>
                             <Award className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
                             <h3 className="text-white font-bold text-lg mb-1">Govt. Certified</h3>
                             <p className="text-xs tracking-widest uppercase drop-shadow-sm" style={{ color: '#FBFF00' }}>Diamond Class</p>
                         </div>
 
                         {/* Booking.com */}
-                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default" style={{ WebkitBackdropFilter: 'blur(12px)' }}>
                             <div className="flex items-center justify-center gap-1 mb-3 text-white">
                                 <span className="font-bold text-3xl leading-none">9.8</span>
                                 <span className="text-stone-400 font-medium text-lg leading-none">/10</span>
@@ -92,14 +92,14 @@ export default function OurStory() {
                         </div>
 
                         {/* Sustainable */}
-                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default" style={{ WebkitBackdropFilter: 'blur(12px)' }}>
                             <Leaf className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
                             <h3 className="text-white font-bold text-lg mb-1">Sustainable</h3>
                             <p className="text-stone-300 text-xs tracking-widest uppercase">Architecture</p>
                         </div>
 
                         {/* Authentic */}
-                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default">
+                        <div className="p-6 rounded-3xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-colors flex flex-col items-center justify-center text-center group cursor-default" style={{ WebkitBackdropFilter: 'blur(12px)' }}>
                             <Heart className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-500" />
                             <h3 className="text-white font-bold text-lg mb-1">Authentic Kerala</h3>
                             <p className="text-stone-300 text-xs tracking-widest uppercase">Hospitality</p>
@@ -150,7 +150,7 @@ export default function OurStory() {
                         <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 flex flex-col sm:flex-row items-center gap-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-400">
                             <div className="relative w-2/3 sm:w-2/5 shrink-0 group mx-auto sm:mx-0">
                                 <Image
-                                    src="/Booking.com awards/Digital-Award_RA-2026.png"
+                                    src="/booking-awards/Digital-Award_RA-2026.png"
                                     alt="Booking.com Traveller Review Awards 2026"
                                     width={300}
                                     height={300}

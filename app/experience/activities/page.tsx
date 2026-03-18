@@ -155,7 +155,7 @@ export default function ActivitiesPage() {
             <section className="relative min-h-[100vh] flex items-center pt-28 pb-16 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/Ariel View/ariel view.png"
+                        src="/ariel-view/ariel-view.png"
                         alt="Activities Hero"
                         fill
                         sizes="100vw"

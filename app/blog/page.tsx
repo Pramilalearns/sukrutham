@@ -140,7 +140,7 @@ export default function BlogPage() {
 
             {/* --- Sticky Category Navigation Bar --- */}
             {/* Using sticky positioning and calculating top offset to stay below the fixed navbar (navbar is usually h-20 or h-24). */}
-            <div className="sticky top-20 z-40 bg-[#FDFCF8]/85 backdrop-blur-xl border-y border-stone-200/50 shadow-sm py-3 transition-all duration-300">
+            <div className="sticky top-[82px] md:top-[106px] z-40 bg-[#FDFCF8]/85 backdrop-blur-xl border-y border-stone-200/50 shadow-sm py-3 transition-all duration-300">
                 <div className="container mx-auto px-6 md:px-12 lg:px-20">
                     <div className="flex gap-2 min-w-max overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
                         {categories.map((cat, i) => (

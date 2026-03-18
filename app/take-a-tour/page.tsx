@@ -13,9 +13,9 @@ import path from "path";
 
 export default function TakeATour() {
     // Dynamically read images from the specified folder
-    const interiorDirPath = path.join(process.cwd(), "public", "Tak a tour page", "Interior and Exterior");
-    const farmDirPath = path.join(process.cwd(), "public", "Tak a tour page", "Around the farm");
-    const natureDirPath = path.join(process.cwd(), "public", "Tak a tour page", "Near the farm");
+    const interiorDirPath = path.join(process.cwd(), "public", "take-a-tour-page", "Interior-and-Exterior");
+    const farmDirPath = path.join(process.cwd(), "public", "take-a-tour-page", "Around-the-farm");
+    const natureDirPath = path.join(process.cwd(), "public", "take-a-tour-page", "Near-the-farm");
     
     let dynamicStayImages: { src: string; alt: string }[] = [];
     let dynamicFarmImages: { src: string; alt: string }[] = [];
@@ -39,9 +39,9 @@ export default function TakeATour() {
         return [];
     };
 
-    dynamicStayImages = getImagesFromDir(interiorDirPath, "/Tak a tour page/Interior and Exterior");
-    dynamicFarmImages = getImagesFromDir(farmDirPath, "/Tak a tour page/Around the farm");
-    dynamicNatureImages = getImagesFromDir(natureDirPath, "/Tak a tour page/Near the farm");
+    dynamicStayImages = getImagesFromDir(interiorDirPath, "/take-a-tour-page/Interior-and-Exterior");
+    dynamicFarmImages = getImagesFromDir(farmDirPath, "/take-a-tour-page/Around-the-farm");
+    dynamicNatureImages = getImagesFromDir(natureDirPath, "/take-a-tour-page/Near-the-farm");
 
     return (
         <main className="min-h-screen bg-stone-50 selection:bg-primary/20 selection:text-primary-dark">

@@ -22,28 +22,28 @@ export default function SeasonsFestivalsPage() {
             title: "Ancient Shiva Temple",
             location: "Vicinity of Sukrutham",
             description: "Visit a venerated 1500-year-old Shiva temple, recognized as a UNESCO World Heritage site, showcasing breathtaking ancient architecture and deep spiritual resonance.",
-            image: "/season and festivals/shiva-temple-thrissur-kerala.jpg",
+            image: "/seasons-and-festivals/shiva-temple-thrissur-kerala.jpg",
             icon: Landmark
         },
         {
             title: "Guruvayoor Temple",
             location: "Vicinity of Sukrutham",
             description: "Experience the profound spirituality of the world-renowned Guruvayoor temple, a central pillar of Kerala's religious landscape and culture.",
-            image: "/season and festivals/guruvayur temple.jpg",
+            image: "/seasons-and-festivals/guruvayur-temple.jpg",
             icon: Search
         },
         {
             title: "Oldest Mosque in India",
             location: "Historic District",
             description: "Plan a visit to the oldest mosque in India, a remarkable symbol of Kerala's rich, diverse, and deeply rooted multicultural history.",
-            image: "/season and festivals/mosque.jpg",
+            image: "/seasons-and-festivals/mosque.jpg",
             icon: MapPin
         },
         {
             title: "Historic St. Thomas Church",
             location: "Kerala Coast",
             description: "Step back in time at the historic church marking the exact location where St. Thomas, a direct disciple of Jesus Christ, landed in India in AD 32.",
-            image: "/season and festivals/Historic St. Thomas Church.jpg",
+            image: "/seasons-and-festivals/Historic-St.-Thomas-Church.jpg",
             icon: Church
         }
     ];
@@ -59,7 +59,7 @@ export default function SeasonsFestivalsPage() {
             title: "Thrissur Pooram",
             season: "April - May",
             description: "Experience the world-famous Thrissur Pooram, an unparalleled cultural spectacle of majestic caparisoned elephants, rhythmic percussion ensembles, and vibrant colors.",
-            image: "/season and festivals/Pooram.webp",
+            image: "/seasons-and-festivals/Pooram.webp",
         }
     ];
 
@@ -72,7 +72,7 @@ export default function SeasonsFestivalsPage() {
             <section className="relative min-h-[100vh] flex items-center pt-28 pb-16 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/season and festivals/Hero.jpg"
+                        src="/seasons-and-festivals/Hero.jpg"
                         alt="Kerala Mural Culture Art"
                         fill
                         sizes="100vw"

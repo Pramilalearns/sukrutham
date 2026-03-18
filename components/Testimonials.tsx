@@ -103,13 +103,20 @@ const ScrollerRow = ({
     return (
         <div className="relative group/row max-w-[100vw] overflow-hidden">
             {/* Side Gradients for Blur Effect - Wider and with Backdrop Blur */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-stone-50 via-stone-50/80 to-transparent z-20 pointer-events-none backdrop-blur-[2px]" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-stone-50 via-stone-50/80 to-transparent z-20 pointer-events-none backdrop-blur-[2px]" />
+            <div 
+                className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-stone-50 via-stone-50/80 to-transparent z-20 pointer-events-none backdrop-blur-[2px]" 
+                style={{ WebkitBackdropFilter: 'blur(2px)' }}
+            />
+            <div 
+                className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-stone-50 via-stone-50/80 to-transparent z-20 pointer-events-none backdrop-blur-[2px]" 
+                style={{ WebkitBackdropFilter: 'blur(2px)' }}
+            />
 
             {/* Manual Controls - Visible on Hover/Interaction */}
             <button
                 onClick={() => scrollManual("prev")}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-stone-700 hover:bg-white hover:scale-110 transition-all opacity-0 group-hover/row:opacity-100"
+                style={{ WebkitBackdropFilter: 'blur(4px)' }}
                 aria-label="Scroll Left"
             >
                 <ChevronLeft className="w-5 h-5" />
@@ -117,6 +124,7 @@ const ScrollerRow = ({
             <button
                 onClick={() => scrollManual("next")}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md flex items-center justify-center text-stone-700 hover:bg-white hover:scale-110 transition-all opacity-0 group-hover/row:opacity-100"
+                style={{ WebkitBackdropFilter: 'blur(4px)' }}
                 aria-label="Scroll Right"
             >
                 <ChevronRight className="w-5 h-5" />

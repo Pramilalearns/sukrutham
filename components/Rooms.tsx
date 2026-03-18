@@ -8,19 +8,19 @@ export default function Rooms() {
             title: "Traditional Style",
             description: "Large, airy rooms built with classic Kerala woodwork. Feels like a traditional homestay in Thrissur with modern privacy.",
             // Traditional Kerala Farm House
-            image: "/Home-stay section/Traditional Style.jpg",
+            image: "/home-stay-section/Traditional-Style.jpg",
         },
         {
             title: "Modern Essentials",
             description: "Clean, comfortable beds with attached modern bathrooms. 24/7 hot water and fast Wi-Fi included.",
             // Traditional Kerala House Exterior
-            image: "/Home-stay section/Modern Essentials.jpg",
+            image: "/home-stay-section/Modern-Essentials.jpg",
         },
         {
             title: "Nature at Your Window",
             description: "Large windows looking out over green paddy fields. Wake up to birdsong in a peaceful setting.",
             // Farm House in Nature
-            image: "/Home-stay section/Nature at Your Window.jpeg",
+            image: "/home-stay-section/Nature-at-Your-Window.jpeg",
         },
     ];
 

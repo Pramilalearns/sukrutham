@@ -178,7 +178,7 @@ export default function Amenities() {
                         {amenityGroups[activeTab].items.map((item, index) => (
                             <div
                                 key={index}
-                                className="flex items-start gap-4 p-5 rounded-xl bg-stone-50/50 border border-stone-100 hover:border-primary/20 hover:bg-white hover:shadow-sm transition-all duration-300 animate-in fade-in slide-in-from-bottom-2 duration-500 will-change-transform"
+                                className="flex items-start gap-4 p-5 rounded-xl bg-stone-50/50 border border-stone-100 hover:border-primary/20 hover:bg-white hover:shadow-sm transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
                                 style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'both' }}
                             >
                                 <div className="shrink-0 p-3 bg-primary/10 rounded-full text-primary">

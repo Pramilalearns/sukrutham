@@ -40,7 +40,7 @@ const EXPERIENCES = [
         description: "Food at Sukrutham isn't just a meal; it's an experience. We serve authentic, traditional Kerala cuisine made from fresh, locally sourced, and farm-grown ingredients. Relish the rich spices, the fresh coconut, and age-old recipes handed down through generations, all prepared with love in our farm kitchen.",
         href: "/experience/local-savor",
         ctaText: "Explore the Cuisine",
-        image: "/savor/Kitchen Community.webp",
+        image: "/savor/kitchen-community.webp",
         icon: Utensils,
         highlights: ["Farm-to-Table Dining", "Traditional Kerala Sadhya", "Dine under Stars", "Locally Sourced Spices", "Cooking Demos"]
     },
@@ -51,7 +51,7 @@ const EXPERIENCES = [
         description: "Kerala's culture is deeply intertwined with its seasons and festivals. Whether it's the spectacular Thrissur Pooram, the harvest joys of Onam, or the tranquil beauty of the monsoon rains washing over the green hills, joining us during these vibrant times offers a front-row seat to the cultural heartbeat of the state.",
         href: "/experience/seasons-festivals",
         ctaText: "View the Festive Calendar",
-        image: "/season and festivals/Hero.jpg",
+        image: "/seasons-and-festivals/Hero.jpg",
         icon: CalendarHeart,
         highlights: ["Thrissur Pooram", "Onam Harvest Festival", "Monsoon Retreats", "Vishu Celebrations"]
     },

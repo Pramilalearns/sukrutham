@@ -7,16 +7,16 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const CATEGORY_MAPPING: Record<string, string> = {
-    "4.modern bathrooms": "Modern Bathrooms",
-    "modern bathrooms": "Modern Bathrooms",
-    "5.guest kitchen": "Guest Kitchen",
-    "guest kitchen": "Guest Kitchen",
-    "6.dining area": "Dining Area",
-    "dining area": "Dining Area",
+    "4.modern-bathrooms": "Modern Bathrooms",
+    "modern-bathrooms": "Modern Bathrooms",
+    "5.guest-kitchen": "Guest Kitchen",
+    "guest-kitchen": "Guest Kitchen",
+    "6.dining-area": "Dining Area",
+    "dining-area": "Dining Area",
     "nadumuttam": "Nadumuttam",
-    "traditional hall": "Traditional Halls",
-    "traditional halls": "Traditional Halls",
-    "parking areas": "Parking Areas",
+    "traditional-hall": "Traditional Halls",
+    "traditional-halls": "Traditional Halls",
+    "parking-areas": "Parking Areas",
     "parking": "Parking Areas"
 };
 
@@ -46,8 +46,8 @@ interface GalleryImage {
 }
 
 const fallbackImages: GalleryImage[] = [
-    { src: "/room-gallery/4.Modern Bathrooms/bathroom-1.jpg", category: "Modern Bathrooms", heading: "Modern Bathrooms", alt: "Modern Bathrooms" },
-    { src: "/room-gallery/5.Guest Kitchen/kitchen.jpg", category: "Guest Kitchen", heading: "Guest Kitchen", alt: "Guest Kitchen" },
+    { src: "/room-gallery/modern-bathrooms/bathroom-1.jpg", category: "Modern Bathrooms", heading: "Modern Bathrooms", alt: "Modern Bathrooms" },
+    { src: "/room-gallery/guest-kitchen/kitchen.jpg", category: "Guest Kitchen", heading: "Guest Kitchen", alt: "Guest Kitchen" },
 ];
 
 export default function RoomGallery({ initialImages }: { initialImages?: Record<string, string[]> }) {

@@ -44,10 +44,10 @@ const roomVisuals = [
         subtitle: "Spacious & Serene",
         description: "Experience the ultimate comfort in our most spacious room, featuring traditional aesthetics and a private verandah with stunning paddy views.",
         images: [
-            "/room-gallery/1.Paddy Room/Copy of 5.jpg",
-            "/room-gallery/1.Paddy Room/room-2a.jpg",
-            "/room-gallery/1.Paddy Room/room-2b.jpg",
-            "/room-gallery/1.Paddy Room/room-2c.jpg",
+            "/room-gallery/paddy-room/Copy-of-5.jpg",
+            "/room-gallery/paddy-room/room-2a.jpg",
+            "/room-gallery/paddy-room/room-2b.jpg",
+            "/room-gallery/paddy-room/room-2c.jpg",
         ]
     },
     {
@@ -56,10 +56,10 @@ const roomVisuals = [
         subtitle: "Tasteful & Verdant",
         description: "A beautifully appointed room offering uninterrupted views of the lush greenery, perfect for those seeking connection with nature.",
         images: [
-            "/room-gallery/2.Tapioca Room/room-1.jpg",
-            "/room-gallery/2.Tapioca Room/room-1a.jpg",
-            "/room-gallery/2.Tapioca Room/room-1b.jpg",
-            "/room-gallery/2.Tapioca Room/room-sitout-b.jpg",
+            "/room-gallery/tapioca-room/room-1.jpg",
+            "/room-gallery/tapioca-room/room-1a.jpg",
+            "/room-gallery/tapioca-room/room-1b.jpg",
+            "/room-gallery/tapioca-room/room-sitout-b.jpg",
         ]
     },
     {
@@ -68,10 +68,10 @@ const roomVisuals = [
         subtitle: "Natural & Authentic",
         description: "Designed for the nature lover, this non-AC room offers authentic farm-life charm with natural ventilation and breezy rhythms.",
         images: [
-            "/room-gallery/3.Pepper Room/pepper-room-stay-1.jpg",
-            "/room-gallery/3.Pepper Room/pepper-room-stay2.jpg",
-            "/room-gallery/3.Pepper Room/pepper3.jpeg",
-            "/room-gallery/3.Pepper Room/pepper6.jpeg",
+            "/room-gallery/pepper-room/pepper-room-stay-1.jpg",
+            "/room-gallery/pepper-room/pepper-room-stay2.jpg",
+            "/room-gallery/pepper-room/pepper3.jpeg",
+            "/room-gallery/pepper-room/pepper6.jpeg",
         ]
     }
 ];
@@ -185,12 +185,14 @@ function RoomVisualTour({ activeTab, setActiveTab, roomImageData }: { activeTab:
                             <button 
                                 onClick={handlePrevImage}
                                 className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
+                                style={{ WebkitBackdropFilter: 'blur(12px)' }}
                             >
                                 <ChevronLeft className="w-6 h-6" />
                             </button>
                             <button 
                                 onClick={handleNextImage}
                                 className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
+                                style={{ WebkitBackdropFilter: 'blur(12px)' }}
                             >
                                 <ChevronRight className="w-6 h-6" />
                             </button>
@@ -281,7 +283,7 @@ export default function RoomsPage() {
             id: "paddy",
             title: "The Paddy Room",
             size: "180 sq.ft.",
-            image: "/room-gallery/1.Paddy Room/room-2a.jpg",
+            image: "/room-gallery/paddy-room/room-2a.jpg",
             features: ["AC Room", "Private Verandah"],
             description: "Our most spacious room (180 sq.ft.), designed with a blend of traditional Kerala aesthetics and modern luxury. Features a private sit-out verandah with panoramic views of the lush paddy fields.",
             priceTwin: "₹6,500",
@@ -300,7 +302,7 @@ export default function RoomsPage() {
             id: "tapioca",
             title: "The Tapioca Room",
             size: "120 sq.ft.",
-            image: "/room-gallery/2.Tapioca Room/room-1.jpg",
+            image: "/room-gallery/tapioca-room/room-1.jpg",
             features: ["AC Room", "Paddy View"],
             description: "A tastefully appointed 120 sq.ft. room, offering uninterrupted views of the greenery surrounding the property. Perfect for comfort and connection.",
             priceTwin: "₹5,500",
@@ -318,7 +320,7 @@ export default function RoomsPage() {
             id: "pepper",
             title: "The Pepper Room",
             size: "120 sq.ft.",
-            image: "/room-gallery/3.Pepper Room/pepper3.jpeg",
+            image: "/room-gallery/pepper-room/pepper3.jpeg",
             features: ["Non-AC Room", "Natural Ventilation"],
             description: "A 120 sq.ft. room designed for the nature lover. Experience natural ventilation and the authentic, breezy rhythm of farm life.",
             priceTwin: "₹4,500",
@@ -411,11 +413,17 @@ export default function RoomsPage() {
                                     />
                                     <div className="absolute top-4 left-4 flex flex-col gap-2">
                                         {room.features.includes("AC Room") ? (
-                                            <span className="bg-emerald-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                            <span 
+                                                className="bg-emerald-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm"
+                                                style={{ WebkitBackdropFilter: 'blur(4px)' }}
+                                            >
                                                 AC
                                             </span>
                                         ) : (
-                                            <span className="bg-amber-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                            <span 
+                                                className="bg-amber-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm"
+                                                style={{ WebkitBackdropFilter: 'blur(4px)' }}
+                                            >
                                                 Non-AC
                                             </span>
                                         )}
@@ -425,6 +433,7 @@ export default function RoomsPage() {
                                     <button 
                                         onClick={() => handleViewRoom(room.id)}
                                         className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm text-primary text-[10px] md:text-xs font-bold px-4 py-2 rounded-full shadow-lg z-20 cursor-pointer border border-primary/10 hover:bg-primary hover:text-white transition-all duration-300 active:scale-95"
+                                        style={{ WebkitBackdropFilter: 'blur(4px)' }}
                                     >
                                         View Room
                                     </button>

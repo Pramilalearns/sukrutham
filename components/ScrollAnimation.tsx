@@ -68,7 +68,7 @@ export default function ScrollAnimation({
             ref={ref}
             id={id}
             className={cn(
-                "transition-all duration-700 ease-out will-change-transform",
+                "transition-all duration-700 ease-out",
                 getAnimationClass(),
                 className
             )}

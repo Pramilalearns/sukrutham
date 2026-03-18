@@ -166,7 +166,10 @@ export default function TextToSpeech({ htmlContent }: TextToSpeechProps) {
     if (!isSupported) return null;
 
     return (
-        <div className="flex items-center gap-3 bg-white/50 backdrop-blur-md border border-stone-200 px-1.5 py-1.5 rounded-full w-fit shadow-sm">
+        <div 
+            className="flex items-center gap-3 bg-white/50 backdrop-blur-md border border-stone-200 px-1.5 py-1.5 rounded-full w-fit shadow-sm"
+            style={{ WebkitBackdropFilter: 'blur(12px)' }}
+        >
             <div className="pl-3 pr-2 flex items-center gap-2 text-stone-600">
                 <Volume2 className={`w-4 h-4 ${isPlaying ? 'text-primary animate-pulse' : ''}`} />
                 <span className="text-sm font-semibold tracking-wide uppercase text-stone-500">Listen</span>

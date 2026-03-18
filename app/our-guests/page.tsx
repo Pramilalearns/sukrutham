@@ -198,7 +198,10 @@ export default function OurGuestsPage() {
                 </div>
 
                 <div className="container mx-auto px-6 md:px-12 relative z-20 text-center flex flex-col items-center justify-center pt-32 pb-32 flex-grow">
-                    <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <span 
+                        className="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-widest uppercase mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700"
+                        style={{ WebkitBackdropFilter: 'blur(12px)' }}
+                    >
                         Guestbook
                     </span>
                     <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
@@ -249,11 +252,14 @@ export default function OurGuestsPage() {
                         <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-8">Memories from Around the World</h2>
 
                         {/* Tabs */}
-                        <div className="flex flex-nowrap overflow-x-auto whitespace-nowrap max-w-full bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20 snap-x">
+                        <div 
+                            className="flex flex-nowrap overflow-x-auto whitespace-nowrap max-w-full bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20 snap-x"
+                            style={{ WebkitBackdropFilter: 'blur(4px)' }}
+                        >
                             <button
                                 onClick={() => setActiveTab('India')}
                                 className={cn(
-                                    "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2",
+                                    "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer",
                                     activeTab === 'India'
                                         ? "bg-primary text-white shadow-md transform scale-105"
                                         : "text-stone-600 hover:text-stone-900 hover:bg-white/50"
@@ -265,7 +271,7 @@ export default function OurGuestsPage() {
                             <button
                                 onClick={() => setActiveTab('International')}
                                 className={cn(
-                                    "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2",
+                                    "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer",
                                     activeTab === 'International'
                                         ? "bg-primary text-white shadow-md transform scale-105"
                                         : "text-stone-600 hover:text-stone-900 hover:bg-white/50"

@@ -22,7 +22,7 @@ const LocalSavorPage = () => {
             title: "Rambutan & Mangosteen",
             location: "Fruit Orchards",
             description: "Pluck and eat directly from the trees during harvest season. Nature's own candy store, grown without a single synthetic chemical.",
-            image: "/savor/Rambutan & Mangosteen.webp",
+            image: "/savor/rambutan-mangosteen.webp",
             icon: Leaf
         },
         {
@@ -36,7 +36,7 @@ const LocalSavorPage = () => {
             title: "Kitchen Community",
             location: "Zero Waste",
             description: "Join us in the traditional kitchen. Peel shallots, grind spices on the ammi kallu, and learn ancestral recipes passed down through generations.",
-            image: "/savor/Kitchen Community.webp",
+            image: "/savor/kitchen-community.webp",
             icon: Utensils
         }
     ];
@@ -50,7 +50,7 @@ const LocalSavorPage = () => {
         {
             title: "Stone Ground Spices",
             description: "We completely avoid electrical machines for grinding. Spices are manually crushed on heavy granite stones, ensuring their volatile oils and deep aromas are perfectly released into the food.",
-            image: "/savor/Stone Ground Spices.jpg"
+            image: "/savor/stone-ground-spices.jpg"
         }
     ];
 

@@ -58,6 +58,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     ? "bg-stone-50/90 backdrop-blur-md shadow-sm py-[9px]" // Reduced scrolled padding
                     : "bg-transparent py-[9px]" // Reduced transparent padding
             )}
+            style={scrolled ? { WebkitBackdropFilter: 'blur(12px)' } : {}}
         >
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between md:justify-start">
                 {/* Logo */}

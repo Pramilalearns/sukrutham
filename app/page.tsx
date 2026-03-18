@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Metrics from "@/components/Metrics";
@@ -66,9 +67,9 @@ export default function Home() {
             <p className="text-xl text-stone-300 mb-8">
               Book your stay at Sukrutham Farmstay and immerse yourself in the true essence of Kerala.
             </p>
-            <a href="/book" className="inline-block bg-primary hover:bg-primary/90 text-white text-lg font-semibold px-10 py-4 rounded-full transition-all shadow-lg hover:shadow-primary/50 hover:-translate-y-1">
+            <Link href="/book" className="inline-block bg-primary hover:bg-primary/90 text-white text-lg font-semibold px-10 py-4 rounded-full transition-all shadow-lg hover:shadow-primary/50 hover:-translate-y-1">
               Book Your Stay Now
-            </a>
+            </Link>
           </div>
 
           {/* Sticky Note Quote */}
@@ -78,7 +79,7 @@ export default function Home() {
             >
               <div
                 className="absolute inset-0 pointer-events-none"
-                style={{ backgroundColor: "lab(84.2787% 6.27849 82.0646 / .3)" }}
+                style={{ backgroundColor: "rgba(212, 175, 55, 0.3)" }}
               ></div>
               <div className="absolute -top-4 -left-2 text-[10rem] text-stone-800/15 font-serif leading-none select-none z-10">
                 &#8220;

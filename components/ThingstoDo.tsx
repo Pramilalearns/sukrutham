@@ -23,7 +23,7 @@ const experiences = [
     {
         title: "Local Savor (Food)",
         description: "Enjoy home-cooked authentic Kerala cuisines made with fresh ingredients from our own farm. You will experience the real farm-to-table dining.",
-        image: "/Home-Experience/local food.jpeg",
+        image: "/Home-Experience/local-food.jpeg",
         link: "/experience/local-savor",
         // Tall vertical block (Col 4, Row 1-2)
         className: "md:col-span-1 md:row-span-2",
@@ -98,7 +98,10 @@ export default function Experience() {
 
                                         {/* Hover State: Glass Button */}
                                         <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                            <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-semibold hover:bg-white/30 transition-colors">
+                                            <span 
+                                                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-semibold hover:bg-white/30 transition-colors"
+                                                style={{ WebkitBackdropFilter: 'blur(12px)' }}
+                                            >
                                                 View Details <ArrowRight className="w-4 h-4" />
                                             </span>
                                         </div>
