@@ -60,25 +60,30 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
             )}
             style={scrolled ? { WebkitBackdropFilter: 'blur(12px)' } : {}}
         >
-            <div className="container mx-auto px-6 md:px-12 flex items-center justify-between md:justify-start">
-                {/* Logo */}
-                <Link href="/" className="relative h-16 w-48 md:h-[88px] md:w-64 flex-shrink-0 z-50">
-                    <Image
-                        src="/logo/logo.png"
-                        alt="Sukrutham Farmstay"
-                        fill
-                        sizes="(max-width: 768px) 192px, 256px"
-                        className="object-contain object-left md:object-center scale-[1.35] origin-left md:origin-center"
-                        priority
-                    />
-                </Link>
+            <div className="container mx-auto px-6 md:px-10 flex items-center min-h-[88px]">
+                {/* Logo Section - Left side */}
+                <div className="flex-shrink-0 z-50">
+                    <Link href="/" className="relative h-12 w-30 md:h-[60px] md:w-[150px] block">
+                        <Image
+                            src="/logo/logo-250pxX100px.svg"
+                            alt="Sukrutham Farmstay"
+                            fill
+                            sizes="(max-width: 768px) 120px, 150px"
+                            className="object-contain object-left"
+                            priority
+                        />
+                    </Link>
+                </div>
 
-                {/* Desktop Nav - Centered */}
-                <div className="hidden md:flex flex-1 items-center justify-center space-x-2 lg:space-x-4">
+                {/* Left Spacer - Guaranteed equal to Right Spacer */}
+                <div className="hidden md:flex flex-1"></div>
+
+                {/* Desktop Nav - Centered between spacers */}
+                <div className="hidden md:flex items-center space-x-1 lg:space-x-2 z-40">
                     <Link
                         href="/our-story"
                         className={cn(
-                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/our-story" && cn(
                                 "text-primary font-bold",
@@ -91,7 +96,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/rooms"
                         className={cn(
-                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/rooms" && cn(
                                 "text-primary font-bold",
@@ -104,7 +109,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/take-a-tour"
                         className={cn(
-                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/take-a-tour" && cn(
                                 "text-primary font-bold",
@@ -117,7 +122,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/blog"
                         className={cn(
-                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             (pathname === "/blog" || pathname?.startsWith("/blog/")) && cn(
                                 "text-primary font-bold",
@@ -141,7 +146,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         <Link
                             href="/experience"
                             className={cn(
-                                "flex items-center gap-1 text-sm transition-all hover:text-accent pl-3 pr-1 py-1.5 rounded-l-full",
+                                "flex items-center gap-1 text-xs lg:text-sm transition-all hover:text-accent pl-2 lg:pl-3 pr-1 py-1.5 rounded-l-full whitespace-nowrap",
                                 scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
                                 pathname?.startsWith("/experience") && "text-primary font-bold drop-shadow-none"
                             )}
@@ -151,12 +156,12 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className={cn(
-                                "flex items-center justify-center pr-3 pl-1 py-1.5 rounded-r-full transition-colors focus:outline-none",
+                                "flex items-center justify-center pr-2 lg:pr-3 pl-1 py-1.5 rounded-r-full transition-colors focus:outline-none",
                                 scrolled || variant === "light" ? "text-stone-700 hover:text-accent" : "text-white hover:text-accent drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
                                 pathname?.startsWith("/experience") && "text-primary font-bold drop-shadow-none"
                             )}
                         >
-                            <ChevronDown className="w-4 h-4 mt-[1px]" />
+                            <ChevronDown className="w-3 h-3 lg:w-4 lg:h-4 mt-[1px]" />
                         </button>
 
                         {dropdownOpen && (
@@ -182,7 +187,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/our-guests"
                         className={cn(
-                            "text-sm transition-all hover:text-accent px-3 py-1.5 rounded-full flex items-center",
+                            "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
                             pathname === "/our-guests" && cn(
                                 "text-primary font-bold",
@@ -194,24 +199,28 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     </Link>
                 </div>
 
-                {/* Right Side Actions */}
-                <div className="hidden md:flex items-center space-x-6 flex-shrink-0 z-50">
+                {/* Right Spacer - Guaranteed equal to Left Spacer */}
+                <div className="hidden md:flex flex-1"></div>
+
+                {/* Right Side Actions - Right side */}
+                <div className="hidden md:flex items-center space-x-3 lg:space-x-6 justify-end flex-shrink-0 z-50">
                     {/* Contact Number */}
                     <a
                         href="tel:+919940668754"
                         className={cn(
-                            "flex items-center gap-2 text-sm font-bold transition-colors hover:text-accent",
+                            "flex items-center gap-1.5 text-xs lg:text-sm font-bold transition-colors hover:text-accent whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                         )}
                     >
                         <Phone className="w-4 h-4" />
-                        <span>+91 99406 68754</span>
+                        <span className="hidden lg:inline">+91 99406 68754</span>
+                        <span className="lg:hidden">Call</span>
                     </a>
 
                     <Link
                         href="/book"
                         className={cn(
-                            "px-6 py-3 rounded-full text-sm font-bold tracking-wide transition-all hover:shadow-lg active:scale-95 uppercase",
+                            "px-4 lg:px-6 py-2 md:py-3 rounded-full text-xs lg:text-sm font-bold tracking-wide transition-all hover:shadow-lg active:scale-95 uppercase whitespace-nowrap flex-shrink-0",
                             scrolled || variant === "light"
                                 ? "bg-primary text-white hover:bg-primary/90 shadow-md"
                                 : "bg-white text-primary hover:bg-stone-100 shadow-lg"
@@ -223,7 +232,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden p-2 ml-auto"
+                    className="md:hidden p-2"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >

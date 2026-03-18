@@ -28,13 +28,13 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand */}
                     <div className="space-y-4">
-                        <Link href="/" className="relative block h-16 w-48 md:h-24 md:w-64 mb-10 ml-[-28.5px]">
+                        <Link href="/" className="relative block h-16 w-32 md:h-20 md:w-56 mb-8 -ml-6">
                             <Image
                                 src="/logo/logo.png"
                                 alt="Sukrutham Farmstay"
                                 fill
-                                sizes="(max-width: 768px) 192px, 256px"
-                                className="object-contain object-left scale-[2.7] origin-left"
+                                sizes="(max-width: 768px) 128px, 224px"
+                                className="object-contain object-left scale-[1.8] origin-left"
                             />
                         </Link>
                         <p className="text-sm leading-relaxed">

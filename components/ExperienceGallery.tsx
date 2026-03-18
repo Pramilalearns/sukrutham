@@ -86,13 +86,13 @@ export default function ExperienceGallery() {
                                     // To make them stack properly, the container needs height. 
                                     // Actually, a simpler 'stack' visual for this request with sticky:
                                     // Just sticky top. 
-                                    top: `${120 + (idx * 20)}px`,
+                                    top: `${80 + (idx * 20)}px`,
                                     zIndex: idx + 1,
                                     // Random slight rotation for 'scattered' stack feel
-                                    transform: `rotate(${idx % 2 === 0 ? 1 : -1}deg)`
+                                    transform: `rotate(${idx % 2 === 0 ? 0.5 : -0.5}deg)`
                                 }}
                             >
-                                <div className={cn("relative h-[350px] md:h-[550px] w-full", img.className)}>
+                                <div className={cn("relative h-[350px] md:h-[450px] lg:h-[500px] w-full", img.className)}>
                                     <Image
                                         src={img.src}
                                         alt={img.alt}
