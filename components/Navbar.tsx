@@ -69,13 +69,13 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
             <div className="container mx-auto px-6 md:px-10 flex items-center" style={{ height: '80px', minHeight: '80px' }}>
                 {/* Logo Section - Left side */}
                 <div className="flex-shrink-0 z-50">
-                    <Link href="/" className="block h-[48px] w-[120px] relative">
+                    <Link href="/" className="block relative">
                         <Image
                             src="/logo/logo.png"
                             alt="Sukrutham Farmstay"
                             width={120}
                             height={48}
-                            className="object-contain object-left"
+                            className="w-[120px] h-[48px] object-contain object-left"
                             priority
                         />
                     </Link>
