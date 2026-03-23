@@ -175,7 +175,8 @@ function RoomVisualTour({ activeTab, setActiveTab, roomImageData }: { activeTab:
                                             alt={`${activeRoom.name} visual ${idx + 1}`}
                                             fill
                                             className="object-cover"
-                                            priority={idx === 0}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
+                                            priority={idx === 0 || idx === 1}
                                         />
                                     </div>
                                 </div>
@@ -711,13 +712,13 @@ export default function RoomsPage() {
                         </ScrollAnimation>
 
                         {/* Evening Magic & Dining */}
-                        <ScrollAnimation delay={100} className="relative bg-[#F4EDE4] p-8 md:p-12 rounded-[2rem] shadow-sm border border-[#EAE0D3] flex flex-col justify-center overflow-hidden">
-                            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay">
+                        <ScrollAnimation delay={100} className="relative bg-[#F4EDE4] p-8 md:p-12 rounded-[2rem] shadow-sm border border-[#EAE0D3] flex flex-col justify-center">
+                            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay rounded-[2rem] overflow-hidden pointer-events-none">
                                 <Image src="/kerala-hills.jpg" alt="Texture" fill sizes="100vw" className="object-cover grayscale" />
                             </div>
 
                             {/* Floating Decorative Corner Image */}
-                            <div className="absolute -bottom-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#F4EDE4] shadow-lg overflow-hidden z-20 -rotate-6 hidden sm:block">
+                            <div className="absolute -bottom-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 rotate-6 hidden sm:block">
                                 <Image src="/kerala-food-v2.png" alt="Dining" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
@@ -750,17 +751,17 @@ export default function RoomsPage() {
                         </ScrollAnimation>
 
                         {/* WFH & Recharge */}
-                        <ScrollAnimation delay={300} className="lg:col-span-2 relative bg-[#EAECE4] p-8 md:p-10 rounded-[2rem] shadow-sm border border-[#DCE2D4] overflow-hidden flex flex-col md:flex-row gap-8 items-center">
+                        <ScrollAnimation delay={300} className="lg:col-span-2 relative bg-[#EAECE4] p-8 md:p-10 rounded-[2rem] shadow-sm border border-[#DCE2D4] flex flex-col justify-center">
                             <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
                                 <Sun className="w-64 h-64 text-emerald-900" />
                             </div>
 
                             {/* Floating Decorative Corner Image */}
-                            <div className="absolute -top-6 -left-6 lg:-left-6 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-[#EAECE4] shadow-lg overflow-hidden z-20 rotate-3 hidden md:block">
+                            <div className="absolute -top-6 -left-6 lg:-left-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 -rotate-6 hidden sm:block">
                                 <Image src="/room-view-modern.png" alt="Work" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
-                            <div className="relative z-10 w-full md:pl-24 lg:pl-32">
+                            <div className="relative z-10 w-full mb-10 pt-4 md:pt-0 pl-0 sm:pl-20 md:pl-24 lg:pl-32">
                                 <h3 className="text-2xl md:text-3xl font-display font-medium text-stone-900 mb-4">A Perfect Place to Work and Recharge</h3>
                                 <p className="text-stone-700 text-base leading-relaxed mb-4">
                                     If you need to work while travelling, Sukrutham provides the best of both worlds. Reliable high-speed internet ensures productivity, while the natural surroundings offer refreshing breaks.
@@ -807,14 +808,7 @@ export default function RoomsPage() {
                 <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-multiply">
                     <Image src="/kerala-pathway.png" alt="Pattern" fill sizes="100vw" className="object-cover" />
                 </div>
-                {/* Floating Decorative Image Left */}
-                <div className="absolute top-10 left-0 lg:left-10 w-48 h-48 md:w-64 md:h-64 opacity-30 sm:opacity-80 pointer-events-none -translate-x-12 translate-y-12 rounded-full overflow-hidden border-8 border-[#F5F2ED] shadow-xl rotate-12">
-                    <Image src="/host-home-new.jpg" alt="Decor" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-                </div>
-                {/* Floating Decorative Image Right */}
-                <div className="absolute bottom-10 right-0 lg:right-10 w-32 h-32 md:w-48 md:h-48 opacity-30 sm:opacity-80 pointer-events-none translate-x-8 translate-y-8 rounded-2xl overflow-hidden border-8 border-[#F5F2ED] shadow-xl -rotate-12">
-                    <Image src="/kerala-food-v2.png" alt="Decor" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-                </div>
+
 
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
                     <ScrollAnimation>

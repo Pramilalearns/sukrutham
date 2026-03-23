@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import ExperienceGallery from "@/components/ExperienceGallery";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import DecisionSection from "@/components/DecisionSection";
+import Awards from "@/components/Awards";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -19,6 +20,10 @@ export default function Home() {
     <main className="min-h-screen bg-stone-50 selection:bg-primary/20 selection:text-primary-dark">
       <Navbar />
       <Hero />
+
+      <ScrollAnimation delay={100}>
+        <Awards />
+      </ScrollAnimation>
 
       <ScrollAnimation>
         <Amenities />

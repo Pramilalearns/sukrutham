@@ -63,7 +63,7 @@ export default function OurStory() {
                     </span>
 
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
-                        Experience the <br className="hidden md:block" />
+                        Experience <br className="hidden md:block" />
                         <span className="italic text-accent font-light text-6xl md:text-7xl lg:text-8xl">Sukrutham</span>
                     </h1>
 

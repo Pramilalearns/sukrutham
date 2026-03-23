@@ -9,7 +9,7 @@ export default function Metrics() {
                 <div className="container mx-auto flex flex-wrap justify-center items-center max-w-7xl lg:divide-x lg:divide-white/10 gap-y-6 md:gap-y-0">
 
                     <div className="flex flex-col items-center justify-center text-center flex-1 px-4">
-                        <span className="text-3xl md:text-4xl font-display font-bold text-white mb-1 drop-shadow-sm">100+</span>
+                        <span className="text-3xl md:text-4xl font-display font-bold text-white mb-1 drop-shadow-sm">200+</span>
                         <span className="text-[10px] md:text-xs font-semibold tracking-widest text-stone-300 uppercase">Happy Guests</span>
                     </div>
 

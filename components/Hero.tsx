@@ -50,7 +50,7 @@ export default function Hero() {
                         <span className="text-accent">Farm Life in the Heart of Kerala</span>
                     </h1>
                     <p className="text-lg md:text-xl text-stone-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
-                        Set amidst lush green paddy fields, waterfalls, and hills.
+                        Set amidst lush green paddy fields, waterfalls, and hills,
                         Sukrutham Farmstay is a world away from the hustle of typical tourist spots.
                     </p>
 

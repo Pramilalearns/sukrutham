@@ -55,20 +55,26 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out font-sans",
                 scrolled
-                    ? "bg-stone-50/90 backdrop-blur-md shadow-sm py-[9px]" // Reduced scrolled padding
-                    : "bg-transparent py-[9px]" // Reduced transparent padding
+                    ? "bg-stone-50 shadow-md" 
+                    : "bg-transparent"
             )}
-            style={scrolled ? { WebkitBackdropFilter: 'blur(12px)' } : {}}
+            style={{ 
+                height: '80px', 
+                padding: '0px',
+                backdropFilter: 'none',
+                WebkitBackdropFilter: 'none',
+                ...(scrolled ? {} : {})
+            }}
         >
-            <div className="container mx-auto px-6 md:px-10 flex items-center min-h-[88px]">
+            <div className="container mx-auto px-6 md:px-10 flex items-center" style={{ height: '80px', minHeight: '80px' }}>
                 {/* Logo Section - Left side */}
                 <div className="flex-shrink-0 z-50">
-                    <Link href="/" className="relative h-12 w-30 md:h-[60px] md:w-[150px] block">
+                    <Link href="/" className="block h-[48px] w-[120px] relative">
                         <Image
-                            src="/logo/logo-250pxX100px.svg"
+                            src="/logo/logo.png"
                             alt="Sukrutham Farmstay"
-                            fill
-                            sizes="(max-width: 768px) 120px, 150px"
+                            width={120}
+                            height={48}
                             className="object-contain object-left"
                             priority
                         />
@@ -84,7 +90,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/our-story"
                         className={cn(
                             "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
-                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
+                            scrolled || variant === "light" ? "text-stone-900 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/our-story" && cn(
                                 "text-primary font-bold",
                                 !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
@@ -97,7 +103,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/rooms"
                         className={cn(
                             "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
-                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
+                            scrolled || variant === "light" ? "text-stone-900 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/rooms" && cn(
                                 "text-primary font-bold",
                                 !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
@@ -110,7 +116,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/take-a-tour"
                         className={cn(
                             "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
-                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
+                            scrolled || variant === "light" ? "text-stone-900 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             pathname === "/take-a-tour" && cn(
                                 "text-primary font-bold",
                                 !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
@@ -123,7 +129,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="/blog"
                         className={cn(
                             "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
-                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-md",
+                            scrolled || variant === "light" ? "text-stone-900 font-medium" : "text-white/90 font-medium drop-shadow-md",
                             (pathname === "/blog" || pathname?.startsWith("/blog/")) && cn(
                                 "text-primary font-bold",
                                 !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
@@ -147,7 +153,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                             href="/experience"
                             className={cn(
                                 "flex items-center gap-1 text-xs lg:text-sm transition-all hover:text-accent pl-2 lg:pl-3 pr-1 py-1.5 rounded-l-full whitespace-nowrap",
-                                scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                                scrolled || variant === "light" ? "text-stone-900 font-medium" : "text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
                                 pathname?.startsWith("/experience") && "text-primary font-bold drop-shadow-none"
                             )}
                         >
@@ -157,7 +163,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className={cn(
                                 "flex items-center justify-center pr-2 lg:pr-3 pl-1 py-1.5 rounded-r-full transition-colors focus:outline-none",
-                                scrolled || variant === "light" ? "text-stone-700 hover:text-accent" : "text-white hover:text-accent drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                                scrolled || variant === "light" ? "text-stone-900 hover:text-accent" : "text-white hover:text-accent drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
                                 pathname?.startsWith("/experience") && "text-primary font-bold drop-shadow-none"
                             )}
                         >
@@ -209,7 +215,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         href="tel:+919940668754"
                         className={cn(
                             "flex items-center gap-1.5 text-xs lg:text-sm font-bold transition-colors hover:text-accent whitespace-nowrap",
-                            scrolled || variant === "light" ? "text-stone-700" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                            scrolled || variant === "light" ? "text-stone-900" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                         )}
                     >
                         <Phone className="w-4 h-4" />

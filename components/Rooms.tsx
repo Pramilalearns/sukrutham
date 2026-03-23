@@ -41,7 +41,7 @@ export default function Rooms() {
                 {/* Content Grid - Compact */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {rooms.map((room, index) => (
-                        <div key={index} className="group cursor-pointer">
+                        <div key={index} className="group cursor-default">
                             {/* Image Container */}
                             <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-4 shadow-md">
                                 <Image

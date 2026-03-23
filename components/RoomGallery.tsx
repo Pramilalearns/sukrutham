@@ -161,13 +161,13 @@ export default function RoomGallery({ initialImages }: { initialImages?: Record<
                         <div className="relative w-full flex-1 aspect-[4/3] sm:aspect-video lg:aspect-auto rounded-[2rem] overflow-hidden shadow-2xl bg-stone-100 group selection-none">
 
                             {/* Rendering all images absolute for buttery-smooth crossfades without remounts */}
-                            {filteredImages.map((img) => (
+                            {filteredImages.map((img, idx) => (
                                 <Image
                                     key={img.src}
                                     src={img.src}
                                     alt={img.alt}
                                     fill
-                                    priority={activeImage?.src === img.src}
+                                    priority={idx === 0 || activeImage?.src === img.src}
                                     className={cn(
                                         "object-cover transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)]",
                                         activeImage?.src === img.src
