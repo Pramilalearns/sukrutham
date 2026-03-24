@@ -190,12 +190,12 @@ export default function OurStory() {
                         <div className="w-full lg:w-1/2">
                             <div className="lg:sticky lg:top-32 z-20">
                                 <div className="relative group p-12 bg-white rounded-[3rem] shadow-xl shadow-stone-200/50 border border-stone-100 transition-transform duration-700 hover:scale-[1.02]">
-                                    <div className="relative w-64 h-48 md:w-80 md:h-60">
+                                    <div className="relative w-64 h-48 md:w-80 md:h-60 mx-auto">
                                         <Image
                                             src="/logo/logo.png"
                                             alt="Sukrutham Farmstay Logo"
                                             fill
-                                            className="object-contain scale-[1.5]"
+                                            className="object-contain"
                                         />
                                     </div>
                                     {/* Decorative elements around the logo box */}
@@ -259,13 +259,13 @@ export default function OurStory() {
                                     <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-stone-200 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700">
                                         <Image
                                             src="/host-visionary-new.jpg"
-                                            alt="Mr. Murali"
+                                            alt="K.P. Murali"
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
                                             className="object-cover"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
-                                            <h3 className="text-white text-3xl font-display font-bold">Mr. K.P. Murali</h3>
+                                            <h3 className="text-white text-3xl font-display font-bold">K.P. Murali</h3>
                                             <p className="text-white/80 font-light tracking-wide text-sm mt-1">Founding Visionary</p>
                                         </div>
                                     </div>
@@ -282,7 +282,7 @@ export default function OurStory() {
                                 </h2>
                                 <div className="prose prose-lg text-stone-600 font-light leading-loose space-y-6">
                                     <p>
-                                        The story of Sukrutham began with a leap of faith. Our founder, <strong>Mr. K.P. Murali</strong>, left behind a high-paced career in a multinational corporation to return to his roots. A dream home conceptualised by the owner, who left his MNC job, to live in a place of calm and serenity - surrounded by nature's bountiful beauty - the call of Sukrutham grew stronger.
+                                        The story of Sukrutham began with a leap of faith. Our founder, <strong>K.P. Murali</strong>, left behind a high-paced career in a multinational corporation to return to his roots. A dream home conceptualised by the owner, who left his MNC job, to live in a place of calm and serenity - surrounded by nature's bountiful beauty - the call of Sukrutham grew stronger.
                                     </p>
                                     <p>
                                         Driven by a desire for calm and a deep love for nature’s bountiful beauty, he personally conceptualized and oversaw every detail of Sukrutham—from the foundation to the final traditional finish. He ensured with his personal presence that Sukrutham was built the way he aspired her to be.
