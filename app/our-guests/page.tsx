@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Star, Quote, MapPin, Globe, Map, ArrowRight } from "lucide-react";
+import { Star, Quote, MapPin, Globe, Map, ArrowRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -19,37 +19,51 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
     {
-        names: "Dr Shruthi Devi & Family, / Dr Rama Devi & Dr Shivashanmugam Family",
-        location: "Bangalore / Udumalpet",
-        text: "We thoroughly enjoyed our stay in Sukrutham. We felt so much at home and our big family of 11 people including the kids did not want to leave and hence we extended our stay for another day. Mr K P Murali has set a standard for Homestays and has actually impressed us with his beautifully designed and decorated home. The collection of books he has, also gave us happy-me time (much needed for us). Oh! the food!!! Home cooked, healthy, delicious food made by beloved Ranjini. Chechi, wow- wherever we went for our day trips, we were back for the yummy food. Sukrutham has actually impressed us in many ways- we will definitely be back. Leaving relaxed, refreshed and inspired. Thank You ! IMPRESSED BEYOND WORDS. 11/10 stars.",
-        rating: 5,
-        region: 'India'
-    },
-    {
-        names: "Karthik Iyer",
-        location: "Coimbatore",
-        text: "Awesome place in the lap of nature and culture. Great location, food and very hospitable. If you truly want to experience place, Stay by yourself and breathe, Sukrutham is the place. Mr. Murali is an amazing host, with a lovely home true kerala style! Thoroughly enjoyed my Stay; will come back to Sukrutham always. THANK YOU.",
-        rating: 5,
-        region: 'India'
-    },
-    {
-        names: "Anastasia Chebaksarova",
-        location: "Moscow, Russia",
-        text: "The most shanti place i have visited in India. Very comfortable stay with beautiful views and tasty food. Thank you very much for the hospitality!",
+        names: "Steven & Sonny Davison",
+        location: "UK",
+        text: "The first place we have truly managed to switch off. The food was lovingly prepared by Arun the Chef. Each day all 3 meals were comprised of home grown or locally sourced fresh produce. Cuisine chosen due to its local heritage and health benefits. Our host has made us feel at home with the perfect balance of privacy, then a wealth of local knowledge and historical facts regarding Kerala and India as a whole. A truly inspiring trip. We will not forget our Honeymoon here. We will be back for the monsoon.",
         rating: 5,
         region: 'International'
     },
     {
-        names: "Rani Chaves",
-        location: "Tahiti, French Polynesia",
-        text: "After 1 month traveling through India, I enjoyed a few days of peace and quiet at Sukrutham Farm. It has been a wonderful experience with delicious food & decadent sunsets. Loved having the peacocks right in front of the house. Enjoyed quiet walks in the neighborhood Mr. Murali helped arrange activities and it was a good break away from the most touristy places. The house is beautiful and the room tastefully decorated and spacious & comfortable. It truly was a lovely stay. Thank you.",
+        names: "Maha Saeed Amer",
+        location: "Egypt",
+        text: "Words will not be enough to say thank you. I came here after a very tough ending of 2025, being hospitalised for more than 2 months, where I felt that nothing is going to be the same again. But here I am, brought into this place to re-admire life & keep fighting for it. Thank You KP for the generosity, for the warmth I felt being here, and most importantly, for the great sunset view you took me to. Incredible !! Keep opening your place for people & keep smiling 😋 It is all about Details !! I decided to come again 2 days after leaving to attend a wedding 😋",
         rating: 5,
         region: 'International'
     },
     {
-        names: "R. Mahesh Iyer & Family",
-        location: "NC, USA",
-        text: "We enjoyed a most unique, relaxing & enjoyable experience at Sukrutham. This is not your typical commercial resort. Nestled in a quaint village adjacent to lush paddy fields, and with abundant bird life we were enveloped in silence & peace. The host (Murali) is very hospitable & thoughtful. The food is custom made with local ingredients & is delicious. The town of Thrissur was easily accessible & we saw ancient temples, enjoyed ayurvedic massages nearby and took strolls in the local roads. The house itself is a typical kerala style construction & a special mention for chippy the dog!! loved it!!!",
+        names: "Nathalie Guichen, Charles De Gaulle",
+        location: "Embrun, France",
+        text: "Its an absolutely extraordinary place, full of tranquility and beauty. The beautiful place is imbibed with a wonderfull sense of serenity. The surrounding nature is wild and sublime. The birdsongs provides a delightfull background sound. Thanks a Lot !! Great Regards Dear Sir!",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Dibeena Pearl",
+        location: "Australia",
+        text: "This is our first homestay and it was an amazing experience. The environment, ambience helped us to enjoy the holidays. The meals were perfect to our requirements and we all were able to switch off from busy schedules and spend quality time with each other. Thanks to all the caretakers and owner of this Sukrutham. All the facilities & resources available to us during the stay were very nice and modern and the serene beauty just took our breaths away. Very modern house that has lots of attractions, very nice.",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Hilit & Dan Goren, Avital & Omrie Leuin",
+        location: "Tel Aviv, Israel",
+        text: "Wonderful place in a beautiful part of Kerala. Surrounded by lush jungle, running streams, waterfalls, the most beautiful garden with home grown fruit and vegetables, a beautiful home farm, of traditional Kerala architecture with beautiful rooms of total comfort and beautiful design. The host is sooo kind, and the traditional Kerala food is sooo delicious. I highly recommend coming to this heaven.",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Ashok Xavier",
+        location: "Melbourne, Australia",
+        text: "We are from Australia to Kerala for the very first time to explore the food, culture and the nature. Sukrutham Farmstay is the perfect place for our purpose to be fulfilled. The kids had a great time too. Green acres around, peacocks, waterfalls at a short distance are the highlights. Murali is a great person, made sure we had a great stay. Food was delicious especially the Appam with chicken curry was so good. Thank you so much Murali and we will come again.",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Ingo Traub, Dr. Uschi Traub",
+        location: "Germany",
+        text: "Quiet Oasis Near Thrissur. We enjoyed this serene place in the midst of luscious greenery - perfect place to recharge your batteries and escape the hustle and bustle of city life. The beautiful, quiet surroundings, the stylish furnishings, the South Indian dishes that were freshly prepared! We liked it very much and if you want to get some peace outside of Trichur (about 20 minutes drive) that is exactly the right place to stay. Guruvayur Temple is not far away and other attractions (waterfalls / View Points etc) are easily accessible by taxi. The friendly homeowner who also lives in the house is accessible 24/7 and helps with all concerns. As dog lovers we also loved meeting friendly Chippy. Thank you Murli for your hospitality!",
         rating: 5,
         region: 'International'
     },
@@ -61,51 +75,79 @@ const testimonials: Testimonial[] = [
         region: 'International'
     },
     {
-        names: "Ingo Traub & Dr. Uschi Traub",
-        location: "Germany",
-        text: "Quiet Oasis Near Thrissur. We enjoyed this serene place in the midst of luscious greenery - perfect place to recharge your batteries and escape the hustle and bustle of city life. The beautiful, quiet surroundings, the stylish furnishings, the South Indian dishes that were freshly prepared! We liked it very much and if you want to get some peace outside of Trichur (about 20 minutes drive) that is exactly the right place to stay. Guruvajur Temple is not far away and other attractions (waterfalls / View Points etc) are easily accessible by taxi. The friendly homeowner who also lives in the house is accessible 24/7 and helps with all concerns. As dog lovers we also loved meeting friendly Chippy Thank you Murli for your hospitality!",
+        names: "R. Mahesh Iyer & Family",
+        location: "NC, USA",
+        text: "We enjoyed a most unique, relaxing & enjoyable experience at Sukrutham. This is not your typical commercial resort. Nestled in a quaint village adjacent to lush paddy fields, and with abundant bird life we were enveloped in silence & peace. The host (Murali) is very hospitable & thoughtful. The food is custom made with local ingredients & is delicious. The town of Thrissur was easily accessible & we saw ancient temples, enjoyed ayurvedic massages nearby and took strolls in the local roads. The house itself is a typical kerala style construction & a special mention for chippy the dog!! loved it!!!",
         rating: 5,
         region: 'International'
     },
     {
-        names: "Ankit Mehta & Rohan Gholkar",
-        location: "Jodhpur, Rajasthan / Toronto, Canada",
-        text: "Highly Recommended! Best Experiences. This place has everything you would want for a perfect vacation: 1. Clean, spacious rooms with remote yet accessible location. 2. Green surroundings with all sorts of fruits, flowers, veggie plants and paddy fields. 3. An ultra-cool V V hospitable host who is eager to help guests with everything be it sight seeing options, food options, telling history of the place and what not!! 4. Food is delicious, home made & traditional Kerala style. The type you will never get at any Kerala restaurant, on top of it its served with love. 5. House is beautifully decorated in Kerala style and there is lots to do. 6. Great Internet connection for Digital Nomads.",
+        names: "Rani Chaves",
+        location: "Tahiti, French Polynesia",
+        text: "After 1 month traveling through India, I enjoyed a few days of peace and quiet at Sukrutham Farm. It has been a wonderful experience with delicious food & decadent sunsets. Loved having the peacocks right in front of the house. Enjoyed quiet walks in the neighborhood Mr. Murali helped arrange activities and it was a good break away from the most touristy places. The house is beautiful and the room tastefully decorated and spacious & comfortable. It truly was a lovely stay. Thank you.",
         rating: 5,
         region: 'International'
     },
     {
-        names: "Balaji & Kalpana Balaji",
-        location: "India",
-        text: "Heard rave reviews about the place from my husband after his first visit to Sukrutham. Was excited to see the place and fell in love with Sukrutham the moment i stepped in. The place is tastefully done and well maintained. A tour around the garden is really so calming for the mind. Nevertheless Kudos to Murali for the wonderful place he has and the hospitality. If you are looking for a place away from the mad rush, noise etc., Sukrutham is The Place nested among paddy fields on one side, Reserve forest and stream around. Eagerly look forward to my next visit.",
+        names: "Rebecca & Ian Graffy",
+        location: "London, UK",
+        text: "Had such a wonderful time at your Farmstay. It was the perfect place to relax and catch our breath after some hectic times & adventures, and we really appreciate your wonderful hospitality and your beautiful home! We really loved our sunset drive and walk to the hillock- it was such a lovely way to cap off our first trip to India. Thanks for your wonderful hospitality",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Katrin Simon",
+        location: "Vienna, Austria",
+        text: "Thank you for the lovely time we got to spend here. The house and the garden are filled with so many lovely special details that we got to discover something new and different everyday… same goes for the food we got to enjoy. We had an amazing time and thanks also to Chippy",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Sylvie & Blaise Pastor",
+        location: "France",
+        text: "Thank you so much Murli! Your house is a place of peace and perfect stay to be connected with Kerala nature, food and tradition. Our stay with our best friends Deepa & Ravi was wonderfull here and you are a super host.",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Aniruddha Das",
+        location: "Hyderabad",
+        text: "Sukrutham Farmstay felt like a gentle embrace from nature itself. The villa, shaped from warm laterite stone and Kerala’s timeless tradition, breathes peace in every corner. I’ m taking away the fragrance of home cooked Kerala meals- simple, soulfull and unforgettable. Host KP was gracious, warm and ever ready with a helping hand. A place where the heart slows, the mind quiets, and soul feels at home.",
         rating: 5,
         region: 'India'
     },
     {
-        names: "RK Menon",
-        location: "India",
-        text: "I was on a temple visit to Guruvayoor & Thrissur along with my family members when I came to know of \"Sukrutham\" as a place to spend an evening. What I saw was a well set up dwelling literally surrounded by agriculture fields. This place is owned and operated by KP Murali who has meticulously set it up. It remains meticulous and well maintained even now. So are the surroundings within its large premises - you can go for a \"nature walk\" within too. Amenities is top class. Food is good. Caretakers are good. Facilities are good. There are many locations to explore nearby - which I could not owing to time constraints. We left the next day morning satisfied but since the stay was short, we intend to revisit and stay there for a few days. A visit worth! A stay that was pleasant!! A stay we will cherish!!! Recommend!!!!",
+        names: "Lt Col ( Retd) C P Prem Vas",
+        location: "Aluva, Kerala",
+        text: "Wow! What a blissfull stay with a wonderfull host like KP ! The scrumptious spread from Chef Arun is superlative. What struck me during our stay is the speckless neatness and aroma of welcome and the warmth of the decor and hospitality. Visiting this place is like a rejunevation in itself. Keep up the wonderfull ‘ambience’ and stay blessed for a ‘ heaven ‘ you created.",
         rating: 5,
         region: 'India'
     },
     {
-        names: "Mohanraj, Dushyand",
-        location: "India",
-        text: "Had a very peaceful stay @ Sukrutham. The host was very kind and attentive to guest needs. This place looks so serene & calmness hits you the moment you step in Sukrutham. Amazing homely food, spotted different birds and the mini waterfalls was the cherry on top. Overall we had a nice stay. Hoping to come back again to this beautiful home. Thank you Murali sir for hosting us.",
+        names: "Nehal Kapoor",
+        location: "Hyderabad",
+        text: "Mr Murli is a really good host. From the first interaction on call to helping out with everything at the property. He is very knowledgeable about the flora and fauna of the area and can show you multiple places in the area. The property is well designed & maintained. 11/10 rating.",
         rating: 5,
         region: 'India'
     },
     {
-        names: "Kapil",
-        location: "Coimbatore",
-        text: "A traditional Kerala based guest house, that was more than our expectations. The details that the host (Murali) has got in his house is awesome. The Rooms were so neat & with more detail miniatures. He served all the day so nice. There is no way to think, its other than our sweet home. Food was so good with Kerala style. Nice plantations to relax. Kids too enjoyed so well.",
+        names: "Asha Vishwanath & Family",
+        location: "Bangalore",
+        text: "We were amazed to see the very beautifully maintained property. Having come from the busy city of Bangalore, life in this Farmstay was like a ‘Heaven on Earth’. Our stay was only for 3 nights and we wanted to stay more days. It is such a quiet and peaceful place with lots of greenery around. Being a garden enthusiast was really amazed at the plant collection. To talk about the home we were wonderstruck to see the beautiful antique & vintage collection. Mr Murali is the best host and the food served in this place is very delicious and felt homely. We hope to visit this place very often and surely we recommend this property to our friends & relatives",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Anil Nair & Sashi Menon",
+        location: "Kotagiri, Ooty",
+        text: "A beautiful calm and serene place. Tranquil surrounding. Beautifully landscaped. Sukrutham Farmstay is a tastefully done up place. Both the inside and outside have a touch of class. The rooms are spacious and the rooms are absolutely clean and tidy. The housekeeping too is impeccable. Enjoyed the stay and hospitality. Very warm and gracious regards . Thank You Murali . We will be soon back @ this awesome place.",
         rating: 5,
         region: 'India'
     },
     {
         names: "Balaji Ramaswamy",
         location: "Chennai",
-        text: "What a lovely place! I enjoyed watching different types of birds, amazed at the variety of plants, trees in the garden. Its a nice place to hang out with friends. I enjoyed every minute of my stay at Sukrutham. The host was so kind and generous. He took us to the temples, waterfalls...and with friends it was an amazing experience. We had a blast. We made such beautiful memories. The accomodation was immaculate. Excellent food. Thank you for your amazing hospitality. I would certainly recommend this place to my friends and family.",
+        text: "What a lovely place! I enjoyed watching different types of birds, amazed at the variety of plants, trees in the garden. Its a nice place to hang out with friends. I enjoyed every minute of my stay at Sukrutham. The host was so kind and generous. He took us to the temples, waterfalls...and with friends it was an amazing experience. We had a blast. We made such beautiful memories. The accommodation was immaculate. Excellent food. Thank you for your amazing hospitality. I would certainly recommend this place to my friends and family.",
         rating: 5,
         region: 'India'
     },
@@ -124,46 +166,109 @@ const testimonials: Testimonial[] = [
         region: 'India'
     },
     {
+        names: "Kapil",
+        location: "Coimbatore",
+        text: "A traditional Kerala based guest house, that was more than our expectations. The details that the host (Murali) has got in his house is awesome. The Rooms were so neat & with more detail miniatures. He served all the day so nice. There is no way to think, its other than our sweet home. Food was so good with Kerala style. Nice plantations to relax. Kids too enjoyed so well.",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Mohanraj, Dushyand",
+        location: "India",
+        text: "Had a very peaceful stay @ Sukrutham. The host was very kind and attentive to guest needs. This place looks so serene & calmness hits you the moment you step in Sukrutham. Amazing homely food, spotted different birds and the mini waterfalls was the cherry on top. Overall we had a nice stay. Hoping to come back again to this beautiful home. Thank you Murali sir for hosting us.",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Balaji & Kalpana Balaji",
+        location: "India",
+        text: "Heard rave reviews about the place from my husband after his first visit to Sukrutham. Was excited to see the place and fell in love with Sukrutham the moment i stepped in. The place is tastefully done and well maintained. A tour around the garden is really so calming for the mind. Nevertheless Kudos to Murali for the wonderful place he has and the hospitality. If you are looking for a place away from the mad rush, noise etc., Sukrutham is The Place nested among paddy fields on one side, Reserve forest and stream around. Eagerly look forward to my next visit here with my sons.",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "RK Menon",
+        location: "India",
+        text: "I was on a temple visit to Guruvayoor & Thrissur along with my family members when I came to know of \"Sukrutham\" as a place to spend an evening. What I saw was a well set up dwelling literally surrounded by agriculture fields. This place is owned and operated by KP Murali who has meticulously set it up. It remains meticulous and well maintained even now. So are the surroundings within its large premises - you can go for a \"nature walk\" within too. Amenities is top class. Food is good. Caretakers are good. Facilities are good. There are many locations to explore nearby - which I could not owing to time constraints. We left the next day morning satisfied but since the stay was short, we intend to revisit and stay there for a few days. A visit worth! A stay that was pleasant!! A stay we will cherish!!! Recommend!!!!",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Kirti Simha & Pallavi Simha",
+        location: "Bangalore",
+        text: "Oh! What a lovely place Sukrutham is!! We had a beautiful 3 days stay here. Pure Air & Lush Greenery, Soft-clear Water! Coming from Bangalore, even my skin felt detoxed and so many things to do nearby. So there was no time for boredom even though we came here with our 10year old son, He too was happily occupied. Last but not the least the food served here is hyper local and completely organic. Very healthy & tasty. I loved both, the veg & Non-veg biryanis a lot! Thanks Mr. K.P. Murali for being a wonderful host!!",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Karthik Iyer",
+        location: "Coimbatore",
+        text: "Awesome place in the lap of nature and culture. Great location, food and very hospitable. If you truly want to experience place, Stay by yourself and breathe, Sukrutham is the place. Mr. Murali is an amazing host, with a lovely home true kerala style! Thoroughly enjoyed my Stay; will come back to Sukrutham always. THANK YOU",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Janani Krishnan, Ram & Teju",
+        location: "Chennai",
+        text: "We had a lovely & pleasant stay @ Sukrutham Farmstay. Very clean and cosy rooms and vintage interiors, clean air, fresh food, serene location and great hospitality. We would like to come here again with more time on our hands. Thanks for having us !",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Maya Parameswaran",
+        location: "Thiruvananthapuram, Kerala",
+        text: "I stayed here in December 2024 with my parents aged 80,71. I took the Tapioca room, and my parents were in the Paddy room. The view from the Paddy room of green paddy fields is calm and peaceful. One gets to hear only nature's sounds : from the variety of bird calls, wind on the leaves, and the squirrels chirping during the day and crickets chirping, frogs croaking all through the night. Murali is a very helpful, nice host. He had warned ahead of our arrival itself that the road would be very bumpy and narrow, and he recommended a cab driver. During our stay, we visited Guruvayoor, Peringottukara temple. Murali helped by arranging a cab. For local town trips, Murali helped by arranging an auto. Guests have full access to the kitchen and can make their own tea/ coffee. We had kerala style vegetarian food for breakfast, lunch, and dinner.",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Deepa Ravi",
+        location: "Chennai",
+        text: "Six of us came to stay @ Sukrutham and spend the New Year’s eve here. Muralis hospitality is amazing. We loved the place and the attention to detail that Murali has put into everything. His home is lovely, calming and so incredibly serene. It filled us with such a sense of peace that we did not want to leave! Thank Murali for all the love & hospitality",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Mai Fukuda",
+        location: "Tokyo, Japan",
+        text: "Thank you so much for providing such a wonderfull and comfortable space!! I really enjoyed to explore the surrounding area which made me so calm and peacefull. The food was also amazing. I loved it !! Highly appreciate your prompt support during my stay for the sight seeing. I would like to come back again to stay here in the very near future !!",
+        rating: 5,
+        region: 'International'
+    },
+    {
+        names: "Dr Shruthi Devi & Family / Dr Rama Devi & Dr Shivashanmugam Family",
+        location: "Bangalore / Udumalpet",
+        text: "We thoroughly enjoyed our stay in Sukrutham. We felt so much at home and our big family of 11 people including the kids did not want to leave and hence we extended our stay for another day. Mr K P Murali has set a standard for Homestays and has actually impressed us with his beautifully designed and decorated home. The collection of books he has, also gave us happy-me time (much needed for us). Oh! the food!!! Home cooked, healthy, delicious food made by beloved Ranjini. Chechi, wow- wherever we went for our day trips, we were back for the yummy food. Sukrutham has actually impressed us in many ways- we will definitely be back. Leaving relaxed, refreshed and inspired. Thank You ! IMPRESSED BEYOND WORDS. 11/10 stars.",
+        rating: 5,
+        region: 'India'
+    },
+    {
+        names: "Anastasia Chebaksarova",
+        location: "Moscow, Russia",
+        text: "The most shanti place i have visited in India. Very comfortable stay with beautiful views and tasty food. Thank you very much for the hospitality!",
+        rating: 5,
+        region: 'International'
+    },
+    {
         names: "Abhishek George",
         location: "Hyderabad",
         text: "Quiet and Serene, Sukrutham Farmstay evokes a sense of tranquility that's very rarely found within the city. Definitely recommend if you're looking for a break and to reconnect with nature.",
         rating: 5,
         region: 'India'
     },
-    {
-        names: "Ram Lakshminarayanan",
-        location: "Singapore",
-        text: "This place is a hidden gem in God's own country. The words that come to mind when I have to describe this place are 'peace' and 'tranquility'. There are so many tourist attractions like dams, waterfalls, temples, rock garden - that can keep us occupied. Ayurveda clinic is close by. My three days here was completely a bliss. I hate to leave this place. My next trip will be for a longer period. K P Murali, the host is a lovely gentleman and the attention he gives to the guests is phenomenal. Looking forward to visit again - soon!",
-        rating: 5,
-        region: 'International'
-    },
-    {
-        names: "Pinaki Roy",
-        location: "Chennai",
-        text: "Thanks a lot to Murali for the wonderful holiday. Brilliant place, great hospitality and an overall wonderful experience. The fantastic sight seeing places around was place was amazing. Never have I experienced such serene environment. Nature's bounty. Got to come back again! Great holiday in the lap of nature. Keep it up!",
-        rating: 5,
-        region: 'India'
-    },
-    {
-        names: "Shalini Warrier - Executive Director, Federal Bank",
-        location: "India",
-        text: "This was my first experience at a farmstay. My family and I enjoyed the time spent here. The ambience, the visits to nearby places, the calm and soothing atmosphere, these and many more attributes made the stay really nice. KP Murali is a very hospitable host and took great care of every minute. The food was fantastic. I wish Sukrutham Farmstay the very best for Diwali and beyond.",
-        rating: 5,
-        region: 'India'
-    },
-    {
-        names: "Lina (Tech Director, Wells Fargo) & Shibin Kumar",
-        location: "Bangalore",
-        text: "\"We came for the sheer beauty of this place. We stayed for the peace and calm. And we returned for the warmth and hospitality. The tastefully appointed rooms, the beautiful artefacts and furniture, the lush greenery surrounding this place - all together is a heady concoction perfect for city dwellers like us who are looking to get away. Thoroughly enjoyed our stay. Thank you Murali, for showing us some of the hidden gems in and around the area. See you soon. And all the very best.\"",
-        rating: 5,
-        region: 'India'
-    },
-    {
+     {
         names: "Sachin, Charan and Ranjani",
         location: "Chennai",
         text: "Our First Air BnB Guests! The best stay we have had till date. We have been to many Airbnbs but this is definitely a step above. The hospitality is top notch. A curated experience that is well thought out, from the food to the sightseeing, and the rooms. Everything is hand-picked and has a wonderful back story. We will definitely come back here not just for the pace, but also the generosity and hospitality KP & Chippy have shown us. Stormee and Coffee (our dogs) will definitely miss this place and their dear Chippy",
         rating: 5,
         region: 'India'
+    },
+    {
+        names: "Ankit Mehta & Rohan Gholkar",
+        location: "Jodhpur / Toronto",
+        text: "Highly Recommended! Best Experiences. This place has everything you would want for a perfect vacation: 1. Clean, spacious rooms with remote yet accessible location. 2. Green surroundings with all sorts of fruits, flowers, veggie plants and paddy fields. 3. An ultra-cool V V hospitable host who is eager to help guests with everything be it sight seeing options, food options, telling history of the place and what not!! 4. Food is delicious, home made & traditional Kerala style. The type you will never get at any Kerala restaurant, on top of it its served with love. 5. House is beautifully decorated in Kerala style and there is lots to do. 6. Great Internet connection for Digital Nomads.",
+        rating: 5,
+        region: 'International'
     },
     {
         names: "Sonia & Santosh M",
@@ -174,16 +279,19 @@ const testimonials: Testimonial[] = [
     }
 ];
 
+const handwrittenImages = Array.from({ length: 13 }, (_, i) => `/testimonial-handwritten/${i + 1}.png`);
+
 export default function OurGuestsPage() {
     const [activeTab, setActiveTab] = useState<'India' | 'International'>('India');
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const filteredTestimonials = testimonials.filter(t => t.region === activeTab);
 
     return (
         <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans relative overflow-x-hidden max-w-[100vw]">
             <Navbar />
-
-            {/* --- Hero Section --- */}
+            
+                        {/* --- Hero Section --- */}
             <section className="relative min-h-[60vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -243,10 +351,10 @@ export default function OurGuestsPage() {
                     </div>
                 </div>
             </section>
-
+            
             {/* --- Testimonials Tabs & Masonry Grid --- */}
             <section className="py-20 px-6 md:px-12 lg:px-20 bg-[#FDFCF8]">
-                <div className="container mx-auto max-w-7xl">
+                                <div className="container mx-auto max-w-7xl">
 
                     <div className="flex flex-col items-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-8">Memories from Around the World</h2>
@@ -317,7 +425,7 @@ export default function OurGuestsPage() {
             </section>
 
             {/* --- Final CTA Section --- */}
-            <section className="py-24 bg-stone-900 border-t border-white/5 relative overflow-hidden">
+            <section className="pt-24 pb-0 bg-stone-900 border-t border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596423985167-d86b978dd6f8?auto=format&fit=crop&q=80')] opacity-[0.03] bg-cover bg-center"></div>
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center relative z-10 max-w-4xl">
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
@@ -333,6 +441,48 @@ export default function OurGuestsPage() {
                         <span>Reserve Your Sanctuary</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
+                </div>
+            </section>
+
+            {/* --- Handwritten Testimonials Raw Collage (400px) --- */}
+            <section 
+                style={{ height: '400px' }}
+                className="bg-stone-900 relative overflow-hidden flex items-start justify-center"
+            >
+                {/* Subtle Grain Overlay */}
+                <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
+
+                <div className="relative w-full h-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 flex items-center justify-center overflow-hidden">
+                    <div className="flex flex-nowrap md:flex-wrap justify-center items-center -space-x-10 md:-space-x-16 lg:-space-x-24">
+                        {[1, 5, 8, 10, 12].map((num, idx) => {
+                            // Raw Scattering: Organic angles and tight overlapping
+                            const rotation = (idx % 2 === 0 ? 5 : -4);
+                            const yOffset = (idx % 3 === 0 ? 15 : idx % 2 === 0 ? -10 : 5);
+                            
+                            return (
+                                <div 
+                                    key={num}
+                                    className="group relative transition-all duration-1000 hover:scale-125 hover:z-[100] flex-shrink-0"
+                                    style={{ 
+                                        transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
+                                        zIndex: 10 + idx
+                                    }}
+                                >
+                                    {/* The Raw PNG Image - No backgrounds as per request */}
+                                    <div style={{ width: '220px', height: '300px' }} className="relative">
+                                        <Image 
+                                            src={`/testimonial-handwritten/${num}.png`}
+                                            alt={`Handwritten Testimonial ${num}`}
+                                            width={220}
+                                            height={300}
+                                            className="w-full h-full object-contain filter drop-shadow-[0_15px_40px_rgba(255,255,255,0.06)]"
+                                            priority
+                                        />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </section>
 

@@ -8,10 +8,10 @@ import { useState, useEffect } from "react";
 
 const HERO_IMAGES = [
     "/hero-carousel/slide1.jpg",
-    "/hero-carousel/slide2.jpg",
+    "/hero-carousel/Slide2 New.jpeg",
     "/hero-carousel/slide3.jpg",
     "/hero-carousel/slide4.jpg",
-    "/hero-carousel/slide5.jpg",
+    "/hero-carousel/Slide5 New.jpeg",
 ];
 
 export default function Hero() {

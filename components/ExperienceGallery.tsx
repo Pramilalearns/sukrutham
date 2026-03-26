@@ -97,6 +97,8 @@ export default function ExperienceGallery() {
                                         src={img.src}
                                         alt={img.alt}
                                         fill
+                                        priority={idx <= 1}
+                                        quality={60}
                                         className="object-cover"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
                                     />
