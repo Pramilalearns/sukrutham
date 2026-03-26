@@ -425,7 +425,7 @@ export default function OurGuestsPage() {
             </section>
 
             {/* --- Final CTA Section --- */}
-            <section className="pt-24 pb-0 bg-stone-900 border-t border-white/5 relative overflow-hidden">
+            <section className="pt-24 pb-12 bg-stone-900 border-t border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596423985167-d86b978dd6f8?auto=format&fit=crop&q=80')] opacity-[0.03] bg-cover bg-center"></div>
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center relative z-10 max-w-4xl">
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
@@ -444,38 +444,47 @@ export default function OurGuestsPage() {
                 </div>
             </section>
 
-            {/* --- Handwritten Testimonials Raw Collage (400px) --- */}
+            {/* --- Handwritten Testimonials Single Line Gallery (Min-h 350px) --- */}
             <section 
-                style={{ height: '400px' }}
-                className="bg-stone-900 relative overflow-hidden flex items-start justify-center"
+                style={{ minHeight: '350px' }}
+                className="bg-stone-900 relative overflow-hidden flex items-center justify-center py-8"
             >
                 {/* Subtle Grain Overlay */}
                 <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
 
-                <div className="relative w-full h-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 flex items-center justify-center overflow-hidden">
-                    <div className="flex flex-nowrap md:flex-wrap justify-center items-center -space-x-10 md:-space-x-16 lg:-space-x-24">
+                <div 
+                    className="relative w-full h-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 overflow-x-auto scroll-smooth"
+                    style={{ 
+                        msOverflowStyle: 'none', 
+                        scrollbarWidth: 'none',
+                        WebkitOverflowScrolling: 'touch'
+                    }}
+                >
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        .no-scrollbar::-webkit-scrollbar { display: none; }
+                    ` }} />
+                    <div className="flex flex-nowrap justify-center items-center gap-4 md:gap-8 lg:gap-12 min-w-max md:min-w-0 mx-auto no-scrollbar">
                         {[1, 5, 8, 10, 12].map((num, idx) => {
-                            // Raw Scattering: Organic angles and tight overlapping
-                            const rotation = (idx % 2 === 0 ? 5 : -4);
-                            const yOffset = (idx % 3 === 0 ? 15 : idx % 2 === 0 ? -10 : 5);
+                            // Organic scattering in a single row
+                            const rotation = (idx % 2 === 0 ? 3 : -3);
+                            const yOffset = (idx % 3 === 0 ? 8 : idx % 2 === 0 ? -8 : 0);
                             
                             return (
                                 <div 
                                     key={num}
-                                    className="group relative transition-all duration-1000 hover:scale-125 hover:z-[100] flex-shrink-0"
+                                    className="group relative transition-all duration-1000 hover:scale-110 hover:z-[100] flex-shrink-0"
                                     style={{ 
                                         transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
                                         zIndex: 10 + idx
                                     }}
                                 >
-                                    {/* The Raw PNG Image - No backgrounds as per request */}
-                                    <div style={{ width: '220px', height: '300px' }} className="relative">
+                                    <div style={{ width: '180px', height: '240px' }} className="relative">
                                         <Image 
                                             src={`/testimonial-handwritten/${num}.png`}
                                             alt={`Handwritten Testimonial ${num}`}
-                                            width={220}
-                                            height={300}
-                                            className="w-full h-full object-contain filter drop-shadow-[0_15px_40px_rgba(255,255,255,0.06)]"
+                                            width={180}
+                                            height={240}
+                                            className="w-full h-full object-contain filter drop-shadow-[0_12px_30px_rgba(255,255,255,0.05)]"
                                             priority
                                         />
                                     </div>
