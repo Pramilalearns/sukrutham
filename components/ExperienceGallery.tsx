@@ -26,10 +26,10 @@ const galleryImages = [
         className: "bg-emerald-100"
     },
     {
-        src: "/Home-Essence/Community-Spirit-Connect-with-the-warm-and-welcoming-local-community.jpeg",
-        alt: "Local Interactions",
-        title: "Community Spirit",
-        description: "Connect with the warm and welcoming local community.",
+        src: "/Home-Essence/IMG_4129.jpeg",
+        alt: "Shared Moments",
+        title: "Shared Moments",
+        description: "A welcoming space to reconnect and share joyful experiences together.",
         className: "bg-orange-100"
     },
     {
