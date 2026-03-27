@@ -60,7 +60,6 @@ const roomVisuals = [
             "/room-gallery/tapioca-room/room-1.jpg",
             "/room-gallery/tapioca-room/room-1a.jpg",
             "/room-gallery/tapioca-room/room-1b.jpg",
-            "/room-gallery/tapioca-room/room-sitout-b.jpg",
         ]
     },
     {
