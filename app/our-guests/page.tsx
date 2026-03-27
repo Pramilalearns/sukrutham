@@ -351,7 +351,7 @@ export default function OurGuestsPage() {
                     </div>
                 </div>
             </section>
-            
+
             {/* --- Testimonials Tabs & Masonry Grid --- */}
             <section className="py-20 px-6 md:px-12 lg:px-20 bg-[#FDFCF8]">
                                 <div className="container mx-auto max-w-7xl">
@@ -421,6 +421,44 @@ export default function OurGuestsPage() {
                             No testimonials found for this region.
                         </div>
                     )}
+                </div>
+            </section>
+
+            {/* --- Lively & Sleek Guest Gallery --- */}
+            <section className="py-16 md:py-20 px-6 md:px-12 lg:px-20 bg-white relative z-20 border-y border-stone-100/50">
+                <div className="container mx-auto max-w-7xl">
+                    <div className="text-center mb-10 md:mb-16">
+                        <span className="text-stone-400 font-bold tracking-widest uppercase text-xs mb-4 block animate-in fade-in slide-in-from-bottom-2 duration-1000">Guest Reflections</span>
+                        <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight">
+                            Moments from <span className="italic text-stone-500 font-serif">Sukrutham</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 items-center pb-4 md:pb-8 px-4 md:px-0">
+                        {[
+                            { src: "/Home-Essence/customer.png", alt: "Welcoming our guests", offset: "md:translate-y-0", pos: "object-center" },
+                            { src: "/Home-Essence/4.png", alt: "Shared joy at the farm", offset: "md:translate-y-12", pos: "object-center" },
+                            { src: "/Home-Essence/1.png", alt: "Peaceful morning", offset: "md:-translate-y-8", pos: "object-[center_40%]" },
+                            { src: "/Home-Essence/6.png", alt: "Connecting with nature", offset: "md:translate-y-8", pos: "object-center" }
+                        ].map((img, idx) => (
+                            <div key={idx} className={`relative aspect-[4/5] md:aspect-[3/4] rounded-[2rem] overflow-hidden shadow-xl shadow-stone-200/50 border border-stone-100 group bg-stone-50 transition-all duration-700 hover:z-20 hover:-translate-y-2 hover:shadow-2xl ${img.offset}`}>
+                                <Image 
+                                    src={img.src} 
+                                    alt={img.alt}
+                                    fill
+                                    sizes="(max-width: 768px) 50vw, 25vw"
+                                    className={`object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110 ${img.pos}`}
+                                />
+                                <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/10 transition-colors duration-700 pointer-events-none"></div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="text-center mt-8 md:mt-12 block animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+                        <h3 className="text-4xl md:text-5xl font-display font-bold text-stone-900 leading-tight">
+                            "Harvest Happy <span className="text-primary italic">Memories</span>"
+                        </h3>
+                    </div>
                 </div>
             </section>
 

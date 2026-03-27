@@ -53,6 +53,13 @@ const galleryImages = [
         description: "Stroll through the fields as the sun sets, painting the sky in gold.",
         className: "bg-red-100"
     },
+    {
+        src: "/Home-Essence/5.png",
+        alt: "Our friendly dog Chipi",
+        title: "Meet Chipi",
+        description: "Say hello to Chipi, our ever-cheerful farmstay companion who loves greeting every guest with a wag and a smile.",
+        className: "bg-amber-100"
+    },
 ];
 
 export default function ExperienceGallery() {
