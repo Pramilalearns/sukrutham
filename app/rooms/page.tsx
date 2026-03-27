@@ -7,6 +7,7 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import Image from "next/image";
 import Link from "next/link";
 import RoomGallery from "@/components/RoomGallery";
+import RoomsFAQ from "@/components/RoomsFAQ";
 import {
     Wifi, Utensils,
     MapPin, User, Droplets, Car, Plane, Leaf,
@@ -803,6 +804,9 @@ export default function RoomsPage() {
 
                 </div>
             </section>
+
+            <RoomsFAQ />
+
             {/* Final CTA Section */}
             <section className="py-24 bg-[#F5F2ED] text-stone-900 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-multiply">

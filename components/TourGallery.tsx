@@ -134,9 +134,11 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                          alt={img.alt}
                                          fill
                                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                         sizes="(max-width: 768px) 90vw, 33vw"
-                                         loading="lazy"
-                                         quality={75}
+                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                         loading={idx < 4 ? "eager" : "lazy"}
+                                         priority={idx < 4}
+                                         quality={60}
+                                         decoding="async"
                                      />
                                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                          <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
@@ -182,9 +184,10 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                         alt={img.alt}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 90vw, 33vw"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         loading="lazy"
-                                        quality={75}
+                                        quality={60}
+                                        decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                         <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
@@ -230,9 +233,10 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                         alt={img.alt}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                        sizes="(max-width: 768px) 90vw, 33vw"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         loading="lazy"
-                                        quality={75}
+                                        quality={60}
+                                        decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                         <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">

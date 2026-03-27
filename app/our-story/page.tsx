@@ -8,6 +8,7 @@ import { Quote, Leaf, Sun, Award, Star, Heart, Linkedin, Youtube, Calendar, Arro
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { blogPosts } from "@/lib/blogData";
+import AboutFAQ from "@/components/AboutFAQ";
 
 const HERO_IMAGES = [
     { src: "/hero-carousel/slide1.jpg", extraOverlay: "bg-stone-950/40" },
@@ -481,6 +482,8 @@ export default function OurStory() {
                     "Sukrutham will weave its magic around you. She will make you fall in love with yourself and the place."
                 </p>
             </div>
+
+            <AboutFAQ />
 
             {/* --- Recent Blogs Section --- */}
             <section className="py-24 bg-white border-t border-stone-100">

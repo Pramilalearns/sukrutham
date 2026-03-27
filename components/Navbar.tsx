@@ -203,6 +203,19 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     >
                         Our Guests
                     </Link>
+                    <Link
+                        href="/faq"
+                        className={cn(
+                            "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
+                            scrolled || variant === "light" ? "text-stone-700 font-medium" : "text-white/90 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]",
+                            pathname === "/faq" && cn(
+                                "text-primary font-bold",
+                                !(scrolled || variant === "light") && "bg-white/95 shadow-lg drop-shadow-none"
+                            )
+                        )}
+                    >
+                        FAQ
+                    </Link>
                 </div>
 
                 {/* Right Spacer - Guaranteed equal to Left Spacer */}
@@ -314,6 +327,16 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         onClick={() => setIsOpen(false)}
                     >
                         Our Customers
+                    </Link>
+                    <Link
+                        href="/faq"
+                        className={cn(
+                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
+                            pathname === "/faq" ? "text-primary font-bold" : "text-stone-600"
+                        )}
+                        onClick={() => setIsOpen(false)}
+                    >
+                        FAQ
                     </Link>
 
                     {/* Mobile Contact */}

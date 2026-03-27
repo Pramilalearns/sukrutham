@@ -425,7 +425,7 @@ export default function OurGuestsPage() {
             </section>
 
             {/* --- Final CTA Section --- */}
-            <section className="pt-24 pb-12 bg-stone-900 border-t border-white/5 relative overflow-hidden">
+            <section className="pt-24 pb-4 bg-stone-900 border-t border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596423985167-d86b978dd6f8?auto=format&fit=crop&q=80')] opacity-[0.03] bg-cover bg-center"></div>
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center relative z-10 max-w-4xl">
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
@@ -444,16 +444,16 @@ export default function OurGuestsPage() {
                 </div>
             </section>
 
-            {/* --- Handwritten Testimonials Single Line Gallery (Min-h 350px) --- */}
+            {/* --- Handwritten Testimonials Single Line Gallery --- */}
             <section 
-                style={{ minHeight: '350px' }}
-                className="bg-stone-900 relative overflow-hidden flex items-center justify-center py-8"
+                style={{ minHeight: '480px' }}
+                className="bg-stone-900 relative flex items-center justify-center pt-0 pb-0"
             >
                 {/* Subtle Grain Overlay */}
                 <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
 
                 <div 
-                    className="relative w-full h-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 overflow-x-auto scroll-smooth"
+                    className="relative w-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 overflow-x-auto scroll-smooth pt-4 pb-0"
                     style={{ 
                         msOverflowStyle: 'none', 
                         scrollbarWidth: 'none',
@@ -462,31 +462,41 @@ export default function OurGuestsPage() {
                 >
                     <style dangerouslySetInnerHTML={{ __html: `
                         .no-scrollbar::-webkit-scrollbar { display: none; }
+                        .custom-zoom-img { transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1); }
+                        .group:hover .custom-zoom-img { transform: scale(1.6) translateY(-5px); z-index: 999; }
+                        @media (min-width: 768px) {
+                            .group:hover .custom-zoom-img { transform: scale(2.0) translateY(-8px); }
+                        }
                     ` }} />
-                    <div className="flex flex-nowrap justify-center items-center gap-4 md:gap-8 lg:gap-12 min-w-max md:min-w-0 mx-auto no-scrollbar">
+                    <div className="flex flex-nowrap justify-center items-center gap-6 md:gap-10 lg:gap-16 min-w-max md:min-w-0 mx-auto no-scrollbar py-8">
                         {[1, 5, 8, 10, 12].map((num, idx) => {
                             // Organic scattering in a single row
                             const rotation = (idx % 2 === 0 ? 3 : -3);
-                            const yOffset = (idx % 3 === 0 ? 8 : idx % 2 === 0 ? -8 : 0);
+                            const yOffset = (idx % 3 === 0 ? 6 : idx % 2 === 0 ? -6 : 0);
                             
                             return (
                                 <div 
                                     key={num}
-                                    className="group relative transition-all duration-1000 hover:scale-110 hover:z-[100] flex-shrink-0"
+                                    className="group relative flex-shrink-0 cursor-zoom-in"
                                     style={{ 
                                         transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
                                         zIndex: 10 + idx
                                     }}
                                 >
-                                    <div style={{ width: '180px', height: '240px' }} className="relative">
-                                        <Image 
-                                            src={`/testimonial-handwritten/${num}.png`}
-                                            alt={`Handwritten Testimonial ${num}`}
-                                            width={180}
-                                            height={240}
-                                            className="w-full h-full object-contain filter drop-shadow-[0_12px_30px_rgba(255,255,255,0.05)]"
-                                            priority
-                                        />
+                                    <div 
+                                        style={{ width: '180px', height: '240px' }} 
+                                        className="relative origin-center custom-zoom-img drop-shadow-2xl"
+                                    >
+                                        <div className="relative w-full h-full">
+                                            <Image 
+                                                src={`/testimonial-handwritten/${num}.png`}
+                                                alt={`Handwritten Testimonial ${num}`}
+                                                fill
+                                                sizes="(max-width: 768px) 300px, 450px"
+                                                className="object-contain"
+                                                priority
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             );

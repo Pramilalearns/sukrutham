@@ -13,6 +13,7 @@ import DecisionSection from "@/components/DecisionSection";
 import Awards from "@/components/Awards";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import HomeFAQ from "@/components/HomeFAQ";
 import ScrollAnimation from "@/components/ScrollAnimation";
 
 export default function Home() {
@@ -58,6 +59,10 @@ export default function Home() {
       </ScrollAnimation>
 
       <FloatingCTA />
+
+      <ScrollAnimation>
+        <HomeFAQ />
+      </ScrollAnimation>
 
       {/* Final CTA Section */}
       <section className="py-20 md:py-28 bg-stone-900 border-t border-white/10 relative overflow-hidden" id="book">
