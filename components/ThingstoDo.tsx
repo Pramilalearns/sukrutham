@@ -55,7 +55,7 @@ export default function Experience() {
                 <div className="text-center max-w-3xl mx-auto mb-10">
                     <span className="text-primary font-semibold tracking-wider uppercase text-sm">Experiences</span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-2 mb-4 text-stone-800 leading-tight">
-                        Beyond the Farm: <br /> Things to Do and See
+                        Beyond the Farm: <br /> Things to do and see in Kerala
                     </h2>
                     <p className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto">
                         Some truly unique ways to enjoy Kerala, God&apos;s Own Country. From adrenaline rushes to deep relaxation.

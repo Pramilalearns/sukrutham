@@ -370,7 +370,7 @@ export default function RoomsPage() {
                 { icon: Droplets, text: "Fresh, sweet well water" },
                 { icon: Car, text: "Parking for up to 3 cars" },
                 { icon: CheckCircle, text: "Wheelchair friendly premises" },
-                { icon: Plane, text: "Easy access by air, road, and rail" },
+                { icon: Plane, text: "Easy access by air, road, and train" },
                 { icon: Leaf, text: "Serene ambience in nature" }
             ]
         }
@@ -393,7 +393,7 @@ export default function RoomsPage() {
                     Our Guest Rooms
                 </h1>
                 <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-                    Find Your Perfect Space amidst the serenity of Sukrutham.
+                    Find Your Perfect Space — At Sukrutham Farm House in Thrissur
                 </p>
             </div>
 
@@ -517,7 +517,7 @@ export default function RoomsPage() {
                                     Your booking isn't just a room; it’s a beautifully curated experience.
                                 </p>
                                 <p className="text-stone-600 text-lg font-light leading-relaxed mb-8">
-                                    We thoughtfully design a holistic Kerala farm experience. Every booking envelopes you in these premium inclusions, ensuring a seamless and authentic retreat into nature.
+                                    We thoughtfully design a holistic farmhouse experience in Kerala, where every booking envelopes you in these premium inclusions, ensuring a seamless and authentic retreat into nature.
                                 </p>
                                 {/* Decorative line */}
                                 <div className="w-16 h-1 bg-[#EBE5DC]"></div>
@@ -820,7 +820,7 @@ export default function RoomsPage() {
                             Call us now to reserve your room or learn more about the package, facilities, and seasonal events. Looking forward to greeting you at Sukrutham Farm Stay, the house that&apos;s a place where each moment becomes a party with heritage richness and beauty that&apos;ll always prevail in Kerala.
                         </p>
                         <p className="text-stone-500 italic mb-10 text-lg">
-                            Book Your Stay now and take that refreshing trip to your mind, body, and soul amidst all this peaceful splendor of Kerala&apos;s rural beauty.
+                            Book your stay now at Sukrutham Farm Stay in Kerala and take that refreshing trip to your mind, body, and soul amidst all this peaceful splendor of Kerala&apos;s rural beauty.
                         </p>
 
                         <a

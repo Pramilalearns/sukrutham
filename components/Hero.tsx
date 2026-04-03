@@ -48,13 +48,13 @@ export default function Hero() {
 
             <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
                 <ScrollAnimation animation="fade-up">
-                    <span className="block text-sm md:text-base font-semibold tracking-widest uppercase mb-4 text-accent/90">
-                        Farmstay in Kerala
-                    </span>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight drop-shadow-lg">
+                    <h1 className="block text-sm md:text-base font-semibold tracking-widest uppercase mb-4 text-accent/90">
+                        Homestay in Thrissur, Kerala
+                    </h1>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight drop-shadow-lg">
                         Experience Authentic <br />
                         <span className="text-accent">Farm Life in the Heart of Kerala</span>
-                    </h1>
+                    </h2>
                     <p className="text-lg md:text-xl text-stone-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
                         Set amidst lush green paddy fields, waterfalls, and hills,
                         Sukrutham Farmstay is a world away from the hustle of typical tourist spots.
