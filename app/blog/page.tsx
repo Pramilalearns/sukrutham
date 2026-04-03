@@ -270,7 +270,7 @@ export default function BlogPage() {
                         <div className="mt-16 text-center">
                             <button
                                 onClick={handleLoadMore}
-                                className="px-8 py-3.5 rounded-full border-2 border-stone-900 text-stone-900 font-bold hover:bg-stone-900 hover:text-white transition-colors duration-300"
+                                className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full border-2 border-stone-900 text-stone-900 font-bold hover:bg-stone-900 hover:text-white transition-colors duration-300"
                             >
                                 Load More Stories
                             </button>

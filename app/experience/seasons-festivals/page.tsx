@@ -87,7 +87,7 @@ export default function SeasonsFestivalsPage() {
                         <span className="inline-block py-2 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.1em] mb-6 shadow-sm">
                             Art & Culture Aficionados
                         </span>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium text-white mb-6 leading-tight drop-shadow-xl">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl lg:text-8xl font-display font-medium text-white mb-6 leading-tight drop-shadow-xl">
                             Seasons & <br className="hidden md:block" />
                             <span className="italic text-stone-200 font-light">Festivals</span>
                         </h1>
@@ -95,7 +95,7 @@ export default function SeasonsFestivalsPage() {
                             Dive deep into the rich tapestry of Kerala's heritage. Explore venerated places of worship and witness world-famous cultural spectacles that define the spirit of this ancient land.
                         </p>
                         <div className="mt-8 flex justify-center">
-                            <Link href="#culture" className="inline-flex items-center justify-center gap-3 border border-white/50 text-white hover:bg-white hover:text-stone-900 px-8 py-3 rounded-full font-bold transition-all hover:-translate-y-1 shadow-md shadow-black/10">
+                            <Link href="#culture" className="inline-flex items-center justify-center gap-3 border border-white/50 text-white hover:bg-white hover:text-stone-900 px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap rounded-full font-bold transition-all hover:-translate-y-1 shadow-md shadow-black/10">
                                 Explore Sacred Sites
                             </Link>
                         </div>
@@ -110,7 +110,7 @@ export default function SeasonsFestivalsPage() {
                         <span className="text-[#758A6D] font-bold tracking-[0.15em] uppercase text-sm block mb-4">
                             Sacred Sites
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-display font-medium text-[#2C302A] mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-[#2C302A] mb-6">
                             Art and Culture Aficionados
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed">
@@ -171,7 +171,7 @@ export default function SeasonsFestivalsPage() {
                             <span className="text-[#758A6D] font-bold tracking-[0.15em] uppercase text-sm block mb-4">
                                 Rhythms of Kerala
                             </span>
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-[#2C302A] leading-tight mb-6">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-medium text-[#2C302A] leading-tight mb-6">
                                 Captivating <br />
                                 <span className="text-[#A48869] italic font-serif">Spectacles</span>
                             </h2>

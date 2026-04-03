@@ -65,7 +65,7 @@ const LocalSavorPage = () => {
                     <span className="text-[#758A6D] font-bold tracking-[0.15em] uppercase text-sm block mb-4">
                         Farm to Table Experience
                     </span>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-[#2C302A] mb-4">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-medium text-[#2C302A] mb-4">
                         Local Savor
                     </h1>
                     <p className="text-lg text-stone-600 max-w-2xl mx-auto">
@@ -78,7 +78,7 @@ const LocalSavorPage = () => {
             <section className="py-24 bg-stone-50" id="bounty">
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 mb-6">
                             Nature's Bounty On Your Plate
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed">
@@ -139,7 +139,7 @@ const LocalSavorPage = () => {
                             <span className="text-[#758A6D] font-semibold tracking-wider uppercase text-sm block mb-4">
                                 Our Philosophy
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
                                 Food as <br />
                                 <span className="text-[#A48869] italic font-serif">Medicine</span>
                             </h2>
@@ -186,13 +186,13 @@ const LocalSavorPage = () => {
             <section className="py-24 bg-stone-900 text-center relative overflow-hidden">
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
                     <ScrollAnimation>
-                        <h2 className="text-4xl md:text-5xl font-display font-medium mb-6 text-white">Ready for Discovery?</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium mb-6 text-white">Ready for Discovery?</h2>
                         <p className="text-lg md:text-xl text-stone-300 leading-relaxed mb-10 max-w-2xl mx-auto font-medium">
                             Join our communal table for a meal you'll never forget. Reserve your spot at Sukrutham Farm Stay.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link href="/book" className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-white hover:text-stone-900 text-white font-bold px-10 py-4 rounded-full transition-all hover:scale-105 text-sm uppercase tracking-wider">
+                            <Link href="/book" className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-white hover:text-stone-900 text-white font-bold px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full transition-all hover:scale-105 text-sm uppercase tracking-wider">
                                 Book Your Table <ArrowRight className="w-4 h-4" />
                             </Link>
                             <Link href="/our-story" className="text-stone-300 hover:text-white font-semibold underline underline-offset-4 decoration-stone-500 hover:decoration-white transition-all">

@@ -95,7 +95,7 @@ export default function WhyChooseUs() {
                     <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm mb-4 block">
                         Why Choose Us
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight tracking-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight tracking-tight">
                         A Sanctuary for the Soul.
                     </h2>
                     <p className="mt-6 text-lg md:text-xl text-stone-500 leading-relaxed font-light max-w-2xl">
@@ -233,7 +233,7 @@ export default function WhyChooseUs() {
                         <div className="mt-10 md:mt-12">
                             <a
                                 href="/book"
-                                className="inline-flex items-center justify-center bg-stone-900 hover:bg-stone-800 text-white text-base md:text-lg font-semibold px-8 py-3.5 md:px-10 md:py-4 rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-1"
+                                className="inline-flex items-center justify-center bg-stone-900 hover:bg-stone-800 text-white text-base md:text-lg font-semibold px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 md:px-10 md:py-4 rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-1"
                             >
                                 Book Your Stay
                             </a>

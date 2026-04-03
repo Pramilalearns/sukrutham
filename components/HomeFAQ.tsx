@@ -87,7 +87,7 @@ export default function HomeFAQ() {
         <div className="pt-24 pb-12 w-full flex justify-center clear-both block">
           <Link
             href="/faq"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-primary text-white text-lg font-semibold hover:bg-primary/95 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full bg-primary text-white text-lg font-semibold hover:bg-primary/95 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:-translate-y-0.5"
           >
             View All FAQs
             <ArrowRight size={20} className="ml-1" />

@@ -251,7 +251,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden p-2"
+                    className="md:hidden p-2 ml-auto"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >

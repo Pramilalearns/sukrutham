@@ -121,7 +121,7 @@ function RoomVisualTour({ activeTab, setActiveTab, roomImageData }: { activeTab:
             <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
                 <ScrollAnimation className="text-center mb-16">
                     <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Perspective</span>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">A Visual Tour to Your Rooms</h2>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6">A Visual Tour to Your Rooms</h2>
                     <p className="text-lg text-stone-600 max-w-2xl mx-auto font-light">
                         Take a closer look at the unique character and crafted details of each of our guest rooms.
                     </p>
@@ -389,7 +389,7 @@ export default function RoomsPage() {
 
             {/* Page Header */}
             <div id="rooms-header" className="pt-32 pb-12 bg-primary/5 text-center px-4 scroll-mt-20">
-                <h1 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-4">
                     Our Guest Rooms
                 </h1>
                 <p className="text-lg text-stone-600 max-w-2xl mx-auto">
@@ -510,7 +510,7 @@ export default function RoomsPage() {
                                 <span className="text-primary font-semibold tracking-wider uppercase text-sm block mb-4">
                                     The Sukrutham Package
                                 </span>
-                                <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
                                     What's Included with <span className="text-stone-500 italic font-serif">Your Stay?</span>
                                 </h2>
                                 <p className="text-[#A48869] font-medium text-xl mb-6 leading-snug">
@@ -815,7 +815,7 @@ export default function RoomsPage() {
 
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
                     <ScrollAnimation>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium mb-6 text-stone-900">Experience Kerala&apos;s Rural Beauty</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-medium mb-6 text-stone-900">Experience Kerala&apos;s Rural Beauty</h2>
                         <p className="text-lg md:text-xl text-stone-700 leading-relaxed mb-10 max-w-3xl mx-auto font-medium">
                             Call us now to reserve your room or learn more about the package, facilities, and seasonal events. Looking forward to greeting you at Sukrutham Farm Stay, the house that&apos;s a place where each moment becomes a party with heritage richness and beauty that&apos;ll always prevail in Kerala.
                         </p>
@@ -827,7 +827,7 @@ export default function RoomsPage() {
                             href="https://wa.me/919940668754"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-[#5A6B53] text-white font-bold px-8 py-4 rounded-full transition-all hover:scale-105 shadow-xl shadow-[#758A6D]/20"
+                            className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-[#5A6B53] text-white font-bold px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full transition-all hover:scale-105 shadow-xl shadow-[#758A6D]/20"
                         >
                             Book Your Stay
                         </a>

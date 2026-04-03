@@ -320,7 +320,7 @@ export default function PlacesToExplorePage() {
                                     <Navigation className="w-4 h-4" /> Discover Thrissur
                                 </span>
                             </div>
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
                                 Places to <br />
                                 <span className="italic text-[#A48869] font-serif">Explore</span>
                             </h1>
@@ -328,7 +328,7 @@ export default function PlacesToExplorePage() {
                                 While staying at Sukrutham is a wholesome experience in itself, here are some spectacular options to explore near the farmstay.
                             </p>
                             <div className="flex justify-center lg:justify-start">
-                                <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
+                                <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
                                     Plan Local Exploration
                                 </Link>
                             </div>
@@ -595,13 +595,13 @@ export default function PlacesToExplorePage() {
                 </div>
 
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center relative z-10 max-w-3xl">
-                    <h2 className="text-4xl md:text-5xl font-display font-medium mb-8">Need help planning your itinerary?</h2>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium mb-8">Need help planning your itinerary?</h2>
                     <p className="text-stone-300 text-lg mb-10 leading-relaxed font-light">
                         Let us know your interests! We can arrange reliable taxis and help you plan the perfect route to explore these beautiful destinations without feeling rushed.
                     </p>
                     <Link
                         href="/book"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-white text-stone-900 rounded-full font-bold tracking-wide hover:bg-white/90 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+                        className="inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap bg-white text-stone-900 rounded-full font-bold tracking-wide hover:bg-white/90 transition-all hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
                     >
                         Contact Host for Arrangements
                     </Link>

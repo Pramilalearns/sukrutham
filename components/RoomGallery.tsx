@@ -125,7 +125,7 @@ export default function RoomGallery({ initialImages }: { initialImages?: Record<
                     <span className="text-[#A48869] font-bold uppercase tracking-widest text-xs block mb-3">
                         MORE SPACES
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-stone-900 mb-6 tracking-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-medium text-stone-900 mb-6 tracking-tight">
                         Comfort Extends <br className="md:hidden" />
                         <span className="text-stone-500 italic font-serif">Beyond Your Room</span>
                     </h2>
@@ -182,23 +182,27 @@ export default function RoomGallery({ initialImages }: { initialImages?: Record<
                             <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 z-20 pointer-events-none transition-opacity duration-700" />
                             <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/20 to-transparent opacity-50 z-20 pointer-events-none" />
 
-                            {/* Navigation Controls (Permanently Visible) */}
-                            <div className="absolute inset-y-0 left-0 w-24 flex items-center justify-start px-2 md:px-4 z-30 transition-opacity duration-300">
-                                <button
-                                    onClick={handlePrev}
-                                    className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30 cursor-pointer"
-                                >
-                                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-                                </button>
-                            </div>
-                            <div className="absolute inset-y-0 right-0 w-24 flex items-center justify-end px-2 md:px-4 z-30 transition-opacity duration-300">
-                                <button
-                                    onClick={handleNext}
-                                    className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30 cursor-pointer"
-                                >
-                                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-                                </button>
-                            </div>
+                            {/* Navigation Controls (Conditionally Visible) */}
+                            {filteredImages.length > 1 && (
+                                <>
+                                    <div className="absolute inset-y-0 left-0 w-24 flex items-center justify-start px-2 md:px-4 z-30 transition-opacity duration-300">
+                                        <button
+                                            onClick={handlePrev}
+                                            className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30 cursor-pointer"
+                                        >
+                                            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+                                        </button>
+                                    </div>
+                                    <div className="absolute inset-y-0 right-0 w-24 flex items-center justify-end px-2 md:px-4 z-30 transition-opacity duration-300">
+                                        <button
+                                            onClick={handleNext}
+                                            className="w-10 h-10 md:w-12 md:h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95 border border-white/30 cursor-pointer"
+                                        >
+                                            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+                                        </button>
+                                    </div>
+                                </>
+                            )}
 
                             {/* Text Metadata Panel */}
                             <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 z-40 max-w-2xl transform transition-all duration-1000 ease-out translate-y-0 opacity-100">
@@ -217,9 +221,11 @@ export default function RoomGallery({ initialImages }: { initialImages?: Record<
                             </div>
 
                             {/* Slide Counter Float */}
-                            <div className="absolute top-6 right-6 md:top-8 md:right-8 z-30 bg-black/40 backdrop-blur-md px-5 py-2 rounded-full text-white text-sm font-semibold border border-white/20 tracking-wider shadow-lg">
-                                {currentIndex + 1} <span className="text-white/50 font-normal">/ {filteredImages.length}</span>
-                            </div>
+                            {filteredImages.length > 1 && (
+                                <div className="absolute top-6 right-6 md:top-8 md:right-8 z-30 bg-black/40 backdrop-blur-md px-5 py-2 rounded-full text-white text-sm font-semibold border border-white/20 tracking-wider shadow-lg">
+                                    {currentIndex + 1} <span className="text-white/50 font-normal">/ {filteredImages.length}</span>
+                                </div>
+                            )}
                         </div>
 
                         {/* Scrollable Filmstrip Ribbon */}

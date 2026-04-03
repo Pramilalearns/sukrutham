@@ -54,7 +54,7 @@ export default function Experience() {
                 {/* Heading */}
                 <div className="text-center max-w-3xl mx-auto mb-10">
                     <span className="text-primary font-semibold tracking-wider uppercase text-sm">Experiences</span>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold mt-2 mb-4 text-stone-800 leading-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-2 mb-4 text-stone-800 leading-tight">
                         Beyond the Farm: <br /> Things to Do and See
                     </h2>
                     <p className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ export default function Experience() {
                 <div className="mt-10 text-center">
                     <Link
                         href="/experience"
-                        className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                        className="inline-flex items-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                     >
                         Explore All Experiences
                         <ArrowRight className="w-4 h-4" />

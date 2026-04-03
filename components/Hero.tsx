@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import Metrics from "@/components/Metrics";
@@ -27,13 +28,18 @@ export default function Hero() {
 
     return (
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-            {/* Background Images with Cross-fade Transitions */}
+            {/* Background Images with Cross-fade Transitions using Next/Image for LCP Preloading */}
             {HERO_IMAGES.map((src, index) => (
-                <div
+                <Image
                     key={src}
-                    className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ease-in-out ${index === currentSlide ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                        }`}
-                    style={{ backgroundImage: `url('${src}')` }}
+                    src={src}
+                    alt={`Sukrutham Farmstay Hero ${index + 1}`}
+                    fill
+                    priority={index === 0}
+                    className={`object-cover transition-opacity duration-[2000ms] ease-in-out ${
+                        index === currentSlide ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    }`}
+                    sizes="100vw"
                 />
             ))}
 
@@ -57,14 +63,14 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link
                             href="/book"
-                            className="group bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                            className="group bg-primary hover:bg-primary/90 text-white px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                         >
                             Book Your Stay
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                         <Link
                             href="/experience"
-                            className="px-8 py-3.5 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 transition-all backdrop-blur-sm"
+                            className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 transition-all backdrop-blur-sm"
                         >
                             Explore Experiences
                         </Link>
@@ -72,8 +78,8 @@ export default function Hero() {
                 </ScrollAnimation>
             </div>
 
-            {/* Structured Metrics Bar at the very bottom of Hero */}
-            <div className="absolute bottom-0 left-0 w-full z-20">
+            {/* Structured Metrics Bar at the very bottom of Hero (Desktop Only in Overlay) */}
+            <div className="hidden md:block absolute bottom-0 left-0 w-full z-20">
                 <Metrics />
             </div>
         </section>

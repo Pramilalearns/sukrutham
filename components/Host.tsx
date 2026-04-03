@@ -41,7 +41,7 @@ export default function Host() {
 
                             <div className="prose prose-lg text-stone-600 leading-relaxed">
                                 <p className="mb-6 relative">
-                                    <span className="text-6xl text-[#8F9E8B]/40 float-left mr-2 -mt-4 font-serif leading-none">“</span>
+                                    <span className="text-4xl md:text-6xl text-[#8F9E8B]/40 float-left mr-2 -mt-4 font-serif leading-none">“</span>
                                     <span>
                                         Hi, I’m K P Murali —
                                     </span>
@@ -68,7 +68,7 @@ export default function Host() {
                                 <div className="flex flex-col sm:flex-row items-center gap-6 mt-8 pt-6 border-t border-stone-200/60 justify-start">
                                     <Link
                                         href="/our-story"
-                                        className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                                        className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap rounded-full font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                                     >
                                         Learn More About Us
                                         <ArrowRight className="w-4 h-4" />

@@ -21,6 +21,11 @@ export default function Home() {
     <main className="min-h-screen bg-stone-50 selection:bg-primary/20 selection:text-primary-dark">
       <Navbar />
       <Hero />
+      
+      {/* Mobile-Only Independent Metrics Section */}
+      <div className="md:hidden">
+        <Metrics />
+      </div>
 
       <ScrollAnimation delay={100}>
         <Awards />
@@ -65,19 +70,19 @@ export default function Home() {
       </ScrollAnimation>
 
       {/* Final CTA Section */}
-      <section className="py-20 md:py-28 bg-stone-900 border-t border-white/10 relative overflow-hidden" id="book">
+      <section className="py-16 md:py-28 bg-stone-900 border-t border-white/10 relative overflow-hidden" id="book">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596423985167-d86b978dd6f8?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center"></div>
         <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl">
 
           {/* Text Content */}
           <div className="text-center md:text-left md:max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">
               Ready to Experience Authenticity?
             </h2>
             <p className="text-xl text-stone-300 mb-8">
               Book your stay at Sukrutham Farmstay and immerse yourself in the true essence of Kerala.
             </p>
-            <Link href="/book" className="inline-block bg-primary hover:bg-primary/90 text-white text-lg font-semibold px-10 py-4 rounded-full transition-all shadow-lg hover:shadow-primary/50 hover:-translate-y-1">
+            <Link href="/book" className="inline-block bg-primary hover:bg-primary/90 text-white text-lg font-semibold px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full transition-all shadow-lg hover:shadow-primary/50 hover:-translate-y-1">
               Book Your Stay Now
             </Link>
           </div>
@@ -95,7 +100,7 @@ export default function Home() {
                 &#8220;
               </div>
 
-              <h2 className="text-5xl md:text-6xl leading-[0.85] tracking-wide text-stone-900 text-center z-10 -rotate-2 flex flex-col items-center justify-center gap-2" style={{ fontFamily: "'SketchyBrushCustom', cursive", textShadow: "1px 1px 2px rgba(0,0,0,0.1)" }}>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl leading-[0.85] tracking-wide text-stone-900 text-center z-10 -rotate-2 flex flex-col items-center justify-center gap-2" style={{ fontFamily: "'SketchyBrushCustom', cursive", textShadow: "1px 1px 2px rgba(0,0,0,0.1)" }}>
                 <span>Harvest</span>
                 <span>Happy</span>
                 <span>Memories</span>

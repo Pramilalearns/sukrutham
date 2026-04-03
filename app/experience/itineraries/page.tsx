@@ -89,7 +89,7 @@ export default function ItinerariesPage() {
                                         Curated Experiences
                                     </span>
                                 </div>
-                                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
+                                <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
                                     Your Journey, <br />
                                     <span className="italic text-[#A48869] font-serif">Your Pace.</span>
                                 </h1>
@@ -97,7 +97,7 @@ export default function ItinerariesPage() {
                                     Whether you wish to dive into farm life or explore the heritage of Thrissur, we’ve mapped out the perfect stay.
                                 </p>
                                 <div className="flex justify-center lg:justify-start">
-                                    <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
+                                    <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
                                         Request Custom Itinerary
                                     </Link>
                                 </div>
@@ -140,7 +140,7 @@ export default function ItinerariesPage() {
             <section className="py-24 bg-[#F8F7F4] relative z-20 -mt-12">
                 <div className="container mx-auto px-6 max-w-6xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-4">The Farm Soul</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-4">The Farm Soul</h2>
                         <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
                             Immersive in-farm itineraries designed to reconnect you with the earth, the animals, and traditional Kerala living.
                         </p>
@@ -200,13 +200,13 @@ export default function ItinerariesPage() {
                             <span className="inline-flex items-center gap-2 text-primary font-bold tracking-widest uppercase text-sm mb-4">
                                 <Heart className="w-4 h-4" /> Go With The Flow
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6 leading-tight">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6 leading-tight">
                                 The "Un-Planned" Stay.
                             </h2>
                             <p className="text-stone-600 text-lg font-medium italic mb-6">
                                 Because one size never fits all.
                             </p>
-                            <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/20">
+                            <Link href="/book" className="inline-flex items-center justify-center px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap bg-primary text-white rounded-full font-bold tracking-wide hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/20">
                                 Talk to the Host about your Vibe
                             </Link>
                         </div>
@@ -231,7 +231,7 @@ export default function ItinerariesPage() {
                         <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 drop-shadow-sm flex items-center justify-center gap-2">
                             <Compass className="w-5 h-5" /> Sightseeing Itineraries
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-4">The Explorer’s Compass</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-4">The Explorer’s Compass</h2>
                         <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
                             Step out of the farm to witness the vibrant culture, roaring waterfalls, and sacred heritage of Thrissur.
                         </p>

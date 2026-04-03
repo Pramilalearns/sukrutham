@@ -169,7 +169,7 @@ export default async function BlogPostPage({
           </p>
           <Link
             href="/blog"
-            className="px-8 py-3 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors"
+            className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors"
           >
             Back to Chronicles
           </Link>
@@ -258,7 +258,7 @@ export default async function BlogPostPage({
             <span>{post.readTime}</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-medium text-stone-900 mb-8 leading-[1.1] max-w-4xl drop-shadow-sm">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-7xl font-display font-medium text-stone-900 mb-8 leading-[1.1] max-w-4xl drop-shadow-sm">
             {post.title}
           </h1>
 
@@ -367,7 +367,7 @@ export default async function BlogPostPage({
                 ></textarea>
                 <button
                   type="button"
-                  className="px-8 py-3 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors"
+                  className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors"
                 >
                   Post Comment
                 </button>

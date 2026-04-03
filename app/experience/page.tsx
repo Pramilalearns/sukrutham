@@ -90,7 +90,7 @@ export default function ExperiencesPage() {
 
                 <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl mt-12 md:mt-20">
                     <ScrollAnimation animation="fade-up">
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 drop-shadow-lg leading-tight">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl font-display font-bold text-white mb-6 drop-shadow-lg leading-tight">
                             The Sukrutham <span className="text-accent italic">Journey</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-12">
@@ -100,17 +100,17 @@ export default function ExperiencesPage() {
                         {/* Metrics Block - Elegant and subtle */}
                         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 pt-4">
                             <div className="text-center">
-                                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">15+</div>
+                                <div className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">15+</div>
                                 <div className="text-stone-300 font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">In-Farm Activities</div>
                             </div>
                             <div className="w-px h-12 bg-white/20 hidden md:block"></div>
                             <div className="text-center">
-                                <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">10+</div>
+                                <div className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">10+</div>
                                 <div className="text-stone-300 font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">Local Sights</div>
                             </div>
                             <div className="w-px h-12 bg-white/20 hidden md:block"></div>
                             <div className="text-center">
-                                <div className="text-4xl md:text-5xl font-display font-bold text-accent mb-2 drop-shadow-lg">100%</div>
+                                <div className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-accent mb-2 drop-shadow-lg">100%</div>
                                 <div className="text-stone-300 font-semibold text-[10px] md:text-xs uppercase tracking-[0.2em]">Authentic Kerala</div>
                             </div>
                         </div>
@@ -182,7 +182,7 @@ export default function ExperiencesPage() {
                                             </span>
                                         </div>
 
-                                        <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-800 mb-6 drop-shadow-sm">
+                                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-800 mb-6 drop-shadow-sm">
                                             {exp.title}
                                         </h2>
 
@@ -203,7 +203,7 @@ export default function ExperiencesPage() {
                                         <div className="flex flex-col sm:flex-row gap-4 items-center">
                                             <Link
                                                 href={exp.href}
-                                                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 hover:bg-stone-800 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                                                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900 hover:bg-stone-800 text-white px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                                             >
                                                 {exp.ctaText}
                                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -212,7 +212,7 @@ export default function ExperiencesPage() {
                                             {/* Booking CTA for this specific section */}
                                             <Link
                                                 href="/book"
-                                                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-primary bg-primary/10 hover:bg-primary/20 transition-all text-center"
+                                                className="w-full sm:w-auto inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full font-semibold text-primary bg-primary/10 hover:bg-primary/20 transition-all text-center"
                                             >
                                                 Book Your Stay
                                             </Link>
@@ -244,7 +244,7 @@ export default function ExperiencesPage() {
                 </div>
                 <div className="container mx-auto px-6 relative z-10 text-center max-w-3xl">
                     <ScrollAnimation animation="fade-up">
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
                             Ready to Craft Your <span className="text-accent italic">Story?</span>
                         </h2>
                         <p className="text-xl text-stone-300 mb-10 leading-relaxed font-medium">
@@ -252,7 +252,7 @@ export default function ExperiencesPage() {
                         </p>
                         <Link
                             href="/book"
-                            className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-10 py-4 lg:py-5 rounded-full font-bold text-lg transition-all shadow-xl hover:shadow-primary/30 hover:-translate-y-1 w-full sm:w-auto"
+                            className="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap lg:py-5 rounded-full font-bold text-lg transition-all shadow-xl hover:shadow-primary/30 hover:-translate-y-1 w-full sm:w-auto"
                         >
                             Book Your Farmstay Retreat
                         </Link>

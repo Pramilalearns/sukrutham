@@ -111,7 +111,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                              <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
                                  The Interior & Exterior
                              </span>
-                             <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-2">
+                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-2">
                                  The Soul of Sukrutham
                              </h2>
                              <p className="text-primary font-medium italic mb-6">
@@ -161,7 +161,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                             <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
                                 Around the farm
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-2">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-2">
                                 Life on the Farm
                             </h2>
                             <p className="text-accent font-medium italic mb-6">
@@ -210,7 +210,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                             <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
                                 The Neighborhood
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-2">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-2">
                                 Just Beyond the Gate
                             </h2>
                             <p className="text-primary font-medium italic mb-6">
@@ -262,7 +262,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                     </p>
                     <a
                         href="/book"
-                        className="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2 transform hover:-translate-y-1"
+                        className="bg-primary hover:bg-primary/90 text-white px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full font-semibold shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2 transform hover:-translate-y-1"
                     >
                         Book Your Experience <ArrowDown className="w-4 h-4" />
                     </a>

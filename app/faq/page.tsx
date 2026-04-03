@@ -197,7 +197,7 @@ export default function FAQPage() {
             <p className="text-xs font-bold tracking-[0.28em] uppercase mb-4" style={{ color: "#4ADE80" }}>
               Help Centre
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight max-w-2xl mb-5">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight max-w-2xl mb-5">
               Frequently Asked<br />Questions
             </h1>
             <p className="text-lg md:text-xl font-light text-stone-200 max-w-lg leading-relaxed">
@@ -370,14 +370,14 @@ export default function FAQPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="tel:+919940668754"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-stone-300 bg-white text-stone-800 font-semibold hover:border-primary hover:text-primary transition-colors hover:shadow-sm"
+                className="inline-flex items-center gap-2.5 px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full border border-stone-300 bg-white text-stone-800 font-semibold hover:border-primary hover:text-primary transition-colors hover:shadow-sm"
               >
                 <Phone size={18} className="text-primary" />
                 +91 99406 68754
               </a>
               <a
                 href="mailto:sukruthamfarmstay@gmail.com"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-white font-semibold hover:bg-primary/95 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30"
+                className="inline-flex items-center gap-2.5 px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap.5 rounded-full bg-primary text-white font-semibold hover:bg-primary/95 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30"
               >
                 <Mail size={18} />
                 Email us

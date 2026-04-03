@@ -24,7 +24,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="text-center mt-32 px-6">
                     <h1 className="text-4xl font-display font-bold text-stone-900 mb-4">Post Not Found</h1>
                     <p className="text-stone-600 mb-8">The story you are looking for has been moved or doesn&apos;t exist.</p>
-                    <Link href="/blog" className="px-8 py-3 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors">
+                    <Link href="/blog" className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors">
                         Back to Chronicles
                     </Link>
                 </div>
@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <span>{post.readTime}</span>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-medium text-stone-900 mb-8 leading-[1.1] max-w-4xl drop-shadow-sm">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-7xl font-display font-medium text-stone-900 mb-8 leading-[1.1] max-w-4xl drop-shadow-sm">
                         {post.title}
                     </h1>
 
@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     <input type="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-primary/20" />
                                 </div>
                                 <textarea placeholder="Share your thoughts..." rows={5} className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"></textarea>
-                                <button type="button" className="px-8 py-3 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors">
+                                <button type="button" className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 transition-colors">
                                     Post Comment
                                 </button>
                             </form>

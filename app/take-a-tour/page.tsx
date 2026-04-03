@@ -54,7 +54,7 @@ export default function TakeATour() {
                         <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
                             The Sukrutham Journey
                         </span>
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-stone-900 mb-8 leading-tight">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-stone-900 mb-8 leading-tight">
                             A Soulful Base for <br /> <span className="text-stone-400 italic">Authentic Exploration</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto leading-relaxed font-light">

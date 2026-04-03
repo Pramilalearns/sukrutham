@@ -73,7 +73,7 @@ export default function ExperienceGallery() {
                         <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4">
                             The Essence
                         </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-stone-900 leading-[1.1]">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-bold text-stone-900 leading-[1.1]">
                             When we say <span className="italic text-accent">Sukrutham Experience</span>, this is what we mean :)
                         </h2>
                         <p className="mt-6 text-lg text-stone-600 leading-relaxed">

@@ -69,14 +69,14 @@ export default function Rooms() {
                 <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link
                         href="/book"
-                        className="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                        className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                     >
                         <CalendarCheck className="w-4 h-4" />
                         Book Room
                     </Link>
                     <Link
                         href="/rooms"
-                        className="px-8 py-3 bg-white text-stone-800 border-2 border-primary/20 hover:border-primary rounded-full font-semibold hover:bg-stone-50 transition-all flex items-center gap-2"
+                        className="px-5 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-base whitespace-nowrap bg-white text-stone-800 border-2 border-primary/20 hover:border-primary rounded-full font-semibold hover:bg-stone-50 transition-all flex items-center gap-2"
                     >
                         <Info className="w-4 h-4" />
                         Learn More

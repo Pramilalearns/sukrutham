@@ -63,9 +63,9 @@ export default function OurStory() {
                         Our Story
                     </span>
 
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
                         Experience <br className="hidden md:block" />
-                        <span className="italic text-accent font-light text-6xl md:text-7xl lg:text-8xl">Sukrutham</span>
+                        <span className="italic text-accent font-light text-4xl md:text-6xl md:text-7xl lg:text-8xl">Sukrutham</span>
                     </h1>
 
                     <p className="text-xl md:text-2xl text-stone-100 font-medium leading-relaxed max-w-3xl mx-auto drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] animate-in slide-in-from-bottom-4 duration-700 delay-200 mb-16">
@@ -111,7 +111,7 @@ export default function OurStory() {
             </section>
 
             {/* --- Trust Signals & Awards --- */}
-            <section className="relative z-20 px-6 py-24 bg-stone-50">
+            <section className="relative z-20 px-6 py-16 md:py-24 bg-stone-50">
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
@@ -181,7 +181,7 @@ export default function OurStory() {
             </section>
 
             {/* --- The Meaning Behind Our Logo --- */}
-            <section className="py-24 px-6 md:px-12 bg-[#F9F8F6] border-y border-stone-100 relative">
+            <section className="py-16 md:py-24 px-6 md:px-12 bg-[#F9F8F6] border-y border-stone-100 relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-0"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-0"></div>
 
@@ -216,7 +216,7 @@ export default function OurStory() {
                                 <span className="text-stone-400 font-bold tracking-widest uppercase text-xs mb-3 block">
                                     Our Identity, Rooted in Nature
                                 </span>
-                                <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6 leading-tight">
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6 leading-tight">
                                     The Meaning Behind <br />
                                     <span className="text-primary italic">Our Logo</span>
                                 </h2>
@@ -250,7 +250,7 @@ export default function OurStory() {
             </section>
 
             {/* --- The Visionary (Refined Content) --- */}
-            <section className="py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+            <section className="py-16 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
                 <div className="container mx-auto">
                     <div className="flex flex-col lg:flex-row gap-20">
                         {/* Smaller Sticky Image */}
@@ -278,7 +278,7 @@ export default function OurStory() {
                         <div className="lg:w-7/12 pt-12 space-y-12">
                             <div>
                                 <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">The Beginning</span>
-                                <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-8">
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-8">
                                     A Dream Realized
                                 </h2>
                                 <div className="prose prose-lg text-stone-600 font-light leading-loose space-y-6">
@@ -307,10 +307,10 @@ export default function OurStory() {
                                         href="https://www.linkedin.com/in/kp-murali-6018318/"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-3 px-6 py-3 bg-[#0a66c2]/10 text-[#0a66c2] hover:bg-[#0a66c2] hover:text-white font-medium rounded-full transition-all duration-300 w-fit group"
+                                        className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 bg-[#0a66c2]/10 text-[#0a66c2] hover:bg-[#0a66c2] hover:text-white font-medium rounded-full transition-all duration-300 w-fit group"
                                     >
-                                        <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                        <span>Connect with K.P. Murali on LinkedIn</span>
+                                        <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 group-hover:scale-110 transition-transform" />
+                                        <span className="text-[13px] sm:text-base whitespace-nowrap">Connect with K.P. Murali on LinkedIn</span>
                                     </a>
                                 </div>
                             </div>
@@ -320,11 +320,11 @@ export default function OurStory() {
             </section>
 
             {/* --- Architecture (Bento Grid Layout) --- */}
-            <section className="relative py-32 bg-[#F9F8F6] text-stone-900 overflow-hidden border-t border-stone-100">
+            <section className="relative py-16 md:py-32 bg-[#F9F8F6] text-stone-900 overflow-hidden border-t border-stone-100">
                 <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-6xl">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
                         <span className="text-accent font-bold tracking-widest uppercase text-xs mb-4 block">Timeless Design</span>
-                        <h2 className="text-5xl md:text-7xl font-display font-bold mb-6 text-stone-900">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-stone-900">
                             Architecture with a Soul
                         </h2>
                         <p className="text-xl text-stone-600 font-light leading-relaxed">
@@ -364,7 +364,7 @@ export default function OurStory() {
             </section>
 
             {/* --- Video Section 1: Cultural Essence --- */}
-            <section className="py-24 px-6 md:px-12 bg-white">
+            <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
                 <div className="container mx-auto max-w-5xl">
                     <div className="aspect-video w-full relative rounded-3xl overflow-hidden shadow-2xl border-4 border-stone-100 mb-8 group">
                         <iframe
@@ -386,7 +386,7 @@ export default function OurStory() {
                             href="https://www.youtube.com/@SukruthamFarmStay"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#FF0000] hover:bg-red-700 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-red-600/30 group"
+                            className="inline-flex items-center gap-3 px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap bg-[#FF0000] hover:bg-red-700 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-red-600/30 group"
                         >
                             <Youtube className="w-6 h-6 group-hover:animate-pulse" />
                             <span>Subscribe to our YouTube Channel</span>
@@ -396,11 +396,11 @@ export default function OurStory() {
             </section>
 
             {/* --- Living Farm (Redesigned Layout) --- */}
-            <section className="py-32 px-6 md:px-12 bg-[#F4F1EA]">
+            <section className="py-16 md:py-32 px-6 md:px-12 bg-[#F4F1EA]">
                 <div className="container mx-auto">
                     <div className="text-center mb-20 max-w-3xl mx-auto">
                         <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Biodiversity</span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">A Living, Breathing Farm</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6">A Living, Breathing Farm</h2>
                         <p className="text-lg text-stone-600 font-light leading-relaxed">
                             Set within a lush one-acre organic farm, life here moves at a gentle pace. Our gardens are a treasure trove of biodiversity, featuring:
                         </p>
@@ -444,10 +444,10 @@ export default function OurStory() {
             </section>
 
             {/* --- Video Section 2: In & Around (Cinematic Layout) --- */}
-            <section className="py-32 bg-stone-50 text-stone-900 border-t border-stone-200 overflow-hidden">
+            <section className="py-16 md:py-32 bg-stone-50 text-stone-900 border-t border-stone-200 overflow-hidden">
                 <div className="container mx-auto px-6 md:px-12 max-w-7xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-5xl md:text-7xl font-display font-bold text-stone-900 mb-8">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-stone-900 mb-8">
                             Experience the <br /> Unseen Kerala
                         </h2>
                         <p className="text-xl text-stone-600 font-light leading-relaxed max-w-3xl mx-auto">
@@ -477,7 +477,7 @@ export default function OurStory() {
             </section>
 
             {/* Footer Note */}
-            <div className="py-24 bg-[#FDFCF8] text-center px-6">
+            <div className="py-16 md:py-24 bg-[#FDFCF8] text-center px-6">
                 <p className="text-2xl md:text-3xl font-display italic text-stone-500 max-w-4xl mx-auto leading-relaxed">
                     "Sukrutham will weave its magic around you. She will make you fall in love with yourself and the place."
                 </p>
@@ -486,12 +486,12 @@ export default function OurStory() {
             <AboutFAQ />
 
             {/* --- Recent Blogs Section --- */}
-            <section className="py-24 bg-white border-t border-stone-100">
+            <section className="py-16 md:py-24 bg-white border-t border-stone-100">
                 <div className="container mx-auto px-6 md:px-12 max-w-7xl">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                         <div>
                             <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">From the Journal</span>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900">
                                 Sukrutham Chronicles
                             </h2>
                         </div>
@@ -547,7 +547,7 @@ export default function OurStory() {
             </section>
 
             {/* --- Final CTA Section --- */}
-            <section className="relative py-32 bg-stone-900 text-center overflow-hidden">
+            <section className="relative py-16 md:py-32 bg-stone-900 text-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/hero-carousel/slide3.jpg"
@@ -558,7 +558,7 @@ export default function OurStory() {
                     <div className="absolute inset-0 bg-stone-900/80"></div>
                 </div>
                 <div className="container mx-auto px-6 relative z-10 max-w-3xl">
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6">
                         EXPLORE SUKRUTHAM FARMSTAY - HARVEST HAPPY MEMORIES!
                     </h2>
                     <p className="text-xl text-stone-300 font-light mb-10">

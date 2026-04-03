@@ -27,7 +27,7 @@ export default function AboutFAQ() {
   };
 
   return (
-    <section className="bg-stone-50 py-24 border-t border-stone-200">
+    <section className="bg-stone-50 py-16 md:py-24 border-t border-stone-200">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-10 md:mb-14">
           <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">
@@ -87,7 +87,7 @@ export default function AboutFAQ() {
         <div className="pt-24 pb-12 w-full flex justify-center clear-both block">
           <Link
             href="/faq"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-primary text-white text-lg font-semibold hover:bg-primary/95 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full bg-primary text-white text-lg font-semibold hover:bg-primary/95 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:-translate-y-0.5"
           >
             View All FAQs
             <ArrowRight size={20} className="ml-1" />

@@ -171,7 +171,7 @@ export default function ActivitiesPage() {
                         <span className="inline-block py-2 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.1em] mb-6 shadow-sm">
                             Curated Experiences
                         </span>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium text-white mb-6 leading-tight drop-shadow-xl">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl lg:text-8xl font-display font-medium text-white mb-6 leading-tight drop-shadow-xl">
                             Discover the Magic of <br className="hidden md:block" />
                             <span className="italic text-stone-200 font-light">Kerala</span>
                         </h1>
@@ -186,7 +186,7 @@ export default function ActivitiesPage() {
             <section className="py-24 bg-stone-50" id="local-experiences">
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 mb-6">
                             Unique Local Experiences
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed">
@@ -252,7 +252,7 @@ export default function ActivitiesPage() {
                             <span className="text-primary font-semibold tracking-wider uppercase text-sm block mb-4">
                                 Farm Life
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight mb-6">
                                 Bring Out Your <br />
                                 <span className="text-stone-500 italic font-serif">Inner Farmer</span>
                             </h2>
@@ -308,7 +308,7 @@ export default function ActivitiesPage() {
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-5xl">
                     <div className="text-center mb-16">
                         <span className="text-primary font-semibold tracking-wider uppercase text-sm block mb-4">Wellness</span>
-                        <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 mb-6">
                             Rejuvenate Yourself
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto">
@@ -362,7 +362,7 @@ export default function ActivitiesPage() {
             <section className="py-24 bg-stone-900 text-center relative overflow-hidden">
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
                     <ScrollAnimation>
-                        <h2 className="text-4xl md:text-5xl font-display font-medium mb-6 text-white">Ready for Discovery?</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium mb-6 text-white">Ready for Discovery?</h2>
                         <p className="text-lg md:text-xl text-stone-300 leading-relaxed mb-10 max-w-2xl mx-auto font-medium">
                             Call us now to reserve your room or learn more about our curated activities and experiences. We look forward to greeting you at Sukrutham Farm Stay.
                         </p>
@@ -372,7 +372,7 @@ export default function ActivitiesPage() {
                                 href="https://wa.me/919940668754"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-white hover:text-stone-900 text-white font-bold px-10 py-4 rounded-full transition-all hover:scale-105 text-sm uppercase tracking-wider"
+                                className="inline-flex items-center gap-2 bg-[#758A6D] hover:bg-white hover:text-stone-900 text-white font-bold px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full transition-all hover:scale-105 text-sm uppercase tracking-wider"
                             >
                                 Contact Us <ArrowRight className="w-4 h-4" />
                             </a>

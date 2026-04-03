@@ -312,7 +312,7 @@ export default function OurGuestsPage() {
                     >
                         Guestbook
                     </span>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
                         Words from Our <br className="hidden md:block" />
                         <span className="italic text-accent font-light">Global Family</span>
                     </h1>
@@ -328,21 +328,21 @@ export default function OurGuestsPage() {
                     <div className="bg-white rounded-[3rem] shadow-2xl shadow-stone-200/50 border border-stone-100 p-12 lg:p-20">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 items-center">
                             <div className="text-center md:text-right space-y-4">
-                                <h3 className="text-4xl md:text-5xl font-display font-bold text-stone-900 leading-tight">
+                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                                     "The most <br /> <span className="text-primary italic">shanti</span> place"
                                 </h3>
                                 <p className="text-stone-500 uppercase tracking-widest text-xs font-bold">— Anastasia, Moscow</p>
                             </div>
 
                             <div className="text-center space-y-4 border-y md:border-y-0 md:border-x border-stone-200 py-12 md:py-0 px-4">
-                                <h3 className="text-4xl md:text-5xl font-display font-bold text-stone-900 leading-tight">
+                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                                     "Impressed <br /> <span className="text-accent italic">beyond</span> words."
                                 </h3>
                                 <p className="text-stone-500 uppercase tracking-widest text-xs font-bold">— Dr Shruthi & Family, Bangalore</p>
                             </div>
 
                             <div className="text-center md:text-left space-y-4">
-                                <h3 className="text-4xl md:text-5xl font-display font-bold text-stone-900 leading-tight">
+                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                                     "An idyllic <br /> slice of <span className="text-primary italic">paradise!</span>"
                                 </h3>
                                 <p className="text-stone-500 uppercase tracking-widest text-xs font-bold">— Sonia & Santosh, New Zealand</p>
@@ -429,7 +429,7 @@ export default function OurGuestsPage() {
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-10 md:mb-16">
                         <span className="text-stone-400 font-bold tracking-widest uppercase text-xs mb-4 block animate-in fade-in slide-in-from-bottom-2 duration-1000">Guest Reflections</span>
-                        <h2 className="text-4xl md:text-5xl font-display font-medium text-stone-900 leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight">
                             Moments from <span className="italic text-stone-500 font-serif">Sukrutham</span>
                         </h2>
                     </div>
@@ -455,7 +455,7 @@ export default function OurGuestsPage() {
                     </div>
 
                     <div className="text-center mt-8 md:mt-12 block animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-                        <h3 className="text-4xl md:text-5xl font-display font-bold text-stone-900 leading-tight">
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                             "Harvest Happy <span className="text-primary italic">Memories</span>"
                         </h3>
                     </div>
@@ -466,7 +466,7 @@ export default function OurGuestsPage() {
             <section className="pt-24 pb-4 bg-stone-900 border-t border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596423985167-d86b978dd6f8?auto=format&fit=crop&q=80')] opacity-[0.03] bg-cover bg-center"></div>
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center relative z-10 max-w-4xl">
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6">
                         Ready to add your story?
                     </h2>
                     <p className="text-xl text-stone-300 font-light mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -474,7 +474,7 @@ export default function OurGuestsPage() {
                     </p>
                     <Link
                         href="/book"
-                        className="inline-flex items-center gap-3 px-10 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-primary/30 group hover:-translate-y-1 text-lg"
+                        className="inline-flex items-center gap-3 px-6 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap bg-primary hover:bg-primary-dark text-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-primary/30 group hover:-translate-y-1 text-lg"
                     >
                         <span>Reserve Your Sanctuary</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

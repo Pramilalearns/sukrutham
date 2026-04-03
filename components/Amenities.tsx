@@ -157,12 +157,12 @@ export default function Amenities() {
 
                 {/* Mobile: Simple Select Dropdown or just stack them? 
                     Let's use a scrolling tab list for mobile friendly UX */}
-                <div className="flex flex-wrap justify-center gap-2 mb-10">
+                <div className="flex overflow-x-auto md:flex-wrap md:justify-center gap-2 mb-10 pb-4 px-2 md:px-0 -mx-6 md:mx-0 snap-x snap-mandatory scrollbar-hide">
                     {amenityGroups.map((group, index) => (
                         <button
                             key={index}
                             onClick={() => setActiveTab(index)}
-                            className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 border ${activeTab === index
+                            className={`shrink-0 snap-start px-5 py-2.5 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 border ${activeTab === index
                                 ? "bg-primary text-white border-primary shadow-lg scale-105"
                                 : "bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100 hover:border-stone-300"
                                 }`}

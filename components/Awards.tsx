@@ -19,10 +19,10 @@ export default function Awards() {
                 </div>
 
                 {/* Awards Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
                     {/* Diamond Certificate */}
-                    <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 flex flex-col sm:flex-row items-center gap-8 group h-full">
-                        <div className="relative w-full sm:w-2/5 shrink-0">
+                    <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-6 md:p-8 flex flex-col sm:flex-row items-center gap-6 md:gap-8 group h-full">
+                        <div className="relative w-2/3 sm:w-2/5 shrink-0 mx-auto sm:mx-0">
                             <Image
                                 src="/certificate.jpg"
                                 alt="Diamond Grade Certificate"
@@ -40,7 +40,7 @@ export default function Awards() {
                                 <Award className="w-5 h-5 fill-current" />
                                 <span className="font-bold tracking-wide text-xs uppercase">Govt. Certified</span>
                             </div>
-                            <h3 className="text-2xl font-display font-bold text-stone-900 mb-3">
+                            <h3 className="text-xl md:text-2xl font-display font-bold text-stone-900 mb-3">
                                 Diamond Class Homestay
                             </h3>
                             <p className="text-stone-600 leading-relaxed font-light text-sm mb-4">
@@ -53,7 +53,7 @@ export default function Awards() {
                     </div>
 
                     {/* Booking.com Award */}
-                    <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 flex flex-col sm:flex-row items-center gap-8 group h-full">
+                    <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-6 md:p-8 flex flex-col sm:flex-row items-center gap-6 md:gap-8 group h-full">
                         <div className="relative w-2/3 sm:w-2/5 shrink-0 mx-auto sm:mx-0">
                             <Image
                                 src="/booking-awards/Digital-Award_RA-2026.png"
@@ -69,7 +69,7 @@ export default function Awards() {
                                 <span className="font-black text-3xl tracking-tight">9.8</span>
                                 <span className="text-xs font-bold text-stone-400 uppercase tracking-widest mt-1">/ 10</span>
                             </div>
-                            <h3 className="text-2xl font-display font-bold text-stone-900 mb-3">
+                            <h3 className="text-xl md:text-2xl font-display font-bold text-stone-900 mb-3">
                                 Traveller Review Awards 2026
                             </h3>
                             <p className="text-stone-600 leading-relaxed font-light text-sm mb-4">

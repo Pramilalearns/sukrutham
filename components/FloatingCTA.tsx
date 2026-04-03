@@ -25,16 +25,16 @@ export default function FloatingCTA() {
     return (
         <div
             className={cn(
-                "fixed bottom-4 right-4 z-50 md:hidden transition-all duration-500 transform",
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                "fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-500 transform",
+                isVisible ? "translate-y-0" : "translate-y-full"
             )}
         >
             <Link
                 href="/book"
-                className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full shadow-lg shadow-primary/30 font-bold tracking-wide hover:bg-primary/90 transition-colors animate-pulse-slow text-sm"
+                className="flex items-center justify-center gap-2 bg-primary text-white w-full py-4 shadow-[0_-8px_10px_-2px_rgba(0,0,0,0.15)] font-bold tracking-[0.05em] hover:bg-primary/90 transition-colors text-sm sm:text-base uppercase"
             >
-                <CalendarCheck className="w-4 h-4" />
-                <span>Book Stay</span>
+                <CalendarCheck className="w-5 h-5" />
+                <span>Book Stay Now</span>
             </Link>
         </div>
     );
