@@ -141,11 +141,11 @@ export default function Amenities() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <section className="pt-20 md:pt-24 pb-6 bg-white relative" id="amenities">
+        <section className="py-16 md:py-20 bg-white relative" id="amenities">
             <div className="absolute inset-0 bg-pattern-dots text-stone-200 mask-gradient-b"></div>
             <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
                 {/* Heading */}
-                <div className="text-center max-w-4xl mx-auto mb-10 px-6 md:px-12 lg:px-20">
+                <div className="text-center max-w-4xl mx-auto mb-10">
                     <span className="text-primary font-semibold tracking-wider uppercase text-sm">Amenities</span>
                     <h2 className="text-3xl md:text-4xl font-display font-bold mt-2 mb-4 text-stone-800">
                         18+ Thoughtful Onsite Amenities

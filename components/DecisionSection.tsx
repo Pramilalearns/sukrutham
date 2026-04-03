@@ -69,11 +69,11 @@ const decisions = [
 
 export default function DecisionSection() {
     return (
-        <section className="py-20 bg-stone-50 relative overflow-hidden" id="decision">
+        <section className="py-16 md:py-20 bg-stone-50 relative overflow-hidden" id="decision">
             {/* Subtle background decoration */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent skew-x-12 -z-0"></div>
 
-            <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
+            <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[1400px] relative z-10">
                 {/* Clean, Focused Header using exact text */}
                 <div className="text-center max-w-4xl mx-auto mb-10">
                     <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm mb-4 block">

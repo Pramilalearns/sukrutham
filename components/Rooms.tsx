@@ -25,8 +25,8 @@ export default function Rooms() {
     ];
 
     return (
-        <section className="pt-6 pb-12 bg-white" id="rooms">
-            <div className="container mx-auto px-8 md:px-20 lg:px-32 flex flex-col justify-center">
+        <section className="py-16 md:py-20 bg-white relative" id="rooms">
+            <div className="container mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-center">
                 {/* Header - Compact */}
                 <div className="text-center max-w-4xl mx-auto mb-10">
                     <span className="text-primary font-semibold tracking-wider uppercase text-sm">Stay</span>

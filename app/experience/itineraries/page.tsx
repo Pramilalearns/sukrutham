@@ -24,8 +24,8 @@ const farmItineraries = [
         id: "2-day",
         title: "2-Day Rejuvenation",
         duration: "Overnight Stay",
-        description: "Immerse deeper into the village life with an overnight stay and a special campfire dinner.",
-        highlights: ["All Day 1 Activities", "Bird Watching", "Cooking Class", "Night 1 Campfire", "Appam/Stew Special Dinner"],
+        description: "Immerse deeper into the village life with an overnight stay and a special dinner.",
+        highlights: ["All Day 1 Activities", "Bird Watching", "Guided Village Walk", "Sunset by the Fields", "Appam/Stew Special Dinner"],
         icon: Leaf,
         color: "bg-[#ECE6D5] text-[#8C5D47]",
         border: "border-[#d1c8b0]",
@@ -49,7 +49,7 @@ const explorerItineraries = [
         title: "2-Day Nature Sightseeing",
         description: "Explore the natural beauty surrounding the farm, from hidden rocky hills to cascading falls.",
         icons: [Route, Bike, Sunset],
-        locations: ["Vattayi Waterfalls", "Cheppara Rock Garden", "Night 1 Farm Campfire"],
+        locations: ["Vattayi Waterfalls", "Cheppara Rock Garden"],
         includes: "Includes all meals (Farm Breakfast/Lunch/Dinner & Tea)",
     },
     {
@@ -57,7 +57,7 @@ const explorerItineraries = [
         title: "3-Day Culture & Heritage",
         description: "Dive into the rich history and traditions of Thrissur, the cultural capital of Kerala.",
         icons: [BookOpen, MapIcon, Sunrise],
-        locations: ["Guruvayur Temple", "Elephant Sanctuary", "Kerala Kalamandalam", "Peechi Dam", "Night 2 Farm Campfire"],
+        locations: ["Guruvayur Temple", "Elephant Sanctuary", "Kerala Kalamandalam", "Peechi Dam"],
         includes: "Includes all meals and local tea breaks",
     }
 ];

@@ -27,8 +27,8 @@ export default function HomeFAQ() {
   };
 
   return (
-    <section className="pt-12 pb-20 md:pt-16 md:pb-28 bg-stone-50">
-      <div className="container mx-auto px-6 max-w-4xl">
+    <section className="py-16 md:py-20 bg-stone-50 relative">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-4xl">
         <div className="text-center mb-10 md:mb-14">
           <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">
             Quick Answers

@@ -55,16 +55,16 @@ const galleryImages = [
     },
     {
         src: "/Home-Essence/5.png",
-        alt: "Our friendly dog Chipi",
-        title: "Meet Chipi",
-        description: "Say hello to Chipi, our ever-cheerful farmstay companion who loves greeting every guest with a wag and a smile.",
+        alt: "Our friendly dog Chippi",
+        title: "Meet Chippi",
+        description: "Say hello to Chippi, our ever-cheerful farmstay companion who loves greeting every guest with a wag and a smile.",
         className: "bg-amber-100"
     },
 ];
 
 export default function ExperienceGallery() {
     return (
-        <section className="py-24 bg-stone-50" id="gallery">
+        <section className="py-16 md:py-20 bg-stone-50" id="gallery">
             <div className="container mx-auto px-6 md:px-12 lg:px-20">
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
 

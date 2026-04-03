@@ -67,7 +67,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 md:py-28 bg-stone-900 border-t border-white/10 relative overflow-hidden" id="book">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596423985167-d86b978dd6f8?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center"></div>
-        <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl">
 
           {/* Text Content */}
           <div className="text-center md:text-left md:max-w-xl">

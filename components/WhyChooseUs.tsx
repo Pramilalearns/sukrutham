@@ -88,7 +88,7 @@ export default function WhyChooseUs() {
     }, [isMobile]);
 
     return (
-        <section className="py-20 md:py-24 bg-white relative" id="why-us">
+        <section className="py-16 md:py-20 bg-white relative" id="why-us">
             <div className="container mx-auto px-6 md:px-12 lg:px-20">
                 {/* Header */}
                 <div className="max-w-3xl mb-10 lg:mb-12">

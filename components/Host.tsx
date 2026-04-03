@@ -6,7 +6,7 @@ import { Linkedin, ArrowRight } from "lucide-react";
 
 export default function Host() {
     return (
-        <section className="py-20 bg-[#F9F9F7] relative overflow-hidden" id="host">
+        <section className="py-16 md:py-20 bg-[#F9F9F7] relative overflow-hidden" id="host">
             <div className="absolute inset-0 bg-pattern-paper opacity-50"></div>
             <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">

@@ -172,8 +172,8 @@ export default function Testimonials() {
     const secondRow = testimonials.slice(midpoint);
 
     return (
-        <section className="py-24 bg-stone-50 relative overflow-hidden" id="testimonials">
-            <div className="container mx-auto px-6 mb-12 text-center relative z-10">
+        <section className="py-16 md:py-20 bg-stone-50 relative overflow-hidden" id="testimonials">
+            <div className="container mx-auto px-6 md:px-12 lg:px-20 mb-12 text-center relative z-10">
                 <span className="text-primary font-semibold tracking-wider uppercase text-sm">Guest Love</span>
                 <h2 className="text-4xl md:text-5xl font-display font-bold mt-2 mb-6 text-stone-800">
                     Stories from Sukrutham
@@ -199,7 +199,7 @@ export default function Testimonials() {
             </div>
 
             {/* Read All CTA */}
-            <div className="container mx-auto px-6 mt-16 text-center relative z-20">
+            <div className="container mx-auto px-6 md:px-12 lg:px-20 mt-16 text-center relative z-20">
                 <Link
                     href="/our-guests"
                     className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-full transition-all duration-300 shadow-lg shadow-primary/30 group hover:-translate-y-1"
