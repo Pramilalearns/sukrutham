@@ -1,5 +1,5 @@
 "use client";
-
+import { client, urlFor } from "@/lib/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar, Tag } from "lucide-react";
 import { useState, useEffect } from "react";
 
-import { categories, blogPosts } from "@/lib/blogData";
+import { categories } from "@/lib/blogData";
 
 const categoryTextData: Record<string, { title: string, desc: string }> = {
     "All": { title: "Latest Articles", desc: "Explore experiences, tips, and tales from the farm." },
@@ -24,6 +24,9 @@ const categoryTextData: Record<string, { title: string, desc: string }> = {
 export default function BlogPage() {
     const [activeCategory, setActiveCategory] = useState("All");
     const [visibleCount, setVisibleCount] = useState(6);
+    const [posts, setPosts] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         const hash = window.location.hash.replace('#', '');
@@ -34,16 +37,109 @@ export default function BlogPage() {
             }
         }
     }, []);
+    useEffect(() => {
+    const fetchPosts = async () => {
+        try {
+            const data = await client.fetch(`
+                *[_type == "post"] | order(publishedAt desc){
+                    title,
+                    slug,
+                    excerpt,
+                    featuredImage,
+                    category,
+                    publishedAt,
+                    readTime,
+                    author->{
+                        name,
+                        image
+                    }
+                }
+            `);
+
+            // Decode HTML entities and strip tags — TWO PASSES:
+            // Pass 1: decode encoded brackets (&lt; &gt;) so encoded tags become real tags
+            // Pass 2: strip all HTML tags
+            // Pass 3: decode remaining entities (&amp; → &, etc.)
+            const decodeHtml = (str: string) => {
+                if (!str) return '';
+                return str
+                    // Pass 1: decode encoded angle brackets so hidden tags become stippable
+                    .replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>')
+                    // Pass 2: strip all HTML including script/style blocks
+                    .replace(/<script[\s\S]*?<\/script>/gi, '')
+                    .replace(/<style[\s\S]*?<\/style>/gi, '')
+                    .replace(/<[^>]+>/g, '')
+                    // Pass 3: decode remaining entities
+                    .replace(/&amp;/g, '&')
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#8216;/g, '\u2018')
+                    .replace(/&#8217;/g, '\u2019')
+                    .replace(/&#8220;/g, '\u201C')
+                    .replace(/&#8221;/g, '\u201D')
+                    .replace(/&#8230;/g, '\u2026')
+                    .replace(/&#\d+;/g, '')
+                    .replace(/&[a-z]+;/gi, '')
+                    .trim();
+            };
+
+            // 7-card repeating bento pattern — every row sums to 3 cols, no gaps ever:
+            // Row: col-span-2 + col-span-1 = 3
+            // Row: col-span-1 + col-span-1 + col-span-1 = 3
+            // Row: col-span-1 + col-span-2 = 3
+            const bentoCycle = [
+                'md:col-span-2',
+                'md:col-span-1',
+                'md:col-span-1',
+                'md:col-span-1',
+                'md:col-span-1',
+                'md:col-span-1',
+                'md:col-span-2',
+            ];
+
+            const mappedPosts = data.map((post: any, idx: number) => ({
+                title: decodeHtml(post.title),
+                slug: post.slug,
+                excerpt: decodeHtml(post.excerpt),
+                image: post.featuredImage ? urlFor(post.featuredImage).url() : '/gallery-1.jpg',
+                date: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : '',
+                author: decodeHtml(post.author?.name || 'Sukrutham Team'),
+                authorRole: 'Author',
+                authorImage: post.author?.image ? urlFor(post.author.image).url() : '/host-home-new.jpg',
+                category: decodeHtml(post.category || 'Uncategorized'),
+                readTime: post.readTime || '5 min read',
+                className: bentoCycle[idx % bentoCycle.length]
+            }));
+
+            setPosts(mappedPosts);
+        } catch (error) {
+            console.error(error);
+            setHasError(true);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    fetchPosts();
+}, []);
 
     // Get the featured post to display at the top
-    const featuredPost = blogPosts.find(p => p.isFeatured) || blogPosts[0];
-    const featuredSlug = `/blog/${featuredPost.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    const featuredPost = posts[0];
+    const featuredSlug = featuredPost?.slug?.current
+    ? `/blog/${featuredPost.slug.current}`
+    : "#";
 
     // Filter out the featured post from the grid, and filter by category
-    const gridPosts = blogPosts.filter(post => !post.isFeatured);
+    const gridPosts = posts.slice(1);
+
+    // Only show category buttons that have at least one post (dynamic — hides empty categories)
+    const populatedCategories = ["All", ...categories.filter(cat =>
+        cat !== "All" && posts.some(p => p.category === cat)
+    )];
 
     const categoryMatches = gridPosts.filter(post =>
         activeCategory === "All" || post.category === activeCategory
+
     );
 
     // Slice based on visibleCount
@@ -86,55 +182,72 @@ export default function BlogPage() {
                     </div>
 
                     {/* Featured Post (Glassmorphism + Large Image) */}
-                    <Link href={featuredSlug} className="group block relative rounded-[2.5rem] overflow-hidden bg-white shadow-xl shadow-stone-200/50 border border-stone-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 animate-in fade-in zoom-in-95 duration-1000 delay-200">
-                        <div className="flex flex-col lg:flex-row h-full">
-                            {/* Image Half */}
-                            <div className="lg:w-3/5 relative h-[400px] lg:h-[500px] overflow-hidden">
-                                <Image
-                                    src={featuredPost.image}
-                                    alt={featuredPost.title}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, 60vw"
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/60 via-black/20 to-transparent lg:w-1/2 group-hover:opacity-80 transition-opacity"></div>
-                                <div className="absolute top-6 left-6">
-                                    <span className="bg-white/90 backdrop-blur-md text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">
-                                        Featured
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Content Half */}
-                            <div className="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-white relative">
-                                <div className="flex items-center gap-4 text-xs font-semibold text-stone-500 uppercase tracking-widest mb-4">
-                                    <span className="flex items-center gap-1.5 text-primary"><Tag className="w-3.5 h-3.5" /> {featuredPost.category}</span>
-                                    <span>•</span>
-                                    <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {featuredPost.date}</span>
-                                </div>
-                                <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-6 group-hover:text-primary transition-colors">
-                                    {featuredPost.title}
-                                </h2>
-                                <p className="text-stone-600 font-light leading-relaxed mb-8 line-clamp-4">
-                                    {featuredPost.excerpt}
-                                </p>
-                                <div className="mt-auto flex items-center justify-between pt-6 border-t border-stone-100">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
-                                            <Image src="/host-home-new.jpg" alt={featuredPost.author} width={40} height={40} className="object-cover" />
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-bold text-stone-900">{featuredPost.author}</p>
-                                            <p className="text-xs text-stone-500">{featuredPost.readTime}</p>
-                                        </div>
-                                    </div>
-                                    <div className="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                        <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                                    </div>
-                                </div>
-                            </div>
+                    {isLoading ? (
+                        <div className="py-24 text-center">
+                            <div className="inline-block w-8 h-8 rounded-full border-4 border-stone-200 border-t-primary animate-spin"></div>
+                            <p className="mt-4 text-stone-500 font-medium">Loading chronicles...</p>
                         </div>
-                    </Link>
+                    ) : hasError ? (
+                        <div className="py-24 text-center bg-white rounded-[2.5rem] shadow-sm border border-stone-100">
+                            <p className="text-xl font-display font-medium text-stone-900 mb-2">We couldn't connect to the CMS</p>
+                            <p className="text-stone-500">Please make sure the Sanity API has CORS enabled for localhost or your domain.</p>
+                        </div>
+                    ) : posts.length === 0 ? (
+                        <div className="py-24 text-center bg-white rounded-[2.5rem] shadow-sm border border-stone-100">
+                            <p className="text-xl font-display font-medium text-stone-900 mb-2">No stories published yet.</p>
+                            <p className="text-stone-500">Check back soon for more farm tales.</p>
+                        </div>
+                    ) : (
+                        <Link href={featuredSlug} className="group block relative rounded-[2.5rem] overflow-hidden bg-white shadow-xl shadow-stone-200/50 border border-stone-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 animate-in fade-in zoom-in-95 duration-1000 delay-200">
+                            <div className="flex flex-col lg:flex-row h-full">
+                                {/* Image Half */}
+                                <div className="lg:w-3/5 relative h-[400px] lg:h-[500px] overflow-hidden">
+                                    <Image
+                                        src={featuredPost.image}
+                                        alt={featuredPost.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 60vw"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/60 via-black/20 to-transparent lg:w-1/2 group-hover:opacity-80 transition-opacity"></div>
+                                    <div className="absolute top-6 left-6">
+                                        <span className="bg-white/90 backdrop-blur-md text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">
+                                            Featured
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Content Half */}
+                                <div className="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-white relative">
+                                    <div className="flex items-center gap-4 text-xs font-semibold text-stone-500 uppercase tracking-widest mb-4">
+                                        <span className="flex items-center gap-1.5 text-primary"><Tag className="w-3.5 h-3.5" /> {featuredPost.category}</span>
+                                        <span>•</span>
+                                        <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {featuredPost.date}</span>
+                                    </div>
+                                    <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-6 group-hover:text-primary transition-colors">
+                                        {featuredPost.title}
+                                    </h2>
+                                    <p className="text-stone-600 font-light leading-relaxed mb-8 line-clamp-4">
+                                        {featuredPost.excerpt}
+                                    </p>
+                                    <div className="mt-auto flex items-center justify-between pt-6 border-t border-stone-100">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
+                                                <Image src={featuredPost.authorImage || "/host-home-new.jpg"} alt={featuredPost.author} width={40} height={40} className="object-cover" />
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-bold text-stone-900">{featuredPost.author}</p>
+                                                <p className="text-xs text-stone-500">{featuredPost.readTime}</p>
+                                            </div>
+                                        </div>
+                                        <div className="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                            <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+                    )}
                 </div>
             </section>
 
@@ -143,7 +256,7 @@ export default function BlogPage() {
             <div className="sticky top-[82px] md:top-[106px] z-40 bg-[#FDFCF8]/85 backdrop-blur-xl border-y border-stone-200/50 shadow-sm py-3 transition-all duration-300">
                 <div className="container mx-auto px-6 md:px-12 lg:px-20">
                     <div className="flex gap-2 min-w-max overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
-                        {categories.map((cat, i) => (
+                        {populatedCategories.map((cat, i) => (
                             <button
                                 key={i}
                                 onClick={() => handleCategoryClick(cat)}
@@ -172,54 +285,68 @@ export default function BlogPage() {
                     </div>
 
                     {activeCategory === "All" ? (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
-                            {filteredPosts.map((post, idx) => (
-                                <Link
-                                    href={`/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                                    key={idx}
-                                    className={`group relative rounded-[2rem] overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col ${post.className || 'md:col-span-1 md:row-span-1'}`}
-                                >
-                                    <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-                                        <Image
-                                            src={post.image}
-                                            alt={post.title}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                        />
-                                        {/* Gradient overlay depending on block size */}
-                                        <div className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent ${post.className?.includes('row-span-2') || post.className?.includes('col-span-3') ? 'opacity-80' : 'opacity-90'} group-hover:opacity-100 transition-opacity duration-500`}></div>
-                                    </div>
+                        // 6-item repeating cycle — every row is ALWAYS complete (no gaps ever):
+                        // Rows 1-2: [2×2 large | 1×2 tall]  (2+1 cols × 2 rows each)
+                        // Row 3:    [1×1 sq    | 2×1 wide]  (1+2 = 3 ✓)
+                        // Row 4:    [2×1 wide  | 1×1 sq]    (2+1 = 3 ✓)
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 auto-rows-[220px]">
+                            {filteredPosts.map((post, idx) => {
+                                const p = idx % 6;
+                                let span = '';
+                                if (p === 0) span = 'md:col-span-2 md:row-span-2'; // large 2×2
+                                else if (p === 1) span = 'md:col-span-1 md:row-span-2'; // tall 1×2
+                                else if (p === 2) span = 'md:col-span-1 md:row-span-1'; // square
+                                else if (p === 3) span = 'md:col-span-2 md:row-span-1'; // wide horizontal
+                                else if (p === 4) span = 'md:col-span-2 md:row-span-1'; // wide horizontal
+                                else span = 'md:col-span-1 md:row-span-1';              // square
 
-                                    <div className="relative z-10 flex flex-col h-full p-8 justify-end pointer-events-none text-white">
-                                        <div className="mb-auto pointer-events-auto">
-                                            <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider border border-white/20 mb-4 shadow-sm">
+                                const isLarge = p === 0;
+                                const isTallOrWide = p === 1 || p === 3 || p === 4;
+
+                                return (
+                                    <Link
+                                        href={post.slug?.current ? `/blog/${post.slug.current}` : `/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                        key={idx}
+                                        className={`group relative rounded-[1.5rem] overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-500 ${span}`}
+                                    >
+                                        <div className="absolute inset-0 w-full h-full z-0">
+                                            <Image
+                                                src={post.image}
+                                                alt={post.title}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                                        </div>
+
+                                        <div className="relative z-10 flex flex-col h-full p-5 justify-end text-white">
+                                            <span className="inline-block self-start px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-sm text-[9px] font-bold uppercase tracking-wider border border-white/20 mb-2">
                                                 {post.category}
                                             </span>
-                                        </div>
-
-                                        <div className="pointer-events-auto">
-                                            <h3 className={`font-display font-medium leading-tight mb-3 group-hover:text-amber-300 transition-colors ${post.className?.includes('col-span-2') || post.className?.includes('col-span-3') ? 'text-3xl lg:text-4xl' : 'text-2xl'}`}>
+                                            <h3 className={`font-display font-semibold leading-tight mb-1 group-hover:text-amber-300 transition-colors line-clamp-2 ${isLarge ? 'text-2xl' : isTallOrWide ? 'text-lg' : 'text-sm'}`}>
                                                 {post.title}
                                             </h3>
-                                            <p className="text-white/80 font-light text-sm line-clamp-2 md:line-clamp-3 mb-4">
-                                                {post.excerpt}
-                                            </p>
-                                            <div className="flex items-center gap-4 text-xs font-semibold text-white/60 tracking-wider font-sans uppercase">
-                                                <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3" /> {post.date}</span>
+                                            {(isLarge || isTallOrWide) && (
+                                                <p className="text-white/70 text-xs line-clamp-2 mb-2 font-light">
+                                                    {post.excerpt}
+                                                </p>
+                                            )}
+                                            <div className="flex items-center gap-2 text-[10px] text-white/50 uppercase tracking-wider">
+                                                <span className="flex items-center gap-1"><Calendar className="w-2.5 h-2.5" />{post.date}</span>
                                                 <span>•</span>
-                                                <span className="flex items-center gap-1.5">{post.readTime}</span>
+                                                <span>{post.readTime}</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            ))}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                             {filteredPosts.length > 0 ? filteredPosts.map((post, idx) => (
                                 <Link
-                                    href={`/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                    href={post.slug?.current ? `/blog/${post.slug.current}` : `/blog/${post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
                                     key={idx}
                                     className="group flex flex-col bg-white rounded-[2rem] border border-stone-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden"
                                 >

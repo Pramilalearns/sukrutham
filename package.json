@@ -9,14 +9,19 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@portabletext/react": "^6.0.3",
+    "@sanity/block-tools": "^3.70.0",
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^2.0.3",
+    "@sanity/schema": "^5.19.0",
     "clsx": "^2.1.1",
+    "jsdom": "^29.0.2",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

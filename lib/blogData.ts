@@ -5,8 +5,11 @@ export const categories = [
     "Food & Culture",
     "Heritage Architecture",
     "Rural Activities",
+    "Wellness",
     "Local Sightseeing",
     "Nature’s Calendar",
+    "Workcation & Retreats",
+    "Sukrutham Highlights",
     "Guest Stories"
 ];
 export interface BlogPost {

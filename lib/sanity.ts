@@ -5,7 +5,7 @@ export const client = createClient({
   projectId: '2lx5w0zi',
   dataset: 'production',
   apiVersion: '2023-01-01',
-  useCdn: true,
+  useCdn: false,
 })
 
 const builder = imageUrlBuilder(client)
