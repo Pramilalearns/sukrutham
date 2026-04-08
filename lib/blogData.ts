@@ -663,7 +663,5 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const getPostBySlug = (slug: string): BlogPost | undefined => {
-    return blogPosts.find(post =>
-        post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug
-    );
+    return blogPosts.find(post => post.slug === slug);
 };

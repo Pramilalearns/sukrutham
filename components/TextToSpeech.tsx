@@ -167,19 +167,15 @@ export default function TextToSpeech({ htmlContent }: TextToSpeechProps) {
 
     return (
         <div 
-            className="flex items-center gap-3 bg-white/50 backdrop-blur-md border border-stone-200 px-1.5 py-1.5 rounded-full w-fit shadow-sm"
-            style={{ WebkitBackdropFilter: 'blur(12px)' }}
+            className="flex items-center gap-4 bg-white border border-stone-200 pl-6 pr-1.5 py-1.5 rounded-full w-fit shadow-sm hover:shadow-md transition-all group"
         >
-            <div className="pl-3 pr-2 flex items-center gap-2 text-stone-600">
-                <Volume2 className={`w-4 h-4 ${isPlaying ? 'text-primary animate-pulse' : ''}`} />
-                <span className="text-sm font-semibold tracking-wide uppercase text-stone-500">Listen</span>
-            </div>
+            <span className="text-stone-700 text-xs font-bold uppercase tracking-[0.2em]">Listen</span>
 
-            <div className="flex items-center gap-1.5 border-l border-stone-200 pl-3 pr-1">
+            <div className="flex items-center gap-1.5 ml-2">
                 {!isPlaying ? (
                     <button
                         onClick={handlePlay}
-                        className="w-10 h-10 flex items-center justify-center bg-stone-900 text-white rounded-full hover:bg-stone-800 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-stone-900"
+                        className="w-10 h-10 flex items-center justify-center bg-stone-900 text-white rounded-full hover:bg-stone-800 transition-all hover:scale-105"
                         aria-label="Play audio"
                     >
                         <Play className="w-4 h-4 ml-0.5" />
@@ -187,7 +183,7 @@ export default function TextToSpeech({ htmlContent }: TextToSpeechProps) {
                 ) : (
                     <button
                         onClick={handlePause}
-                        className="w-10 h-10 flex items-center justify-center bg-amber-500 text-white rounded-full shadow-sm hover:scale-105 transition-transform animate-in zoom-in focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                        className="w-10 h-10 flex items-center justify-center bg-amber-500 text-white rounded-full shadow-sm hover:scale-105 transition-all animate-in zoom-in"
                         aria-label="Pause audio"
                     >
                         <Pause className="w-4 h-4" />
@@ -197,7 +193,7 @@ export default function TextToSpeech({ htmlContent }: TextToSpeechProps) {
                 {(isPlaying || isPaused) && (
                     <button
                         onClick={handleStop}
-                        className="w-10 h-10 flex items-center justify-center bg-stone-200 text-stone-700 rounded-full hover:bg-stone-300 transition-colors animate-in zoom-in focus:ring-2 focus:ring-offset-2 focus:ring-stone-200"
+                        className="w-10 h-10 flex items-center justify-center bg-stone-100 text-stone-700 rounded-full hover:bg-stone-200 transition-colors animate-in zoom-in"
                         aria-label="Stop audio"
                     >
                         <Square className="w-3.5 h-3.5" />

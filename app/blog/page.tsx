@@ -36,6 +36,8 @@ const decodeHtml = (str: string) => {
         .trim();
 };
 
+export const revalidate = 60; // Cache page for 60 seconds (ISR)
+
 export default async function BlogPage() {
     let posts: any[] = [];
     
@@ -54,7 +56,7 @@ export default async function BlogPage() {
                     image
                 }
             }
-        `);
+        `, {}, { next: { revalidate: 60 } });
 
         posts = data.map((post: any) => ({
             title: decodeHtml(post.title),

@@ -131,7 +131,7 @@
   font-weight: 700 !important;
   color: #1c1917 !important; /* stone-900 */
   display: inline;
-  padding: 0 0.05em; /* Prevent overlapping even if spaces are missing */
+  padding: 0 0.08em; /* Prevent overlapping even if spaces are missing */
 }
 
 /* Fix Heading Hierarchy & Spacing (Vertical Rhythm) */

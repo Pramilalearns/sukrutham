@@ -1,36 +1,40 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 
 interface BlogContentProps {
-  html: string;
+  html?: string;
+  children?: ReactNode;
   className?: string;
 }
 
 /**
  * BlogContent Component
- * Corrects word concatenation and FAQ layout issues directly in the DOM
- * This is a "nuclear" fix for hydration mismatches and malformed source HTML.
+ * Corrects word concatenation and FAQ layout issues directly in the DOM.
+ * Works with both raw HTML strings and React children (like PortableText).
  */
-export default function BlogContent({ html, className = '' }: BlogContentProps) {
+export default function BlogContent({ html, children, className = '' }: BlogContentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // 1. Definitively fix word concatenation (e.g., "word<strong>Another")
-    // We iterate through all elements that might be concatenated
     const blogBody = containerRef.current;
     
-    // Fix 1: Spacing around bold elements
-    const boldElements = blogBody.querySelectorAll('strong, b');
-    boldElements.forEach((el) => {
+    // Fix 1: Spacing around bold elements and links
+    // We target strong, b, and a tags which are commonly concatenated
+    const inlineElements = blogBody.querySelectorAll('strong, b, a');
+    inlineElements.forEach((el) => {
       // Check previous sibling for missing space: "word<strong>"
       const prev = el.previousSibling;
       if (prev && prev.nodeType === Node.TEXT_NODE) {
         const text = prev.textContent || '';
+        // If the text doesn't end in a space, and the element doesn't start with one
         if (text.length > 0 && !/\s$/.test(text) && !/[>]$/.test(text)) {
-          prev.textContent = text + ' ';
+           // Don't add space if it's punctuation like ( or "
+           if (!/[( "]$/.test(text)) {
+             prev.textContent = text + ' ';
+           }
         }
       }
       
@@ -39,16 +43,18 @@ export default function BlogContent({ html, className = '' }: BlogContentProps) 
       if (next && next.nodeType === Node.TEXT_NODE) {
         const text = next.textContent || '';
         if (text.length > 0 && !/^\s/.test(text) && !/^[<]/.test(text)) {
-          // If it looks like an FAQ answer (starts immediately after a question)
-          const isFaq = el.textContent?.includes('?') || /\d+\./.test(el.textContent || '');
-          if (isFaq) {
-            // Force it to a new line by wrapping the text in a div or adding a break
-            const br = document.createElement('br');
-            const br2 = document.createElement('br');
-            next.parentNode?.insertBefore(br, next);
-            next.parentNode?.insertBefore(br2, next);
-          } else {
-            next.textContent = ' ' + text;
+          // Don't add space if it's punctuation like , . ) ! ?
+          if (!/^[.,)!? ]/.test(text)) {
+            // Special Case: FAQ repair from legacy migrations
+            const isFaq = el.textContent?.includes('?') || /\d+\./.test(el.textContent || '');
+            if (isFaq && el.tagName !== 'A') {
+              const br = document.createElement('br');
+              const br2 = document.createElement('br');
+              next.parentNode?.insertBefore(br, next);
+              next.parentNode?.insertBefore(br2, next);
+            } else {
+              next.textContent = ' ' + text;
+            }
           }
         }
       }
@@ -59,17 +65,26 @@ export default function BlogContent({ html, className = '' }: BlogContentProps) 
     let node;
     while (node = walker.nextNode()) {
       if (node.textContent) {
+        // Fix "Sentence.Next" without space
         node.textContent = node.textContent.replace(/([.?!])([A-Z])/g, '$1 $2');
       }
     }
 
-  }, [html]); // Re-run if HTML changes
+  }, [html, children]); // Re-run if content changes
+
+  if (html) {
+    return (
+      <div 
+        ref={containerRef}
+        className={className}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    );
+  }
 
   return (
-    <div 
-      ref={containerRef}
-      className={`blog-content-container ${className}`}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <div ref={containerRef} className={className}>
+      {children}
+    </div>
   );
 }

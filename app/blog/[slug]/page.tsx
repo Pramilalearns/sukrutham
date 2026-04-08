@@ -2,13 +2,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Tag, Share2, Facebook, Twitter, Linkedin, MessageSquare, Quote, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Tag, Share2, Facebook, X, Linkedin, MessageSquare, Quote as QuoteIcon, ArrowRight, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 import TextToSpeech from "@/components/TextToSpeech";
 import CouponBox from "@/components/CouponBox";
 import { getPostBySlug, blogPosts, categories, BlogPost } from "@/lib/blogData";
 import { client, urlFor } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import BlogContent from "@/components/BlogContent";
+
+export const revalidate = 60;
 
 const decodeHtml = (str: string) => {
     if (!str) return '';
@@ -36,7 +39,7 @@ export async function generateStaticParams() {
     let sanitySlugs: { slug: string }[] = [];
     try {
         const query = '*[_type == "post"]{ "slug": slug.current }';
-        const sanityPosts = await client.fetch(query);
+        const sanityPosts = await client.fetch(query, {}, { next: { revalidate: 60 } });
         sanitySlugs = sanityPosts.map((p: any) => ({ slug: p.slug }));
     } catch (e) {
         console.error("Error fetching static params:", e);
@@ -64,7 +67,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "tags": tags
         }`;
         
-        const sanityPost = await client.fetch(query, { slug });
+        const sanityPost = await client.fetch(query, { slug }, { next: { revalidate: 60 } });
 
         if (sanityPost) {
             post = {
@@ -171,166 +174,268 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         },
     };
 
-    const sidebarItems = categories
-        .filter(c => c !== "All" && c !== post?.category)
-        .map(cat => {
-            const latestPost = blogPosts.find(p => p.category === cat);
-            return {
-                category: cat,
-                latestTitle: latestPost?.title,
-                image: latestPost?.image,
-                date: latestPost?.date,
-                postSlug: latestPost?.slug ? `/blog/${latestPost.slug}` : ''
-            };
-        })
-        .filter(item => item.latestTitle)
-        .slice(0, 4);
+    let sidebarLatest: any[] = [];
+    let categorySamples: Record<string, string> = {};
+
+    try {
+        const sidebarQuery = `*[_type == "post" && slug.current != $slug] | order(publishedAt desc) [0...5]{
+            title,
+            "slug": slug.current,
+            featuredImage,
+            publishedAt,
+            category
+        }`;
+        const rawSidebarPosts = await client.fetch(sidebarQuery, { slug }, { next: { revalidate: 60 } });
+        
+        sidebarLatest = rawSidebarPosts.map((p: any) => ({
+            title: decodeHtml(p.title),
+            slug: `/blog/${p.slug}`,
+            image: p.featuredImage ? urlFor(p.featuredImage).url() : '/gallery-1.jpg',
+            date: p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : ''
+        })).slice(0, 3);
+
+        // Map categories to images from the most recent post in that category
+        rawSidebarPosts.forEach((p: any) => {
+            if (p.category && !categorySamples[p.category] && p.featuredImage) {
+                categorySamples[p.category] = urlFor(p.featuredImage).url();
+            }
+        });
+        
+        // Ensure static data categories also get images if found in recent list
+        categories.forEach(cat => {
+            if (!categorySamples[cat]) {
+                const staticPost = blogPosts.find(p => p.category === cat);
+                if (staticPost) categorySamples[cat] = staticPost.image;
+            }
+        });
+
+    } catch (e) {
+        console.error("Error fetching sidebar data:", e);
+        // Fallback to static sidebar items
+        sidebarLatest = categories
+            .filter(c => c !== "All" && c !== post?.category)
+            .map(cat => {
+                const latestPost = blogPosts.find(p => p.category === cat);
+                return {
+                    category: cat,
+                    title: latestPost?.title,
+                    image: latestPost?.image,
+                    date: latestPost?.date,
+                    slug: latestPost?.slug ? `/blog/${latestPost.slug}` : ''
+                };
+            })
+            .filter(item => item.title)
+            .slice(0, 3);
+    }
 
     return (
         <main className="min-h-screen bg-[#FDFCF8] flex flex-col font-sans">
             <Navbar variant="light" />
 
-            <article className="flex-grow pt-32 pb-24">
+            {/* Perfected Original Hero Section (April 6th Session) - Light Edition */}
+            <section className="relative pt-36 pb-24 px-6 overflow-hidden min-h-[550px] flex items-center">
+                {/* Background Effect: Restored Visibility with 'White Wash' effect */}
+                <div className="absolute inset-0 z-0">
+                    <Image 
+                        src={post.image} 
+                        alt={post.title} 
+                        fill 
+                        className="object-cover blur-[2px] opacity-[0.9] scale-105" 
+                        priority 
+                    />
+                    {/* White gradient for Navbar and Title Readability, Bottom for Content Blend */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/40 to-[#FDFCF8]" />
+                    <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#FDFCF8] via-[#FDFCF8]/60 to-transparent" />
+                </div>
+                
+                <div className="container relative z-10 mx-auto px-4 max-w-5xl">
+                    <div className="flex flex-col items-start gap-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                        {/* Back Button Pill - Light Theme */}
+                        <Link 
+                            href="/blog" 
+                            className="inline-flex items-center px-6 py-3 bg-white/80 backdrop-blur-md hover:bg-stone-100 text-stone-600 rounded-full text-sm font-bold transition-all group shadow-sm border border-stone-200/50"
+                        >
+                            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                            Back to Chronicles
+                        </Link>
+
+                        <div className="flex flex-wrap items-center gap-4">
+                            <span className="bg-[#3a6b1f] text-white px-5 py-2 rounded-lg text-xs font-bold shadow-md">
+                                {post.category.toUpperCase()}
+                            </span>
+                            <div className="flex items-center gap-2.5 px-5 py-2.5 bg-stone-100/60 backdrop-blur-md rounded-full text-stone-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] shadow-sm border border-white/50">
+                                <Calendar className="w-4 h-4 text-[#3a6b1f]" />
+                                {post.date}
+                            </div>
+                            <div className="flex items-center gap-2.5 px-5 py-2.5 bg-stone-100/60 backdrop-blur-md rounded-full text-stone-600 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] shadow-sm border border-white/50">
+                                <Clock className="w-4 h-4 text-[#3a6b1f]" />
+                                {post.readTime || '17 MIN READ'}
+                            </div>
+                        </div>
+
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-stone-900 leading-[1.15] drop-shadow-sm">
+                            {post.title}
+                        </h1>
+
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 pt-10 border-t border-stone-200/40 w-full mt-4">
+                            <div className="flex items-center">
+                                <div className="h-14 w-14 rounded-full overflow-hidden mr-5 ring-4 ring-white shadow-md">
+                                    <Image src={post.authorImage} alt={post.author} width={56} height={56} className="object-cover h-full w-full" />
+                                </div>
+                                <div className="flex flex-col text-left">
+                                    <span className="font-bold text-stone-900 text-lg leading-tight">{post.author}</span>
+                                    <span className="text-xs text-stone-400 font-bold uppercase tracking-[0.3em] mt-1">Author</span>
+                                </div>
+                            </div>
+                            
+                            {/* Listening Interaction - Clean, Single Pill */}
+                            <TextToSpeech htmlContent={post.excerpt + " " + plainTextForSpeech} />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <article className="flex-grow pt-16 pb-24">
                 <div className="container mx-auto px-4 max-w-7xl">
                     <div className="flex flex-col lg:flex-row gap-16">
-                        {/* Main Content Area */}
+                        
+                        {/* Main Content Area - RESTORED TO THE LEFT */}
                         <div className="lg:w-2/3">
                             <Link 
                                 href="/blog" 
-                                className="inline-flex items-center text-[#3a6b1f] hover:text-[#2d5218] mb-8 group transition-colors font-medium"
+                                className="inline-flex items-center text-[#3a6b1f] hover:text-[#2d5218] mb-12 group transition-colors font-medium"
                             >
                                 <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                                Back to Blog
+                                Back to Blog Chronicles
                             </Link>
 
-                            <header className="mb-12">
-                                <div className="flex items-center gap-4 mb-6">
-                                    <span className="bg-[#3a6b1f]/10 text-[#3a6b1f] px-4 py-1.5 rounded-full text-sm font-bold tracking-wide uppercase">
-                                        {post.category}
-                                    </span>
-                                    <span className="text-stone-500 text-sm font-medium flex items-center">
-                                        <Calendar className="w-4 h-4 mr-2 opacity-70" />
-                                        {post.date}
-                                    </span>
-                                </div>
-
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-stone-900 mb-8 leading-[1.15]">
-                                    {post.title}
-                                </h1>
-
-                                <div className="flex items-center justify-between py-6 border-y border-stone-200">
-                                    <div className="flex items-center">
-                                        <div className="h-12 w-12 rounded-full overflow-hidden mr-4 ring-2 ring-[#3a6b1f]/20">
-                                            <Image 
-                                                src={post.authorImage} 
-                                                alt={post.author} 
-                                                width={48} 
-                                                height={48} 
-                                                className="object-cover h-full w-full"
-                                            />
-                                        </div>
-                                        <div>
-                                            <div className="font-bold text-stone-900">{post.author}</div>
-                                            <div className="text-[#3a6b1f] text-xs uppercase font-bold">{post.authorRole}</div>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <TextToSpeech htmlContent={post.excerpt + " " + plainTextForSpeech} />
-                                    </div>
-                                </div>
-                            </header>
-
-                            <div className="mb-12 rounded-3xl overflow-hidden shadow-xl">
-                                <Image 
-                                    src={post.image} 
-                                    alt={post.title} 
-                                    width={1200} 
-                                    height={630} 
-                                    className="w-full aspect-video object-cover"
-                                    priority
-                                />
+                            <div className="blog-content prose prose-stone prose-lg max-w-none text-stone-600 leading-relaxed md:prose-xl selection:bg-primary/10 mb-16">
+                                <BlogContent>
+                                    {isPortableText ? (
+                                        <PortableText value={contentPart1} components={ptComponents} />
+                                    ) : (
+                                        <div dangerouslySetInnerHTML={{ __html: contentPart1 }} />
+                                    )}
+                                </BlogContent>
                             </div>
 
-                            <div className="blog-content prose prose-stone prose-lg max-w-none text-stone-600 leading-relaxed md:prose-xl">
-                                {isPortableText ? (
-                                    <PortableText value={contentPart1} components={ptComponents} />
-                                ) : (
-                                    <BlogContent html={contentPart1} />
-                                )}
+                            <ReturnNavigationCTA variant="default" category={post.category} className="my-16 shadow-md border-stone-100" />
 
-                                <ReturnNavigationCTA category={post.category} className="my-10" />
-
-                                {isPortableText ? (
-                                    <PortableText value={contentPart2} components={ptComponents} />
-                                ) : (
-                                    <BlogContent html={contentPart2} />
-                                )}
+                            <div className="blog-content prose prose-stone prose-lg max-w-none text-stone-600 leading-relaxed md:prose-xl selection:bg-primary/10 mt-16">
+                                <BlogContent>
+                                    {isPortableText ? (
+                                        <PortableText value={contentPart2} components={ptComponents} />
+                                    ) : (
+                                        <div dangerouslySetInnerHTML={{ __html: contentPart2 }} />
+                                    )}
+                                </BlogContent>
                             </div>
 
-                            <ReturnNavigationCTA category={post.category} className="mt-12 mb-8" />
+                            <ReturnNavigationCTA variant="default" category={post.category} className="mt-16 mb-8" />
 
-                            <div className="mt-16 pt-8 border-t border-stone-200">
-                                <div className="flex flex-wrap gap-3">
-                                    <div className="flex items-center text-stone-500 font-bold mr-2">
+                            <div className="mt-20 pt-10 border-t border-stone-100">
+                                <div className="flex flex-wrap gap-4 mb-10">
+                                    <div className="flex items-center text-stone-400 font-bold mr-2 text-xs uppercase tracking-wider">
                                         <Tag className="w-4 h-4 mr-2" />
-                                        Topics:
+                                        Tags:
                                     </div>
                                     {post.tags.map((tag: string) => (
-                                        <span key={tag} className="px-4 py-1.5 bg-stone-100 text-stone-600 rounded-full text-sm font-medium">
-                                            #{tag}
+                                        <span key={tag} className="px-5 py-2 bg-stone-50 text-stone-500 rounded-full text-xs font-bold border border-stone-100 hover:bg-stone-100 transition-colors cursor-pointer">
+                                            #{tag.toUpperCase()}
                                         </span>
                                     ))}
                                 </div>
                                 
-                                <div className="mt-8 flex items-center justify-between">
-                                    <div className="flex items-center gap-4">
-                                        <span className="text-sm font-bold text-stone-900">Share:</span>
-                                        <button className="w-9 h-9 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 hover:bg-[#3a6b1f] hover:text-white transition-all"><Facebook className="w-4 h-4" /></button>
-                                        <button className="w-9 h-9 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 hover:bg-[#3a6b1f] hover:text-white transition-all"><Twitter className="w-4 h-4" /></button>
-                                        <button className="w-9 h-9 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 hover:bg-[#3a6b1f] hover:text-white transition-all"><Linkedin className="w-4 h-4" /></button>
+                                    <div className="flex items-center gap-6 p-8 bg-stone-50 rounded-[2rem] border border-stone-100">
+                                        <span className="text-xs font-bold text-stone-900 uppercase tracking-widest">Share on Social:</span>
+                                        <div className="flex gap-4">
+                                            <button className="w-12 h-12 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1"><Facebook className="w-5 h-5 fill-current" /></button>
+                                            <button className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1"><X className="w-5 h-5" /></button>
+                                            <button className="w-12 h-12 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1"><Linkedin className="w-5 h-5 fill-current" /></button>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
 
-                        {/* Sidebar */}
-                        <aside className="lg:w-1/3 space-y-12">
-                            <CouponBox />
-                            
-                            <div className="bg-stone-50 p-8 rounded-[2rem] border border-stone-100">
-                                <h3 className="font-display font-bold text-xl text-stone-900 mb-6 flex items-center gap-2">
-                                    <MessageSquare className="w-5 h-5 text-[#3a6b1f]" />
-                                    More to Explore
-                                </h3>
-                                <div className="space-y-6">
-                                    {sidebarItems.map((item, idx) => (
-                                        <Link href={item.postSlug} key={idx} className="flex gap-4 group">
-                                            <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 relative">
-                                                {item.image && 
-                                                    <Image src={item.image} alt={item.latestTitle!} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                                                }
+                        {/* Sidebar - RESTORED TO THE RIGHT */}
+                        <aside className="lg:w-1/3 self-stretch">
+                            <div className="flex flex-col h-full border-l border-stone-100/50 pl-8">
+                                {/* Top 50% Sticky Region */}
+                                <div className="flex-1 relative min-h-[400px]">
+                                    <div className="sticky top-32 space-y-10">
+                                        <CouponBox />
+                                        
+                                        {/* Latest Stories - Dynamic from Sanity */}
+                                        <div className="bg-stone-50 p-6 rounded-[2rem] border border-stone-100/80 shadow-sm">
+                                            <h3 className="font-display font-bold text-xl text-stone-900 mb-6 flex items-center gap-2">
+                                                <MessageSquare className="w-5 h-5 text-primary" />
+                                                Latest Stories
+                                            </h3>
+                                            <div className="space-y-6">
+                                                {sidebarLatest.map((item: any, idx: number) => (
+                                                    <Link href={item.slug} key={idx} className="flex gap-4 group">
+                                                        <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 relative border border-stone-200 shadow-sm">
+                                                            {item.image && 
+                                                                <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                                                            }
+                                                        </div>
+                                                        <div className="flex flex-col justify-center">
+                                                            <h5 className="font-bold text-stone-900 text-sm leading-tight mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                                                                {item.title}
+                                                            </h5>
+                                                            <span className="text-xs text-stone-500">{item.date}</span>
+                                                        </div>
+                                                    </Link>
+                                                ))}
                                             </div>
-                                            <div className="flex flex-col justify-center">
-                                                <h4 className="font-bold text-sm text-stone-900 group-hover:text-[#3a6b1f] transition-colors line-clamp-2 leading-tight mb-1">
-                                                    {item.latestTitle}
-                                                </h4>
-                                                <span className="text-[11px] text-stone-400 uppercase tracking-wider font-bold">{item.date}</span>
-                                            </div>
-                                        </Link>
-                                    ))}
+                                            <Link href="/blog" className="mt-8 flex items-center justify-center w-full py-3 bg-white border border-stone-200 rounded-full text-stone-900 font-bold hover:bg-stone-900 hover:text-white transition-all duration-300 shadow-sm">
+                                                View All Chronicles
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
-                                <Link href="/blog" className="mt-8 flex items-center justify-center w-full py-3 bg-white border border-stone-200 rounded-full text-stone-900 font-bold hover:bg-stone-900 hover:text-white transition-all duration-300">
-                                    View All Chronicles
-                                </Link>
-                            </div>
 
-                            <div className="bg-stone-900 text-stone-300 p-8 rounded-[2rem] relative overflow-hidden group">
-                                <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-colors"></div>
-                                <Quote className="w-10 h-10 text-white/10 mb-6" />
-                                <p className="font-serif italic text-lg text-white mb-4 relative z-10">
-                                    "Nature does not hurry, yet everything is accomplished."
-                                </p>
-                                <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#D4AF37]">Lao Tzu</p>
+                                {/* Bottom 50% Sticky Region */}
+                                <div className="flex-1 relative min-h-[400px]">
+                                    <div className="sticky top-32 space-y-10">
+                                        {/* Quote Block - Compact */}
+                                        <div className="bg-stone-900 text-stone-300 p-6 rounded-[2rem] relative overflow-hidden group shadow-lg">
+                                            <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-colors"></div>
+                                            <QuoteIcon className="w-8 h-8 text-white/10 mb-4" />
+                                            <p className="font-serif italic text-base text-white mb-3 relative z-10 leading-relaxed">
+                                                "Nature does not hurry, yet everything is accomplished."
+                                            </p>
+                                            <p className="text-[9px] uppercase font-bold tracking-[0.2em] text-[#D4AF37]">Lao Tzu</p>
+                                        </div>
+
+                                        {/* Explore Topics - Dynamic Images from Sanity */}
+                                        <div className="bg-stone-50 p-6 rounded-[2rem] border border-stone-100/80 shadow-inner">
+                                            <div className="flex items-center justify-between mb-6">
+                                                <h4 className="font-display font-bold text-stone-900 text-lg">Explore Topics</h4>
+                                                <Link href="/blog" className="text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-stone-900 transition-colors">View All</Link>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-3">
+                                                {categories.filter(c => c !== "All" && c !== post?.category).slice(0, 4).map((cat, idx) => {
+                                                    const catImage = categorySamples[cat];
+                                                    return (
+                                                        <Link href={`/blog#${encodeURIComponent(cat)}`} key={idx} className="relative block h-24 rounded-2xl overflow-hidden group border border-stone-200 shadow-sm hover:shadow-md transition-all">
+                                                            <div className="relative h-full w-full">
+                                                                {catImage &&
+                                                                    <Image src={catImage} alt={cat} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                                                                }
+                                                                <div className="absolute inset-0 bg-stone-900/40 group-hover:bg-stone-900/50 transition-colors"></div>
+                                                            </div>
+
+                                                            <div className="absolute inset-0 p-3 flex items-center justify-center text-center z-10">
+                                                                <span className="text-xs font-bold uppercase tracking-widest text-white leading-tight drop-shadow-md">{cat}</span>
+                                                            </div>
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </aside>
                     </div>
@@ -342,50 +447,61 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
 }
 
-const ReturnNavigationCTA = ({ category, className = "" }: { category: string, className?: string }) => {
+const ReturnNavigationCTA = ({ category, variant = "default", className = "" }: { category: string, variant?: "default" | "slim", className?: string }) => {
+    const isSlim = variant === "slim";
+
     return (
-        <div className={`bg-[#F9F8F6] p-6 rounded-3xl border border-stone-200/60 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group ${className}`}>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#3a6b1f]/5 rounded-full blur-2xl group-hover:bg-[#3a6b1f]/10 transition-colors"></div>
+        <div className={cn(
+            "bg-[#F9F8F6] relative overflow-hidden group border transition-all",
+            isSlim 
+                ? "p-4 px-6 rounded-xl border-stone-200/50 flex flex-col md:flex-row items-center justify-between gap-4" 
+                : "p-10 rounded-[2.5rem] border-stone-200/60 flex flex-col md:flex-row items-center justify-between gap-8",
+            className
+        )}>
+            <div className={cn(
+                "absolute top-0 right-0 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors",
+                isSlim ? "w-20 h-20" : "w-40 h-40"
+            )}></div>
 
             <div className="relative z-10 flex-1">
                 {category === "Local Sightseeing" && (
                     <>
-                        <h4 className="font-display font-medium text-lg text-stone-900 mb-1">Want to see more places?</h4>
-                        <p className="text-stone-600 text-sm">Discover the full map of breathtaking nearby destinations.</p>
+                        <h4 className={cn("font-display font-medium text-stone-900", isSlim ? "text-base mb-0.5" : "text-2xl mb-2")}>Want to see more places?</h4>
+                        <p className={cn("text-stone-500", isSlim ? "text-[11px]" : "text-sm")}>Discover the full map of breathtaking nearby destinations.</p>
                     </>
                 )}
                 {category === "Rural Activities" && (
                     <>
-                        <h4 className="font-display font-medium text-lg text-stone-900 mb-1">Craving more local experiences?</h4>
-                        <p className="text-stone-600 text-sm">See all the authentic activities you can partake in.</p>
+                        <h4 className={cn("font-display font-medium text-stone-900", isSlim ? "text-base mb-0.5" : "text-2xl mb-2")}>Craving more local experiences?</h4>
+                        <p className={cn("text-stone-500", isSlim ? "text-[11px]" : "text-sm")}>See all the authentic activities you can partake in.</p>
                     </>
                 )}
                 {category === "Nature’s Calendar" && (
                     <>
-                        <h4 className="font-display font-medium text-lg text-stone-900 mb-1">Curious about our seasons?</h4>
-                        <p className="text-stone-600 text-sm">Learn the best times to visit for festivals and weather.</p>
+                        <h4 className={cn("font-display font-medium text-stone-900", isSlim ? "text-base mb-0.5" : "text-2xl mb-2")}>Curious about our seasons?</h4>
+                        <p className={cn("text-stone-500", isSlim ? "text-[11px]" : "text-sm")}>Learn the best times to visit for festivals and weather.</p>
                     </>
                 )}
                 {category === "Food & Culture" && (
                     <>
-                        <h4 className="font-display font-medium text-lg text-stone-900 mb-1">Hungry for more?</h4>
-                        <p className="text-stone-600 text-sm">Explore our organic dining philosophy and local savors.</p>
+                        <h4 className={cn("font-display font-medium text-stone-900", isSlim ? "text-base mb-0.5" : "text-2xl mb-2")}>Hungry for more?</h4>
+                        <p className={cn("text-stone-500", isSlim ? "text-[11px]" : "text-sm")}>Explore our organic dining philosophy and local savors.</p>
                     </>
                 )}
                 {!["Local Sightseeing", "Rural Activities", "Nature’s Calendar", "Food & Culture"].includes(category) && (
                     <>
-                        <h4 className="font-display font-medium text-lg text-stone-900 mb-1">Ready to experience this firsthand?</h4>
-                        <p className="text-stone-600 text-sm">Discover more about our farmstay and secure your booking for a true Kerala experience.</p>
+                        <h4 className={cn("font-display font-medium text-stone-900", isSlim ? "text-base mb-0.5" : "text-2xl mb-2")}>Ready to experience our farm?</h4>
+                        <p className={cn("text-stone-500", isSlim ? "text-[11px]" : "text-sm")}>Discover more about our farmstay and secure your booking.</p>
                     </>
                 )}
             </div>
 
-            <div className="relative z-10 whitespace-nowrap mt-6 md:mt-0">
-                {category === "Local Sightseeing" && <Link href="/#things-to-do" className="group inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-900 !no-underline rounded-full font-bold hover:bg-gradient-to-r hover:from-white hover:to-[#EBD49A] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto">Explore Places <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></Link>}
-                {category === "Rural Activities" && <Link href="/#things-to-do" className="group inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-900 !no-underline rounded-full font-bold hover:bg-gradient-to-r hover:from-white hover:to-[#EBD49A] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto">View Activities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></Link>}
-                {category === "Nature’s Calendar" && <Link href="/take-a-tour" className="group inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-900 !no-underline rounded-full font-bold hover:bg-gradient-to-r hover:from-white hover:to-[#EBD49A] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto">Seasons & Festivals <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></Link>}
-                {category === "Food & Culture" && <Link href="/take-a-tour" className="group inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-900 !no-underline rounded-full font-bold hover:bg-gradient-to-r hover:from-white hover:to-[#EBD49A] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto">Local Savor <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></Link>}
-                {!["Local Sightseeing", "Rural Activities", "Nature’s Calendar", "Food & Culture"].includes(category) && <Link href="/#things-to-do" className="group inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-900 !no-underline rounded-full font-bold hover:bg-gradient-to-r hover:from-white hover:to-[#EBD49A] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto">View All Experiences <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></Link>}
+            <div className="relative z-10 whitespace-nowrap mt-4 md:mt-0">
+                {category === "Local Sightseeing" && <Link href="/#things-to-do" className={cn("group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-700 rounded-full font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto", isSlim ? "px-4 py-2 text-[11px]" : "px-8 py-3.5 text-sm")}>Explore Places <ArrowRight className={isSlim ? "w-3.5 h-3.5" : "w-4 h-4"} /></Link>}
+                {category === "Rural Activities" && <Link href="/#things-to-do" className={cn("group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-700 rounded-full font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto", isSlim ? "px-4 py-2 text-[11px]" : "px-8 py-3.5 text-sm")}>View Activities <ArrowRight className={isSlim ? "w-3.5 h-3.5" : "w-4 h-4"} /></Link>}
+                {category === "Nature’s Calendar" && <Link href="/take-a-tour" className={cn("group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-700 rounded-full font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto", isSlim ? "px-4 py-2 text-[11px]" : "px-8 py-3.5 text-sm")}>Seasons & Festivals <ArrowRight className={isSlim ? "w-3.5 h-3.5" : "w-4 h-4"} /></Link>}
+                {category === "Food & Culture" && <Link href="/take-a-tour" className={cn("group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-700 rounded-full font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto", isSlim ? "px-4 py-2 text-[11px]" : "px-8 py-3.5 text-sm")}>Local Savor <ArrowRight className={isSlim ? "w-3.5 h-3.5" : "w-4 h-4"} /></Link>}
+                {!["Local Sightseeing", "Rural Activities", "Nature’s Calendar", "Food & Culture"].includes(category) && <Link href="/#things-to-do" className={cn("group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-white to-[#F4E3BA] text-stone-700 rounded-full font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full md:w-auto", isSlim ? "px-4 py-2 text-[11px]" : "px-8 py-3.5 text-sm")}>Explore More <ArrowRight className={isSlim ? "w-3.5 h-3.5" : "w-4 h-4"} /></Link>}
             </div>
         </div>
     );
