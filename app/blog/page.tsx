@@ -19,11 +19,9 @@ const categoryTextData: Record<string, { title: string, desc: string }> = {
 const decodeHtml = (str: string) => {
     if (!str) return '';
     return str
+        // Decode common HTML entities safely
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
-        .replace(/<script[\s\S]*?<\/script>/gi, '')
-        .replace(/<style[\s\S]*?<\/style>/gi, '')
-        .replace(/<[^>]+>/g, '')
         .replace(/&amp;/g, '&')
         .replace(/&quot;/g, '"')
         .replace(/&#8216;/g, '\u2018')
@@ -33,6 +31,15 @@ const decodeHtml = (str: string) => {
         .replace(/&#8230;/g, '\u2026')
         .replace(/&#\d+;/g, '')
         .replace(/&[a-z]+;/gi, '')
+        // Remove style blocks, script blocks entirely
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        // Remove lingering HTML tags
+        .replace(/<\/?[^>]+(>|$)/g, '')
+        // Remove WordPress shortcodes like [vc_row]
+        .replace(/\[\/?[\w_-]+[^\]]*\]/g, '')
+        // Collapse multiple spaces/newlines
+        .replace(/\s+/g, ' ')
         .trim();
 };
 
@@ -83,11 +90,11 @@ export default async function BlogPage() {
                 <div className="absolute top-0 right-0 w-3/4 h-[500px] bg-gradient-to-bl from-primary/10 via-amber-100/20 text-transparent to-transparent rounded-bl-full -z-10 blur-3xl opacity-60"></div>
                 <div className="absolute -left-20 top-40 w-[400px] h-[400px] bg-secondary/5 rounded-full -z-10 blur-3xl opacity-70"></div>
 
-                <div className="container mx-auto max-w-7xl text-center mb-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                    <span className="inline-block py-1 px-3 rounded-full bg-[#3a6b1f]/10 text-stone-800 text-xs font-bold tracking-widest uppercase mb-4 md:mb-6">
+                <div className="container mx-auto max-w-7xl text-center mb-12 md:mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                    <span className="inline-block py-1 px-3 rounded-full bg-[#3a6b1f]/10 text-stone-800 text-xs font-bold tracking-widest uppercase mb-2 md:mb-3">
                         The Sukrutham Chronicles
                     </span>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-stone-900 mb-4 md:mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-stone-900 mb-3 md:mb-5 leading-tight">
                         Sukrutham Stories: <br />
                         <span className="italic text-[#3a6b1f] font-light">Tales from the Farm</span>
                     </h1>
