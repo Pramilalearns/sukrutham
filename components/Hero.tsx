@@ -27,7 +27,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+        <section className="relative h-screen-dvh flex items-center justify-center overflow-hidden bg-black">
             {/* Background Images with Cross-fade Transitions using Next/Image for LCP Preloading */}
             {HERO_IMAGES.map((src, index) => (
                 <Image
@@ -51,11 +51,11 @@ export default function Hero() {
                     <h1 className="block text-sm md:text-base font-semibold tracking-widest uppercase mb-4 text-accent/90">
                         Homestay in Thrissur, Kerala
                     </h1>
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight drop-shadow-lg">
+                    <h2 className="text-3xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight drop-shadow-lg px-2">
                         Experience Authentic <br />
                         <span className="text-accent">Farm Life in the Heart of Kerala</span>
                     </h2>
-                    <p className="text-lg md:text-xl text-stone-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                    <p className="text-base md:text-xl text-stone-200 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md px-4">
                         Set amidst lush green paddy fields, waterfalls, and hills,
                         Sukrutham Farmstay is a world away from the hustle of typical tourist spots.
                     </p>

@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "content": body,
             "excerpt": excerpt,
             featuredImage,
-            category,
+            "category": coalesce(categoryRef->title, category),
             publishedAt,
             readTime,
             author->{ name, image },
@@ -183,7 +183,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "slug": slug.current,
             featuredImage,
             publishedAt,
-            category
+            "category": coalesce(categoryRef->title, category)
         }`;
         const rawSidebarPosts = await client.fetch(sidebarQuery, { slug }, { next: { revalidate: 60 } });
         
@@ -273,7 +273,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-stone-900 leading-[1.15] drop-shadow-sm">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-stone-900 leading-[1.15] drop-shadow-sm">
                             {post.title}
                         </h1>
 

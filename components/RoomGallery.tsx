@@ -14,8 +14,8 @@ const CATEGORY_MAPPING: Record<string, string> = {
     "6.dining-area": "Dining Area",
     "dining-area": "Dining Area",
     "nadumuttam": "Nadumuttam",
-    "traditional-hall": "Traditional Halls",
-    "traditional-halls": "Traditional Halls",
+    "traditional-hall": "Living Room",
+    "traditional-halls": "Living Room",
     "parking-areas": "Parking Areas",
     "parking": "Parking Areas"
 };
@@ -25,7 +25,7 @@ const categories = [
     "Guest Kitchen",
     "Dining Area",
     "Nadumuttam",
-    "Traditional Halls",
+    "Living Room",
     "Parking Areas"
 ];
 
@@ -34,7 +34,7 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
     "Guest Kitchen": "A Simple Space for Warm, Homemade Moments",
     "Dining Area": "Where Meals Turn into Shared Memories",
     "Nadumuttam": "The Heart of the Home, Open to Sky and Light",
-    "Traditional Halls": "Relax, Unwind, and Feel at Home",
+    "Living Room": "Relax, Unwind, and Feel at Home",
     "Parking Areas": "Secure, spacious, and conveniently located parking for your vehicles."
 };
 
@@ -231,13 +231,13 @@ export default function RoomGallery({ initialImages }: { initialImages?: Record<
                         {/* Scrollable Filmstrip Ribbon */}
                         <style dangerouslySetInnerHTML={{
                             __html: `
-                            .hide-scroll::-webkit-scrollbar { display: none; }
-                            .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+                            .no-scrollbar::-webkit-scrollbar { display: none; }
+                            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
                         `}} />
 
                         <div
                             ref={filmstripRef}
-                            className="flex lg:flex-col overflow-x-auto lg:overflow-y-auto overflow-x-hidden gap-3 md:gap-4 pb-4 lg:pb-0 lg:py-2 hide-scroll snap-x lg:snap-y snap-mandatory px-2 lg:w-[140px] xl:w-[160px] flex-shrink-0 items-center lg:items-end relative"
+                            className="flex lg:flex-col overflow-x-auto lg:overflow-y-auto overflow-x-hidden gap-3 md:gap-4 pb-4 lg:pb-0 lg:py-2 no-scrollbar snap-x lg:snap-y snap-mandatory px-2 lg:w-[140px] xl:w-[160px] flex-shrink-0 items-center lg:items-end relative"
                         >
                             {filteredImages.map((img) => {
                                 const isActive = activeImage?.src === img.src;

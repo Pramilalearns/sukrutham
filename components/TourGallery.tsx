@@ -140,11 +140,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                          quality={60}
                                          decoding="async"
                                      />
-                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                         <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                                             {img.alt}
-                                         </p>
-                                     </div>
+                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                  </div>
                              ))}
                          </div>
@@ -189,11 +185,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                         quality={60}
                                         decoding="async"
                                     />
-                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                        <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                                            {img.alt}
-                                        </p>
-                                    </div>
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </div>
                             ))}
                         </div>
@@ -238,11 +230,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                         quality={60}
                                         decoding="async"
                                     />
-                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                        <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                                            {img.alt}
-                                        </p>
-                                    </div>
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </div>
                             ))}
                         </div>

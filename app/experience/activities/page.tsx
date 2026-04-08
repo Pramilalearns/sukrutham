@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingCTA from "@/components/FloatingCTA";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import {
     MapPin,
@@ -384,7 +383,6 @@ export default function ActivitiesPage() {
                 </div>
             </section>
 
-            <FloatingCTA />
             <Footer />
         </main>
     );

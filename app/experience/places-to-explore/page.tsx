@@ -361,7 +361,7 @@ export default function PlacesToExplorePage() {
                     </div>
 
                     {/* Filter Tabs - Single Line Scroller */}
-                    <div className="flex flex-nowrap items-center md:justify-center gap-3 md:gap-4 mb-16 overflow-x-auto hide-scrollbar pb-4 w-full px-6 md:px-0">
+                    <div className="flex flex-nowrap items-center md:justify-center gap-3 md:gap-4 mb-16 overflow-x-auto no-scrollbar pb-4 w-full px-6 md:px-0">
                         <button
                             onClick={() => setActiveDistance('All')}
                             className={cn(

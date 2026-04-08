@@ -361,7 +361,7 @@ export default function OurGuestsPage() {
 
                         {/* Tabs */}
                         <div 
-                            className="flex flex-nowrap overflow-x-auto whitespace-nowrap max-w-full bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20 snap-x"
+                            className="flex flex-nowrap overflow-x-auto no-scrollbar whitespace-nowrap max-w-full bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20 snap-x"
                             style={{ WebkitBackdropFilter: 'blur(4px)' }}
                         >
                             <button
@@ -491,7 +491,7 @@ export default function OurGuestsPage() {
                 <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
 
                 <div 
-                    className="relative w-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 overflow-x-auto scroll-smooth pt-4 pb-0"
+                    className="relative w-full max-w-[1400px] mx-auto z-20 px-4 md:px-12 overflow-x-auto no-scrollbar scroll-smooth pt-4 pb-0"
                     style={{ 
                         msOverflowStyle: 'none', 
                         scrollbarWidth: 'none',

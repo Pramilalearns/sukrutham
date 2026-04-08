@@ -12,7 +12,6 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import DecisionSection from "@/components/DecisionSection";
 import Awards from "@/components/Awards";
 import Footer from "@/components/Footer";
-import FloatingCTA from "@/components/FloatingCTA";
 import HomeFAQ from "@/components/HomeFAQ";
 import ScrollAnimation from "@/components/ScrollAnimation";
 
@@ -62,8 +61,6 @@ export default function Home() {
       <ScrollAnimation>
         <DecisionSection />
       </ScrollAnimation>
-
-      <FloatingCTA />
 
       <ScrollAnimation>
         <HomeFAQ />

@@ -213,8 +213,8 @@ export default function FAQPage() {
       <div className="max-w-6xl mx-auto px-6 py-20 lg:py-24">
         
         {/* Mobile horizontal pill navigation */}
-        <div className="md:hidden sticky top-[80px] z-30 -mx-6 px-6 mb-10 pb-4 overflow-x-auto bg-stone-50/95 backdrop-blur-sm border-b border-stone-200/60">
-          <div className="flex gap-2 min-w-max pt-2">
+        <div className="md:hidden sticky top-[79px] z-30 -mx-6 px-6 mb-10 overflow-x-auto no-scrollbar bg-stone-50 border-b border-stone-200/60 transition-all duration-300">
+          <div className="flex gap-2 min-w-max py-3">
             {CATEGORIES.map(({ id, label }) => (
               <button
                 key={id}

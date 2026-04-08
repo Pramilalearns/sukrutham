@@ -263,7 +263,7 @@ export default function OurStory() {
                                             alt="K.P. Murali"
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
-                                            className="object-cover"
+                                            className="object-cover object-top"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
                                             <h3 className="text-white text-3xl font-display font-bold">K.P. Murali</h3>

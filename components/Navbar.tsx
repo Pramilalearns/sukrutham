@@ -54,7 +54,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
         <nav
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out font-sans",
-                scrolled
+                (scrolled || variant === "light")
                     ? "bg-stone-50 shadow-md" 
                     : "bg-transparent"
             )}
@@ -66,16 +66,16 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                 ...(scrolled ? {} : {})
             }}
         >
-            <div className="container mx-auto px-6 md:px-10 flex items-center" style={{ height: '80px', minHeight: '80px' }}>
+            <div className="container mx-auto px-4 sm:px-6 md:px-10 flex items-center" style={{ height: '80px', minHeight: '80px' }}>
                 {/* Logo Section - Left side */}
                 <div className="flex-shrink-0 z-50">
                     <Link href="/" className="block relative">
                         <Image
                             src="/logo/logo.png"
                             alt="Sukrutham Farmstay"
-                            width={120}
-                            height={48}
-                            className="w-[120px] h-[48px] object-contain object-left"
+                            width={110}
+                            height={44}
+                            className="w-[110px] h-[44px] object-contain object-left md:w-[120px] md:h-[48px]"
                             priority
                         />
                     </Link>
@@ -251,7 +251,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden p-2 ml-auto"
+                    className="md:hidden p-2 -mr-2 ml-auto"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -322,11 +322,11 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     </div>
 
                     <Link
-                        href="/#testimonials"
+                        href="/our-guests"
                         className="text-stone-600 hover:text-primary font-medium text-lg border-b border-stone-100 pb-2"
                         onClick={() => setIsOpen(false)}
                     >
-                        Our Customers
+                        Our Guests
                     </Link>
                     <Link
                         href="/faq"

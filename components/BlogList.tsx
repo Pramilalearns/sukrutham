@@ -119,23 +119,25 @@ export default function BlogList({ initialPosts, categories, categoryTextData }:
                 </section>
             )}
 
-            {/* Category Navigation Bar */}
-            <div className="sticky top-[82px] md:top-[106px] z-40 bg-[#FDFCF8]/85 backdrop-blur-xl border-y border-stone-200/50 shadow-sm py-3 transition-all duration-300">
+            {/* Category Navigation Bar - Calibrated to touch Navbar (79px desktop) */}
+            <div className="sticky top-[79px] z-40 bg-stone-50 border-y border-stone-200/50 shadow-sm transition-all duration-300 overflow-hidden">
                 <div className="container mx-auto px-6 md:px-12 lg:px-20">
-                    <div className="flex gap-2 min-w-max overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
-                        {populatedCategories.map((cat, i) => (
-                            <button
-                                key={i}
-                                onClick={() => handleCategoryClick(cat)}
-                                className={`snap-start px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap 
-                                    ${cat === activeCategory 
-                                        ? 'bg-stone-900 text-white hover:bg-stone-800 shadow-md' 
-                                        : 'bg-white text-stone-600 hover:bg-[#F9F8F6] hover:text-stone-900 shadow-sm border border-stone-200/80 hover:border-stone-300 focus:ring-2 ring-primary/20'
-                                    }`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
+                    <div className="overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
+                        <div className="flex gap-2 min-w-max py-2 md:py-3">
+                            {populatedCategories.map((cat, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => handleCategoryClick(cat)}
+                                    className={`snap-start px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap 
+                                        ${cat === activeCategory 
+                                            ? 'bg-stone-900 text-white hover:bg-stone-800 shadow-md' 
+                                            : 'bg-white text-stone-600 hover:bg-[#F9F8F6] hover:text-stone-900 shadow-sm border border-stone-200/80 hover:border-stone-300 focus:ring-2 ring-primary/20'
+                                        }`}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#FDFCF8] to-transparent pointer-events-none md:hidden"></div>

@@ -48,7 +48,7 @@ export default async function BlogPage() {
                 slug,
                 excerpt,
                 featuredImage,
-                category,
+                "category": coalesce(categoryRef->title, category),
                 publishedAt,
                 readTime,
                 author->{
