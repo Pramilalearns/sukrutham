@@ -175,7 +175,7 @@ export default function ActivitiesPage() {
                             <span className="italic text-stone-200 font-light">Kerala</span>
                         </h1>
                         <p className="text-lg md:text-xl text-stone-100 font-medium leading-relaxed max-w-2xl mx-auto drop-shadow-md">
-                            Step out of the ordinary. Immerse yourself in authentic village life, learn ancient farming practices, and rejuvenate your soul at Sukrutham Farmstay.
+                            Step out of the ordinary. Immerse yourself in authentic village life, learn ancient farming practices, and rejuvenate your soul at <Link href="/" className="text-accent hover:text-accent/80 underline decoration-accent/30 underline-offset-2 hover:decoration-accent transition-colors">Sukrutham Farmstay</Link>.
                         </p>
                     </ScrollAnimation>
                 </div>
@@ -189,7 +189,7 @@ export default function ActivitiesPage() {
                             Unique Local Experiences
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed">
-                            Here's what you can expect when you visit. Discover the magic of Kerala through genuine activities that connect you with nature and local culture.
+                            Here's what you can expect when you visit our <Link href="/farm-stay-rooms" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">farm house in Thrissur</Link>. Discover the magic of Kerala through genuine activities that connect you with nature and local culture.
                         </p>
                     </div>
 
@@ -258,8 +258,8 @@ export default function ActivitiesPage() {
                             <p className="text-[#A48869] font-medium text-xl mb-6 leading-snug">
                                 Experience authentic farm life in Kerala.
                             </p>
-                            <p className="text-stone-600 text-lg font-light leading-relaxed mb-8">
-                                From understanding the delicate nuances of organic practices to witnessing the traditional methods of crop harvesting. Get your hands dirty and reconnect with the simple joys of nature.
+                            <p className="text-stone-600 text-lg leading-relaxed mb-8">
+                                From understanding the delicate nuances of organic practices to witnessing the traditional methods of crop harvesting at our <Link href="/homestay-in-thrissur" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">homestay in Thrissur Kerala</Link>. Get your hands dirty and reconnect with the simple joys of nature.
                             </p>
                             <div className="w-16 h-1 bg-[#EBE5DC]"></div>
                         </div>
@@ -337,7 +337,7 @@ export default function ActivitiesPage() {
                                             <item.icon className="w-6 h-6" />
                                         </div>
                                         <h3 className="text-2xl font-display font-medium text-stone-900 mb-3">{item.title}</h3>
-                                        <p className="text-stone-600 leading-relaxed font-light">
+                                        <p className="text-stone-600 text-sm leading-relaxed">
                                             {item.description}
                                         </p>
                                     </div>

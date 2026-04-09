@@ -122,7 +122,7 @@ function RoomVisualTour({ activeTab, setActiveTab, roomImageData }: { activeTab:
                     <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Perspective</span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6">A Visual Tour to Your Rooms</h2>
                     <p className="text-lg text-stone-600 max-w-2xl mx-auto font-light">
-                        Take a closer look at the unique character and crafted details of each of our guest rooms at our home stay in Thrissur.
+                        Take a closer look at the unique character and crafted details of each of our guest rooms at <Link href="/" className="hover:text-primary transition-colors">Sukrutham Farmstay</Link>.
                     </p>
                 </ScrollAnimation>
 
@@ -322,7 +322,7 @@ export default function RoomsPage() {
             size: "120 sq.ft.",
             image: "/room-gallery/pepper-room/pepper3.jpeg",
             features: ["Non-AC Room", "Natural Ventilation"],
-            description: "A 120 sq.ft. room designed for the nature lover. Experience natural ventilation and the authentic, breezy rhythm of farm life.",
+            description: "A 120 sq.ft. room designed for the nature lover. Experience natural ventilation and the authentic, breezy rhythm of farm life at our <Link href=\"/farm-stay-rooms\" className=\"hover:text-primary transition-colors\">farm house in Thrissur</Link>.",
             priceTwin: "₹4,500",
             priceSingle: "₹2,500",
             amenities: [
@@ -392,7 +392,7 @@ export default function RoomsPage() {
                     Home Stay In Thrissur
                 </h1>
                 <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-                    Find Your Perfect Space — The best homestay in Thrissur
+                    Find Your Perfect Space — The best homestay in Thrissur at <Link href="/" className="hover:text-primary transition-colors">Sukrutham Farmstay</Link>
                 </p>
             </div>
 

@@ -323,29 +323,29 @@ export default function OurGuestsPage() {
             </section>
 
             {/* --- Typography Highlights Section --- */}
-            <section className="relative z-30 px-6 md:px-12 lg:px-20 -mt-24 mb-16">
+            <section className="relative z-30 px-4 md:px-12 lg:px-20 -mt-12 sm:-mt-20 lg:-mt-24 mb-16">
                 <div className="container mx-auto max-w-7xl">
-                    <div className="bg-white rounded-[3rem] shadow-2xl shadow-stone-200/50 border border-stone-100 p-12 lg:p-20">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 items-center">
-                            <div className="text-center md:text-right space-y-4">
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
+                    <div className="bg-white rounded-[2rem] sm:rounded-[3rem] shadow-2xl shadow-stone-200/50 border border-stone-100 p-8 md:p-12 lg:p-20">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 items-center">
+                            <div className="text-center md:text-right space-y-3 md:space-y-4">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                                     "The most <br /> <span className="text-primary italic">shanti</span> place"
                                 </h3>
-                                <p className="text-stone-500 uppercase tracking-widest text-xs font-bold">— Anastasia, Moscow</p>
+                                <p className="text-stone-500 uppercase tracking-widest text-[10px] sm:text-xs font-bold">— Anastasia, Moscow</p>
                             </div>
 
-                            <div className="text-center space-y-4 border-y md:border-y-0 md:border-x border-stone-200 py-12 md:py-0 px-4">
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
+                            <div className="text-center space-y-3 md:space-y-4 border-y md:border-y-0 md:border-x border-stone-100 py-8 md:py-0 px-4">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                                     "Impressed <br /> <span className="text-accent italic">beyond</span> words."
                                 </h3>
-                                <p className="text-stone-500 uppercase tracking-widest text-xs font-bold">— Dr Shruthi & Family, Bangalore</p>
+                                <p className="text-stone-500 uppercase tracking-widest text-[10px] sm:text-xs font-bold">— Dr Shruthi & Family, Bangalore</p>
                             </div>
 
-                            <div className="text-center md:text-left space-y-4">
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
+                            <div className="text-center md:text-left space-y-3 md:space-y-4 pt-8 md:pt-0">
+                                <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 leading-tight">
                                     "An idyllic <br /> slice of <span className="text-primary italic">paradise!</span>"
                                 </h3>
-                                <p className="text-stone-500 uppercase tracking-widest text-xs font-bold">— Sonia & Santosh, New Zealand</p>
+                                <p className="text-stone-500 uppercase tracking-widest text-[10px] sm:text-xs font-bold">— Sonia & Santosh, New Zealand</p>
                             </div>
                         </div>
                     </div>
@@ -356,38 +356,44 @@ export default function OurGuestsPage() {
             <section className="py-20 px-6 md:px-12 lg:px-20 bg-[#FDFCF8]">
                                 <div className="container mx-auto max-w-7xl">
 
-                    <div className="flex flex-col items-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-8">Memories from Around the World</h2>
+                    <div className="flex flex-col items-center mb-10">
+                        <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-6 text-center">Memories from Around the World</h2>
 
-                        {/* Tabs */}
-                        <div 
-                            className="flex flex-nowrap overflow-x-auto no-scrollbar whitespace-nowrap max-w-full bg-white/50 p-1.5 rounded-full border border-stone-200 backdrop-blur-sm shadow-sm relative z-20 snap-x"
-                            style={{ WebkitBackdropFilter: 'blur(4px)' }}
-                        >
-                            <button
-                                onClick={() => setActiveTab('India')}
-                                className={cn(
-                                    "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer",
-                                    activeTab === 'India'
-                                        ? "bg-primary text-white shadow-md transform scale-105"
-                                        : "text-stone-600 hover:text-stone-900 hover:bg-white/50"
-                                )}
-                            >
-                                <Map className="w-4 h-4" />
-                                Guests from India
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('International')}
-                                className={cn(
-                                    "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer",
-                                    activeTab === 'International'
-                                        ? "bg-primary text-white shadow-md transform scale-105"
-                                        : "text-stone-600 hover:text-stone-900 hover:bg-white/50"
-                                )}
-                            >
-                                <Globe className="w-4 h-4" />
-                                International Guests
-                            </button>
+                        {/* Tabs - Robust fix for shadow clipping and mobile overflow */}
+                        <div className="w-full pt-2 pb-6 relative z-20">
+                            <div className="flex overflow-x-auto no-scrollbar pb-4 px-4 justify-center">
+                                <div 
+                                    className="flex flex-nowrap bg-white/50 p-1.5 rounded-2xl sm:rounded-full border border-stone-200 backdrop-blur-sm shadow-sm snap-x"
+                                    style={{ WebkitBackdropFilter: 'blur(4px)' }}
+                                >
+                                    <button
+                                        onClick={() => setActiveTab('India')}
+                                        className={cn(
+                                            "flex-shrink-0 px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-[13px] sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer",
+                                            activeTab === 'India'
+                                                ? "bg-primary text-white shadow-md transform scale-105"
+                                                : "text-stone-600 hover:text-stone-900 hover:bg-white/50"
+                                        )}
+                                    >
+                                        <Map className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                        <span className="hidden sm:inline">Guests from India</span>
+                                        <span className="sm:hidden">India</span>
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveTab('International')}
+                                        className={cn(
+                                            "flex-shrink-0 px-4 sm:px-8 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-[13px] sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer",
+                                            activeTab === 'International'
+                                                ? "bg-primary text-white shadow-md transform scale-105"
+                                                : "text-stone-600 hover:text-stone-900 hover:bg-white/50"
+                                        )}
+                                    >
+                                        <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                        <span className="hidden sm:inline">International Guests</span>
+                                        <span className="sm:hidden">International</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -395,20 +401,20 @@ export default function OurGuestsPage() {
                         {filteredTestimonials.map((testimonial, idx) => (
                             <div
                                 key={`${activeTab}-${idx}`}
-                                className="break-inside-avoid bg-white rounded-[2rem] p-6 md:p-8 mx-2 md:mx-0 shadow-sm border border-stone-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                                className="break-inside-avoid bg-white rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 mx-1 md:mx-0 shadow-sm border border-stone-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                             >
-                                <div className="flex gap-1 mb-6">
+                                <div className="flex gap-1 mb-5 sm:mb-6">
                                     {[...Array(testimonial.rating || 5)].map((_, i) => (
-                                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                                        <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
                                     ))}
                                 </div>
-                                <Quote className="w-8 h-8 text-stone-100 mb-4" />
-                                <p className="text-stone-600 font-light leading-relaxed mb-8 relative z-10">
+                                <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-stone-100 mb-3 sm:mb-4" />
+                                <p className="text-stone-600 font-light leading-relaxed mb-6 sm:mb-8 text-[15px] sm:text-base relative z-10">
                                     "{testimonial.text}"
                                 </p>
-                                <div className="pt-6 border-t border-stone-100">
-                                    <h4 className="font-bold text-stone-900 text-sm">{testimonial.names}</h4>
-                                    <span className="text-xs text-stone-500 font-medium tracking-wide uppercase mt-1 block">
+                                <div className="pt-5 sm:pt-6 border-t border-stone-100">
+                                    <h4 className="font-bold text-stone-900 text-[13px] sm:text-sm">{testimonial.names}</h4>
+                                    <span className="text-[10px] sm:text-xs text-stone-500 font-medium tracking-wide uppercase mt-1 block">
                                         {testimonial.location}
                                     </span>
                                 </div>
@@ -430,7 +436,7 @@ export default function OurGuestsPage() {
                     <div className="text-center mb-10 md:mb-16">
                         <span className="text-stone-400 font-bold tracking-widest uppercase text-xs mb-4 block animate-in fade-in slide-in-from-bottom-2 duration-1000">Guest Reflections</span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight">
-                            Moments from <span className="italic text-stone-500 font-serif">Sukrutham</span>
+                            Moments from <Link href="/" className="italic text-stone-500 font-serif hover:text-primary transition-colors">Sukrutham Farmstay</Link>
                         </h2>
                     </div>
 
@@ -470,7 +476,7 @@ export default function OurGuestsPage() {
                         Ready to add your story?
                     </h2>
                     <p className="text-xl text-stone-300 font-light mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Join our global family of travelers who have found their home away from home. Explore Sukrutham Farmstay and harvest happy memories.
+                        Join our global family of travelers who have found their home away from home. Explore <Link href="/" className="text-primary hover:underline font-medium">Sukrutham Farmstay</Link> and harvest happy memories.
                     </p>
                     <Link
                         href="/book"

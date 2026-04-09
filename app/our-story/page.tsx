@@ -1,4 +1,4 @@
-
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -128,7 +128,7 @@ export default function OurStory() {
                                     <span className="text-primary italic">Our Logo</span>
                                 </h2>
                                 <p className="text-lg text-stone-600 leading-relaxed font-light">
-                                    The Sukrutham Farmstay logo reflects the spirit of the land, tradition, and heritage that define our space.
+                                    The <Link href="/" className="hover:text-primary transition-colors">Sukrutham Farmstay</Link> logo reflects the spirit of the land, tradition, and heritage that define our space.
                                 </p>
                             </div>
 
@@ -235,7 +235,7 @@ export default function OurStory() {
                             Architecture with a Soul
                         </h2>
                         <p className="text-xl text-stone-600 font-light leading-relaxed">
-                            Sukrutham is a masterpiece of traditional Kerala architecture. Built by using <span className="text-stone-800 font-medium">local materials and native architectural style</span> to build a traditional Kerala style home.
+                            <Link href="/" className="hover:text-primary transition-colors">Sukrutham Farmstay</Link> is a masterpiece of traditional Kerala architecture. Built by using <span className="text-stone-800 font-medium">local materials and native architectural style</span> to build a traditional Kerala style home, it has earned its reputation as a leading <Link href="/farm-stay-rooms" className="hover:text-primary transition-colors">farm house in Thrissur</Link>.
                         </p>
                     </div>
 
@@ -309,7 +309,7 @@ export default function OurStory() {
                         <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Biodiversity</span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6">A Living, Breathing Farm</h2>
                         <p className="text-lg text-stone-600 font-light leading-relaxed">
-                            Set within a lush one-acre organic farm, life here moves at a gentle pace. Our gardens are a treasure trove of biodiversity, featuring:
+                            Set within a lush one-acre organic farm, life here moves at a gentle pace, offering the quintessential charm of a <Link href="/homestay-in-thrissur" className="hover:text-primary transition-colors">homestay in Thrissur Kerala</Link>. Our gardens are a treasure trove of biodiversity, featuring:
                         </p>
                     </div>
 

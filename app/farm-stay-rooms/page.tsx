@@ -683,7 +683,7 @@ export default function RoomsPage() {
                     <div className="text-center mb-16 max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-5xl font-display font-medium text-stone-900 mb-6">Why You Will Love Your Stay at Sukrutham</h2>
                         <p className="text-stone-600 text-lg md:text-xl leading-relaxed">
-                            Whether you come seeking quiet reflection, a meaningful connection with nature, or simply a peaceful escape from everyday life, Sukrutham Farmstay, a leading farm house in Thrissur, offers an experience that feels warm, authentic, and deeply refreshing. Here at our farmhouse in Kerala, the charm of rural life blends beautifully with thoughtful comforts to create a stay that is both relaxing and memorable.
+                            Whether you come seeking quiet reflection, a meaningful connection with nature, or simply a peaceful escape from everyday life, <Link href="/" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">Sukrutham Farmstay</Link>, a leading farm house in Thrissur, offers an experience that feels warm, authentic, and deeply refreshing. Here at our <Link href="/farm-stay-rooms" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">farmhouse in Kerala</Link>, the charm of rural life blends beautifully with thoughtful comforts to create a stay that is both relaxing and memorable.
                         </p>
                     </div>
 

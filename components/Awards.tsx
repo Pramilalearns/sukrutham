@@ -13,7 +13,7 @@ export default function Awards() {
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight mt-4 mb-4">
                         Award-winning <span className="italic text-stone-500 font-light">hospitality.</span>
                     </h2>
-                    <p className="text-stone-600 text-sm md:text-base leading-relaxed tracking-wide mt-2">
+                    <p className="text-stone-600 text-lg leading-relaxed tracking-wide mt-2">
                         Rooted in Kerala's heritage and recognized by global standards.
                     </p>
                 </div>

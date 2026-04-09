@@ -67,8 +67,8 @@ const LocalSavorPage = () => {
                     <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-display font-medium text-[#2C302A] mb-4">
                         Local Savor
                     </h1>
-                    <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-                        At Sukrutham, food is not just a meal; it's a story of the land, traditions, and wellness. Experience authentic Kerala culinary arts.
+                    <p className="text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto">
+                        At <Link href="/" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4 hover:decoration-primary">Sukrutham Farmstay</Link>, food is not just a meal; it's a story of the land, traditions, and wellness. Experience authentic Kerala culinary arts.
                     </p>
                 </ScrollAnimation>
             </div>
@@ -81,7 +81,7 @@ const LocalSavorPage = () => {
                             Nature's Bounty On Your Plate
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed">
-                            Our offerings change daily based on what the earth provides and what the season demands. Total hyper-local transparency and organic dedication.
+                            Our offerings change daily based on what the earth provides and what the season demands. Total hyper-local transparency and organic dedication as a leading <Link href="/homestay-in-thrissur" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4 hover:decoration-primary">homestay in Thrissur</Link>.
                         </p>
                     </div>
 
@@ -145,8 +145,8 @@ const LocalSavorPage = () => {
                             <p className="text-[#A48869] font-medium text-xl mb-6 leading-snug">
                                 Medicine as Food.
                             </p>
-                            <p className="text-stone-600 text-lg font-light leading-relaxed mb-8">
-                                "At Sukrutham, we passionately believe that food is medicine, culture, and connection rolled into one. The fish curry cooked in a chatti cannot be rushed; it demands time to allow the tamarind to release its sour notes."
+                            <p className="text-stone-600 text-lg leading-relaxed mb-8">
+                                "At <Link href="/" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4 hover:decoration-primary">Sukrutham Farmstay</Link>, we passionately believe that food is medicine, culture, and connection rolled into one. The fish curry cooked in a chatti cannot be rushed; it demands time to allow the tamarind to release its sour notes."
                             </p>
                             <div className="w-16 h-1 bg-[#EBE5DC]"></div>
                         </div>
@@ -169,7 +169,7 @@ const LocalSavorPage = () => {
                                             </div>
 
                                             <h3 className="text-2xl font-display font-medium text-stone-900 mb-3">{item.title}</h3>
-                                            <p className="text-stone-600 font-light leading-relaxed text-lg">
+                                            <p className="text-stone-600 leading-relaxed text-base">
                                                 {item.description}
                                             </p>
                                         </div>
@@ -187,7 +187,7 @@ const LocalSavorPage = () => {
                     <ScrollAnimation>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium mb-6 text-white">Ready for Discovery?</h2>
                         <p className="text-lg md:text-xl text-stone-300 leading-relaxed mb-10 max-w-2xl mx-auto font-medium">
-                            Join our communal table for a meal you'll never forget. Reserve your spot at Sukrutham Farm Stay.
+                            Join our communal table for a meal you'll never forget. Reserve your spot at the finest <Link href="/farm-stay-rooms" className="text-white hover:text-accent transition-colors underline decoration-accent/30 underline-offset-4 hover:decoration-accent">farm house in Thrissur</Link>.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

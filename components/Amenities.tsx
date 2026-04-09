@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
     Trees, Utensils, ChefHat, Droplet, Accessibility,
     Wifi, Sun, Laptop, Signal,
@@ -141,7 +142,7 @@ export default function Amenities() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <section className="py-16 md:py-20 bg-white relative" id="amenities">
+        <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-white relative" id="amenities">
             <div className="absolute inset-0 bg-pattern-dots text-stone-200 mask-gradient-b"></div>
             <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
                 {/* Heading */}
@@ -151,7 +152,7 @@ export default function Amenities() {
                         18+ Thoughtful Onsite Amenities
                     </h2>
                     <p className="text-stone-600 text-lg leading-relaxed">
-                        From modern comforts to authentic farm experiences, our home stay in Kerala has thought of everything.
+                        From modern comforts to authentic farm experiences, our <Link href="/farm-stay-rooms" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">home stay in Kerala</Link> has thought of everything.
                     </p>
                 </div>
 

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TourGallery from "@/components/TourGallery";
+import Link from "next/link";
 
 
 export const metadata = {
@@ -52,12 +53,12 @@ export default function TakeATour() {
                 <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
                         <span className="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">
-                            The Sukrutham Journey
+                            Sukrutham Farmstay Journey
                         </span>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-stone-900 mb-8 leading-tight">
                             A Soulful Base for <br /> <span className="text-stone-400 italic">Authentic Exploration</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto leading-relaxed font-light">
+                        <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
                             Experience the perfect balance of a traditional farmstead and a gateway to the heart of Kerala. From our organic fields to the hidden gems of the region, begin your journey here.
                         </p>
                     </div>

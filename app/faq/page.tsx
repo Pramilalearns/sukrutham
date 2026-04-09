@@ -14,6 +14,7 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
+import Link from "next/link";
 
 const CATEGORIES = [
   {
@@ -23,7 +24,7 @@ const CATEGORIES = [
     qs: [
       {
         q: "How do I book a stay and what are the payment terms?",
-        a: "Booking is easy — reserve directly through our website or give us a call. Sukrutham Farmstay currently accepts cash for on-site transactions and additional services, so please plan accordingly.",
+        a: "Booking is easy — reserve directly through our website or give us a call. <Link href=\"/\" className=\"text-primary hover:underline font-medium\">Sukrutham Farmstay</Link> currently accepts cash for on-site transactions and additional services, so please plan accordingly.",
       },
       {
         q: "What is the cancellation policy?",
@@ -107,7 +108,7 @@ const CATEGORIES = [
       },
       {
         q: "What are the nearby attractions?",
-        a: "Vilangan Hills and Chembuchira offer stunning views. Nearby are the famous Thrissur temples and Kodungallur backwaters for a memorable short excursion.",
+        a: "Vilangan Hills and Chembuchira offer stunning views. Nearby are the famous Thrissur temples and Kodungallur backwaters. Our <Link href=\"/homestay-in-thrissur\" className=\"text-primary hover:underline font-medium\">homestay in Thrissur Kerala</Link> serves as a perfect base for these explorations.",
       },
       {
         q: "What is the best time of year to visit?",
@@ -122,7 +123,7 @@ const CATEGORIES = [
     qs: [
       {
         q: "How is Sukrutham eco-friendly?",
-        a: "Our villa is built with traditional laterite stone and mud plaster for natural cooling. The entire property is 100% solar-powered, and we practise organic farming and water conservation throughout.",
+        a: "Our villa is built with traditional laterite stone and mud plaster for natural cooling. The entire <Link href=\"/farm-stay-rooms\" className=\"text-primary hover:underline font-medium\">farm house in Thrissur</Link> is 100% solar-powered, and we practise organic farming and water conservation throughout.",
       },
       {
         q: "Is the property safe?",
@@ -202,7 +203,7 @@ export default function FAQPage() {
             </h1>
             <p className="text-lg md:text-xl font-light text-stone-200 max-w-lg leading-relaxed">
               Everything you need to know before, during, and after your stay at
-              Sukrutham.
+              <Link href=\"/\" className=\"text-accent hover:underline ml-1.5\">Sukrutham Farmstay</Link>.
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
-    qualities: [60, 75],
+    qualities: [60, 75, 95],
     remotePatterns: [
       {
         protocol: 'https',

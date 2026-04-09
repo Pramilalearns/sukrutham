@@ -112,7 +112,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                  The Interior & Exterior
                              </span>
                              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-2">
-                                 The Soul of Sukrutham
+                                 The Soul of Sukrutham Farmstay
                              </h2>
                              <p className="text-primary font-medium italic mb-6">
                                  Where the air feels lighter, and the wood looks lived-in.
@@ -209,7 +209,7 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                                 The best views are just a short stroll away.
                             </p>
                             <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                                The magic of Sukrutham doesn&rsquo;t stop at our gate. We&rsquo;re lucky to be surrounded by the quiet rhythm of the nearby lake and the vast, open energy of the dam. Whether you&rsquo;re looking for a peaceful sunset spot or a place to watch the water flow, these landscapes are the perfect backdrop for your offbeat Kerala adventure.
+                                The magic of Sukrutham Farmstay doesn&rsquo;t stop at our gate. We&rsquo;re lucky to be surrounded by the quiet rhythm of the nearby lake and the vast, open energy of the dam. Whether you&rsquo;re looking for a peaceful sunset spot or a place to watch the water flow, these landscapes are the perfect backdrop for your offbeat Kerala adventure.
                             </p>
                             <div className="hidden lg:block w-12 h-1 bg-primary mb-8" />
                         </div>
@@ -245,8 +245,8 @@ export default function TourGallery({ initialStayImages, initialFarmImages, init
                     <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6">
                         Ready to see this with your own eyes?
                     </h2>
-                    <p className="text-xl text-stone-600 mb-10 max-w-2xl mx-auto font-light">
-                        Every picture tells a story, but the real experience is something else entirely.
+                    <p className="text-xl text-stone-600 mb-10 max-w-2xl mx-auto">
+                        What you see in these pictures is just a part of it—the rest unfolds when you’re actually here.
                     </p>
                     <a
                         href="/book"

@@ -98,7 +98,7 @@ export default function WhyChooseUs() {
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-stone-900 leading-tight tracking-tight">
                         A Sanctuary for the Soul.
                     </h2>
-                    <p className="mt-6 text-lg md:text-xl text-stone-500 leading-relaxed font-light max-w-2xl">
+                    <p className="mt-4 text-lg text-stone-600 leading-relaxed max-w-2xl">
                         Sukrutham homestay in Kerala is more than just a place to stay; it&apos;s an emotion. Whether you seek solitude, adventure, or culture, we offer the perfect blend.
                     </p>
                 </div>

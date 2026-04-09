@@ -49,7 +49,7 @@ export default function Hero() {
             <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
                 <ScrollAnimation animation="fade-up">
                     <h1 className="block text-sm md:text-base font-semibold tracking-widest uppercase mb-4 text-accent/90">
-                        Homestay in Thrissur, Kerala
+                        <Link href="/homestay-in-thrissur" className="hover:text-accent transition-colors">Homestay in Thrissur</Link>, Kerala
                     </h1>
                     <h2 className="text-3xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight drop-shadow-lg px-2">
                         Experience Authentic <br />

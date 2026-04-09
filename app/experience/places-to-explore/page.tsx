@@ -320,12 +320,12 @@ export default function PlacesToExplorePage() {
                                     <Navigation className="w-4 h-4" /> Discover Thrissur
                                 </span>
                             </div>
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-[#2C302A] leading-[1.1] mb-8">
                                 Places to <br />
                                 <span className="italic text-[#A48869] font-serif">Explore</span>
                             </h1>
-                            <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
-                                While staying at Sukrutham is a wholesome experience in itself, here are some spectacular options to explore near the farmstay.
+                            <p className="text-lg text-stone-600 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
+                                While staying at Sukrutham, the <Link href="/homestay-in-thrissur" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">best homestay in Thrissur</Link>, is a wholesome experience in itself, here are some spectacular options to explore nearby.
                             </p>
                             <div className="flex justify-center lg:justify-start">
                                 <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
@@ -353,59 +353,71 @@ export default function PlacesToExplorePage() {
             {/* Main Content Area (Detailed Directory with Filters) */}
             <section id="directory" className="py-16 md:py-24" onMouseLeave={() => setHoveredRadius(null)}>
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
-                    <div className="mb-12 text-center">
-                        <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6 drop-shadow-sm">Detailed Directory</h2>
-                        <p className="text-stone-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-                            Discover the hidden gems and iconic landmarks dotted around Sukrutham Farmstay, perfectly categorized by how far you want to travel today.
+                    <div className="mb-4 text-center">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-6 drop-shadow-sm">Detailed Directory</h2>
+                        <p className="text-stone-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                            Discover the hidden gems and iconic landmarks dotted around <Link href="/" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">Sukrutham Farmstay</Link>, perfectly categorized by how far you want to travel today.
                         </p>
                     </div>
 
-                    {/* Filter Tabs - Single Line Scroller */}
-                    <div className="flex flex-nowrap items-center md:justify-center gap-3 md:gap-4 mb-16 overflow-x-auto no-scrollbar pb-4 w-full px-6 md:px-0">
-                        <button
-                            onClick={() => setActiveDistance('All')}
-                            className={cn(
-                                "shrink-0 px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 border shadow-sm",
-                                activeDistance === 'All'
-                                    ? "bg-primary text-white border-primary shadow-primary/20 scale-105"
-                                    : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50"
-                            )}
-                        >
-                            <span className="whitespace-nowrap">All Places</span>
-                            <span className={cn(
-                                "min-w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
-                                activeDistance === 'All' ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
-                            )}>
-                                {allPlaces.length}
-                            </span>
-                        </button>
-                        {timelineData.map((node) => {
-                            const isActive = activeDistance === node.limit;
-                            const count = getPlacesForRadius(node.limit).length;
+                    {/* Filter Tabs - Guaranteed Fix for Shadow Clipping */}
+                    <div className="mb-8">
+                        <div className="pt-4 pb-14">
+                            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
 
-                            return (
                                 <button
-                                    key={node.limit}
-                                    onClick={() => setActiveDistance(node.limit)}
+                                    onClick={() => setActiveDistance('All')}
                                     className={cn(
-                                        "shrink-0 px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 border shadow-sm",
-                                        isActive
-                                            ? "bg-primary text-white border-primary shadow-primary/20 scale-105"
-                                            : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50"
+                                        "px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-full font-semibold transition-all duration-500 flex items-center gap-2 sm:gap-3 border shadow-sm",
+                                        activeDistance === 'All'
+                                            ? "bg-primary text-white border-primary shadow-[0_20px_40px_-10px_rgba(117,138,109,0.5)] scale-110 z-10"
+                                            : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50 hover:shadow-md"
                                     )}
                                 >
-                                    <span className="whitespace-nowrap">{node.label}</span>
-                                    {count > 0 && (
-                                        <span className={cn(
-                                            "min-w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
-                                            isActive ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
-                                        )}>
-                                            {count}
-                                        </span>
-                                    )}
+                                    <span className="whitespace-nowrap tracking-wide uppercase text-[10px] sm:text-[13px]">
+                                        <span className="hidden sm:inline">All Places</span>
+                                        <span className="sm:hidden">All</span>
+                                    </span>
+                                    <span className={cn(
+                                        "min-w-5 h-5 sm:min-w-6 sm:h-6 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] font-bold",
+                                        activeDistance === 'All' ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
+                                    )}>
+                                        {allPlaces.length}
+                                    </span>
                                 </button>
-                            );
-                        })}
+                                {timelineData.map((node) => {
+                                    const isActive = activeDistance === node.limit;
+                                    const count = getPlacesForRadius(node.limit).length;
+
+                                    return (
+                                        <button
+                                            key={node.limit}
+                                            onClick={() => setActiveDistance(node.limit)}
+                                            className={cn(
+                                                "px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-full font-semibold transition-all duration-500 flex items-center gap-2 sm:gap-3 border shadow-sm",
+                                                isActive
+                                                    ? "bg-primary text-white border-primary shadow-[0_20px_40px_-10px_rgba(117,138,109,0.5)] scale-110 z-10"
+                                                    : "bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-stone-50 hover:shadow-md"
+                                            )}
+                                        >
+                                            <span className="whitespace-nowrap tracking-wide uppercase text-[10px] sm:text-[13px]">
+                                                <span className="hidden sm:inline">Within </span>
+                                                {node.label.replace('Within ', '')}
+                                            </span>
+                                            {count > 0 && (
+                                                <span className={cn(
+                                                    "min-w-5 h-5 sm:min-w-6 sm:h-6 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] font-bold",
+                                                    isActive ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
+                                                )}>
+                                                    {count}
+                                                </span>
+                                            )}
+                                        </button>
+                                    );
+                                })}
+
+                            </div>
+                        </div>
                     </div>
 
                     {/* Bento Grid Layout */}
@@ -539,7 +551,7 @@ export default function PlacesToExplorePage() {
                         <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 drop-shadow-sm flex items-center justify-center gap-2">
                             <Info className="w-4 h-4" /> Good to Know
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900">Frequently Asked Questions</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900">Frequently Asked Questions</h2>
                     </div>
                     <div className="space-y-4">
                         {[
@@ -597,7 +609,7 @@ export default function PlacesToExplorePage() {
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center relative z-10 max-w-3xl">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium mb-8">Need help planning your itinerary?</h2>
                     <p className="text-stone-300 text-lg mb-10 leading-relaxed font-light">
-                        Let us know your interests! We can arrange reliable taxis and help you plan the perfect route to explore these beautiful destinations without feeling rushed.
+                        Let us know your interests! From our <Link href="/farm-stay-rooms" className="text-accent hover:text-accent/80 underline decoration-accent/30 underline-offset-2 hover:decoration-accent transition-colors">farm stay in Kerala</Link>, we can arrange reliable taxis and help you plan the perfect route to explore these beautiful destinations without feeling rushed.
                     </p>
                     <Link
                         href="/book"

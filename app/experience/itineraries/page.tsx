@@ -71,7 +71,7 @@ export default function ItinerariesPage() {
             <Navbar variant="light" />
 
             {/* --- ELEGANT SPLIT HERO SECTION --- */}
-            <section className="relative min-h-[90vh] flex items-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#FDFCF8]">
+            <section className="relative min-h-[105vh] flex items-center pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden bg-[#FDFCF8]">
                 {/* Decorative Background Elements */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                     <div className="absolute top-[10%] left-[60%] w-[40%] h-[40%] rounded-full bg-[#EBE5DC]/40 blur-3xl"></div>
@@ -81,7 +81,7 @@ export default function ItinerariesPage() {
                 <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                         {/* Left Content Area */}
-                        <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
+                        <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left pt-6 lg:pt-0">
                             <ScrollAnimation>
                                 <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
                                     <div className="h-[1px] w-12 bg-[#758A6D]"></div>
@@ -93,8 +93,8 @@ export default function ItinerariesPage() {
                                     Your Journey, <br />
                                     <span className="italic text-[#A48869] font-serif">Your Pace.</span>
                                 </h1>
-                                <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
-                                    Whether you wish to dive into farm life or explore the heritage of Thrissur, we’ve mapped out the perfect stay.
+                                <p className="text-lg md:text-xl text-stone-600 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
+                                    Whether you wish to dive into farm life or explore the heritage of the region from our <Link href="/homestay-in-thrissur" className="hover:text-[#A48869] transition-colors underline decoration-[#A48869]/30 underline-offset-4 hover:decoration-[#A48869]">homestay in Thrissur Kerala</Link>, we’ve mapped out the perfect stay.
                                 </p>
                                 <div className="flex justify-center lg:justify-start">
                                     <Link href="/book" className="inline-flex items-center justify-center gap-2 bg-[#758A6D] hover:bg-[#5C6D55] text-white px-5 sm:px-8 py-3 sm:py-4 text-[13px] sm:text-base whitespace-nowrap rounded-full font-bold transition-all hover:shadow-lg active:scale-95 text-sm tracking-wider uppercase">
@@ -104,10 +104,9 @@ export default function ItinerariesPage() {
                             </ScrollAnimation>
                         </div>
 
-                        {/* Right Image Area */}
-                        <div className="w-full lg:w-1/2 relative">
+                        <div className="w-full lg:w-[45%] relative">
                             <ScrollAnimation delay={200}>
-                                <div className="relative w-full aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border-8 border-white">
+                                <div className="relative w-full aspect-square rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border-8 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
                                     <Image
                                         src="/itinerary.jpg"
                                         alt="Sukrutham Curated Itineraries"
@@ -141,8 +140,8 @@ export default function ItinerariesPage() {
                 <div className="container mx-auto px-6 max-w-6xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-4">The Farm Soul</h2>
-                        <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
-                            Immersive in-farm itineraries designed to reconnect you with the earth, the animals, and traditional Kerala living.
+                        <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+                            Immersive in-farm itineraries designed to reconnect you with the earth, the animals, and traditional <Link href="/farm-stay-rooms" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4 hover:decoration-primary">farmhouse in Kerala</Link> living.
                         </p>
                     </div>
 
@@ -162,7 +161,7 @@ export default function ItinerariesPage() {
                                     <span className="text-sm font-bold uppercase tracking-widest opacity-60 bg-black/5 px-3 py-1 rounded-full">{itinerary.duration}</span>
                                 </div>
                                 <h3 className="text-2xl font-display font-bold mb-3">{itinerary.title}</h3>
-                                <p className="opacity-80 pb-6 mb-6 border-b border-current/20 font-light flex-grow">{itinerary.description}</p>
+                                <p className="opacity-80 pb-6 mb-6 border-b border-current/20 flex-grow">{itinerary.description}</p>
 
                                 <ul className="space-y-3 mb-10 font-medium opacity-90">
                                     {itinerary.highlights.map((item, idx) => (
@@ -190,7 +189,7 @@ export default function ItinerariesPage() {
             {/* SECTION C: THE NO-PLAN PLAN (Maverick Card) */}
             <section className="py-12 bg-white relative">
                 <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="bg-[#F8F7F4] rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden flex flex-col md:flex-row items-center gap-12 shadow-xl border border-stone-200/50">
+                    <div className="bg-[#F8F7F4] rounded-[2.5rem] px-6 py-10 md:p-16 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 shadow-xl border border-stone-200/50">
                         {/* Decorative Graphic */}
                         <div className="absolute right-0 bottom-0 opacity-[0.03] translate-x-1/4 translate-y-1/4 pointer-events-none">
                             <Compass className="w-[400px] h-[400px] text-stone-900" strokeWidth={0.5} />
@@ -211,8 +210,8 @@ export default function ItinerariesPage() {
                             </Link>
                         </div>
                         <div className="md:w-1/2 relative z-10">
-                            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-white text-stone-600 font-light leading-relaxed shadow-sm">
-                                We realize that for some, the best plan is no plan at all. Every guest arrives at Sukrutham on a unique journey—some to seek adventure, others to seek silence. We respect and celebrate that. Whether you want to spend your entire stay in a hammock or decide your activities only when the sun comes up, Sukrutham Farmstay adapts to your rhythm. No schedules, no pressure—just you and the land.
+                            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white text-stone-600 text-[15px] md:text-lg leading-relaxed shadow-sm">
+                                We realize that for some, the best plan is no plan at all. Every guest arrives at Sukrutham on a unique journey—some to seek adventure, others to seek silence. We respect and celebrate that. Whether you want to spend your entire stay in a hammock or decide your activities only when the sun comes up, <Link href="/" className="hover:text-primary transition-colors underline decoration-primary/30 underline-offset-4 hover:decoration-primary">Sukrutham Farmstay</Link> adapts to your rhythm. No schedules, no pressure—just you and the land.
                                 <br /><br />
                                 <strong className="font-bold text-primary">Explore your way. Unwind your way.</strong>
                             </div>
@@ -232,7 +231,7 @@ export default function ItinerariesPage() {
                             <Compass className="w-5 h-5" /> Sightseeing Itineraries
                         </span>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-stone-900 mb-4">The Explorer’s Compass</h2>
-                        <p className="text-lg text-stone-600 font-light max-w-2xl mx-auto">
+                        <p className="text-lg text-stone-600 max-w-2xl mx-auto">
                             Step out of the farm to witness the vibrant culture, roaring waterfalls, and sacred heritage of Thrissur.
                         </p>
                     </div>
@@ -248,7 +247,7 @@ export default function ItinerariesPage() {
                                     ))}
                                 </div>
                                 <h3 className="text-2xl font-display font-bold text-stone-900 mb-3">{itinerary.title}</h3>
-                                <p className="text-stone-600 font-light mb-6 flex-grow">{itinerary.description}</p>
+                                <p className="text-stone-600 mb-6 flex-grow">{itinerary.description}</p>
 
                                 <div className="bg-stone-50 rounded-2xl p-6 mb-8 border border-stone-100">
                                     <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-4">Locations Covered</h4>

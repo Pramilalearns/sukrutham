@@ -113,7 +113,7 @@ export default function SeasonsFestivalsPage() {
                             Art and Culture Aficionados
                         </h2>
                         <p className="text-stone-600 text-lg leading-relaxed">
-                            Sukrutham is in the vicinity of several venerated places of worship that define the spiritual and historical landscape of India.
+                            <Link href="/" className="hover:text-primary transition-colors">Sukrutham Farmstay</Link> is in the vicinity of several venerated places of worship that define the spiritual and historical landscape of India, making it a perfect base for those seeking a <Link href="/homestay-in-thrissur" className="hover:text-primary transition-colors">homestay in Thrissur Kerala</Link>.
                         </p>
                     </div>
 
@@ -177,8 +177,8 @@ export default function SeasonsFestivalsPage() {
                             <p className="text-[#A48869] font-medium text-xl mb-6 leading-snug">
                                 Witness the grand celebrations of the region.
                             </p>
-                            <p className="text-stone-600 text-lg font-light leading-relaxed mb-8">
-                                Kerala comes alive with the sound of percussion, the vibrant colors of traditional folk dances, and the unmistakable energy of its seasonal festivals.
+                            <p className="text-stone-600 text-lg leading-relaxed mb-8">
+                                Kerala comes alive with the sound of percussion, the vibrant colors of traditional folk dances, and the unmistakable energy of its seasonal festivals. Experience these traditions while staying at our <Link href="/farm-stay-rooms" className="hover:text-primary transition-colors">farm house in Thrissur</Link>.
                             </p>
                             <div className="w-16 h-1 bg-[#A48869]/30 rounded-full"></div>
                         </div>
@@ -205,7 +205,7 @@ export default function SeasonsFestivalsPage() {
 
                                             <h4 className="text-xl font-display font-bold text-[#2C302A] mb-3 leading-snug">{item.title}</h4>
 
-                                            <p className="text-stone-600 text-[15px] font-light leading-relaxed flex-grow">
+                                            <p className="text-stone-600 text-[15px] leading-relaxed flex-grow">
                                                 {item.description}
                                             </p>
                                         </div>

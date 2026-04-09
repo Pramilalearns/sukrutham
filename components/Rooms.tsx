@@ -25,7 +25,7 @@ export default function Rooms() {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-white relative" id="rooms">
+        <section className="pb-16 md:pb-20 pt-8 md:pt-10 bg-white relative" id="rooms">
             <div className="container mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-center">
                 {/* Header - Compact */}
                 <div className="text-center max-w-4xl mx-auto mb-10">
@@ -33,7 +33,7 @@ export default function Rooms() {
                     <h2 className="text-3xl md:text-4xl font-display font-bold text-stone-900 mb-4 mt-2 leading-tight">
                         Best Home Stay In Kerala
                     </h2>
-                    <p className="text-base text-stone-600 leading-relaxed max-w-3xl mx-auto">
+                    <p className="text-lg text-stone-600 leading-relaxed max-w-3xl mx-auto">
                         Sukrutham Farmstay is the best home stay in Kerala offering an authentic village experience with modern comforts.
                     </p>
                 </div>
