@@ -151,7 +151,7 @@ export default function Amenities() {
                         18+ Thoughtful Onsite Amenities
                     </h2>
                     <p className="text-stone-600 text-lg leading-relaxed">
-                        From modern comforts to authentic farm experiences, we’ve thought of everything.
+                        From modern comforts to authentic farm experiences, our home stay in Kerala has thought of everything.
                     </p>
                 </div>
 

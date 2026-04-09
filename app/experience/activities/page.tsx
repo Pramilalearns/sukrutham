@@ -375,7 +375,7 @@ export default function ActivitiesPage() {
                             >
                                 Contact Us <ArrowRight className="w-4 h-4" />
                             </a>
-                            <Link href="/rooms" className="text-stone-300 hover:text-white font-semibold underline underline-offset-4 decoration-stone-500 hover:decoration-white transition-all">
+                            <Link href="/farm-stay-rooms" className="text-stone-300 hover:text-white font-semibold underline underline-offset-4 decoration-stone-500 hover:decoration-white transition-all">
                                 View Rooms First
                             </Link>
                         </div>

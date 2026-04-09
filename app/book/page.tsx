@@ -63,16 +63,18 @@ export default function BookPage() {
     const [num1, setNum1] = useState(0);
     const [num2, setNum2] = useState(0);
     const [securityAnswer, setSecurityAnswer] = useState("");
-    const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [redirectUrl, setRedirectUrl] = useState("");
 
     const [checkInDate, setCheckInDate] = useState("");
     const today = new Date().toISOString().split('T')[0];
 
-    // Generate math puzzle on mount
+    // Generate math puzzle and get origin on mount
     useEffect(() => {
         setNum1(Math.floor(Math.random() * 10) + 1);
         setNum2(Math.floor(Math.random() * 10) + 1);
+        setRedirectUrl(window.location.origin + "/thank-you");
     }, []);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -103,11 +105,7 @@ export default function BookPage() {
             });
 
             if (response.ok) {
-                setIsSubmitted(true);
-                setTimeout(() => setIsSubmitted(false), 8000); // Reset after 8s
-                e.currentTarget.reset();
-                setSecurityAnswer("");
-                setCheckInDate("");
+                window.location.href = "/thank-you";
             } else {
                 alert("Something went wrong with the submission. Please try again or contact the host directly.");
             }

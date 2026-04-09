@@ -182,7 +182,7 @@ export default function Testimonials() {
                     Stories from Sukrutham
                 </h2>
                 <p className="text-stone-500 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
-                    Don&apos;t just take our word for it. Here is what travelers from around the world have to say about their stay.
+                    Don&apos;t just take our word for it. Here is what travelers from around the world have to say about their experience with our home stay in Kerala.
                 </p>
 
                 <RatingSummary />

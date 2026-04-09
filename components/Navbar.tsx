@@ -100,7 +100,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         About Us
                     </Link>
                     <Link
-                        href="/rooms"
+                        href="/farm-stay-rooms"
                         className={cn(
                             "text-xs lg:text-sm transition-all hover:text-accent px-2 lg:px-3 py-1.5 rounded-full flex items-center whitespace-nowrap",
                             scrolled || variant === "light" ? "text-stone-900 font-medium" : "text-white/90 font-medium drop-shadow-md",
@@ -277,7 +277,7 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         About Us
                     </Link>
                     <Link
-                        href="/rooms"
+                        href="/farm-stay-rooms"
                         className={cn(
                             "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
                             pathname === "/rooms" ? "text-primary font-bold" : "text-stone-600"

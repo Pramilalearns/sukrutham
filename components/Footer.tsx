@@ -2,24 +2,52 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
     const [email, setEmail] = useState("");
+    const [redirectUrl, setRedirectUrl] = useState("");
 
-    const handleSubscribe = (e: React.FormEvent) => {
+    useEffect(() => {
+        setRedirectUrl(window.location.origin + "/thank-you");
+    }, []);
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
             alert("Please enter a valid email address.");
             return;
         }
+        
+        setIsSubmitting(true);
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/sukruthamfarmstay@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: "New Newsletter Subscription",
+                    email: email,
+                    message: "Please add my email address to your newsletter subscription list."
+                })
+            });
 
-        const subject = encodeURIComponent("Newsletter Subscription Request");
-        const body = encodeURIComponent(`Hello,\n\nPlease add my email address (${email}) to your newsletter subscription list.\n\nThank you!`);
-        window.location.href = `mailto:sukruthamfarmstay@gmail.com?subject=${subject}&body=${body}`;
-
-        setEmail("");
+            if (response.ok) {
+                window.location.href = "/subscription-successful";
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Failed to subscribe. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -52,7 +80,7 @@ export default function Footer() {
                         <h4 className="text-lg font-bold text-white">Quick Links</h4>
                         <ul className="space-y-2 text-sm">
                             <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
-                            <li><Link href="/rooms" className="hover:text-accent transition-colors">Rooms</Link></li>
+                            <li><Link href="/farm-stay-rooms" className="hover:text-accent transition-colors">Rooms</Link></li>
                             <li><Link href="/experience/activities" className="hover:text-accent transition-colors">Activities</Link></li>
                             <li><Link href="/our-story" className="hover:text-accent transition-colors">About Us</Link></li>
                             <li><Link href="/blog" className="hover:text-accent transition-colors">Blog</Link></li>
@@ -91,14 +119,15 @@ export default function Footer() {
                         <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
                             <input
                                 type="email"
+                                name="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Your email address"
                                 required
                                 className="bg-stone-800 border border-stone-700 rounded px-4 py-2 text-sm focus:outline-none focus:border-primary text-white"
                             />
-                            <button type="submit" className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded text-sm font-semibold transition-colors">
-                                Subscribe
+                            <button type="submit" disabled={isSubmitting} className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded text-sm font-semibold transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+                                {isSubmitting ? "Subscribing..." : "Subscribe"}
                             </button>
                         </form>
                     </div>
