@@ -118,7 +118,7 @@ export default function BookPage() {
     };
 
     return (
-        <main className="min-h-screen bg-stone-50 selection:bg-primary/20 selection:text-primary-dark">
+        <main className="min-h-screen bg-stone-50 selection:bg-primary/20 selection:text-primary-dark overflow-x-hidden">
             <Navbar variant="transparent" />
 
             {/* Page Header as Hero Image */}
@@ -349,7 +349,7 @@ export default function BookPage() {
                     <div className="lg:col-span-5 space-y-8">
                         {/* Host Contact Block */}
                         <ScrollAnimation delay={100}>
-                            <div className="bg-emerald-900 text-white p-8 md:p-10 rounded-[2rem] shadow-xl relative overflow-hidden group">
+                            <div className="bg-emerald-900 text-white p-6 sm:p-10 rounded-[2rem] shadow-xl relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 blur-[50px] rounded-full group-hover:bg-amber-500/30 transition-colors duration-500"></div>
 
                                 <div className="flex items-center gap-4 mb-6 relative z-10">
@@ -371,14 +371,14 @@ export default function BookPage() {
                                         <div className="p-2 bg-white/5 rounded-lg text-amber-400"><Phone className="w-5 h-5" /></div>
                                         <div>
                                             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Call / WhatsApp</p>
-                                            <a href="tel:+919940668754" className="text-lg font-bold hover:text-accent transition-colors">+91 99406 68754</a>
+                                            <a href="tel:+919940668754" className="text-base sm:text-lg font-bold hover:text-accent transition-colors">+91 99406 68754</a>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <div className="p-2 bg-white/5 rounded-lg text-amber-400"><Mail className="w-5 h-5" /></div>
                                         <div>
                                             <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">Email</p>
-                                            <a href="mailto:sukruthamfarmstay@gmail.com" className="text-lg font-bold hover:text-accent transition-colors">sukruthamfarmstay@gmail.com</a>
+                                            <a href="mailto:sukruthamfarmstay@gmail.com" className="text-base sm:text-lg font-bold hover:text-accent transition-colors break-all">sukruthamfarmstay@gmail.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -387,7 +387,7 @@ export default function BookPage() {
 
                         {/* Location Details Block */}
                         <ScrollAnimation delay={200}>
-                            <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-stone-100">
+                            <div className="bg-white p-6 sm:p-8 rounded-[2rem] shadow-xl border border-stone-100">
                                 <h3 className="text-xl font-bold text-stone-900 flex items-center gap-3 mb-6">
                                     <MapPin className="w-5 h-5 text-primary" />
                                     Location Address
