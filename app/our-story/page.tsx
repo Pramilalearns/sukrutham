@@ -1,4 +1,3 @@
-"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,11 +8,17 @@ import { cn } from "@/lib/utils";
 import AboutFAQ from "@/components/AboutFAQ";
 import OurStoryHero from "@/components/OurStoryHero";
 import RecentBlogs from "@/components/RecentBlogs";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Our Story | Heritage & Tradition | Sukrutham Farmstay",
+    description: "Discover the journey of Sukrutham Farmstay. From a dream visionary to a Diamond Class heritage home, learn about our commitment to traditional Kerala hospitality and eco-friendly architecture.",
+};
 
 
 export default function OurStory() {
     return (
-        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans">
+        <main className="min-h-screen bg-[#FDFCF8] selection:bg-primary/20 selection:text-primary-dark font-sans relative overflow-x-hidden max-w-[100vw]">
             <Navbar />
 
             <OurStoryHero />

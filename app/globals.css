@@ -6,6 +6,8 @@
 
   --color-primary: #3a6b1f;
   /* Deep Forest Green */
+  --color-primary-light: #4c8a29;
+  /* Lighter Green for hovers on dark bg */
   --color-primary-foreground: #ffffff;
 
   --color-secondary: #8B5E3C;
@@ -130,78 +132,112 @@
    Fixed overlapping text (line-height: 1.8) and "clubbed" spacing.
    Forces standard typography across all migrated posts.
    ============================================================ */
-.blog-content {
+/* ============================================================
+   Blog Content Design System (.blog-content-wrapper)
+   Standardized typography, spacing, and visual hierarchy.
+   Designed for high readability and premium editorial feel.
+   ============================================================ */
+.blog-content-wrapper {
   color: #57534e; /* stone-600 */
   word-wrap: break-word;
 }
 
-/* Fix Overlapping: Standardize Paragraphs */
-.blog-content p {
-  font-size: 1.125rem !important; /* 18px */
-  line-height: 1.8 !important;   /* Breathable spacing to prevent clashing */
-  margin-bottom: 2rem !important;
-  font-weight: 300 !important;   /* Light, airy feel */
+/* 1. Typography & Readability */
+.blog-content-wrapper p {
+  font-size: 1rem !important; /* Definitive reduction for a compact look */
+  line-height: 1.65 !important;   /* Tightened line-height for cohesion */
+  margin-bottom: 0.85rem !important; /* Drastically reduced for smoother vertical flow */
+  font-weight: 400 !important;   /* Increased weight for legibility */
 }
 
-/* Fix "Strong" Collision: Force same size as parent and add tiny horizontal gap */
-.blog-content strong,
-.blog-content b {
+/* Semi-Bold Text: Softened to 600 weight and Stone 700 for seamless blending */
+.blog-content-wrapper strong,
+.blog-content-wrapper b {
   font-size: inherit !important; 
-  font-weight: 700 !important;
-  color: #1c1917 !important; /* stone-900 */
+  font-weight: 600 !important; 
+  color: #44403c; /* Removed !important to allow inheritance from links */
   display: inline;
-  padding: 0 0.08em; /* Prevent overlapping even if spaces are missing */
+  padding: 0 0.05em; 
 }
 
-/* Fix Heading Hierarchy & Spacing (Vertical Rhythm) */
-.blog-content h2 {
-  font-family: var(--font-display) !important;
-  font-size: 1.875rem !important; /* 30px */
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  margin-top: 3.5rem !important;
-  margin-bottom: 1.5rem !important;
-  color: #1c1917 !important;
-  border-bottom: 1px solid #e7e5e4; /* stone-200 subtle separator */
-  padding-bottom: 0.75rem;
-}
-
-.blog-content h3 {
-  font-family: var(--font-display) !important;
-  font-size: 1.5rem !important; /* 24px */
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  margin-top: 2.5rem !important;
-  margin-bottom: 1.25rem !important;
-  color: #1c1917 !important;
-}
-
-.blog-content h4 {
-  font-size: 1.25rem !important;
+/* Hyperlinks: Subtle Stone 700 color with underline */
+.blog-content-wrapper a {
+  color: #44403c !important; /* Stone 700 */
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
   font-weight: 600 !important;
-  margin-top: 3rem !important;
-  margin-bottom: 1.25rem !important;
-  color: #44403c;
+  transition: all 0.2s ease;
 }
 
-/* Lists - Styled with Gold/Green markers */
-.blog-content ol {
+.blog-content-wrapper a.no-underline {
+  text-decoration: none !important;
+}
+
+.blog-content-wrapper a.no-underline:hover {
+  background-color: transparent !important;
+  text-decoration: none !important;
+  text-decoration-color: transparent !important;
+}
+
+/* Hyperlinks: Brand Green Hover with high specificity */
+.blog-content-wrapper.prose a:hover,
+.blog-content-wrapper p a:hover,
+.blog-content-wrapper li a:hover {
+  color: var(--color-primary) !important;
+  background-color: rgba(58, 107, 31, 0.05);
+  text-decoration-color: var(--color-primary) !important;
+}
+
+/* Ensure bold text inside links also turns green */
+.blog-content-wrapper a:hover strong,
+.blog-content-wrapper a:hover b,
+.blog-content-wrapper.prose a:hover strong,
+.blog-content-wrapper.prose a:hover b {
+  color: var(--color-primary) !important;
+}
+
+/* 2. Spacing Hierarchy (Vertical Rhythm) */
+.blog-content-wrapper h2,
+.blog-content-wrapper h3,
+.blog-content-wrapper h4 {
+  font-family: var(--font-display) !important;
+  font-size: 1.75rem !important; /* Targeted 28px for sub-headings for a premium editorial feel */
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-top: 2.25rem !important; 
+  margin-bottom: 1rem !important; 
+  color: #1c1917 !important;
+  border-bottom: 1px solid #e7e5e4; 
+  padding-bottom: 0.5rem;
+}
+
+/* 3. Lists: Consistent Spacing & Icons */
+.blog-content-wrapper ol,
+.blog-content-wrapper ul {
+  margin-top: 0.75rem !important;   
+  margin-bottom: 1.5rem !important;
+  padding-left: 1.25rem !important; /* Added 'tab' indentation for the whole list */
+}
+
+.blog-content-wrapper li {
+  font-size: 1rem !important; /* Definitive reduction matched with body text */
+  line-height: 1.6;
+  margin-bottom: 0.35rem !important; /* Compact spacing between li items */
+  position: relative;
+}
+
+/* Ordered List: Numbered Circles */
+.blog-content-wrapper ol {
   list-style: none !important;
   counter-reset: blog-counter;
-  padding-left: 0 !important;
-  margin-bottom: 2.5rem !important;
 }
 
-.blog-content ol li {
+.blog-content-wrapper ol li {
   counter-increment: blog-counter;
-  position: relative;
-  padding-left: 3.5rem !important;
-  margin-bottom: 1.5rem !important;
-  font-size: 1.125rem;
-  line-height: 1.7;
+  padding-left: 3rem !important; /* Slightly adjusted for new container padding */
 }
 
-.blog-content ol li::before {
+.blog-content-wrapper ol li::before {
   content: counter(blog-counter);
   position: absolute;
   left: 0;
@@ -216,24 +252,24 @@
   color: #ffffff !important;
   font-size: 0.85rem;
   font-weight: 700;
-  font-family: var(--font-sans);
 }
 
-.blog-content ul {
+/* 4. Images & Figures: Standardized Spacing */
+.blog-content-wrapper figure {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Unordered List: Gold Dots */
+.blog-content-wrapper ul {
   list-style: none !important;
-  padding-left: 0 !important;
-  margin-bottom: 2.5rem !important;
 }
 
-.blog-content ul li {
-  position: relative;
+.blog-content-wrapper ul li {
   padding-left: 2rem !important;
-  margin-bottom: 1rem !important;
-  font-size: 1.125rem;
-  line-height: 1.7;
 }
 
-.blog-content ul li::before {
+.blog-content-wrapper ul li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -242,39 +278,50 @@
   height: 0.6rem;
   border-radius: 50%;
   background-color: #D4AF37 !important; /* accent gold */
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
-/* Blockquotes: Premium Aesthetic */
-.blog-content blockquote {
-  background-color: #f5f5f4 !important; /* stone-100 */
-  padding: 2rem 2.5rem !important;
+/* 4. Blockquotes & Media */
+.blog-content-wrapper blockquote {
+  background-color: #f5f5f4 !important;
+  padding: 2.5rem !important;
   border-left: 4px solid #3a6b1f !important;
   border-radius: 0 2rem 2rem 0 !important;
   font-family: var(--font-display) !important;
   font-style: italic !important;
   font-size: 1.25rem !important;
   line-height: 1.6 !important;
-  margin: 3rem 0 !important;
+  margin: 3.5rem 0 !important;
   color: #44403c !important;
 }
 
-/* Images & Links */
-.blog-content img {
+.blog-content-wrapper img {
   border-radius: 2rem !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-  margin: 3rem 0 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  margin: 3.5rem 0 1rem 0 !important; /* Bottom margin for image only */
 }
 
-.blog-content a {
-  color: #3a6b1f !important;
-  text-decoration: underline !important;
-  text-underline-offset: 4px !important;
-  font-weight: 500 !important;
-  transition: all 0.3s ease;
+/* Standardized figure/caption spacing */
+.blog-content-wrapper figure {
+  margin: 3.5rem 0 !important;
 }
 
-.blog-content a:hover {
-  color: #1c1917 !important;
-  background-color: #3a6b1f10;
+.blog-content-wrapper figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #78716c;
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+
+/* Mobile Responsiveness Fine-tuning */
+@media (max-width: 768px) {
+  .blog-content-wrapper h2 { font-size: 1.85rem !important; margin-top: 3rem !important; }
+  .blog-content-wrapper h3 { font-size: 1.5rem !important; }
+  .blog-content-wrapper p { font-size: 1rem !important; }
+  .blog-content-wrapper blockquote { padding: 1.5rem !important; font-size: 1.125rem !important; }
+
+  .faq-aligned-item {
+    padding-left: 1.25rem !important;
+  }
 }

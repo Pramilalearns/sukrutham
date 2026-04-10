@@ -45,16 +45,7 @@ export default function BlogContent({ html, children, className = '' }: BlogCont
         if (text.length > 0 && !/^\s/.test(text) && !/^[<]/.test(text)) {
           // Don't add space if it's punctuation like , . ) ! ?
           if (!/^[.,)!? ]/.test(text)) {
-            // Special Case: FAQ repair from legacy migrations
-            const isFaq = el.textContent?.includes('?') || /\d+\./.test(el.textContent || '');
-            if (isFaq && el.tagName !== 'A') {
-              const br = document.createElement('br');
-              const br2 = document.createElement('br');
-              next.parentNode?.insertBefore(br, next);
-              next.parentNode?.insertBefore(br2, next);
-            } else {
-              next.textContent = ' ' + text;
-            }
+            next.textContent = ' ' + text;
           }
         }
       }
@@ -65,10 +56,53 @@ export default function BlogContent({ html, children, className = '' }: BlogCont
     let node;
     while (node = walker.nextNode()) {
       if (node.textContent) {
-        // Fix "Sentence.Next" without space
         node.textContent = node.textContent.replace(/([.?!])([A-Z])/g, '$1 $2');
       }
     }
+
+    // Fix 3: Target FAQ Section spacing (Numbered format)
+    // Identify headings containing "FAQ" and standardize spacing for following siblings
+    const headings = blogBody.querySelectorAll('h2, h3, h4');
+    headings.forEach((heading) => {
+      if (heading.textContent?.toUpperCase().includes('FAQ')) {
+        let sibling = heading.nextElementSibling;
+        let isFirstQuestion = true;
+        
+        while (sibling && !['H2', 'H3', 'H4'].includes(sibling.tagName)) {
+          const text = sibling.textContent?.trim() || '';
+          
+          // Remove empty ghost paragraphs
+          if (sibling.tagName === 'P' && text === '') {
+            const toRemove = sibling;
+            sibling = sibling.nextElementSibling;
+            toRemove.remove();
+            continue;
+          }
+
+          if (sibling.tagName === 'P') {
+            const isQuestion = /^\d+\./.test(text);
+            
+            if (isQuestion) {
+              // Standardize Question Spacing
+              (sibling as HTMLElement).style.marginTop = isFirstQuestion ? '1.5rem' : '2.5rem';
+              (sibling as HTMLElement).style.marginBottom = '0.5rem';
+              (sibling as HTMLElement).style.fontWeight = '700';
+              (sibling as HTMLElement).style.color = '#1c1917'; // Stone 900
+              isFirstQuestion = false;
+            } else {
+              // Standardize Answer Spacing
+              (sibling as HTMLElement).style.marginTop = '0';
+              (sibling as HTMLElement).style.marginBottom = '1rem';
+            }
+            
+            // Ensure no indentation (flush-left)
+            (sibling as HTMLElement).style.paddingLeft = '0';
+          }
+          
+          sibling = sibling.nextElementSibling;
+        }
+      }
+    });
 
   }, [html, children]); // Re-run if content changes
 

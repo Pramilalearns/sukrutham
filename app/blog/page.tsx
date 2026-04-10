@@ -3,6 +3,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogList from "@/components/BlogList";
 import { categories } from "@/lib/blogData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Sukrutham Chronicles | Stories from the Farm",
+    description: "Explore our collection of stories, recipes, and reflections from life at Sukrutham Farmstay. Learn about traditional Kerala architecture, organic farming, and rural culture.",
+};
 
 const categoryTextData: Record<string, { title: string, desc: string }> = {
     "All": { title: "Latest Articles", desc: "Explore experiences, tips, and tales from the farm." },

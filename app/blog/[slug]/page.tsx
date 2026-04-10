@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Tag, Share2, Facebook, X, Linkedin, MessageSquare, Quote as QuoteIcon, ArrowRight, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
-import TextToSpeech from "@/components/TextToSpeech";
 import CouponBox from "@/components/CouponBox";
 import { getPostBySlug, blogPosts, categories, BlogPost } from "@/lib/blogData";
 import { client, urlFor } from "@/lib/sanity";
@@ -63,7 +62,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             "category": coalesce(categoryRef->title, category),
             publishedAt,
             readTime,
-            author->{ name, image },
+            author->{ 
+                name, 
+                "image": image.asset->url 
+            },
             "tags": tags
         }`;
         
@@ -79,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 date: sanityPost.publishedAt ? new Date(sanityPost.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : '',
                 author: decodeHtml(sanityPost.author?.name || 'Sukrutham Team'),
                 authorRole: 'Author',
-                authorImage: sanityPost.author?.image ? urlFor(sanityPost.author.image).url() : '/host-home-new.jpg',
+                authorImage: sanityPost.author?.image || '/gallery-1.jpg',
                 category: decodeHtml(sanityPost.category || 'Uncategorized'),
                 readTime: sanityPost.readTime || '5 min read',
                 tags: sanityPost.tags || [],
@@ -113,15 +115,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
     let contentPart1: any = "";
     let contentPart2: any = "";
-    let plainTextForSpeech = "";
-
     if (isPortableText) {
         const midPoint = Math.floor(rawContent.length / 2);
         contentPart1 = rawContent.slice(0, midPoint);
         contentPart2 = rawContent.slice(midPoint);
-        plainTextForSpeech = rawContent
-            .map((block: any) => block.children?.map((child: any) => child.text).join('') || '')
-            .join(' ');
     } else {
         const contentStr = rawContent as string;
         const midPoint = Math.floor(contentStr.length / 2);
@@ -135,24 +132,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             contentPart1 = contentStr;
             contentPart2 = "";
         }
-        
-        plainTextForSpeech = contentStr.replace(/<[^>]+>/g, ' ');
     }
 
     const ptComponents: any = {
         types: {
             image: ({ value }: any) => {
                 if (!value?.asset?._ref) return null;
+                
+                const imgElement = (
+                    <img
+                        alt={value.alt || ''}
+                        loading="lazy"
+                        src={urlFor(value).width(1200).auto('format').url()}
+                        className={cn(
+                            "rounded-3xl w-full object-cover max-h-[600px] transition-all duration-500",
+                            value.link && "hover:shadow-xl hover:scale-[1.01] hover:brightness-95 cursor-pointer"
+                        )}
+                    />
+                );
+
                 return (
-                    <figure className="my-10">
-                        <img
-                            alt={value.alt || ''}
-                            loading="lazy"
-                            src={urlFor(value).width(900).auto('format').url()}
-                            className="rounded-3xl shadow-md w-full object-cover max-h-[520px]"
-                        />
+                    <figure>
+                        {value.link ? (
+                            <a href={value.link} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-3xl no-underline border-none">
+                                {imgElement}
+                            </a>
+                        ) : imgElement}
                         {value.caption && (
-                            <figcaption className="text-center text-sm text-stone-400 mt-3 italic">{value.caption}</figcaption>
+                            <figcaption className="text-center text-sm text-stone-500 mt-4 italic font-light tracking-wide">{value.caption}</figcaption>
                         )}
                     </figure>
                 );
@@ -164,12 +171,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     href={value?.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#3a6b1f] font-semibold underline underline-offset-2 hover:text-[#2d5218] transition-colors"
                 >
                     {children}
                 </a>
             ),
-            strong: ({ children }: any) => <strong className="font-semibold text-stone-900">{children}</strong>,
+            strong: ({ children }: any) => <strong>{children}</strong>,
             em: ({ children }: any) => <em className="italic text-stone-700">{children}</em>,
         },
     };
@@ -288,8 +294,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 </div>
                             </div>
                             
-                            {/* Listening Interaction - Clean, Single Pill */}
-                            <TextToSpeech htmlContent={post.excerpt + " " + plainTextForSpeech} />
+                            {/* Author Info */}
                         </div>
                     </div>
                 </div>
@@ -309,7 +314,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 Back to Blog Chronicles
                             </Link>
 
-                            <div className="blog-content prose prose-stone prose-lg max-w-none text-stone-600 leading-relaxed md:prose-xl selection:bg-primary/10 mb-16">
+                            <div className="blog-content-wrapper prose prose-stone max-w-none prose-a:hover:text-primary selection:bg-primary/10 mb-16">
                                 <BlogContent>
                                     {isPortableText ? (
                                         <PortableText value={contentPart1} components={ptComponents} />
@@ -321,7 +326,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                             <ReturnNavigationCTA variant="default" category={post.category} className="my-16 shadow-md border-stone-100" />
 
-                            <div className="blog-content prose prose-stone prose-lg max-w-none text-stone-600 leading-relaxed md:prose-xl selection:bg-primary/10 mt-16">
+                            <div className="blog-content-wrapper prose prose-stone max-w-none selection:bg-primary/10 mt-16">
                                 <BlogContent>
                                     {isPortableText ? (
                                         <PortableText value={contentPart2} components={ptComponents} />
@@ -395,8 +400,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     </div>
                                 </div>
 
-                                {/* Bottom 50% Sticky Region */}
-                                <div className="flex-1 relative min-h-[400px]">
+                                {/* Bottom 50% Sticky Region - Added separation */}
+                                <div className="flex-1 relative min-h-[400px] mt-24">
                                     <div className="sticky top-32 space-y-10">
                                         {/* Quote Block - Compact */}
                                         <div className="bg-stone-900 text-stone-300 p-6 rounded-[2rem] relative overflow-hidden group shadow-lg">

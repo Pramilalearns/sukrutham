@@ -76,7 +76,29 @@ export const post = defineType({
         { type: 'block' },
         { 
           type: 'image',
-          options: { hotspot: true }
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'link',
+              type: 'url',
+              title: 'Clickable Link',
+              description: 'Optional: Add a link to this image.',
+              options: { isHighlighted: true }
+            },
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative Text',
+              description: 'Important for SEO and accessibility.',
+              options: { isHighlighted: true }
+            },
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+              options: { isHighlighted: true }
+            }
+          ]
         }
       ],
     }),

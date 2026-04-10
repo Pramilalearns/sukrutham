@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -269,12 +269,13 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                     <Link
                         href="/our-story"
                         className={cn(
-                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2",
+                            "hover:text-primary font-medium text-lg border-b border-stone-100 pb-2 flex items-center justify-between",
                             pathname === "/our-story" ? "text-primary font-bold" : "text-stone-600"
                         )}
                         onClick={() => setIsOpen(false)}
                     >
-                        About Us
+                        <span>About Us</span>
+                        <ChevronRight className="w-4 h-4 opacity-50" />
                     </Link>
                     <Link
                         href="/farm-stay-rooms"
@@ -307,8 +308,18 @@ const Navbar = ({ variant = "transparent" }: NavbarProps) => {
                         Sukrutham Chronicles
                     </Link>
 
-                    <div className="space-y-2">
-                        <div className="text-stone-400 text-sm font-semibold uppercase tracking-wider">Experience</div>
+                    <div className="space-y-2 pt-2">
+                        <Link 
+                            href="/experience"
+                            className={cn(
+                                "text-sm font-semibold uppercase tracking-wider flex items-center justify-between hover:text-primary transition-colors",
+                                pathname === "/experience" ? "text-primary" : "text-stone-400"
+                            )}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Experience
+                            <ChevronRight className="w-3 h-3 opacity-50" />
+                        </Link>
                         {experienceLinks.map((link) => (
                             <Link
                                 key={link.name}
