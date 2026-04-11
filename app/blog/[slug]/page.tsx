@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Tag, Share2, Facebook, X, Linkedin, MessageSquare, Quote as QuoteIcon, ArrowRight, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Tag, Share2, Facebook, Linkedin, MessageSquare, Quote as QuoteIcon, ArrowRight, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import CouponBox from "@/components/CouponBox";
 import { getPostBySlug, blogPosts, categories, BlogPost } from "@/lib/blogData";
@@ -364,9 +364,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     <div className="flex items-center gap-6 p-8 bg-stone-50 rounded-[2rem] border border-stone-100">
                                         <span className="text-xs font-bold text-stone-900 uppercase tracking-widest">Share on Social:</span>
                                         <div className="flex gap-4">
-                                            <button className="w-12 h-12 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1"><Facebook className="w-5 h-5 fill-current" /></button>
-                                            <button className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1"><X className="w-5 h-5" /></button>
-                                            <button className="w-12 h-12 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1"><Linkedin className="w-5 h-5 fill-current" /></button>
+                                            <a href={`https://www.facebook.com/sharer/sharer.php?u=https://sukruthamfarmstay.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1">
+                                                <Facebook className="w-5 h-5 fill-current" />
+                                            </a>
+                                            <a href={`https://twitter.com/intent/tweet?url=https://sukruthamfarmstay.com/blog/${post.slug}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1">
+                                                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                                                </svg>
+                                            </a>
+                                            <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://sukruthamfarmstay.com/blog/${post.slug}&title=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:bg-primary transition-all shadow-md hover:-translate-y-1">
+                                                <Linkedin className="w-5 h-5 fill-current" />
+                                            </a>
                                         </div>
                                     </div>
                             </div>

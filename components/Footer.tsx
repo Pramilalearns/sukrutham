@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Youtube } from "lucide-react";
 
 export default function Footer() {
     const [email, setEmail] = useState("");
@@ -72,6 +72,7 @@ export default function Footer() {
                             <Link href="https://facebook.com/sukruthamfarmstay" target="_blank" className="hover:text-accent transition-colors"><Facebook className="w-5 h-5" /></Link>
                             <Link href="https://instagram.com/sukruthamfarmstay" target="_blank" className="hover:text-accent transition-colors"><Instagram className="w-5 h-5" /></Link>
                             <Link href="https://linkedin.com/company/sukruthamfarmstay/" target="_blank" className="hover:text-accent transition-colors"><Linkedin className="w-5 h-5" /></Link>
+                            <Link href="https://www.youtube.com/@SukruthamFarmStay" target="_blank" className="hover:text-accent transition-colors"><Youtube className="w-5 h-5" /></Link>
                         </div>
                     </div>
 
