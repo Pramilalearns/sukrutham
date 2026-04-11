@@ -135,6 +135,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
 
     const ptComponents: any = {
+        block: {
+            h1: ({ children }: any) => <h1 className="text-4xl font-display font-bold text-stone-900 leading-tight mt-8 mb-4">{children}</h1>,
+            h2: ({ children }: any) => <h2>{children}</h2>,
+            h3: ({ children }: any) => <h3>{children}</h3>,
+            h4: ({ children }: any) => <h4>{children}</h4>,
+            h5: ({ children }: any) => <h5>{children}</h5>,
+            h6: ({ children }: any) => <h6>{children}</h6>,
+            normal: ({ children }: any) => <p>{children}</p>,
+            blockquote: ({ children }: any) => <blockquote>{children}</blockquote>,
+        },
         types: {
             image: ({ value }: any) => {
                 if (!value?.asset?._ref) return null;
@@ -314,7 +324,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 Back to Blog Chronicles
                             </Link>
 
-                            <div className="blog-content-wrapper prose prose-stone max-w-none prose-a:hover:text-primary selection:bg-primary/10 mb-16">
+                            <div className="blog-content-wrapper max-w-none selection:bg-primary/10 mb-16">
                                 <BlogContent>
                                     {isPortableText ? (
                                         <PortableText value={contentPart1} components={ptComponents} />
@@ -326,7 +336,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                             <ReturnNavigationCTA variant="default" category={post.category} className="my-16 shadow-md border-stone-100" />
 
-                            <div className="blog-content-wrapper prose prose-stone max-w-none selection:bg-primary/10 mt-16">
+                            <div className="blog-content-wrapper max-w-none selection:bg-primary/10 mt-16">
                                 <BlogContent>
                                     {isPortableText ? (
                                         <PortableText value={contentPart2} components={ptComponents} />

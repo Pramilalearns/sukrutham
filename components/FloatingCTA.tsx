@@ -29,7 +29,7 @@ export default function FloatingCTA() {
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-50 md:hidden transition-transform duration-500 transform",
+        "fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-500 transform",
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >

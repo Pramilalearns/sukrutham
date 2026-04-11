@@ -196,19 +196,62 @@
   color: var(--color-primary) !important;
 }
 
-/* 2. Spacing Hierarchy (Vertical Rhythm) */
+/* 2. Spacing Hierarchy (Vertical Rhythm) — Individual sizes per heading level */
 .blog-content-wrapper h2,
 .blog-content-wrapper h3,
-.blog-content-wrapper h4 {
+.blog-content-wrapper h4,
+.blog-content-wrapper h5,
+.blog-content-wrapper h6 {
   font-family: var(--font-display) !important;
-  font-size: 1.75rem !important; /* Targeted 28px for sub-headings for a premium editorial feel */
   font-weight: 700 !important;
   line-height: 1.2 !important;
-  margin-top: 2.25rem !important; 
-  margin-bottom: 1rem !important; 
+  margin-bottom: 1rem !important;
   color: #1c1917 !important;
-  border-bottom: 1px solid #e7e5e4; 
+}
+
+/* H2 — Primary section heading */
+.blog-content-wrapper h2 {
+  font-size: 1.75rem !important; /* 28px */
+  margin-top: 2.5rem !important;
+  border-bottom: 1px solid #e7e5e4;
   padding-bottom: 0.5rem;
+}
+
+/* H3 — Sub-section heading */
+.blog-content-wrapper h3 {
+  font-size: 1.375rem !important; /* 22px */
+  margin-top: 2rem !important;
+  border-bottom: none !important;
+}
+
+/* H4 — Minor heading */
+.blog-content-wrapper h4 {
+  font-size: 1.125rem !important; /* 18px */
+  margin-top: 1.75rem !important;
+  border-bottom: none !important;
+  font-weight: 600 !important;
+}
+
+/* H5 — Small label heading */
+.blog-content-wrapper h5 {
+  font-size: 1rem !important; /* 16px */
+  margin-top: 1.5rem !important;
+  border-bottom: none !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #44403c !important;
+}
+
+/* H6 — Smallest heading */
+.blog-content-wrapper h6 {
+  font-size: 0.875rem !important; /* 14px */
+  margin-top: 1.25rem !important;
+  border-bottom: none !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #78716c !important;
 }
 
 /* 3. Lists: Consistent Spacing & Icons */
@@ -316,8 +359,11 @@
 
 /* Mobile Responsiveness Fine-tuning */
 @media (max-width: 768px) {
-  .blog-content-wrapper h2 { font-size: 1.85rem !important; margin-top: 3rem !important; }
-  .blog-content-wrapper h3 { font-size: 1.5rem !important; }
+  .blog-content-wrapper h2 { font-size: 1.5rem !important; margin-top: 2.25rem !important; }
+  .blog-content-wrapper h3 { font-size: 1.25rem !important; margin-top: 1.75rem !important; }
+  .blog-content-wrapper h4 { font-size: 1.0625rem !important; }
+  .blog-content-wrapper h5 { font-size: 0.9375rem !important; }
+  .blog-content-wrapper h6 { font-size: 0.8125rem !important; }
   .blog-content-wrapper p { font-size: 1rem !important; }
   .blog-content-wrapper blockquote { padding: 1.5rem !important; font-size: 1.125rem !important; }
 

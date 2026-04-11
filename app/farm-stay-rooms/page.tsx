@@ -184,14 +184,14 @@ function RoomVisualTour({ activeTab, setActiveTab, roomImageData }: { activeTab:
                             {/* Nav Arrows */}
                             <button 
                                 onClick={handlePrevImage}
-                                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
+                                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
                                 style={{ WebkitBackdropFilter: 'blur(12px)' }}
                             >
                                 <ChevronLeft className="w-6 h-6" />
                             </button>
                             <button 
                                 onClick={handleNextImage}
-                                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
+                                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 z-30 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-white/40 cursor-pointer"
                                 style={{ WebkitBackdropFilter: 'blur(12px)' }}
                             >
                                 <ChevronRight className="w-6 h-6" />

@@ -75,7 +75,7 @@ export default function ExperiencesPage() {
             <Navbar />
 
             {/* Immersive Hero */}
-            <section className="relative h-[60vh] md:h-[70vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
+            <section className="relative min-h-[90vh] md:h-[70vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b-8 border-primary">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/experience/hero-activities.png"
@@ -88,12 +88,12 @@ export default function ExperiencesPage() {
                     <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl mt-12 md:mt-20">
+                <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl pt-28 md:pt-0 md:mt-20">
                     <ScrollAnimation animation="fade-up">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl lg:text-7xl font-display font-bold text-white mb-6 drop-shadow-lg leading-tight">
                             The Sukrutham <span className="text-accent italic">Journey</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-12">
+                        <p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-6 md:mb-12">
                             It’s not just a stay; it’s an immersive passage into the heart, culture, and nature of authentic Kerala.
                         </p>
 

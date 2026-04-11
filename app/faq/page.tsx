@@ -142,15 +142,17 @@ export default function FAQPage() {
   useEffect(() => {
     const onScroll = () => {
       if (scrollLock.current) return;
-      const mid = window.scrollY + 260;
+      const offset = 160;
+      let current = CATEGORIES[0].id;
       for (const cat of CATEGORIES) {
         const el = document.getElementById(cat.id);
         if (!el) continue;
-        if (mid >= el.offsetTop && mid < el.offsetTop + el.offsetHeight) {
-          setActiveCat(cat.id);
-          break;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= offset) {
+          current = cat.id;
         }
       }
+      setActiveCat(current);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -161,10 +163,8 @@ export default function FAQPage() {
     setActiveCat(id);
     const el = document.getElementById(id);
     if (el) {
-      window.scrollTo({
-        top: el.getBoundingClientRect().top - 130, // scrollMarginTop
-        behavior: "smooth",
-      });
+      const top = el.getBoundingClientRect().top + window.scrollY - 130;
+      window.scrollTo({ top, behavior: "smooth" });
       setTimeout(() => { scrollLock.current = false; }, 900);
     }
   };
