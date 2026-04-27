@@ -683,7 +683,7 @@ export default function RoomsPage() {
                     <div className="text-center mb-16 max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-5xl font-display font-medium text-stone-900 mb-6">Why You Will Love Your Stay at Sukrutham</h2>
                         <p className="text-stone-600 text-lg md:text-xl leading-relaxed">
-                            Whether you come seeking quiet reflection, a meaningful connection with nature, or simply a peaceful escape from everyday life, <Link href="/" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">Sukrutham Farmstay</Link>, a leading farm house in Thrissur, offers an experience that feels warm, authentic, and deeply refreshing. Here at our <Link href="/farm-stay-rooms" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">farmhouse in Kerala</Link>, the charm of rural life blends beautifully with thoughtful comforts to create a stay that is both relaxing and memorable.
+                            Whether you come seeking quiet reflection, a meaningful connection with nature, or simply a peaceful escape from everyday life, <Link href="/" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">Sukrutham Farmstay</Link>, a leading farm house in Thrissur, offers an experience that feels warm, authentic, and deeply refreshing. Here at our farmhouse in Kerala, the charm of rural life blends beautifully with thoughtful comforts to create a stay that is both relaxing and memorable.
                         </p>
                     </div>
 
@@ -745,7 +745,7 @@ export default function RoomsPage() {
                             </div>
                             <h3 className="text-2xl font-display font-medium text-stone-900 mb-4">Experiences That Connect You with the Village</h3>
                             <p className="text-stone-600 text-base leading-relaxed">
-                                Sukrutham offers opportunities to slow down and immerse yourself in local life. Guests can take peaceful village walks, try fishing with locals, or visit nearby cultural landmarks such as Kerala Kalamandalam, renowned for classical dance and music traditions.
+                                Sukrutham <Link href="/homestay-in-thrissur" className="text-primary hover:text-primary-dark underline decoration-primary/30 underline-offset-2 hover:decoration-primary transition-colors font-medium">homestay in Thrissur</Link> offers opportunities to slow down and immerse yourself in local life. Guests can take peaceful village walks, try fishing with locals, or visit nearby cultural landmarks such as Kerala Kalamandalam, renowned for classical dance and music traditions.
                             </p>
                         </ScrollAnimation>
 

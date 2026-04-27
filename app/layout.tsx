@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from '@next/third-parties/google';
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import FloatingCTA from "@/components/FloatingCTA";
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-TDFR28C" />
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
