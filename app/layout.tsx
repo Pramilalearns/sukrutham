@@ -1,0 +1,41 @@
+import type { Metadata } from "next";
+import { GoogleTagManager } from '@next/third-parties/google';
+import { Playfair_Display, Inter } from "next/font/google";
+import "./globals.css";
+import FloatingCTA from "@/components/FloatingCTA";
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Sukrutham Farmstay | Authentic Kerala Experience",
+  description: "Experience the serenity of Kerala at Sukrutham Farmstay. Surrounded by paddy fields and nature, it's your perfect getaway.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <GoogleTagManager gtmId="GTM-TDFR28C" />
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+      </head>
+      <body
+        className={`${playfair.variable} ${inter.variable} antialiased bg-stone-50 text-stone-900`}
+      >
+        {children}
+        <FloatingCTA />
+      </body>
+    </html>
+  );
+}

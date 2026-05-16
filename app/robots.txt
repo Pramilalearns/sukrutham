@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block search engine access to admin areas
+Disallow: /studio/
+Disallow: /api/
+Disallow: /debug-images/
+Disallow: /sanity-test/
+
+Sitemap: https://sukruthamfarmstay.com/sitemap.xml

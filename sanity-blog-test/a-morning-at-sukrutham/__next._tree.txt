@@ -1,6 +1,0 @@
-:HL["/_next/static/chunks/4130037b98f9adba.css","style"]
-:HL["/_next/static/chunks/354392bb686c9dba.css","style"]
-:HL["/_next/static/media/2a65768255d6b625-s.p.d19752fb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["https://cdn.sanity.io/images/2lx5w0zi/production/2bcf5b9f74ef04ffa0a2c8ca5e5d8d51f06fe0e3-1280x853.jpg","image"]
-0:{"buildId":"8jHGFiWeg58rYPz2xnmgU","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"sanity-blog-test","paramType":null,"paramKey":"sanity-blog-test","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"a-morning-at-sukrutham","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
