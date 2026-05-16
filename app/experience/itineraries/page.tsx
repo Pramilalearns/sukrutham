@@ -108,7 +108,7 @@ export default function ItinerariesPage() {
                             <ScrollAnimation delay={200}>
                                 <div className="relative w-full aspect-square rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border-8 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
                                     <Image
-                                        src="/itinerary.jpg"
+                                        src="/images/farm-stay/itinerary.jpg"
                                         alt="Sukrutham Curated Itineraries"
                                         fill
                                         sizes="(max-width: 768px) 100vw, 50vw"

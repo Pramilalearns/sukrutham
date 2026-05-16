@@ -692,7 +692,7 @@ export default function RoomsPage() {
                         <ScrollAnimation className="relative bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-stone-100 flex flex-col justify-center">
                             {/* Floating Decorative Corner Image */}
                             <div className="absolute -top-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 rotate-6 hidden sm:block">
-                                <Image src="/room-view-2.png" alt="Rooms" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                                <Image src="/images/rooms/room-view-2.png" alt="Rooms" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
                             <div className="mb-10 pt-4 md:pt-0 pr-0 sm:pr-20">
@@ -713,12 +713,12 @@ export default function RoomsPage() {
                         {/* Evening Magic & Dining */}
                         <ScrollAnimation delay={100} className="relative bg-[#F4EDE4] p-8 md:p-12 rounded-[2rem] shadow-sm border border-[#EAE0D3] flex flex-col justify-center">
                             <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay rounded-[2rem] overflow-hidden pointer-events-none">
-                                <Image src="/kerala-hills.jpg" alt="Texture" fill sizes="100vw" className="object-cover grayscale" />
+                                <Image src="/images/farm-stay/kerala-hills.jpg" alt="Texture" fill sizes="100vw" className="object-cover grayscale" />
                             </div>
 
                             {/* Floating Decorative Corner Image */}
                             <div className="absolute -bottom-6 -right-6 lg:-right-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 rotate-6 hidden sm:block">
-                                <Image src="/kerala-food-v2.png" alt="Dining" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                                <Image src="/images/misc/kerala-food-v2.png" alt="Dining" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
                             <div className="relative z-10 mb-10 pr-0 sm:pr-20">
@@ -757,7 +757,7 @@ export default function RoomsPage() {
 
                             {/* Floating Decorative Corner Image */}
                             <div className="absolute -top-6 -left-6 lg:-left-8 w-24 h-24 md:w-32 md:h-32 rounded-2xl border-4 border-white shadow-lg overflow-hidden z-20 -rotate-6 hidden sm:block">
-                                <Image src="/room-view-modern.png" alt="Work" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                                <Image src="/images/rooms/room-view-modern.png" alt="Work" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                             </div>
 
                             <div className="relative z-10 w-full mb-10 pt-4 md:pt-0 pl-0 sm:pl-20 md:pl-24 lg:pl-32">
@@ -808,7 +808,7 @@ export default function RoomsPage() {
             {/* Final CTA Section */}
             <section className="py-24 bg-[#F5F2ED] text-stone-900 text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-multiply">
-                    <Image src="/kerala-pathway.png" alt="Pattern" fill sizes="100vw" className="object-cover" />
+                    <Image src="/images/misc/kerala-pathway.png" alt="Pattern" fill sizes="100vw" className="object-cover" />
                 </div>
 
 

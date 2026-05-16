@@ -32,7 +32,7 @@ const experiences = [
     {
         title: "Seasons & Festivals",
         description: "Experience the famous Thrissur Pooram festivals or the beauty of the Kerala monsoon right from the farm.",
-        image: "/festival.png",
+        image: "/images/misc/festival.png",
         link: "/experience/seasons-festivals",
         // Standard block (Col 2, Row 2)
         className: "md:col-span-1 md:row-span-1",
@@ -40,7 +40,7 @@ const experiences = [
     {
         title: "Ready-Made Itineraries",
         description: "We’ve designed 1, 2, and 3-day plans for you. We do the planning; you do the relaxing.",
-        image: "/itinerary.jpg",
+        image: "/images/farm-stay/itinerary.jpg",
         link: "/experience/itineraries",
         // Standard block (Col 3, Row 2)
         className: "md:col-span-1 md:row-span-1",

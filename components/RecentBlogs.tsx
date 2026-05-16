@@ -44,7 +44,7 @@ export default async function RecentBlogs() {
             title: decodeHtml(post.title),
             slug: post.slug?.current || '',
             excerpt: decodeHtml(post.excerpt),
-            image: post.featuredImage ? urlFor(post.featuredImage).url() : '/gallery-1.jpg',
+            image: post.featuredImage ? urlFor(post.featuredImage).url() : '/images/gallery/gallery-1.jpg',
             date: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : '',
             category: decodeHtml(post.category || 'Uncategorized'),
         }));

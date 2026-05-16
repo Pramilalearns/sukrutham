@@ -12,7 +12,7 @@ export default function ThankYouPage() {
             {/* Background & Overlay */}
             <div className="absolute inset-0 z-0 h-[60vh] min-h-[500px]">
                 <Image
-                    src="/my-farm.jpg"
+                    src="/images/farm-stay/my-farm.jpg"
                     alt="Sukrutham Farmstay"
                     fill
                     className="object-cover"

@@ -24,7 +24,7 @@ export default function Awards() {
                     <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-6 md:p-8 flex flex-col sm:flex-row items-center gap-6 md:gap-8 group h-full">
                         <div className="relative w-2/3 sm:w-2/5 shrink-0 mx-auto sm:mx-0">
                             <Image
-                                src="/certificate.jpg"
+                                src="/images/misc/certificate.jpg"
                                 alt="Diamond Grade Certificate"
                                 width={300}
                                 height={400}

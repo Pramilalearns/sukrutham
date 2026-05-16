@@ -31,7 +31,7 @@ export default function OurStory() {
                         <div className="bg-white rounded-2xl shadow-xl shadow-stone-200/50 border border-stone-100 p-8 flex flex-col sm:flex-row items-center gap-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
                             <div className="relative w-full sm:w-2/5 shrink-0 group cursor-zoom-in">
                                 <Image
-                                    src="/certificate.jpg"
+                                    src="/images/misc/certificate.jpg"
                                     alt="Diamond Grade Certificate"
                                     width={300}
                                     height={400}
@@ -171,7 +171,7 @@ export default function OurStory() {
                                 <div className="space-y-6">
                                     <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-stone-200 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700">
                                         <Image
-                                            src="/host-visionary-new.jpg"
+                                            src="/images/host/host-visionary-new.jpg"
                                             alt="K.P. Murali"
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"

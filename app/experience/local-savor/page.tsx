@@ -28,7 +28,7 @@ const LocalSavorPage = () => {
             title: "Jeevamrutham Secret",
             location: "Organic Farming",
             description: "We use ancient Indian microbiological elixirs to enrich our soil. Experience hyper-local transparency where you can trace every ingredient.",
-            image: "/gallery-5.jpg", // Kept original as no new image was provided
+            image: "/images/gallery/gallery-5.jpg", // Kept original as no new image was provided
             icon: Droplets
         },
         {
@@ -44,7 +44,7 @@ const LocalSavorPage = () => {
         {
             title: "Clay Pot Cooking",
             description: "Traditional earthen pots (chattis) allow heat and moisture to circulate gently, locking in flavors and preserving essential vital nutrients that metal vessels destroy.",
-            image: "/gallery-1.jpg" // Kept original as no new image was provided
+            image: "/images/gallery/gallery-1.jpg" // Kept original as no new image was provided
         },
         {
             title: "Stone Ground Spices",

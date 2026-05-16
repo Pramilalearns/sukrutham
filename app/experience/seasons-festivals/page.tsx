@@ -52,7 +52,7 @@ export default function SeasonsFestivalsPage() {
             title: "Traditional Temple Festivals",
             season: "January - May",
             description: "Watch famous temple festivals come alive. Witness the captivating energy of traditional Kerala folk dances performed in their authentic spectacular setting.",
-            image: "/festival.png", // Keeping the original since no new generic festival image was provided in the folder
+            image: "/images/misc/festival.png", // Keeping the original since no new generic festival image was provided in the folder
         },
         {
             title: "Thrissur Pooram",

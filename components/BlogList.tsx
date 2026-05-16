@@ -101,7 +101,7 @@ export default function BlogList({ initialPosts, categories, categoryTextData }:
                                     <div className="mt-auto flex items-center justify-between pt-6 border-t border-stone-100">
                                         <div className="flex items-center gap-3">
                                             <div className="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
-                                                <Image src={featuredPost.authorImage || "/host-home-new.jpg"} alt={featuredPost.author} width={40} height={40} className="object-cover" />
+                                                <Image src={featuredPost.authorImage || "/images/host/host-home-new.jpg"} alt={featuredPost.author} width={40} height={40} className="object-cover" />
                                             </div>
                                             <div>
                                                 <p className="text-sm font-bold text-stone-900">{featuredPost.author}</p>

@@ -25,42 +25,42 @@ const stayImages = [
 
 // Chapter 2: Life on the Farm (Farming, Harvest, Animals, Culture)
 const farmImages = [
-    { src: "/farm-stay1.jpg", alt: "Life on the Farm", className: "h-72" },
-    { src: "/farm-stay3.jpg", alt: "Farm Bounty", className: "h-64" },
-    { src: "/tour-5.jpg", alt: "Organic Farming", className: "h-80" },
-    { src: "/new1.jpg", alt: "Fresh from the Earth", className: "h-64" },
-    { src: "/new10.jpeg", alt: "Green Horizons", className: "h-64" },
-    { src: "/12.jpg", alt: "Golden Fields", className: "h-72" },
-    { src: "/pottery.png", alt: "Pottery Workshop", className: "h-64" },
-    { src: "/farm-stay4.jpg", alt: "Farm Animals", className: "h-64" },
-    { src: "/farm-stay2.jpg", alt: "Green Pastures", className: "h-64" },
-    { src: "/7.jpg", alt: "Local Culture", className: "h-56" },
-    { src: "/8.jpg", alt: "Cultural Vibrance", className: "h-72" },
-    { src: "/1.jpg", alt: "Farm Vibes", className: "h-64" },
-    { src: "/3.jpg", alt: "Village Life", className: "h-64" },
-    { src: "/tour-6.jpg", alt: "Farm Dining Experience", className: "h-64" },
+    { src: "/images/farm-stay/farm-stay1.jpg", alt: "Life on the Farm", className: "h-72" },
+    { src: "/images/farm-stay/farm-stay3.jpg", alt: "Farm Bounty", className: "h-64" },
+    { src: "/images/tour/tour-5.jpg", alt: "Organic Farming", className: "h-80" },
+    { src: "/images/gallery/new1.jpg", alt: "Fresh from the Earth", className: "h-64" },
+    { src: "/images/gallery/new10.jpeg", alt: "Green Horizons", className: "h-64" },
+    { src: "/images/gallery/12.jpg", alt: "Golden Fields", className: "h-72" },
+    { src: "/images/misc/pottery.png", alt: "Pottery Workshop", className: "h-64" },
+    { src: "/images/farm-stay/farm-stay4.jpg", alt: "Farm Animals", className: "h-64" },
+    { src: "/images/farm-stay/farm-stay2.jpg", alt: "Green Pastures", className: "h-64" },
+    { src: "/images/gallery/7.jpg", alt: "Local Culture", className: "h-56" },
+    { src: "/images/gallery/8.jpg", alt: "Cultural Vibrance", className: "h-72" },
+    { src: "/images/gallery/1.jpg", alt: "Farm Vibes", className: "h-64" },
+    { src: "/images/gallery/3.jpg", alt: "Village Life", className: "h-64" },
+    { src: "/images/tour/tour-6.jpg", alt: "Farm Dining Experience", className: "h-64" },
 ];
 
 // Chapter 3: Untouched Nature (Outdoors, Paddy, Water, Mist)
 const natureImages = [
-    { src: "/n1.jpg", alt: "Nature Trails", className: "h-80" },
-    { src: "/n3.jpg", alt: "Paddy Fields", className: "h-64" },
-    { src: "/new2.jpg", alt: "Green Canopy", className: "h-72" },
-    { src: "/s10.jpg", alt: "Lush Gardens", className: "h-64" }, // Moved from Stay
-    { src: "/tour-10.jpg", alt: "Garden Retreat", className: "h-64" },
-    { src: "/11.jpg", alt: "Morning Clarity", className: "h-64" },
-    { src: "/new4.jpg", alt: "Nature's Path", className: "h-80" },
-    { src: "/new12.jpeg", alt: "Rainy Day Charm", className: "h-64" },
-    { src: "/6.jpg", alt: "Serene Waters", className: "h-56" },
-    { src: "/23.jpg", alt: "Coastal Vibes", className: "h-72" }, // Moved from Stay
-    { src: "/n2.jpg", alt: "Blooming Flora", className: "h-64" },
-    { src: "/n4.jpg", alt: "Waterbodies", className: "h-64" },
-    { src: "/tour-1.jpg", alt: "Evening Ambience", className: "h-64" },
-    { src: "/2.jpg", alt: "Nature Walk", className: "h-72" },
-    { src: "/4.jpg", alt: "Village Road", className: "h-64" },
-    { src: "/5.jpg", alt: "Paddy Field View", className: "h-80" },
-    { src: "/new5.jpg", alt: "Garden Bloom", className: "h-64" },
-    { src: "/new11.jpeg", alt: "Cloudy Skies", className: "h-56" },
+    { src: "/images/gallery/n1.jpg", alt: "Nature Trails", className: "h-80" },
+    { src: "/images/gallery/n3.jpg", alt: "Paddy Fields", className: "h-64" },
+    { src: "/images/gallery/new2.jpg", alt: "Green Canopy", className: "h-72" },
+    { src: "/images/gallery/s10.jpg", alt: "Lush Gardens", className: "h-64" }, // Moved from Stay
+    { src: "/images/tour/tour-10.jpg", alt: "Garden Retreat", className: "h-64" },
+    { src: "/images/gallery/11.jpg", alt: "Morning Clarity", className: "h-64" },
+    { src: "/images/gallery/new4.jpg", alt: "Nature's Path", className: "h-80" },
+    { src: "/images/gallery/new12.jpeg", alt: "Rainy Day Charm", className: "h-64" },
+    { src: "/images/gallery/6.jpg", alt: "Serene Waters", className: "h-56" },
+    { src: "/images/gallery/23.jpg", alt: "Coastal Vibes", className: "h-72" }, // Moved from Stay
+    { src: "/images/gallery/n2.jpg", alt: "Blooming Flora", className: "h-64" },
+    { src: "/images/gallery/n4.jpg", alt: "Waterbodies", className: "h-64" },
+    { src: "/images/tour/tour-1.jpg", alt: "Evening Ambience", className: "h-64" },
+    { src: "/images/gallery/2.jpg", alt: "Nature Walk", className: "h-72" },
+    { src: "/images/gallery/4.jpg", alt: "Village Road", className: "h-64" },
+    { src: "/images/gallery/5.jpg", alt: "Paddy Field View", className: "h-80" },
+    { src: "/images/gallery/new5.jpg", alt: "Garden Bloom", className: "h-64" },
+    { src: "/images/gallery/new11.jpeg", alt: "Cloudy Skies", className: "h-56" },
 ];
 
 interface ImageItem {

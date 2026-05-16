@@ -337,7 +337,7 @@ export default function PlacesToExplorePage() {
                         {/* Right Image Area */}
                         <div className="w-full lg:w-[55%] animate-in slide-in-from-right-8 duration-700 fade-in zoom-in-95 flex justify-center mt-12 lg:mt-0 relative">
                             <Image
-                                src="/location-hub-map.png"
+                                src="/images/misc/location-hub-map.png"
                                 alt="Sukrutham Farmstay Location Map"
                                 width={1400}
                                 height={1050}

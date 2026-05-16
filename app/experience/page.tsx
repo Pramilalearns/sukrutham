@@ -62,7 +62,7 @@ const EXPERIENCES = [
         description: "Whether you have just a weekend to spare or an entire week to unwind, we have carefully crafted itineraries to help you make the absolute most of your stay. We balance relaxation on the farm with adventurous outings, ensuring you experience the best of Kerala without ever feeling rushed.",
         href: "/experience/itineraries",
         ctaText: "Plan Your Journey",
-        image: "/itinerary.jpg",
+        image: "/images/farm-stay/itinerary.jpg",
         icon: Route,
         // Using fewer highlights to keep layout clean for the last item
         highlights: ["Weekend Getaways", "Week-long Immersions", "Family Outings", "Solo Retreats"]
@@ -236,7 +236,7 @@ export default function ExperiencesPage() {
             <section className="relative py-24 md:py-32 bg-stone-900 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/my-farm.jpg"
+                        src="/images/farm-stay/my-farm.jpg"
                         alt="Farmstay View"
                         fill
                         className="object-cover opacity-20 mix-blend-luminosity"

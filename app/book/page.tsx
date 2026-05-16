@@ -91,7 +91,7 @@ export default function BookPage() {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch("https://formsubmit.co/ajax/sukruthamfarmstay@gmail.com", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ export default function BookPage() {
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
                     style={{
-                        backgroundImage: "url('/my-farm.jpg')",
+                        backgroundImage: "url('/images/farm-stay/my-farm.jpg')",
                     }}
                 >
                     <div className="absolute inset-0 bg-black/50" />

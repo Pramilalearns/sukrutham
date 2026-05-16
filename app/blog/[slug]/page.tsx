@@ -77,11 +77,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 slug: sanityPost.slug?.current || '',
                 content: sanityPost.content || '',
                 excerpt: decodeHtml(sanityPost.excerpt || ''),
-                image: sanityPost.featuredImage ? urlFor(sanityPost.featuredImage).url() : '/gallery-1.jpg',
+                image: sanityPost.featuredImage ? urlFor(sanityPost.featuredImage).url() : '/images/gallery/gallery-1.jpg',
                 date: sanityPost.publishedAt ? new Date(sanityPost.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : '',
                 author: decodeHtml(sanityPost.author?.name || 'Sukrutham Team'),
                 authorRole: 'Author',
-                authorImage: sanityPost.author?.image || '/gallery-1.jpg',
+                authorImage: sanityPost.author?.image || '/images/gallery/gallery-1.jpg',
                 category: decodeHtml(sanityPost.category || 'Uncategorized'),
                 readTime: sanityPost.readTime || '5 min read',
                 tags: sanityPost.tags || [],
@@ -206,7 +206,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         sidebarLatest = rawSidebarPosts.map((p: any) => ({
             title: decodeHtml(p.title),
             slug: `/blog/${p.slug}`,
-            image: p.featuredImage ? urlFor(p.featuredImage).url() : '/gallery-1.jpg',
+            image: p.featuredImage ? urlFor(p.featuredImage).url() : '/images/gallery/gallery-1.jpg',
             date: p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : ''
         })).slice(0, 3);
 

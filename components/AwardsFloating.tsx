@@ -29,7 +29,7 @@ export default function AwardsFloating() {
                         <div className="flex items-center gap-5 group cursor-default">
                             <div className="w-14 h-20 md:w-16 md:h-20 relative shrink-0 transition-transform duration-500 group-hover:scale-105">
                                 <Image 
-                                    src="/certificate.jpg" 
+                                    src="/images/misc/certificate.jpg" 
                                     alt="Kerala Tourism Diamond Class" 
                                     fill
                                     className="object-contain drop-shadow-sm mix-blend-multiply"

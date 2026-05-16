@@ -15,7 +15,7 @@ export default function Host() {
                     <div className="w-full lg:w-4/12 relative">
                         <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500">
                             <Image
-                                src="/host-home-new.jpg"
+                                src="/images/host/host-home-new.jpg"
                                 alt="Murali - Host of Sukrutham Farmstay"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 33vw"

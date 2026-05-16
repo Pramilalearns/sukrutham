@@ -75,11 +75,11 @@ export default async function BlogPage() {
             title: decodeHtml(post.title),
             slug: post.slug,
             excerpt: decodeHtml(post.excerpt),
-            image: post.featuredImage ? urlFor(post.featuredImage).url() : '/gallery-1.jpg',
+            image: post.featuredImage ? urlFor(post.featuredImage).url() : '/images/gallery/gallery-1.jpg',
             date: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) : '',
             author: decodeHtml(post.author?.name || 'Sukrutham Team'),
             authorRole: 'Author',
-            authorImage: post.author?.image ? urlFor(post.author.image).url() : '/host-home-new.jpg',
+            authorImage: post.author?.image ? urlFor(post.author.image).url() : '/images/host/host-home-new.jpg',
             category: decodeHtml(post.category || 'Uncategorized'),
             readTime: post.readTime || '5 min read'
         }));

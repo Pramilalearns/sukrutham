@@ -1,20 +1,26 @@
 import { MetadataRoute } from 'next'
 import { client } from '@/lib/sanity'
 
+export const dynamic = 'force-static'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://sukruthamfarmstay.com'
 
-    // Fetch all blog slugs from Sanity
-    const posts: { slug: { current: string }; _updatedAt: string }[] = await client.fetch(
-        `*[_type == "post" && defined(slug.current)]{ slug, _updatedAt }`
-    )
+    let blogUrls: MetadataRoute.Sitemap = []
+    try {
+        const posts: { slug: { current: string }; _updatedAt: string }[] = await client.fetch(
+            `*[_type == "post" && defined(slug.current)]{ slug, _updatedAt }`
+        )
 
-    const blogUrls = posts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug.current}`,
-        lastModified: new Date(post._updatedAt),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }))
+        blogUrls = posts.map((post) => ({
+            url: `${baseUrl}/blog/${post.slug.current}`,
+            lastModified: new Date(post._updatedAt),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        }))
+    } catch (e) {
+        console.error("Failed to fetch blog posts for sitemap:", e)
+    }
 
     const staticRoutes: MetadataRoute.Sitemap = [
         {
